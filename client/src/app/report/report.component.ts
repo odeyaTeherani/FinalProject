@@ -12,4 +12,7 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
   }
 
+  buttonClicked(event: MouseEvent) {
+    alert(event.clientX);
+  }
 }
