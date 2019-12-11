@@ -12,4 +12,7 @@ export class LogInComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickOnButton(event: MouseEvent) {
+    alert(event.clientY);
+  }
 }
