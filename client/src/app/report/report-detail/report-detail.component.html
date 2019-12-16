@@ -1,0 +1,12 @@
+<div class="reportContainer">
+  <p><b>{{report.creator + ' - ' + (report.date|date:'dd/MM/yyyy')}}</b></p>
+  <ng-template [ngIf]="report.location">
+    <p>
+      Location Address: {{report.location.address}}
+    </p>
+    <p>
+      Location Coordinates: {{report.location.xCoordinate + ',' + report.location.yCoordinate}}
+    </p>
+  </ng-template>
+  <button (click)="delete(report)">Delete me please !!!!</button>
+</div>

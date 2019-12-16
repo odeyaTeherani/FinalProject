@@ -1,1 +1,8 @@
-<button (click)="buttonClicked($event)"> report </button>
+<ng-container *ngFor="let report of reports">
+    <app-report-detail
+      (reportDeleted)="deleteReport($event)"
+      [report]="report">
+    </app-report-detail>
+</ng-container>
+
+

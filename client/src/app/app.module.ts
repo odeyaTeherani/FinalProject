@@ -8,6 +8,8 @@ import { ReportComponent } from './report/report.component';
 import { SharedComponent } from './shared/shared.component';
 import { ComponentsComponent } from './shared/components/components.component';
 import { ServicesComponent } from './shared/services/services.component';
+import { ReportDetailComponent } from './report/report-detail/report-detail.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { ServicesComponent } from './shared/services/services.component';
     ReportComponent,
     SharedComponent,
     ComponentsComponent,
-    ServicesComponent
+    ServicesComponent,
+    ReportDetailComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
