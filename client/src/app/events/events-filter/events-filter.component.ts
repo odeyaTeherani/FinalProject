@@ -13,3 +13,6 @@ export class EventsFilterComponent implements OnInit {
   }
 
 }
+
+//רשימה של אירועים
+
