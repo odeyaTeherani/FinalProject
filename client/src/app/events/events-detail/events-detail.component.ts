@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Event, SeverityLevel} from '../event';
+import {Event, SeverityLevel} from '../event';// import the event
 
 @Component({
   selector: 'app-events-detail',
@@ -8,7 +8,7 @@ import {Event, SeverityLevel} from '../event';
 })
 export class EventsDetailComponent implements OnInit {
   @Input() event: Event;
-  slRef = SeverityLevel;
+  slRef = SeverityLevel;// referent from the event.ts instead the number its shows the severity
   constructor() {
 
   }
@@ -16,7 +16,7 @@ export class EventsDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  getEventTypeColor(eventType: SeverityLevel) {
+  getEventTypeColor(eventType: SeverityLevel) {// method that change the color of the severity by switch case
     let res;
     switch (eventType) {
       case SeverityLevel.easy:

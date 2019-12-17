@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SeverityLevel} from './event';
 import {Event} from './event';
-import * as moment from 'moment';
+import * as moment from 'moment';// Special Date import
 
 @Component({
   selector: 'app-events',
@@ -12,7 +12,7 @@ export class EventsComponent implements OnInit {
   events: Event [];
 
   constructor() {
-    this.events = [
+    this.events = [// event initiation 5 events in the array to show couple examples of event components on the screen(main)
       {
         date: moment().add(1,'days').toDate(),
         location: 'tel aviv',

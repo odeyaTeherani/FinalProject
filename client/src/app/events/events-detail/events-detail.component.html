@@ -1,22 +1,22 @@
-<mat-expansion-panel>
+<mat-expansion-panel>// from Angular materials
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{event.date| date:'dd/MM/yyyy hh:mm'}}
+      {{event.date| date:'dd/MM/yyyy hh:mm'}}// shows from the left side the date and the time
     </mat-panel-title>
     <mat-panel-description>
-      {{event.eventType}}
+      {{event.eventType}} // shows the type of the event in the middle
     </mat-panel-description>
-  </mat-expansion-panel-header>
+  </mat-expansion-panel-header>// end of the component that we see without open it
+  // body of the component starts down here
   <p>
-    <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }" style="color: darkslategrey;padding: 5px ">Severity lvl: {{slRef[event.severityLevel]}}</b>
+    <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }" style="color: darkslategrey;padding: 5px ">Severity lvl: {{slRef[event.severityLevel]}}</b>// style of the severity border and the severity
   </p>
   <p>
-    <b style="color: darkslategrey">Location: {{event.location}}</b>
+    <b style="color: darkslategrey">Location: {{event.location}}</b>// shows the location of the event
   </p>
   <p>
-    <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b>
+    <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b>// shows the Conclusions of the event
   </p>
 
-
-</mat-expansion-panel>
+</mat-expansion-panel>// end of the component
 
