@@ -1,1 +1,22 @@
-<p>events-detail works!</p>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{event.date| date:'dd/MM/yyyy hh:mm'}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{event.eventType}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>
+    <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }" style="color: darkslategrey;padding: 5px ">Severity lvl: {{slRef[event.severityLevel]}}</b>
+  </p>
+  <p>
+    <b style="color: darkslategrey">Location: {{event.location}}</b>
+  </p>
+  <p>
+    <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b>
+  </p>
+
+
+</mat-expansion-panel>
+

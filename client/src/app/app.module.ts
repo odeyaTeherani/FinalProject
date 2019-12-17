@@ -12,6 +12,7 @@ import { EventsComponent } from './events/events.component';
 import { EventsFilterComponent } from './events/events-filter/events-filter.component';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
