@@ -1,9 +1,9 @@
 export interface Event {
   date: Date;
   location: string;
-  eventTypa: string [];
+  eventType: string [];
   severityLevel: SeverityLevel;
-  conclution: string;
+  conclusions: string;
 }
 
 
