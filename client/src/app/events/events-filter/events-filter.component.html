@@ -1,1 +1,49 @@
-<p>events-filter works!</p>
+<form class="example-container" [formGroup]="filterOptions">
+
+  <div fxLayout="row" fxLayoutGap="10px">
+
+    <mat-form-field fxFlex="20">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" matInput [formControlName]="'date'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControlName]="'locationFiled'"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of locationOptions" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControlName]="'eventType'"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of typeOptions" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <mat-label>Toppings</mat-label>
+      <mat-select [formControlName]="'hardwareLevel'" multiple>
+        <mat-option *ngFor="let topping of severityOption"
+                    [value]="topping">
+          {{topping}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="submit()" style="background-color:DodgerBlue;" fxFlex="15" >
+      <mat-icon>search</mat-icon>
+      search
+    </button>
+
+  </div>
+
+</form>
+

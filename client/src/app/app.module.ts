@@ -12,6 +12,16 @@ import { EventsComponent } from './events/events.component';
 import { EventsFilterComponent } from './events/events-filter/events-filter.component';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatAutocompleteModule,
+  MatButtonModule, MatDatepickerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule, MatNativeDateModule,
+  MatSelectModule
+} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -28,7 +38,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
