@@ -12,7 +12,7 @@ import { EventsComponent } from './events/events.component';
 import { EventsFilterComponent } from './events/events-filter/events-filter.component';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatExpansionModule} from '@angular/material';
+import {MatButtonModule, MatExpansionModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import {MatExpansionModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

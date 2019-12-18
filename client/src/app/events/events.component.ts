@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
         date: moment().add(1,'days').toDate(),
         location: 'tel aviv',
         eventType: ['tsunami'],
-        severityLevel: SeverityLevel.medium,
+        severityLevel: SeverityLevel.veryEasy,
         conclusions: 'sytwsg'
       },
       {

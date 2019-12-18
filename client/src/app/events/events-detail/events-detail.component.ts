@@ -20,10 +20,10 @@ export class EventsDetailComponent implements OnInit {
     let res;
     switch (eventType) {
       case SeverityLevel.easy:
-        res = '#4802fa';
+        res = '#faee02';
         break;
       case SeverityLevel.medium:
-        res = '#faee02';
+        res = '#4802fa';
         break;
       case SeverityLevel.hard:
         res = '#fa1b02';
