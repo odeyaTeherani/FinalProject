@@ -1,10 +1,12 @@
-<mat-expansion-panel><!--from Angular materials-->
+<mat-expansion-panel style="background-color: cadetblue"><!--from Angular materials-->
   <mat-expansion-panel-header>
     <mat-panel-title>
       {{event.date| date:'dd/MM/yyyy hh:mm'}} <!--shows from the left side the date and the time-->
     </mat-panel-title>
-    <mat-panel-description>
-      {{event.eventType}} <!--shows the type of the event in the middle-->
+    <mat-panel-description style="color: darkslategrey">
+      <b>
+        {{event.eventType}} <!--shows the type of the event in the middle-->
+      </b>
     </mat-panel-description>
   </mat-expansion-panel-header><!-- end of the component that we see without open it-->
   <!--body of the component starts down here-->
@@ -16,9 +18,8 @@
   </p>
   <p>
     <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b><!--shows the Conclusions of the event-->
-    <button mat-stroked-button>More details</button>
   </p>
-
+  <button style="margin-left: 90%" mat-stroked-button>More details</button>
 
 </mat-expansion-panel><!--end of the component-->
 
