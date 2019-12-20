@@ -1,1 +1,50 @@
-<p>events-filter works!</p>
+<form class="example-container" [formGroup]="filterOptions">
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px">
+
+    <mat-form-field fxFlex="20">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControlName]="'date'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <input matInput
+             aria-label="Number"
+             appGooglePlace
+             placeholder="Please enter location"/>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <input type="text"
+             placeholder="Pick event type"
+             aria-label="Number"
+             matInput
+             [formControlName]="'eventType'"
+             [matAutocomplete]="auto">
+      <mat-autocomplete [displayWith]="displayWith" #auto="matAutocomplete">
+        <mat-option *ngFor="let option of typeOptions"
+                    [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20">
+      <mat-label>Severity Level</mat-label>
+      <mat-select [formControlName]="'severityLevel'" multiple>
+        <mat-option *ngFor="let topping of severityOption"
+                    [value]="topping">
+          {{topping}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="submit()" style="background-color:DodgerBlue;" fxFlex="15">
+      <mat-icon>search</mat-icon>
+      search
+    </button>
+
+  </div>
+
+</form>
+
