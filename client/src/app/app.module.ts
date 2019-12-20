@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ReportComponent } from './report/report.component';
 import { SharedComponent } from './shared/shared.component';
-import { ComponentsComponent } from './shared/components/components.component';
 import { ServicesComponent } from './shared/services/services.component';
 import { EventsComponent } from './events/events.component';
 import { EventsFilterComponent } from './events/events-filter/events-filter.component';
@@ -17,11 +16,15 @@ import {
   MatButtonModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
-  MatSelectModule
+  MatInputModule, MatMenuModule, MatNativeDateModule,
+  MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { GooglePlacesDirective } from './shared/directives/google-places.directive';
+import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,14 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     LogInComponent,
     ReportComponent,
     SharedComponent,
-    ComponentsComponent,
     ServicesComponent,
     EventsComponent,
     EventsFilterComponent,
-    EventsDetailComponent
+    EventsDetailComponent,
+    GooglePlacesDirective,
+    AdminLayoutComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

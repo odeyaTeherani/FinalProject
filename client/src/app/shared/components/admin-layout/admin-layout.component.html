@@ -1,0 +1,22 @@
+<mat-toolbar [color]="'primary'" style="width: 100%;">
+    This is a toolbar
+</mat-toolbar>
+
+
+<div fxLayout="row"  style="height: 100%;">
+
+  <div style="width: 200px; float: left; height: 100%; background: gray;">
+    <ol>
+      <li [routerLink]="'/events'">Events</li>
+      <li  [routerLink]="'/reports'">Report</li>
+      <li>About</li>
+    </ol>
+  </div>
+
+  <div style="margin-left: 12px; margin-top: 12px;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+
