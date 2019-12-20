@@ -2,7 +2,9 @@
   <app-events-filter (searchChanged)="searchChanged($event)"></app-events-filter>
 </div>
 
-<app-events-detail *ngFor="let event of events"
-                   [event]="event">
-</app-events-detail>
-
+<div class="mt-1">
+  <app-events-detail
+    *ngFor="let event of events"
+    [event]="event">
+  </app-events-detail>
+</div>

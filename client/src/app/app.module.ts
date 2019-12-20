@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ReportComponent } from './report/report.component';
 import { SharedComponent } from './shared/shared.component';
-import { ComponentsComponent } from './shared/components/components.component';
 import { ServicesComponent } from './shared/services/services.component';
 import { EventsComponent } from './events/events.component';
 import { EventsFilterComponent } from './events/events-filter/events-filter.component';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatExpansionModule} from '@angular/material';
 import {
+  MatExpansionModule,
   MatAutocompleteModule,
   MatButtonModule, MatDatepickerModule,
   MatFormFieldModule,
@@ -34,7 +33,6 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     LogInComponent,
     ReportComponent,
     SharedComponent,
-    ComponentsComponent,
     ServicesComponent,
     EventsComponent,
     EventsFilterComponent,
@@ -49,7 +47,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     ReactiveFormsModule,

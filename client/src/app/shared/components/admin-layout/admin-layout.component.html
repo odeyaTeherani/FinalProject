@@ -5,7 +5,7 @@
 
 <div fxLayout="row"  style="height: 100%;">
 
-  <div style="width: 200px; float: left; height: 100%; background: gray;">
+  <div fxFlex="15" style="float: left; height: 100%; background: gray;">
     <ol>
       <li [routerLink]="'/events'">Events</li>
       <li  [routerLink]="'/reports'">Report</li>
@@ -13,7 +13,7 @@
     </ol>
   </div>
 
-  <div style="margin-left: 12px; margin-top: 12px;">
+  <div fxFlex="85" style="margin: 12px;" class="full-width">
     <router-outlet></router-outlet>
   </div>
 
