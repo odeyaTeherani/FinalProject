@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Event, SeverityLevel} from '../event';// import the event
 
 @Component({
-  selector: 'app-events-detail',
-  templateUrl: './events-detail.component.html',
-  styleUrls: ['./events-detail.component.scss']
+  selector: 'app-events-list',
+  templateUrl: './events-list.component.html',
+  styleUrls: ['./events-list.component.scss']
 })
-export class EventsDetailComponent implements OnInit {
+export class EventsListComponent implements OnInit {
   @Input() event: Event;
   slRef = SeverityLevel;// referent from the event.ts instead the number its shows the severity
   constructor() {

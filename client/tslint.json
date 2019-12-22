@@ -85,7 +85,8 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "no-trailing-whitespace": false,
-    "whitespace": false
+    "whitespace": false,
+    "typedef-whitespace": false
   },
   "rulesDirectory": [
     "codelyzer"

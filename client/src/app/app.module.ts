@@ -7,9 +7,6 @@ import { LogInComponent } from './log-in/log-in.component';
 import { ReportComponent } from './report/report.component';
 import { SharedComponent } from './shared/shared.component';
 import { ServicesComponent } from './shared/services/services.component';
-import { EventsComponent } from './events/events.component';
-import { EventsFilterComponent } from './events/events-filter/events-filter.component';
-import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatExpansionModule,
@@ -22,10 +19,10 @@ import {
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { GooglePlacesDirective } from './shared/directives/google-places.directive';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,10 +31,6 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     ReportComponent,
     SharedComponent,
     ServicesComponent,
-    EventsComponent,
-    EventsFilterComponent,
-    EventsDetailComponent,
-    GooglePlacesDirective,
     AdminLayoutComponent,
     HomeComponent,
     NotFoundComponent
@@ -60,7 +53,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,10 +11,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-    children: [{
-      path: 'events',
-      component: EventsComponent
-    },
+    children: [
+      {
+        path: 'events',
+        loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
+      },
       {
         path: 'reports',
         component: ReportComponent
@@ -53,5 +54,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-
+  constructor() {
+    console.log('routes loaded');
+  }
 }

@@ -1,61 +1,45 @@
-import {Component, OnInit} from '@angular/core';
-import {SeverityLevel} from './event';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Event} from './event';
-import * as moment from 'moment';// Special Date import
+import {EventService} from '../shared/services/event.service';
+import {Subscription} from 'rxjs';
+import {EventHttpService} from '../shared/services/event-http-service';
+
+// Special Date import
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent implements OnInit ,OnDestroy {
   events: Event [];
+  subscription: Subscription;
+  constructor(private eventService: EventService,
+              private eventHttpService:EventHttpService) {
 
-  constructor() {
-    this.events = [// event initiation 5 events in the array to show couple examples of event components on the screen(main)
-      {
-        date: moment().add(1,'days').toDate(),
-        location: 'tel aviv',
-        eventType: ['tsunami'],
-        severityLevel: SeverityLevel.veryEasy,
-        conclusions: 'sytwsg'
-      },
-      {
-        date: moment().add(5,'days').toDate(),
-        location: 'tel aviv',
-        eventType: ['tsunami'],
-        severityLevel: SeverityLevel.medium,
-        conclusions: 'xlaoninxoienxcienc'
-      },
-      {
-        date: moment().add(2,'days').toDate(),
-        location: 'Jerusalem',
-        eventType: ['boom'],
-        severityLevel: SeverityLevel.hard,
-        conclusions: 'Fuck off'
-      },
-      {
-        date: moment().add(1,'month').toDate(),
-        location: 'Arce',
-        eventType: ['collapsed building'],
-        severityLevel: SeverityLevel.easy,
-        conclusions: 'so hot in there or here'
-      },
-      {
-        date: moment().add(1,'year').toDate(),
-        location: 'Jericho',
-        eventType: ['fire'],
-        severityLevel: SeverityLevel.veryHard,
-        conclusions: 'was vary easy'
-      }
-    ];
   }
 
   ngOnInit() {
+
+    this.subscription = this.eventService.onEventsChange.subscribe(
+      (events: Event []) => {
+            this.events = events;
+            console.log(this.events);
+    });
+
+    this.eventService.getEvents();
+
+    this.eventHttpService.getEvents().subscribe((events) => {
+        console.log('fdsdsf');
+      });
   }
 
   searchChanged(event: any) {
     // go to server and fetch the filterd events
     console.log(event);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

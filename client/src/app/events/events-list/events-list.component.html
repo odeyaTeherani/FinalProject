@@ -22,7 +22,16 @@
   <p>
     <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b><!--shows the Conclusions of the event-->
   </p>
-  <button style="margin-left: 90%" mat-stroked-button>More details</button>
+
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <button fxFlex.xs="100"
+            [routerLink]="['event-detail',event.id]"
+      mat-stroked-button>
+      More details
+    </button>
+  </div>
+
 
 </mat-expansion-panel><!--end of the component-->
 
