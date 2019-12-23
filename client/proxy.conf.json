@@ -1,0 +1,6 @@
+{
+  "/": {
+    "target": "https://events-api-project.herokuapp.com",
+    "secure": false
+  }
+}

@@ -1,5 +1,8 @@
-<form class="example-container" [formGroup]="filterOptions">
-  <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px">
+<form ngForm class="toolbar-container" [formGroup]="filterOptions">
+  <div fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutGap="10px">
 
     <mat-form-field fxFlex="20">
       <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControlName]="'date'">
@@ -39,10 +42,17 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button (click)="submit()" style="background-color:DodgerBlue;" fxFlex="15">
-      <mat-icon>search</mat-icon>
-      search
-    </button>
+    <span fxFlex></span>
+
+    <div class="margin-333">
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="submit()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+
 
   </div>
 

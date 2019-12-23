@@ -8,16 +8,16 @@ import {
   MatButtonModule,
   MatDatepickerModule,
   MatExpansionModule, MatFormFieldModule, MatIconModule,
-  MatInputModule,
+  MatInputModule, MatNativeDateModule,
   MatSelectModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
-import {GooglePlacesDirective} from '../shared/directives/google-places.directive';
+import {GooglePlacesDirective} from '../shared/directives/google-places/google-places.directive';
 import {RouterModule} from '@angular/router';
 import {EventsRouts} from './events-routing';
 import { EventDetailComponent } from './events-list/event-detail/event-detail.component';
-import {EventService} from '../shared/services/event.service';
+import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 
 
 @NgModule({
@@ -25,7 +25,6 @@ import {EventService} from '../shared/services/event.service';
     EventsComponent,
     EventsFilterComponent,
     EventsListComponent,
-    GooglePlacesDirective,
     EventDetailComponent
   ],
   imports: [
@@ -40,11 +39,13 @@ import {EventService} from '../shared/services/event.service';
     MatSelectModule,
     MatIconModule,
     MatFormFieldModule,
+    GooglePlacesModule,
+    MatNativeDateModule,
     RouterModule.forChild(EventsRouts)
   ],
   providers:[],
   entryComponents:[],
-  exports:[EventsComponent]
+  exports:[]
 })
 export class EventsModule {
     constructor() {

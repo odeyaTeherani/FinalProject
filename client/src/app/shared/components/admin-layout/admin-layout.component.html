@@ -1,22 +1,70 @@
-<mat-toolbar [color]="'primary'" style="width: 100%;">
-    This is a toolbar
-</mat-toolbar>
+<div class="toolbar-container"
+     [class.is-mobile]="mobileQuery.matches">
+
+  <mat-toolbar [color]="'primary'" class="toolbar">
+
+    <img *ngIf="!mobileQuery.matches"
+         class="image-container"
+         width="50px"
+         height="50px"
+         src="../../../../assets/logo.jpeg" alt="{{appName}}"/>
+
+    <button mat-icon-button
+            *ngIf="mobileQuery.matches"
+            (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <h1 class="example-app-name">{{appName}}</h1>
+
+    <span fxFlex></span>
+
+    <!--App Logo-->
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>person</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item>
+        Settings
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-menu-item>
+        Logout
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-menu>
 
 
-<div fxLayout="row"  style="height: 100%;">
+  </mat-toolbar>
 
-  <div fxFlex="15" style="float: left; height: 100%; background: gray;">
-    <ol>
-      <li [routerLink]="'/events'">Events</li>
-      <li  [routerLink]="'/reports'">Report</li>
-      <li>About</li>
-    </ol>
-  </div>
+  <mat-sidenav-container class="sidenav-container"
+                         [hasBackdrop]="mobileQuery.matches">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [opened]="!mobileQuery.matches || isOpened"
+                 [fixedInViewport]="mobileQuery.matches"
+                 fixedTopGap="56">
 
-  <div fxFlex="85" style="margin: 12px;" class="full-width">
-    <router-outlet></router-outlet>
-  </div>
+      <mat-nav-list [style.width.px]="230">
+        <a mat-list-item [routerLink]="['/' + menuItem.url]"
+           *ngFor="let menuItem of fillerNav">
+          <mat-icon>{{menuItem.icon}}</mat-icon>
+          {{
+          menuItem.name
+          }}
+        </a>
+      </mat-nav-list>
 
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div  class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
 </div>
+
 
 
