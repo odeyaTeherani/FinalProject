@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {EventsComponent} from './events/events.component';
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
 import {ReportComponent} from './report/report.component';
 import {HomeComponent} from './home/home.component';
@@ -18,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'reports',
-        component: ReportComponent
+        loadChildren:() => import('./report/report.module').then(mod => mod.ReportModule)
       },
       {
         path: 'home',

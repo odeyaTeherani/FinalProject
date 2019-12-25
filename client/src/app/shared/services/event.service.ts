@@ -9,7 +9,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class EventService {
 
-  events: Event[] = [// event initiation 5 events in the array to show couple examples of event components on the screen(main)
+  events: Event[] ;
+
+    /*[// event initiation 5 events in the array to show couple examples of event components on the screen(main)
     {
       id:1,
       date: moment().add(1,'days').toDate(),
@@ -50,7 +52,7 @@ export class EventService {
       severityLevel: SeverityLevel.veryHard,
       conclusions: 'was vary easy'
     }
-  ];
+  ];*/
 
   onEventsChange: EventEmitter<Event []> = new EventEmitter<Event []>();
   // onEventsChange: BehaviorSubject<Event []> = new BehaviorSubject<Event []>([]);

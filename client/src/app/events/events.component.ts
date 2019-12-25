@@ -11,26 +11,29 @@ import {EventHttpService} from '../shared/services/event-http-service';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent implements OnInit ,OnDestroy {
+export class EventsComponent implements OnInit, OnDestroy {
   events: Event [];
-  subscription: Subscription;
+  // subscription: Subscription;
+
   constructor(private eventService: EventService,
-              private eventHttpService:EventHttpService) {
+              private eventHttpService: EventHttpService) {
 
   }
 
   ngOnInit() {
 
-    this.subscription = this.eventService.onEventsChange.subscribe(
-      (events: Event []) => {
-            this.events = events;
-            console.log(this.events);
-    });
+    // this.subscription = this.eventService.onEventsChange.subscribe(
+    //   (events: Event []) => {
+    //         this.events = events;
+    //         console.log(this.events);
+    // });
 
-    this.eventService.getEvents();
+    // this.eventService.getEvents();
 
-    this.eventHttpService.getEvents().subscribe((events) => {
-        console.log('fdsdsf');
+    this.eventHttpService.getEvents()
+      .subscribe((data:any) => {
+        console.log(data);
+        this.events = data;
       });
   }
 
@@ -40,6 +43,6 @@ export class EventsComponent implements OnInit ,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   // this.subscription.unsubscribe();
   }
 }
