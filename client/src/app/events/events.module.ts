@@ -48,7 +48,5 @@ import {GooglePlacesModule} from '../shared/directives/google-places/google-plac
   exports:[]
 })
 export class EventsModule {
-    constructor() {
-      console.log('events module loaded');
-    }
+
 }

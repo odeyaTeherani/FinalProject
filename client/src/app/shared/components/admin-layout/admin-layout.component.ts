@@ -19,17 +19,22 @@ export class AdminLayoutComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   appName: string;
   fillerNav: MenuItem [] = [
-      {
-        icon: 'event',
-        name: 'Events',
-        url: 'events',
-      },
-      {
-        icon: 'report',
-        name: 'Reports',
-        url: 'reports',
-      }
-    ];
+    {
+      icon: 'event',
+      name: 'Events',
+      url: 'events',
+    },
+    {
+      icon: 'report',
+      name: 'Reports',
+      url: 'reports',
+    },
+    {
+      icon: 'history',
+      name: 'Reporting History',
+      url: 'reportingHistory',
+    }
+  ];
 
   private readonly mobileQueryListener: () => void;
 

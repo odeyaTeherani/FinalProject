@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
-import {ReportComponent} from './report/report.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
@@ -20,6 +19,10 @@ const routes: Routes = [
         loadChildren:() => import('./report/report.module').then(mod => mod.ReportModule)
       },
       {
+        path: 'reportingHistory',
+        loadChildren:() => import('./reporting-history/reporting-history.module').then(mod => mod.ReportingHistoryModule)
+      },
+      {
         path: 'home',
         component: HomeComponent
       },
@@ -36,24 +39,11 @@ const routes: Routes = [
   }
 ];
 
-/*
-const routes: Routes = [
-  {
-
-    path: 'events',
-    component: EventsComponent
-
-  }
-];
-*/
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
   constructor() {
-    console.log('routes loaded');
   }
 }

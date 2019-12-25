@@ -10,7 +10,6 @@ import {ReportRoutes} from './report-routing';
   {
     imports:[CommonModule,RouterModule.forChild(ReportRoutes)],
     declarations:[ReportItemComponent,ReportComponent]
-
   }
   )
 export class ReportModule {
