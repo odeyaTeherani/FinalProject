@@ -23,6 +23,7 @@ import { AdminLayoutComponent } from './shared/components/admin-layout/admin-lay
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import {HttpClientModule} from '@angular/common/http';
+import {EventsModule} from './events/events.module';
 
 @NgModule({
   declarations: [

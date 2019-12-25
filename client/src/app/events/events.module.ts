@@ -17,7 +17,6 @@ import {GooglePlacesDirective} from '../shared/directives/google-places.directiv
 import {RouterModule} from '@angular/router';
 import {EventsRouts} from './events-routing';
 import { EventDetailComponent } from './events-list/event-detail/event-detail.component';
-import {EventService} from '../shared/services/event.service';
 
 
 @NgModule({
@@ -44,10 +43,6 @@ import {EventService} from '../shared/services/event.service';
   ],
   providers:[],
   entryComponents:[],
-  exports:[EventsComponent]
+  exports: []
 })
-export class EventsModule {
-    constructor() {
-      console.log('events module loaded');
-    }
-}
+export class EventsModule {}
