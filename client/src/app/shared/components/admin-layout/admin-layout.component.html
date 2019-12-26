@@ -46,19 +46,21 @@
                  fixedTopGap="56">
 
       <mat-nav-list [style.width.px]="230">
-        <a mat-list-item [routerLink]="['/' + menuItem.url]"
-           *ngFor="let menuItem of fillerNav">
-          <mat-icon>{{menuItem.icon}}</mat-icon>
+        <li class="menu-item" [routerLinkActive]="'active'" [routerLink]="['/' + menuItem.url]"
+            *ngFor="let menuItem of fillerNav">
+          <button mat-icon-button>
+            <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+          </button>
           {{
           menuItem.name
           }}
-        </a>
+        </li>
       </mat-nav-list>
 
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <div  class="content-container">
+      <div class="content-container">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

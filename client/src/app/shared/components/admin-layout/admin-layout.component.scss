@@ -8,11 +8,11 @@
   right: 0;
 }
 
-.content-container{
+.content-container {
   margin: 12px;
 }
 
-.image-container{
+.image-container {
   border-radius: 50px;
   margin-right: 5px;
 }
@@ -38,4 +38,34 @@ h1.app-name {
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
+
+.active {
+  background: #f2f2f2;
+  .menu-item-icon {
+    color: #2aa1ff;
+  }
+}
+
+.menu-item {
+  height: 60px;
+  list-style: none;
+  outline: none;
+
+  &:hover {
+    .menu-item-icon {
+      color: #2aa1ff;
+    }
+
+    cursor: pointer;
+  }
+
+
+}
+
+//.menu-item-icon{
+//  &:hover{
+//    color: #2aa1ff;
+//
+//  }
+//}
 
