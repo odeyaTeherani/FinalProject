@@ -1,0 +1,38 @@
+<form [formGroup]="reportForm">
+  <div fxLayout="row">
+
+    <div [fxFlex]="100/3">
+      <div fxLayout="column">
+        <!--'legacy' | 'standard' | 'fill' | 'outline'-->
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Car Number</mat-label>
+          <input [formControlName]="'carNumber'" [readonly]="viewMode" matInput type="number" min="0"/>
+          <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
+        </mat-form-field>
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Severity Level</mat-label>
+          <mat-select [formControlName]="'severityLevel'">
+            <mat-option *ngFor="let topping of severityOption"
+                        [value]="topping">
+              {{topping}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Name</mat-label>
+          <input [formControlName]="'name'" [readonly]="viewMode" matInput type="text"/>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div [fxFlex]="100/3*2" class="pl-1">
+      <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center" class="mt-1">
+    <button mat-raised-button color="primary">Primary</button>
+  </div>
+</form>
+
+
+
