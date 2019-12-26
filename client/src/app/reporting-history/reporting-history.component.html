@@ -1,1 +1,10 @@
-<p>user-reporting-history works!</p>
+<mat-card>
+  <mat-list>
+    <mat-list-item class="report-list-item" [routerLink]="['/report-page/',reports.id]"
+                   *ngFor="let reports of reports">
+      {{ reports.date | date }}
+      <span style="margin-left: 35%;" ></span>
+      {{reports.eventType}}
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Event, SeverityLevel} from '../event';// import the event
+import {Event, SeverityLevel} from '../../shared/modles/event';// import the event
 
 @Component({
   selector: 'app-events-list',

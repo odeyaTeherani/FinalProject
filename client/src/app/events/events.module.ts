@@ -13,7 +13,6 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
-import {GooglePlacesDirective} from '../shared/directives/google-places/google-places.directive';
 import {RouterModule} from '@angular/router';
 import {EventsRouts} from './events-routing';
 import { EventDetailComponent } from './events-list/event-detail/event-detail.component';

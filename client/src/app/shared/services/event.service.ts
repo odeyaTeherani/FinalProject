@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import * as moment from 'moment';
-import {SeverityLevel} from '../../events/event';
-import {Event} from '../../events/event';
+import {SeverityLevel} from '../modles/event';
+import {Event} from '../modles/event';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({

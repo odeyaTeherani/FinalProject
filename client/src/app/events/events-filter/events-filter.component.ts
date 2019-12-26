@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {SeverityLevel} from '../event';
+import {SeverityLevel} from '../../shared/modles/event';
 import {Utils} from '../../shared/Utils';
 
 @Component({
