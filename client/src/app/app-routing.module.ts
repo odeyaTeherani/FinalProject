@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren:() => import('./report/report.module').then(mod => mod.ReportModule)
       },
       {
+        path: 'report-page',
+        loadChildren:() => import('./report-page/report-page.module').then(mod => mod.ReportPageModule)
+      },
+      {
         path: 'home',
         component: HomeComponent
       },
