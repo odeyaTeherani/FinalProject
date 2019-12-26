@@ -4,12 +4,12 @@ import {ReportComponent} from './report.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ReportRoutes} from './report-routing';
-import {MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import {MatCardModule, MatCheckboxModule, MatFormFieldModule, MatListModule, MatOptionModule, MatSelectModule} from '@angular/material';
 
 
 @NgModule(
   {
-    imports: [CommonModule, RouterModule.forChild(ReportRoutes), MatFormFieldModule, MatOptionModule, MatSelectModule],
+    imports: [CommonModule, RouterModule.forChild(ReportRoutes), MatFormFieldModule, MatOptionModule, MatSelectModule, MatCardModule, MatListModule, MatCheckboxModule],
     declarations:[ReportItemComponent,ReportComponent]
   }
   )

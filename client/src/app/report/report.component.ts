@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Report} from '../reporting-history/reporting-history.component';
 
 @Component({
   selector: 'app-report',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
 
-  constructor() { }
+  reports: Report [];
 
+  constructor() {
+    this.reports = [
+      {date: new Date(), id: 1, eventType: ['fire']},
+      {date: new Date(), id: 12, eventType: ['fire']},
+      {date: new Date(), id: 13, eventType: ['fire']},
+      {date: new Date(), id: 14, eventType: ['fire']}
+    ];
+  }
   ngOnInit() {
   }
 

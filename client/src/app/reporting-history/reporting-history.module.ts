@@ -8,7 +8,13 @@ import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations:[ReportingHistoryComponent],
-  imports: [CommonModule, RouterModule.forChild(ReportingHistoryRoutes), MatExpansionModule, FlexModule, MatButtonModule, MatListModule, MatCardModule],
+  imports: [CommonModule,
+    RouterModule.forChild(ReportingHistoryRoutes),
+    MatExpansionModule,
+    FlexModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule],
 })
 
 export class ReportingHistoryModule {

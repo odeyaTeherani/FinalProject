@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Utils} from '../shared/Utils';
-import {SeverityLevel} from '../events/event';
+import {SeverityLevel} from '../shared/modles/event';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 

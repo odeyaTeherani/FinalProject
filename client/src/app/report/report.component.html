@@ -1,2 +1,14 @@
-<button (click)="buttonClicked($event)"> report </button>
-<app-report-item></app-report-item>
+<!--<button (click)="buttonClicked($event)"> report </button>-->
+<!--<app-report-item></app-report-item>-->
+<mat-card>
+  <button>close event</button>
+  <mat-list>
+    <mat-list-item class="report-list-item" [routerLink]="['/report-page/',reports.id]"
+                   *ngFor="let reports of reports">
+      <mat-checkbox></mat-checkbox>
+      {{ reports.date | date }}
+      <span style="margin-left: 35%;" ></span>
+      {{reports.eventType}}
+    </mat-list-item>
+  </mat-list>
+</mat-card>

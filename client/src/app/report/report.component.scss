@@ -1,0 +1,9 @@
+.report-list-item {
+  margin-top: 6px;
+  background: aliceblue;
+
+  &:hover {
+    cursor: pointer;
+    background: gainsboro;
+  }
+}
