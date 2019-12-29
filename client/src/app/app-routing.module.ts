@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
-import {ReportComponent} from './report/report.component';
+import {AlertsComponent} from './alerts/alerts.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
@@ -17,10 +17,10 @@ const routes: Routes = [
       },
       {
         path: 'reports',
-        loadChildren:() => import('./report/report.module').then(mod => mod.ReportModule)
+        loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },
       {
-        path: 'report-page',
+        path: 'alerts-page',
         loadChildren:() => import('./report-page/report-page.module').then(mod => mod.ReportPageModule)
       },
       {

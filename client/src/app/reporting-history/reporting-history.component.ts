@@ -33,7 +33,6 @@ export class ReportingHistoryComponent implements OnInit {
         (error) => {
           console.log(error);
         });
-
   }
 
   ngOnInit() {

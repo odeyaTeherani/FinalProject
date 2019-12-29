@@ -1,9 +1,9 @@
-<!--<button (click)="buttonClicked($event)"> report </button>-->
-<!--<app-report-item></app-report-item>-->
+<!--<button (click)="buttonClicked($event)"> alerts </button>-->
+<!--<app-alerts-item></app-alerts-item>-->
 <mat-card>
   <button mat-stroked-button color="primary">close event</button>
   <mat-list>
-    <mat-list-item class="report-list-item" [routerLink]="['/report-page/',reports.id]"
+    <mat-list-item class="report-list-item" [routerLink]="['/alerts-page/',reports.id]"
                    *ngFor="let reports of reports">
       <mat-checkbox></mat-checkbox>
       {{ reports.date | date }}

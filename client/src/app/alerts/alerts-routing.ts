@@ -1,9 +1,9 @@
 import {Routes} from '@angular/router';
-import {ReportComponent} from './report.component';
+import {AlertsComponent} from './alerts.component';
 
 export const ReportRoutes: Routes = [
   {
     path: '',
-    component: ReportComponent
+    component: AlertsComponent
   }
 ];

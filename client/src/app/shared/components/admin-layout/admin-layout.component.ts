@@ -27,7 +27,7 @@ export class AdminLayoutComponent implements OnDestroy {
     {
       icon: 'create',
       name: 'Report Page',
-      url: 'report-page',
+      url: 'alerts-page',
     },
     {
       icon: 'report',
