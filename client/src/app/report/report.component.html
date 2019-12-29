@@ -1,7 +1,7 @@
 <!--<button (click)="buttonClicked($event)"> report </button>-->
 <!--<app-report-item></app-report-item>-->
 <mat-card>
-  <button>close event</button>
+  <button mat-stroked-button color="primary">close event</button>
   <mat-list>
     <mat-list-item class="report-list-item" [routerLink]="['/report-page/',reports.id]"
                    *ngFor="let reports of reports">
