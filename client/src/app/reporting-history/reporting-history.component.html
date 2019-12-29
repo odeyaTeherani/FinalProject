@@ -1,10 +1,20 @@
 <mat-card>
   <mat-list>
-    <mat-list-item class="report-list-item" [routerLink]="['/report-page/',reports.id]"
-                   *ngFor="let reports of reports">
-      {{ reports.date | date }}
-      <span style="margin-left: 35%;" ></span>
-      {{reports.eventType}}
+    <mat-list-item class="report-list-item" [routerLink]="['/report-page/',report.id]"
+                   *ngFor="let report of reports">
+      {{report.name}}
+      <span style="margin-left: 10%;"></span>
+
+      {{ report.date | date }}
+      <span style="margin-left: 35%;"></span>
+      {{report.eventType}}
+      <span fxFlex></span>
+      <button matTooltip="Delete Report" (click)="$event.stopPropagation();delete(report)" mat-icon-button [color]="'warn'">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button matTooltip="Edit Report" (click)="$event.stopPropagation();edit(report)" mat-icon-button [color]="'primary'">
+        <mat-icon>edit</mat-icon>
+      </button>
     </mat-list-item>
   </mat-list>
 </mat-card>
