@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren:() => import('./reporting-history/reporting-history.module').then(mod => mod.ReportingHistoryModule)
       },
       {
+        path: 'logIn',
+        loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
+      },
+      {
         path: 'home',
         component: HomeComponent
       },
