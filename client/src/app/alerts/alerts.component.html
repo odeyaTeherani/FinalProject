@@ -1,14 +1,28 @@
-<!--<button (click)="buttonClicked($event)"> alerts </button>-->
-<!--<app-alerts-item></app-alerts-item>-->
 <mat-card>
-  <button mat-stroked-button color="primary">close event</button>
+  <button mat-stroked-button color="primary" (click)="closeEvent($event)">close event</button>
   <mat-list>
+
+    <mat-list-item class="report-list-details">
+      <div class ="p-1 text-center" [fxFlex]="100/3">Date</div>
+      <div class = "text-center" [fxFlex]="100/3*2">Event Type</div>
+      <div class = "text-center" [fxFlex]="100/3*3">Reporter's name</div>
+    </mat-list-item>
+
     <mat-list-item class="report-list-item" [routerLink]="['/alerts-page/',reports.id]"
                    *ngFor="let reports of reports">
-      <mat-checkbox></mat-checkbox>
-      {{ reports.date | date }}
-      <span style="margin-left: 35%;" ></span>
-      {{reports.eventType}}
+      <div [fxFlex]="100/80">
+        <mat-checkbox class = "text-center" (click)="$event.stopPropagation();" [color]="'primary'"></mat-checkbox>
+      </div>
+
+      <div class="text-center" [fxFlex]="100/3*1.2">
+          {{reports.date | date }}
+        </div>
+      <div class="text-center" [fxFlex]="100/3*2">
+        {{reports.eventType}}
+      </div>
+      <div class="text-center" [fxFlex]="100/3*3">
+        {{reports.name}}
+      </div>
     </mat-list-item>
   </mat-list>
 </mat-card>

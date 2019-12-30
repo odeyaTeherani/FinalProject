@@ -8,7 +8,8 @@ import {ReportService} from '../shared/services/report-service';
   styleUrls: ['./alerts.component.scss']
 })
 export class AlertsComponent implements OnInit {
-
+  isOpened: boolean;
+  mobileQuery: MediaQueryList;
   reports: Report [];
 
 /*  constructor() {
@@ -33,7 +34,7 @@ export class AlertsComponent implements OnInit {
   ngOnInit() {
   }
 
-  buttonClicked(event: MouseEvent) {
-    alert(event.clientX);
+  closeEvent(event: MouseEvent) {
+    alert('They Press On Me');
   }
 }
