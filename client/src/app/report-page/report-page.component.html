@@ -1,7 +1,7 @@
 <form [formGroup]="reportForm">
   <div fxLayout="row">
 
-    <div [fxFlex]="100/3">
+    <div [fxFlex]="100/2">
       <div fxLayout="column">
         <!--'legacy' | 'standard' | 'fill' | 'outline'-->
         <mat-form-field [appearance]="'outline'" fxFlex="25">
@@ -18,22 +18,48 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Name</mat-label>
           <input [formControlName]="'name'" [readonly]="viewMode" matInput type="text"/>
         </mat-form-field>
+
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Number of Evacuated injured</mat-label>
+          <input [formControlName]="'NumberOfEvacuatedInjured'" [readonly]="viewMode" matInput type="number" min="0"/>
+        </mat-form-field>
+
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Number of Rescued</mat-label>
+          <input [formControlName]="'NumberRescued'" [readonly]="viewMode" matInput type="number" min="0"/>
+        </mat-form-field>
+
       </div>
 
     </div>
 
-    <div [fxFlex]="100/3*2" class="pl-1">
-      <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">
+    <div [fxFlex]="100/2" class="pl-1">
+      <!--<input #file type="file" accept='image/*' (change)="preview(file.files)" />-->
+      <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)">
+      <img *ngIf="url" style="max-width: 400px; max-height: 300px"[src]="url" sizes="100px"/>
+      <!-- <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">-->
     </div>
 
   </div>
   <div *ngIf="!viewMode" fxLayout="row" fxLayoutAlign="center" class="mt-1">
+    <mat-form-field [appearance]="'outline'" fxFlex="100">
+      <mat-label>Note</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="!viewMode" fxLayout="row" fxLayoutAlign="center" class="mt-1">
     <button (click)="submit()"  mat-raised-button color="primary">Submit</button>
   </div>
+
 </form>
 
 
