@@ -72,7 +72,7 @@ export class ReportPageComponent implements OnInit {
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
       name: [data.name || null, Validators.required],
       NumberOfEvacuatedInjured: [data.NumberOfEvacuatedInjured || null, Validators.required],
-      NumberRescued:[data.NumberRescued || null, Validators.required]
+      NumberRescued: [data.NumberRescued || null, Validators.required]
     });
   }
 
@@ -80,7 +80,7 @@ export class ReportPageComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
-    reader.onload = (e:any) => {
+    reader.onload = (e: any) => {
       this.url = e.target.result;
     };
   }
