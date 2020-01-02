@@ -11,6 +11,7 @@ import {MatButtonModule,
 import {RouterModule} from '@angular/router';
 import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
+import { ForgetPasswordValidationComponent } from './forget-password/forget-password-validation/forget-password-validation.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
@@ -24,9 +25,10 @@ import {ReactiveFormsModule} from '@angular/forms';
       MatButtonModule,
       FlexModule,
       MatCardModule,
-      MatCheckboxModule, ReactiveFormsModule],
+      MatCheckboxModule],
     declarations:[LogInComponent,
-      ForgetPasswordComponent]
+      ForgetPasswordComponent,
+      ForgetPasswordValidationComponent]
   }
 )
 export class AccessModule {
