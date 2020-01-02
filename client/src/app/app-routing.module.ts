@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
       },
       {
+        path: 'forgetPassword',
+        loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
+      },
+      {
         path: 'home',
         component: HomeComponent
       },
