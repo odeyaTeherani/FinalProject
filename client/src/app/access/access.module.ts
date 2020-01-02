@@ -11,6 +11,7 @@ import {MatButtonModule,
 import {RouterModule} from '@angular/router';
 import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
+import { ForgetPasswordValidationComponent } from './forget-password/forget-password-validation/forget-password-validation.component';
 
 
 @NgModule(
@@ -25,7 +26,8 @@ import {FlexModule} from '@angular/flex-layout';
       MatCardModule,
       MatCheckboxModule],
     declarations:[LogInComponent,
-      ForgetPasswordComponent]
+      ForgetPasswordComponent,
+      ForgetPasswordValidationComponent]
   }
 )
 export class AccessModule {
