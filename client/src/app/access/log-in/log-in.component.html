@@ -1,35 +1,51 @@
-<mat-card fxLayoutAlign="center center" fxLayout="row-wrap" class="full-height">
-  <div class="panel-heading">
-    <h3 class="panel-title">Login via site</h3>
+
+<mat-card class="full-height full-width">
+
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <img
+      class="image-container"
+      width="50px"
+      height="50px"
+      src="../../../../assets/logo.jpeg"/>
+      <h3 class="panel-title">Login</h3>
+
+  </div>
+<hr [width]="400">
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <p class="text-center p-0 m-0">
+      <mat-form-field class = "field-width" appearance="outline" >
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </p>
   </div>
 
-  <p fxFlex="100" class="text-center p-0 m-0">
-    <mat-form-field appearance="outline">
-      <mat-label>User Name</mat-label>
-      <input matInput placeholder="">
-      <mat-icon matSuffix>email</mat-icon>
-    </mat-form-field>
-  </p>
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <p class="text-center p-0 m-0">
+      <mat-form-field class = "field-width" appearance="outline">
+        <input matInput placeholder="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+  </div>
 
-  <p fxFlex="100" class="text-center p-0 m-0">
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="password" [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-  </p>
+  <div  fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <p class="p-0 m-0">
+      <mat-checkbox class="checkbox-rem">Remember Me</mat-checkbox>
+    </p>
+  </div>
 
-  <p fxFlex="100" class="text-center p-0 m-0">
-    <mat-checkbox>Remember Me</mat-checkbox>
-  </p>
-  <p fxFlex="100" class="text-center p-0 m-0">
-    <button mat-raised-button>Login</button>
-  </p>
-  <p fxFlex="100" class="text-center p-0 m-0">
-    <button mat-raised-button [routerLinkActive]="'active'" [routerLink]="['/forgetPassword']">Forget Password?</button>
-  </p>
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+      <button color="primary" class="btn-width" mat-raised-button [routerLinkActive]="'active'" [routerLink]="['/home']">Login</button>
+  </div>
 
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <p class="text-center p-0 m-0">
+      <a class="small" href="#" [routerLinkActive]="'active'" [routerLink]="['/forgetPassword']">Forgot password?</a>
+    </p>
+  </div>
 </mat-card>
-

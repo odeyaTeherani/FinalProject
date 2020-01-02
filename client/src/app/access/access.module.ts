@@ -11,6 +11,7 @@ import {MatButtonModule,
 import {RouterModule} from '@angular/router';
 import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule(
@@ -23,7 +24,7 @@ import {FlexModule} from '@angular/flex-layout';
       MatButtonModule,
       FlexModule,
       MatCardModule,
-      MatCheckboxModule],
+      MatCheckboxModule, ReactiveFormsModule],
     declarations:[LogInComponent,
       ForgetPasswordComponent]
   }

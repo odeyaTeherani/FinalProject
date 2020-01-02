@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
-import {AlertsComponent} from './alerts/alerts.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
-
 
 const routes: Routes = [
   {
@@ -41,7 +39,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/logIn',
         pathMatch: 'full'
       }
     ]
