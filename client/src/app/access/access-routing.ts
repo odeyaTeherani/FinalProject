@@ -8,7 +8,7 @@ export const AccessRoutes: Routes = [
     children: [
       {
         path: '',
-        component: LogInComponent
+        component: ForgetPasswordComponent
       }
     ]
   }
