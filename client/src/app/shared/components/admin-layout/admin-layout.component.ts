@@ -44,7 +44,7 @@ export class AdminLayoutComponent implements OnDestroy {
   private readonly mobileQueryListener: () => void;
 
   constructor(media: MediaMatcher) {
-    this.appName = '911 Come\'on';
+    this.appName = 'system';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
 
     this.mobileQueryListener = () => {
