@@ -13,7 +13,8 @@ import * as faker from 'faker';
   styleUrls: ['./report-page.component.scss']
 })
 export class ReportPageComponent implements OnInit {
-
+  url;
+  selectedFile = null;
   slRef = SeverityLevel;
   viewMode: boolean;
   severityOption: string[] = Utils.getEnumValues(this.slRef);
@@ -69,7 +70,19 @@ export class ReportPageComponent implements OnInit {
     this.reportForm = this.fb.group({
       carNumber: [data.carNumber || null, Validators.required],
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
-      name: [data.name || null, Validators.required]
+      name: [data.name || null, Validators.required],
+      NumberOfEvacuatedInjured: [data.NumberOfEvacuatedInjured || null, Validators.required],
+      NumberRescued: [data.NumberRescued || null, Validators.required]
     });
   }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = (e: any) => {
+      this.url = e.target.result;
+    };
+  }
+
 }
