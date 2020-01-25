@@ -8,11 +8,19 @@ import * as faker from 'faker';
 export interface Report {
   id: number;
   date: Date;
-  eventType: string[];
+  eventType: EventType[] | string;
   carNumber: number;
   severityLevel: SeverityLevel;
   name: string;
+  numberOfEvacuated: number;
+  note: string;
+  imageUrl: string;
 
+}
+
+export interface EventType {
+  id: number;
+  name: string;
 }
 
 @Component({

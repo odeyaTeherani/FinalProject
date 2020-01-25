@@ -58,5 +58,10 @@ export class AdminLayoutComponent implements OnDestroy {
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
+  closeOnMobile(sidenav:MatSidenav) {
+    if(this.mobileQuery.matches) {
+      sidenav.close();
+    }
+  }
 }
 

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
+import {formatSize} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
 
 @Component({
   selector: 'app-report',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss']
 })
+
 export class AlertsComponent implements OnInit {
-  isOpened: boolean;
   mobileQuery: MediaQueryList;
   reports: Report [];
 

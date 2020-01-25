@@ -26,7 +26,7 @@
              [matAutocomplete]="auto">
       <mat-autocomplete [displayWith]="displayWith" #auto="matAutocomplete">
         <mat-option *ngFor="let option of typeOptions"
-                    [value]="option">
+                    [value]="option.id">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>

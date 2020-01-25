@@ -3,7 +3,7 @@ import {Utils} from '../shared/Utils';
 import {SeverityLevel} from '../shared/modles/event';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Report} from '../reporting-history/reporting-history.component';
+import {EventType, Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
 import * as faker from 'faker';
 
@@ -12,8 +12,9 @@ import * as faker from 'faker';
   templateUrl: './report-page.component.html',
   styleUrls: ['./report-page.component.scss']
 })
-export class ReportPageComponent implements OnInit {
-  url;
+export class ReportPageComponent  {
+
+  url:string;
   selectedFile = null;
   slRef = SeverityLevel;
   viewMode: boolean;
@@ -22,6 +23,9 @@ export class ReportPageComponent implements OnInit {
 
   // edit mode section
   alert: Report;
+
+  // TODO: should return form db (TO DELETE)
+  typeOptions: EventType [] = [{id: 1, name: 'Fire'}, {id: 2, name: 'Building collapse'}];
 
   constructor(private  activeRoute: ActivatedRoute,
               private reportService: ReportService,
@@ -33,7 +37,7 @@ export class ReportPageComponent implements OnInit {
         const alertId = params.id;
 
         this.reportService.getById(alertId)
-          .subscribe((report) => {
+          .subscribe(report => {
             this.alert = report;
             console.log(this.alert);
             this.initForm();
@@ -47,13 +51,11 @@ export class ReportPageComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-
-  }
-
   submit() {
     const newReport = this.reportForm.value;
     newReport.id = faker.random.uuid();
+    newReport.date = new Date();
+    newReport.imageUrl = this.url;
     this.reportService.add(newReport)
       .subscribe(
         (result) => {
@@ -66,14 +68,29 @@ export class ReportPageComponent implements OnInit {
   }
 
   private initForm() {
+
     const data: any = this.alert == null ? {} : this.alert;
+
+    let eventIds:number[];
+    if (data.eventType) {
+      eventIds = data.eventType.map(x => x.id);
+    }
+
+    if (data.imageUrl) {
+      this.url=data.imageUrl;
+    }
+
     this.reportForm = this.fb.group({
       carNumber: [data.carNumber || null, Validators.required],
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
       name: [data.name || null, Validators.required],
       NumberOfEvacuatedInjured: [data.NumberOfEvacuatedInjured || null, Validators.required],
-      NumberRescued: [data.NumberRescued || null, Validators.required]
+      eventType: [{value: eventIds || null, disabled: this.viewMode} , Validators.required],
+      note: [data.note || null],
+      imageUrl: [data.imageUrl || null]
     });
+
+
   }
 
   onFileSelected(event) {

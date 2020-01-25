@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SeverityLevel} from '../../shared/modles/event';
 import {Utils} from '../../shared/Utils';
+import {EventType} from '../../reporting-history/reporting-history.component';
 
 @Component({
   selector: 'app-events-filter',
@@ -17,14 +18,14 @@ export class EventsFilterComponent implements OnInit {
   severityOption: string[] = Utils.getEnumValues(this.slRef);
 
   // will be injected from default service contains location options list (From server)
-  typeOptions: any [] = [{id:1,name:'Fire'}, {id:2,name:'Building collapse'} , {id:3, name:'Other'}];
+  typeOptions: EventType [] = [{id:1,name:'Fire'}, {id:2,name:'Building collapse'} , {id:3, name:'Other'}];
 
   constructor(fb: FormBuilder) {
     this.filterOptions = fb.group({
       date: null,
       eventType: new FormControl(this.typeOptions.map(x=>x.name)  || null, Validators.required),
       locationFiled: null,
-      severityLevel: new FormControl(this.severityOption , Validators.required),
+      severityLevel: new FormControl([] , Validators.required),
     });
   }
 

@@ -13,6 +13,7 @@ import {
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
+import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
 
 @NgModule(
   {
@@ -20,6 +21,7 @@ import {
     declarations: [
       AdminLayoutComponent,
       NotFoundComponent,
+      SessionsLayoutComponent,
     ],
     imports: [
       CommonModule,

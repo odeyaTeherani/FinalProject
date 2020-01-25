@@ -6,15 +6,18 @@ import {ForgetPasswordValidationComponent} from './forget-password/forget-passwo
 export const AccessRoutes: Routes = [
   {
     path: '',
-    component: LogInComponent,
     children: [
       {
-        path: ':validation',
-        component: ForgetPasswordValidationComponent
+        path: 'signIn',
+        component: LogInComponent
       },
       {
-        path: '',
-        component: ForgetPasswordComponent
+        path: 'forgetPassword',
+        component: ForgetPasswordComponent,
+      },
+      {
+        path: 'forgetPassword/validation',
+        component: ForgetPasswordValidationComponent
       }
     ]
   }

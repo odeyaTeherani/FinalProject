@@ -3,8 +3,10 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import {SessionsLayoutComponent} from './shared/components/sessions-layout/sessions-layout.component';
 
 const routes: Routes = [
+
   {
     path: '',
     component: AdminLayoutComponent,
@@ -26,21 +28,23 @@ const routes: Routes = [
         loadChildren:() => import('./reporting-history/reporting-history.module').then(mod => mod.ReportingHistoryModule)
       },
       {
-        path: 'logIn',
-        loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
-      },
-      {
-        path: 'forgetPassword',
-        loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
-      },
-      {
         path: 'home',
         component: HomeComponent
       },
       {
         path: '',
-        redirectTo: '/logIn',
+        redirectTo: '/sessions/signIn',
         pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: '',
+    component: SessionsLayoutComponent,
+    children: [
+      {
+        path: 'sessions',
+        loadChildren:() => import('./access/access.module').then(mod => mod.AccessModule)
       }
     ]
   },
@@ -60,4 +64,3 @@ export class AppRoutingModule {
 
   }
 }
-

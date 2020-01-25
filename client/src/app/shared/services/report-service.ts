@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {Event, SeverityLevel} from '../modles/event';
 import {Report} from '../../reporting-history/reporting-history.component';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,10 +14,18 @@ export class ReportService {
   constructor(private http: HttpClient) {
   }
 
-  get(): Observable<Report []> {
-    return this.http
-      .get<Report []>(this.path);
 
+  get(): Observable<Report []> {
+
+    return this.http
+      .get<Report []>(this.path)
+      .pipe(map(
+        (reports: Report []) => {
+          reports.forEach(
+            (report:any) => report.eventType = report.eventType.map(eventType => eventType.name).join()
+          );
+          return reports;
+        }));
   }
 
   add(newReport: any) {
@@ -36,7 +43,7 @@ export class ReportService {
       .delete(this.path + '/' + alertId);
   }
 
-  edit(editedEntity:any) {
+  edit(editedEntity: any) {
     return this.http
       .put(this.path + '/' + editedEntity.id, editedEntity);
   }
