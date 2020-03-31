@@ -24,8 +24,8 @@
       <mat-icon>person</mat-icon>
     </button>
 
-    <mat-menu #userMenu="matMenu">
-      <button mat-menu-item>
+    <mat-menu #userMenu="matMenu" >
+      <button mat-menu-item  [routerLinkActive]="'active'" [routerLink]="['/sessions/mySettings']">
         Settings
         <mat-icon>settings</mat-icon>
       </button>

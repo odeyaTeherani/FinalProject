@@ -10,15 +10,12 @@ import {SharedModule} from './shared/shared.module';
 import {InMemHeroService} from './shared/services/in-memory-db-service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {environment} from '../environments/environment';
-import { DetailsComponent } from './setting/details/details.component';
-import { AboutTheAppComponent } from './setting/about-the-app/about-the-app.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailsComponent,
-    AboutTheAppComponent
   ],
   imports: [
     BrowserModule,

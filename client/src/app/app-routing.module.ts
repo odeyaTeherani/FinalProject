@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
+        path: 'sessions/mySettings',
+        loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
+      },
+      {
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },

@@ -1,0 +1,18 @@
+<mat-card class="menu-item" [routerLinkActive]="'active'" [routerLink]="['/sessions/mySettings/' + menuItem.url]"
+          *ngFor="let menuItem of fillerNav">
+  <mat-card-content>
+    <button mat-icon-button>
+      <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+    </button>
+    <b>
+      {{
+      menuItem.name
+      }}
+    </b>
+    <br/>
+    {{
+    menuItem.subName
+    }}
+  </mat-card-content>
+</mat-card>
+

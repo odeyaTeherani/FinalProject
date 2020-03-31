@@ -1,0 +1,12 @@
+.menu-item {
+  height: 60px;
+  list-style: none;
+  outline: none;
+
+  &:hover {
+    .menu-item-icon {
+      color: #2aa1ff;
+    }
+    cursor: pointer;
+  }
+}
