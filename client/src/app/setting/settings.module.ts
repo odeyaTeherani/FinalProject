@@ -14,6 +14,7 @@ import {
     MatInputModule,
     MatListModule, MatTabsModule
 } from '@angular/material';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule(
   {
@@ -22,7 +23,8 @@ import {
       ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,
-      MySettingsComponent]
+      MySettingsComponent,
+      NotificationsComponent]
   }
 )
 export class SettingsModule {

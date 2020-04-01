@@ -24,9 +24,9 @@ export class MySettingsComponent implements OnInit {
     },
     {
       icon: 'notification_important',
-      name: 'Alerts',
+      name: 'Notifications',
       subName: 'What will interest you? Set the topics for alerts',
-      url: '',
+      url: 'notifications',
     },
     {
       icon: 'error_outline',
