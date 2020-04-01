@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
-        path: 'sessions/mySettings',
+        path: 'mySettings',
         loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
       },
       {
