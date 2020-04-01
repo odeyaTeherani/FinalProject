@@ -14,12 +14,13 @@ import {
   MatInputModule,
   MatListModule
 } from '@angular/material';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule(
   {
-    imports: [CommonModule,
-      RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule,
-    ],
+      imports: [CommonModule,
+          RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule, FlexLayoutModule,
+      ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,
       MySettingsComponent]
