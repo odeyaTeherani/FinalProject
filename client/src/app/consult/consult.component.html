@@ -1,1 +1,39 @@
-<p>consult works!</p>
+
+<mat-card>
+  <div fxLayout="row wrap">
+    <mat-form-field [appearance]="'outline'" style="margin-left: 15px">
+      <mat-label>Event Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let event of Events" [value]="event.value">
+          {{event.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [appearance]="'outline'" style="margin-left: 15px">
+      <mat-label>Severity Level</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let severity of Severity" [value]="severity.value">
+          {{severity.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [appearance]="'outline'" style="margin-left: 15px">
+      <mat-label>Location</mat-label>
+      <mat-select>
+
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+    <button mat-raised-button style="width: 200px"
+            [color]="'primary'">
+      Consult
+    </button>
+  </div>
+</mat-card>
+
+
+
