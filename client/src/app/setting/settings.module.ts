@@ -6,20 +6,20 @@ import { AboutTheAppComponent } from './about-the-app/about-the-app.component';
 import { MySettingsComponent } from './my-settings/my-settings.component';
 import {SettingRoutes} from './settings-routing';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule, MatTabsModule
 } from '@angular/material';
 
 @NgModule(
   {
-    imports: [CommonModule,
-      RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule,
-    ],
+      imports: [CommonModule,
+          RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule, MatTabsModule,
+      ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,
       MySettingsComponent]
