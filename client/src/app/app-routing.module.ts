@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
       },
       {
+        path: 'consult',
+        loadChildren: () => import('./consult/consult.module').then(mod => mod.ConsultModule)
+      },
+      {
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },

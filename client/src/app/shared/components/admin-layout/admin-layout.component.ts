@@ -38,6 +38,11 @@ export class AdminLayoutComponent implements OnDestroy {
       icon: 'history',
       name: 'Reporting History',
       url: 'reportingHistory',
+    },
+    {
+      icon: 'assistant',
+      name: 'Consult',
+      url: 'consult',
     }
   ];
 
