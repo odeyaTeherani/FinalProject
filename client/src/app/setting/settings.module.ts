@@ -14,10 +14,14 @@ import {
     MatInputModule,
     MatListModule, MatTabsModule
 } from '@angular/material';
+import {FlexLayoutModule} from "@angular/flex-layout";
 import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule(
   {
+      imports: [CommonModule,
+          RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule, FlexLayoutModule,
+      ],
       imports: [CommonModule,
           RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule, MatTabsModule,
       ],
