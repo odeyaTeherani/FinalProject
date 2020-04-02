@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { AboutTheAppComponent } from './about-the-app/about-the-app.component';
 import { MySettingsComponent } from './my-settings/my-settings.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 import {SettingRoutes} from './settings-routing';
 import {
     MatButtonModule,
@@ -15,8 +16,6 @@ import {
     MatListModule, MatTabsModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-// @ts-ignore
-import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule(
   {

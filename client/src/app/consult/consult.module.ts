@@ -11,12 +11,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from "@angular/material/button";
 import {FlexModule} from "@angular/flex-layout";
+import {MatInputModule} from '@angular/material';
+import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
 
 
 @NgModule(
   {
     imports: [CommonModule,
-      RouterModule.forChild(ConsultRoutes), MatCardModule, MatFormFieldModule, MatSelectModule, MatButtonModule, FlexModule],
+      RouterModule.forChild(ConsultRoutes), MatCardModule, MatFormFieldModule, MatSelectModule, MatButtonModule, FlexModule, MatInputModule, GooglePlacesModule, ReactiveFormsModule, MatAutocompleteModule, MatIconModule],
     declarations:[ConsultComponent]
   }
 )
