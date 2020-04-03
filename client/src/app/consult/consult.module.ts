@@ -16,12 +16,14 @@ import {GooglePlacesModule} from '../shared/directives/google-places/google-plac
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule(
   {
-    imports: [CommonModule,
-      RouterModule.forChild(ConsultRoutes), MatCardModule, MatFormFieldModule, MatSelectModule, MatButtonModule, FlexModule, MatInputModule, GooglePlacesModule, ReactiveFormsModule, MatAutocompleteModule, MatIconModule],
+      imports: [CommonModule,
+          RouterModule.forChild(ConsultRoutes), MatCardModule, MatFormFieldModule, MatSelectModule, MatButtonModule, FlexModule, MatInputModule, GooglePlacesModule, ReactiveFormsModule, MatAutocompleteModule, MatIconModule, SeverityLevelModule, SharedModule],
     declarations:[ConsultComponent]
   }
 )

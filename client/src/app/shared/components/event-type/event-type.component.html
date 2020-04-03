@@ -1,0 +1,14 @@
+<mat-form-field [fxFlex]="size">
+  <input type="text"
+         placeholder="Pick event type"
+         aria-label="Number"
+         matInput
+         [matAutocomplete]="auto">
+  <mat-autocomplete (change)="typeChanged.emit($event)"
+                    [displayWith]="displayWith" #auto="matAutocomplete">
+    <mat-option *ngFor="let option of typeOptions"
+                [value]="option">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
