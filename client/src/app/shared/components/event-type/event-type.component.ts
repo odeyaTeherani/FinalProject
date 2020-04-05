@@ -10,9 +10,7 @@ export class EventTypeComponent implements OnInit {
   // will be injected from default service contains location options list (From server)
   typeOptions: EventType [] = [{id:1,name:'Fire'}, {id:2,name:'Building collapse'} , {id:3, name:'Other'}];
 
-  str = this.typeOptions.map(x=>x.name);
-
-  @Output ()typeChanged = new EventEmitter<string>();
+  @Output ()typeChanged = new EventEmitter<any>();
   @Input() size = 20;
   constructor() { }
 
@@ -20,7 +18,6 @@ export class EventTypeComponent implements OnInit {
   }
 
   displayWith(event: {id: number,name: string}) {
-    console.log(event);
     if (event == null) {return;}
     return event.name;
   }

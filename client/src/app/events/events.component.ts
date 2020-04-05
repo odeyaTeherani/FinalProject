@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Event} from '../shared/modles/event';
 import {EventService} from '../shared/services/event.service';
-import {Subscription} from 'rxjs';
 import {EventHttpService} from '../shared/services/event-http-service';
 
 // Special Date import

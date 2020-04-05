@@ -14,14 +14,15 @@
       <input matInput
              aria-label="Number"
              appGooglePlace
+             (locationSelected)="filterOptions.controls['locationFiled'].setValue($event)"
              placeholder="Please enter location"/>
     </mat-form-field>
 
-    <app-event-type fxFlex="20" [size]="100"
+    <app-event-type fxFlex="20"
       (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
     </app-event-type>
 
-    <app-severity-level fxFlex="20" [size]="100"
+    <app-severity-level fxFlex="20"
       (changed)="filterOptions.controls['severityLevel'].setValue($event)">
     </app-severity-level>
 
