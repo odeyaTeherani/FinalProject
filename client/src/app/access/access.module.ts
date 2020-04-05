@@ -12,19 +12,20 @@ import {RouterModule} from '@angular/router';
 import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
 import { ForgetPasswordValidationComponent } from './forget-password/forget-password-validation/forget-password-validation.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule(
   {
-    imports: [CommonModule,
-      RouterModule.forChild(AccessRoutes),
-      MatFormFieldModule,
-      MatIconModule,
-      MatInputModule,
-      MatButtonModule,
-      FlexModule,
-      MatCardModule,
-      MatCheckboxModule],
+      imports: [CommonModule,
+          RouterModule.forChild(AccessRoutes),
+          MatFormFieldModule,
+          MatIconModule,
+          MatInputModule,
+          MatButtonModule,
+          FlexModule,
+          MatCardModule,
+          MatCheckboxModule, FormsModule],
     declarations:[LogInComponent,
       ForgetPasswordComponent,
       ForgetPasswordValidationComponent]

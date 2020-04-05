@@ -20,8 +20,16 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 @NgModule(
   {
       imports: [CommonModule,
-          RouterModule.forChild(SettingRoutes), MatExpansionModule, MatFormFieldModule,
-        MatInputModule, MatCardModule, MatButtonModule, MatListModule, MatIconModule, FlexLayoutModule,MatTabsModule,
+          RouterModule.forChild(SettingRoutes),
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatListModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatTabsModule,
       ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,

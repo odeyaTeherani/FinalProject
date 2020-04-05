@@ -1,6 +1,8 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {MatIcon, MatSidenav} from '@angular/material';
+import {MatSidenav} from '@angular/material';
+import {UserService} from '../../services/user.service';
+
 
 
 export interface MenuItem {
@@ -48,7 +50,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private readonly mobileQueryListener: () => void;
 
-  constructor(media: MediaMatcher) {
+  constructor(media: MediaMatcher,public userService:UserService) {
     this.appName = 'system';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
 

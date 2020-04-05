@@ -30,7 +30,7 @@
         <mat-icon>settings</mat-icon>
       </button>
 
-      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="'/'">
+      <button mat-menu-item (click)="userService.logout()">
         Logout
         <mat-icon>exit_to_app</mat-icon>
       </button>

@@ -14,33 +14,17 @@
       <input matInput
              aria-label="Number"
              appGooglePlace
+             (locationSelected)="filterOptions.controls['locationFiled'].setValue($event)"
              placeholder="Please enter location"/>
     </mat-form-field>
 
-    <mat-form-field fxFlex="20">
-      <input type="text"
-             placeholder="Pick event type"
-             aria-label="Number"
-             matInput
-             [formControlName]="'eventType'"
-             [matAutocomplete]="auto">
-      <mat-autocomplete [displayWith]="displayWith" #auto="matAutocomplete">
-        <mat-option *ngFor="let option of typeOptions"
-                    [value]="option.id">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <app-event-type fxFlex="20"
+      (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
+    </app-event-type>
 
-    <mat-form-field fxFlex="20">
-      <mat-label>Severity Level</mat-label>
-      <mat-select [formControlName]="'severityLevel'" multiple>
-        <mat-option *ngFor="let topping of severityOption"
-                    [value]="topping">
-          {{topping}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <app-severity-level fxFlex="20"
+      (changed)="filterOptions.controls['severityLevel'].setValue($event)">
+    </app-severity-level>
 
     <span fxFlex></span>
 

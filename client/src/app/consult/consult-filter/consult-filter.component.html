@@ -1,0 +1,33 @@
+<form ngForm class="toolbar-container" [formGroup]="filterOptions">
+  <div fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutGap="10px">
+
+    <mat-form-field fxFlex="33" style="margin-left: 15px">
+      <input matInput
+             aria-label="Number"
+             appGooglePlace
+             placeholder="Please enter location"/>
+    </mat-form-field>
+
+    <app-event-type fxFlex="33"
+                    (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
+    </app-event-type>
+
+
+    <app-severity-level fxFlex="33"
+                        (changed)="filterOptions.controls['severityLevel'].setValue($event)">
+    </app-severity-level>
+
+  </div>
+
+  <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
+    <button mat-raised-button style="width: 200px"
+            [color]="'primary'"
+            (click)="submit()">
+      Consult
+    </button>
+  </div>
+
+</form>

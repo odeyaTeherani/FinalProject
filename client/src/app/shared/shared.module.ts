@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {
+  MatAutocompleteModule,
   MatButtonModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -14,14 +15,19 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
+import { EventTypeComponent } from './components/event-type/event-type.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule(
   {
-    exports: [],
+    exports: [
+      EventTypeComponent
+    ],
     declarations: [
       AdminLayoutComponent,
       NotFoundComponent,
       SessionsLayoutComponent,
+      EventTypeComponent
     ],
     imports: [
       CommonModule,
@@ -35,7 +41,9 @@ import { SessionsLayoutComponent } from './components/sessions-layout/sessions-l
       MatFormFieldModule,
       MatButtonModule,
       MatSelectModule,
-      MatMenuModule
+      MatMenuModule,
+      ReactiveFormsModule,
+      MatAutocompleteModule
     ],
   }
 )

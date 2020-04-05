@@ -17,6 +17,8 @@ import {RouterModule} from '@angular/router';
 import {EventsRouts} from './events-routing';
 import { EventDetailComponent } from './events-list/event-detail/event-detail.component';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
+import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import {GooglePlacesModule} from '../shared/directives/google-places/google-plac
     MatFormFieldModule,
     GooglePlacesModule,
     MatNativeDateModule,
-    RouterModule.forChild(EventsRouts)
+    RouterModule.forChild(EventsRouts),
+    SeverityLevelModule,
+    SharedModule
   ],
   providers:[],
   entryComponents:[],

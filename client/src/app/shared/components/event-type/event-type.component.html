@@ -1,0 +1,14 @@
+<mat-form-field  class="full-width">
+  <input type="text"
+         placeholder="Pick event type"
+         aria-label="Number"
+         matInput
+         [matAutocomplete]="auto">
+  <mat-autocomplete (optionSelected)="typeChanged.emit($event.option.value)"
+                    [displayWith]="displayWith" #auto="matAutocomplete">
+    <mat-option *ngFor="let option of typeOptions"
+                [value]="option">
+      {{option.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
