@@ -17,7 +17,7 @@ import {MatAutocompleteModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
 import {SharedModule} from '../shared/shared.module';
-import { ConsultListComponent } from './consult-list/consult-list.component';
+import { ConsultTextComponent } from './consult-text/consult-text.component';
 import { ConsultComponent } from './consult.component';
 import { ConsultFilterComponent } from './consult-filter/consult-filter.component';
 
@@ -37,7 +37,7 @@ import { ConsultFilterComponent } from './consult-filter/consult-filter.componen
         MatIconModule,
         SeverityLevelModule,
         SharedModule],
-    declarations:[ConsultFilterComponent, ConsultListComponent, ConsultComponent]
+    declarations:[ConsultFilterComponent, ConsultTextComponent, ConsultComponent]
   }
 )
 export class ConsultModule {
