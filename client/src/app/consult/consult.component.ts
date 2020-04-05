@@ -1,39 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-
-// tslint:disable-next-line:class-name
-interface event {
-  value: string;
-  viewValue: string;
-}
-// tslint:disable-next-line:class-name
-interface severity {
-  value: string;
-  viewValue: string;
-}
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Utils} from '../shared/Utils';
+import {EventType} from '../reporting-history/reporting-history.component';
+import {SeverityLevel} from '../shared/modles/event';
 
 @Component({
   selector: 'app-consult',
   templateUrl: './consult.component.html',
   styleUrls: ['./consult.component.scss']
 })
+
 export class ConsultComponent implements OnInit {
-  Severity: severity[] = [
-    {value: 'Easy-0', viewValue: 'Easy'},
-    {value: 'Low-1', viewValue: 'Low'},
-    {value: 'Medium-2', viewValue: 'Medium'},
-    {value: 'Hard-3', viewValue: 'Hard'},
-    {value: 'Very Hard-4', viewValue: 'Very Hard'}
-  ]
+  slRef = SeverityLevel;
+  filterOptions: FormGroup;
 
-  Events: event[] = [
-    {value: 'Fire-0', viewValue: 'Fire'},
-    {value: 'Building collapse-1', viewValue: 'Building collapse'}
-  ];
+  @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
 
+  severityOption: string[] = Utils.getEnumValues(this.slRef);
 
-  constructor() { }
+  // will be injected from default service contains location options list (From server)
+  typeOptions: EventType [] = [{id:1,name:'Fire'}, {id:2,name:'Building collapse'} , {id:3, name:'Other'}];
+
+  constructor(fb: FormBuilder) {
+    this.filterOptions = fb.group({
+      date: null,
+      eventType: new FormControl(this.typeOptions.map(x=>x.name)  || null, Validators.required),
+      locationFiled: null,
+      severityLevel: new FormControl([] , Validators.required),
+    });
+  }
 
   ngOnInit() {
   }
 
+  submit() {
+    this.searchChanged.emit(this.filterOptions.value); // every time that somebody change the search new options are publish
+  }
+
+  displayWith(event: {id: number,name: string}) {
+    console.log(event);
+    if (event == null) {return;}
+    return event.name;
+  }
 }
