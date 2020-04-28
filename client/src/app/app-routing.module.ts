@@ -18,6 +18,10 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
+        path: 'closeEvent',
+        loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
+      },
+      {
         path: 'mySettings',
         loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
       },

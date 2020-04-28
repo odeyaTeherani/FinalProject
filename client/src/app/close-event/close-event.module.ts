@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CloseEventComponent } from './close-event.component';
+import {RouterModule} from '@angular/router';
+import {CloseEventRoutes} from './close-event-routing';
 
 
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(CloseEventRoutes)
+  ],
+  declarations: [CloseEventComponent]
 })
-export class CloseEventModuleModule { }
+export class CloseEventModule { }

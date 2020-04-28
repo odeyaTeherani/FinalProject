@@ -1,5 +1,6 @@
 <mat-card>
-  <button mat-stroked-button color="primary" (click)="closeEvent($event)">close event</button>
+  <button mat-stroked-button color="primary" (click)="closeEvent($event)"
+          [routerLinkActive]="'active'" [routerLink]="['/closeEvent']">close event</button>
   <mat-list>
 
     <mat-list-item class="report-list-details">
