@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./close-event.component.scss']
 })
 export class CloseEventComponent implements OnInit {
+  severityOption: any;
+  typeOptions: any;
 
   constructor() { }
 

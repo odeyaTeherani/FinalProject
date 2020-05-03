@@ -1,8 +1,88 @@
-<p>close-event works!</p>
-
-
-
-<!--דף סגירת אירוע - אירוע חדש - תאריך התחלה, תאריך סיום, מיקום, כמות מתים, כמות פצועים, כמות הכוחות שנלשלחו: מדא, משטרה, שירותי הכבאות,-->
-<!--תמונות, התראות-->
-
-<!--ייצוא הדף ל PDF - עם ובלי תמונות-->
+<mat-card>
+  <div fxLayout="row wrap">
+    <div [fxFlex]="50" [fxFlex.xs]="100">
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <p>Name in charge:</p>
+          <mat-form-field  fxFlex="35">
+            <input [formControlName]="'name'"  matInput type="text"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Start date:</P>
+        </div>
+        <div fxLayout="row">
+          <P>End date:</P>
+        </div>
+        <div fxLayout="row">
+          <P>Location:</P>
+        </div>
+        <div fxLayout="row">
+          <P>Number of injured:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of injured'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Number of dead:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of dead'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <P>The number of troops sent to the area:</P>
+        <div fxLayout="row">
+          <P>Number of Ambulances:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of Ambulances'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Number of Police cars:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of Police cars'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Number of Firefighters cars:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of Firefighters cars'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Number of Environment cars:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of Environment cars'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Number of Zaka cars:</P>
+          <mat-form-field fxFlex="35">
+            <input [formControlName]="'Number of Zaka cars'" matInput type="number" min="0"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Severity Level:</P>
+          <mat-form-field  fxFlex="35">
+            <mat-select [formControlName]="'severityLevel'">
+              <mat-option *ngFor="let level of severityOption"
+                          [value]="level">
+                {{level}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <P>Event Type:</P>
+          <mat-form-field fxFlex="35">
+            <mat-select [formControlName]="'eventType'" multiple>
+              <mat-option *ngFor="let type of typeOptions"
+                          [value]="type.id">
+                {{type.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
