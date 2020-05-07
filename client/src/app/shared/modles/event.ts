@@ -9,10 +9,10 @@ export interface Event {
 
 
 export enum SeverityLevel {
-  veryEasy,
-  easy,
-  medium,
-  hard,
-  veryHard
+    VeryLow = 1,
+    Low = 2,
+    Medium = 3,
+    Hard = 4,
+    VeryHard = 5
 }
 

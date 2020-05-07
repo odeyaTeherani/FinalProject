@@ -23,8 +23,8 @@ import {environment} from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    environment.production ?
-      [] : HttpClientInMemoryWebApiModule.forRoot(InMemHeroService)
+    // environment.production ?
+    //   [] : HttpClientInMemoryWebApiModule.forRoot(InMemHeroService)
   ],
   providers: [],
   bootstrap: [AppComponent]

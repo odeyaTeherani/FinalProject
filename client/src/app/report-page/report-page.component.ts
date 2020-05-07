@@ -53,9 +53,8 @@ export class ReportPageComponent  {
 
   submit() {
     const newReport = this.reportForm.value;
-    newReport.id = faker.random.uuid();
-    newReport.date = new Date();
     newReport.imageUrl = this.url;
+    newReport.eventType = this.typeOptions.find(x => x.id === newReport.eventType);
     this.reportService.add(newReport)
       .subscribe(
         (result) => {
@@ -71,11 +70,6 @@ export class ReportPageComponent  {
 
     const data: any = this.alert == null ? {} : this.alert;
 
-    let eventIds:number[];
-    if (data.eventType) {
-      eventIds = data.eventType.map(x => x.id);
-    }
-
     if (data.imageUrl) {
       this.url=data.imageUrl;
     }
@@ -84,8 +78,8 @@ export class ReportPageComponent  {
       carNumber: [data.carNumber || null, Validators.required],
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
       name: [data.name || null, Validators.required],
-      NumberOfEvacuatedInjured: [data.NumberOfEvacuatedInjured || null, Validators.required],
-      eventType: [{value: eventIds || null, disabled: this.viewMode} , Validators.required],
+      numberOfEvacuatedInjured: [data.numberOfEvacuatedInjured || null, Validators.required],
+      eventType: [{value: null , disabled: this.viewMode} , Validators.required],
       note: [data.note || null],
       imageUrl: [data.imageUrl || null]
     });

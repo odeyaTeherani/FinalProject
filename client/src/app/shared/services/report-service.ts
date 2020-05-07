@@ -3,17 +3,17 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Report} from '../../reporting-history/reporting-history.component';
 import {map} from 'rxjs/operators';
+import {Environment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/environment";
+import {environment} from "../../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
-  path = 'api/reports';
+  path = '/api/report';
 
-  constructor(private http: HttpClient) {
-  }
-
+  constructor(private http: HttpClient) {}
 
   get(): Observable<Report []> {
 
@@ -30,7 +30,7 @@ export class ReportService {
 
   add(newReport: any) {
     return this.http
-      .post(this.path, newReport);
+      .post(environment.url +  this.path, newReport);
   }
 
   getById(alertId: any) {
