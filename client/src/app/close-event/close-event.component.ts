@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-close-event',
@@ -6,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./close-event.component.scss']
 })
 export class CloseEventComponent implements OnInit {
-  severityOption: any;
-  typeOptions: any;
+  filterOptions: FormGroup;
+  @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.filterOptions = fb.group({
+      date: null,
+      eventType: null,
+      locationFiled: null,
+      severityLevel: null,
+    });
+  }
 
   ngOnInit() {
   }
 
+  submit() {
+    // every time that somebody change the search new options are publish
+    this.searchChanged.emit(this.filterOptions.value);
+  }
 }
