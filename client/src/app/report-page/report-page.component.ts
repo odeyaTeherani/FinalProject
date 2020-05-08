@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Utils} from '../shared/Utils';
 import {SeverityLevel} from '../shared/modles/event';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventType, Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
@@ -14,8 +14,7 @@ import * as faker from 'faker';
 })
 export class ReportPageComponent  {
 
-  url:string;
-  selectedFile = null;
+  images = [];
   slRef = SeverityLevel;
   viewMode: boolean;
   severityOption: string[] = Utils.getEnumValues(this.slRef);
@@ -28,6 +27,7 @@ export class ReportPageComponent  {
   typeOptions: EventType [] = [{id: 1, name: 'Fire'}, {id: 2, name: 'Building collapse'}];
 
   constructor(private  activeRoute: ActivatedRoute,
+              private router:Router,
               private reportService: ReportService,
               private fb: FormBuilder) {
 
@@ -53,12 +53,12 @@ export class ReportPageComponent  {
 
   submit() {
     const newReport = this.reportForm.value;
-    newReport.imageUrl = this.url;
-    newReport.eventType = this.typeOptions.find(x => x.id === newReport.eventType);
+    newReport["images"] = this.images;
     this.reportService.add(newReport)
       .subscribe(
         (result) => {
           console.log(result);
+          this.router.navigate(['/reportingHistory']);
         },
         err => {
           console.log(err);
@@ -67,32 +67,22 @@ export class ReportPageComponent  {
   }
 
   private initForm() {
-
     const data: any = this.alert == null ? {} : this.alert;
-
-    if (data.imageUrl) {
-      this.url=data.imageUrl;
-    }
-
     this.reportForm = this.fb.group({
       carNumber: [data.carNumber || null, Validators.required],
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
-      name: [data.name || null, Validators.required],
       numberOfEvacuatedInjured: [data.numberOfEvacuatedInjured || null, Validators.required],
       eventType: [{value: null , disabled: this.viewMode} , Validators.required],
-      note: [data.note || null],
-      imageUrl: [data.imageUrl || null]
+      note: [data.note || null]
     });
-
-
   }
 
   onFileSelected(event) {
-    this.selectedFile = event.target.files[0];
+    const selectedFile = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
+    reader.readAsDataURL(selectedFile);
     reader.onload = (e: any) => {
-      this.url = e.target.result;
+      this.images.push(e.target.result);
     };
   }
 
