@@ -14,7 +14,7 @@ export interface Report {
   name: string;
   numberOfEvacuated: number;
   note: string;
-  imageUrl: string;
+  images: string [];
 
 }
 
@@ -31,19 +31,18 @@ export interface EventType {
 export class ReportingHistoryComponent implements OnInit {
   reports: Report [];
 
-  constructor(private reportService: ReportService) {
-    reportService.get()
-      .subscribe(
-        (reports) => {
-          this.reports = reports;
-          console.log('Back from server - ', reports);
-        },
-        (error) => {
-          console.log(error);
-        });
-  }
+  constructor(private reportService: ReportService) {}
 
   ngOnInit() {
+      this.reportService.get()
+          .subscribe(
+              (reports) => {
+                  this.reports = reports;
+                  console.log('Back from server - ', reports);
+              },
+              (error) => {
+                  console.log(error);
+              });
   }
 
   delete(report: Report) {

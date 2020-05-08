@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Utils} from '../shared/Utils';
 import {SeverityLevel} from '../shared/modles/event';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventType, Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
-import * as faker from 'faker';
 
 @Component({
   selector: 'app-report-page',
@@ -32,6 +31,7 @@ export class ReportPageComponent  {
               private fb: FormBuilder) {
 
     activeRoute.params.subscribe((params) => {
+      // display alert
       if (params.id != null) {
         this.viewMode = true;
         const alertId = params.id;
@@ -39,11 +39,13 @@ export class ReportPageComponent  {
         this.reportService.getById(alertId)
           .subscribe(report => {
             this.alert = report;
-            console.log(this.alert);
+            this.images = report.images;
             this.initForm();
           });
 
-      } else {
+      }
+      // new Alert
+      else {
         this.initForm();
       }
 
