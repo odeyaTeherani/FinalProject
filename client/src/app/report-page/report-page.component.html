@@ -36,11 +36,6 @@
         </mat-form-field>
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
-          <mat-label>Name</mat-label>
-          <input [formControlName]="'name'" [readonly]="viewMode" matInput type="text"/>
-        </mat-form-field>
-
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Number of Evacuated injured</mat-label>
           <input [formControlName]="'numberOfEvacuatedInjured'" [readonly]="viewMode" matInput type="number" min="0"/>
         </mat-form-field>
@@ -69,8 +64,10 @@
              name="cameraInput"
              (change)="onFileSelected($event)">
 
-      <div fxLayout="row" fxLayoutAlign="center">
-       <img  class="uploaded-image" *ngIf="url" [src]="url"  alt="image" sizes="100px"/>
+      <div fxLayout="row wrap" fxLayoutAlign="center">
+        <ng-container *ngFor="let image of images;">
+          <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>
+        </ng-container>
       </div>
       <!-- <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">-->
     </div>
