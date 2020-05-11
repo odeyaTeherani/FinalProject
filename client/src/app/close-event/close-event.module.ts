@@ -5,8 +5,11 @@ import {RouterModule} from '@angular/router';
 import {CloseEventRoutes} from './close-event-routing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';import {
   MatButtonModule,
-  MatCardModule, MatDatepickerModule,
-  MatFormFieldModule, MatIconModule, MatInputModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
   MatNativeDateModule,
   MatSelectModule
 } from '@angular/material';
@@ -26,6 +29,7 @@ import {SharedModule} from '../shared/shared.module';
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     GooglePlacesModule,
     SharedModule,
     SeverityLevelModule,
