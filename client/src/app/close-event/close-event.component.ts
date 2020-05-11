@@ -26,5 +26,4 @@ export class CloseEventComponent implements OnInit {
     // every time that somebody change the search new options are publish
     this.searchChanged.emit(this.filterOptions.value);
   }
-
 }

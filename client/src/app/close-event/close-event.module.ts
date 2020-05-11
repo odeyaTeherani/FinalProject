@@ -3,12 +3,17 @@ import { CommonModule } from '@angular/common';
 import { CloseEventComponent } from './close-event.component';
 import {RouterModule} from '@angular/router';
 import {CloseEventRoutes} from './close-event-routing';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';import {
+  MatButtonModule,
+  MatCardModule, MatDatepickerModule,
+  MatFormFieldModule, MatIconModule, MatInputModule,
+  MatNativeDateModule,
+  MatSelectModule
+} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
-import {MatButtonModule, MatDatepickerModule, MatIconModule, MatInputModule} from '@angular/material';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
-import {SharedModule} from '../shared/shared.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 
@@ -25,7 +30,8 @@ import {SeverityLevelModule} from '../shared/components/severity-level/severity-
     SharedModule,
     SeverityLevelModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   declarations: [CloseEventComponent]
 })
