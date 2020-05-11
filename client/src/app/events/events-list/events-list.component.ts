@@ -19,20 +19,20 @@ export class EventsListComponent implements OnInit {
   getEventTypeColor(eventType: SeverityLevel) {// method that change the color of the severity by switch case
     let res;
     switch (eventType) {
-      case SeverityLevel.easy:
+      case SeverityLevel.VeryLow:
+        res = '#02fa59';
+        break;
+      case SeverityLevel.Low:
         res = '#faee02';
         break;
-      case SeverityLevel.medium:
+      case SeverityLevel.Medium:
         res = '#4802fa';
         break;
-      case SeverityLevel.hard:
+      case SeverityLevel.Hard:
         res = '#fa1b02';
         break;
-      case SeverityLevel.veryHard:
+      case SeverityLevel.VeryHard:
         res = '#000000';
-        break;
-      case SeverityLevel.veryEasy:
-        res = '#02fa59';
         break;
     }
     return res;

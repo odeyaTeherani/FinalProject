@@ -9,7 +9,7 @@
 
         <mat-form-field fxFlex="20">
           <mat-label>Event Type</mat-label>
-          <mat-select [formControlName]="'eventType'" multiple>
+          <mat-select [formControlName]="'eventType'">
             <mat-option *ngFor="let type of typeOptions"
                         [value]="type.id">
               {{type.name}}
@@ -21,7 +21,7 @@
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Car Number</mat-label>
-          <input [formControlName]="'carNumber'" [readonly]="viewMode" matInput type="number" min="0"/>
+          <input [formControlName]="'carNumber'" [readonly]="viewMode" matInput type="text"/>
           <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
         </mat-form-field>
 
@@ -36,13 +36,8 @@
         </mat-form-field>
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
-          <mat-label>Name</mat-label>
-          <input [formControlName]="'name'" [readonly]="viewMode" matInput type="text"/>
-        </mat-form-field>
-
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Number of Evacuated injured</mat-label>
-          <input [formControlName]="'NumberOfEvacuatedInjured'" [readonly]="viewMode" matInput type="number" min="0"/>
+          <input [formControlName]="'numberOfEvacuatedInjured'" [readonly]="viewMode" matInput type="number" min="0"/>
         </mat-form-field>
 
 
@@ -69,8 +64,10 @@
              name="cameraInput"
              (change)="onFileSelected($event)">
 
-      <div fxLayout="row" fxLayoutAlign="center">
-       <img  class="uploaded-image" *ngIf="url" [src]="url"  alt="image" sizes="100px"/>
+      <div fxLayout="row wrap" fxLayoutAlign="center">
+        <ng-container *ngFor="let image of images;">
+          <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>
+        </ng-container>
       </div>
       <!-- <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">-->
     </div>
