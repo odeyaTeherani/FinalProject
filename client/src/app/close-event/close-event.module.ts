@@ -7,18 +7,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';import {
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
-  MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatNativeDateModule,
-  MatSelectModule
+  MatNativeDateModule
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
 import {SharedModule} from '../shared/shared.module';
-
-
 
 @NgModule({
   imports: [

@@ -1,4 +1,5 @@
 <mat-card>
+  <div>
   <div fxLayout="column" [fxFlex]="50" [fxFlex.xs]="100">
         <div fxLayout.xs="column" fxLayout="row">
             <p>Name in charge: </p>
@@ -99,7 +100,6 @@
                           (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
           </app-event-type>
         </div>
-
   </div>
 
   <div [fxFlex]="50" [fxFlex.xs]="100" class="pl-1">
@@ -111,5 +111,13 @@
       </button>
     </div>
   </div>
+  </div>
 
+  <div>
+<!--    pictures -->
+  </div>
+
+  <div>
+<!-- alerts -->
+  </div>
 </mat-card>
