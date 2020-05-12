@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
   declarations: [ReportPageComponent],
@@ -15,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         FlexLayoutModule,
         FormsModule,
         MatSelectModule,
-        ReactiveFormsModule, MatButtonModule, MatIconModule]
+        ReactiveFormsModule, MatButtonModule, MatIconModule, AgmCoreModule]
 })
 
 export class ReportPageModule {

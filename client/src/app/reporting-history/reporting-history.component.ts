@@ -15,6 +15,7 @@ export interface Report {
   numberOfEvacuated: number;
   note: string;
   images: string [];
+  location?: { longitude:number, latitude:number }
 
 }
 
