@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../access/log-in/user';
+import {ApiService} from "./api.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +11,27 @@ export class UserService {
   usersDb: User[] = [{username: 'Odeya', password: '1111'}, {username: 'David', password: '2222'}];
   user;
 
-  constructor(private route: Router) {
+  constructor(private route: Router,private apiService:ApiService,private snackBar:MatSnackBar) {
     this.user = {
       token: 'abc!@#123$$%^'
     };
   }
 
   login(userCredentials: User) {
-    const result = this.usersDb.find((user) => {
-      return user.username.toLowerCase() === userCredentials.username.toLowerCase() &&
-        user.password === userCredentials.password;
-    });
-    if (result != null) {
-      localStorage.setItem('token', this.user.token);
-      this.route.navigate(['/home']);
-    } else {
-      console.log('bad user request');
-    }
+    this.apiService.post<any>('/account/login',userCredentials)
+        .subscribe(
+            (result:any)=>{
+              if (result != null) {
+                localStorage.setItem('token', result.token);
+                localStorage.setItem('role', result.roles[0]);
+                this.route.navigate(['/home']);
+              } else {
+                console.log('bad user request');
+              }
+            },(error) => {
+                console.log(error);
+                this.snackBar.open(error.error.title,"FAIL",{duration:4000})
+            });
   }
 
   logout() {
