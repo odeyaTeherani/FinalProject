@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {EventService} from '../shared/services/event.service';
 
 @Component({
   selector: 'app-close-event',
@@ -7,23 +9,54 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./close-event.component.scss']
 })
 export class CloseEventComponent implements OnInit {
-  filterOptions: FormGroup;
+  images = [];
+  eventForm: FormGroup;
+  // edit mode section
+  alert: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
 
-  constructor(fb: FormBuilder) {
-    this.filterOptions = fb.group({
-      date: null,
-      eventType: null,
-      locationFiled: null,
-      severityLevel: null,
-    });
+  constructor(private  activeRoute: ActivatedRoute,
+              private router: Router,
+              private eventService: EventService,
+              private fb: FormBuilder) {
+    this.initForm();
   }
 
-  ngOnInit() {
+  private initForm() {
+    const data: any = this.alert == null ? {} : this.alert;
+    this.eventForm = this.fb.group({
+    eventType: null,
+    locationFiled: null,
+    severityLevel: null,
+    numOfInjured: null,
+    numOfDead: null,
+    numOfPolice: null,
+    numOfAmbulances: null,
+    numOfFirefighters: null,
+    numOfEnvironment: null,
+    numOfZakaCars: null,
+    endDate: null,
+    startDate: null,
+    nameInCharge: null,
+      note: null
+  });
   }
 
   submit() {
-    // every time that somebody change the search new options are publish
-    this.searchChanged.emit(this.filterOptions.value);
+    const newEvent = this.eventForm.value;
+    newEvent['images'] = this.images;
+    this.eventService.add(newEvent)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          this.router.navigate(['/events']);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  ngOnInit(): void {
   }
 }
