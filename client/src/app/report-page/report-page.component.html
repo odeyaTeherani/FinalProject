@@ -7,7 +7,7 @@
       <div fxLayout="column">
         <!--'legacy' | 'standard' | 'fill' | 'outline'-->
 
-        <mat-form-field fxFlex="20">
+        <mat-form-field fxFlex="20" [appearance]="'outline'">
           <mat-label>Event Type</mat-label>
           <mat-select [formControlName]="'eventType'">
             <mat-option *ngFor="let type of typeOptions"
@@ -18,11 +18,20 @@
         </mat-form-field>
 
 
-
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Car Number</mat-label>
           <input [formControlName]="'carNumber'" [readonly]="viewMode" matInput type="text"/>
           <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
+        </mat-form-field>
+
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Location</mat-label>
+          <input matInput
+                 aria-label="Number"
+                 appGooglePlace
+                 [formControlName]="'locationFiled'" [readonly]="viewMode"
+                 placeholder=""/>
+          <!--                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"-->
         </mat-form-field>
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
