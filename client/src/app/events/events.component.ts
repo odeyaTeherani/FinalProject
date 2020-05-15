@@ -29,11 +29,6 @@ export class EventsComponent implements OnInit, OnDestroy {
 
     // this.eventService.getEvents();
 
-    this.eventHttpService.getEvents()
-      .subscribe((data:any) => {
-        console.log(data);
-        this.events = data;
-      });
   }
 
   searchChanged(event: any) {
