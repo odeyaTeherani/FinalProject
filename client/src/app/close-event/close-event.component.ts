@@ -11,6 +11,7 @@ import {EventService} from '../shared/services/event.service';
 export class CloseEventComponent implements OnInit {
   images = [];
   eventForm: FormGroup;
+  viewMode: boolean;
   // edit mode section
   alert: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
@@ -19,14 +20,31 @@ export class CloseEventComponent implements OnInit {
               private router: Router,
               private eventService: EventService,
               private fb: FormBuilder) {
-    this.initForm();
-  }
+    activeRoute.params.subscribe((params) => {
+      // display event
+      if (params.id != null) {
+        this.viewMode = true;
+        const eventId = params.id;
+
+        this.eventService.getById(eventId)
+          .subscribe(event => {
+            // this.event = event;
+            this.images = event.images;
+            this.initForm();
+          });
+
+        // new event
+      } else {
+        this.initForm();
+      }
+
+    });  }
 
   private initForm() {
     const data: any = this.alert == null ? {} : this.alert;
     this.eventForm = this.fb.group({
     eventType: null,
-    locationFiled: null,
+      location: null,
     severityLevel: null,
     numOfInjured: null,
     numOfDead: null,

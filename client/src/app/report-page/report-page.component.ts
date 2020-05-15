@@ -47,7 +47,6 @@ export class ReportPageComponent {
       } else {
         this.initForm();
       }
-
     });
 
   }

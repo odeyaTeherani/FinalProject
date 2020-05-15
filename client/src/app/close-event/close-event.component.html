@@ -12,13 +12,23 @@
 <!--    <div fxFlex="50" class="c"></div>-->
 <!--  </div>-->
 
-  <div>
-    <span fxFlex></span>
+  <div fxLayout="row">
+<!--      <span fxFlex></span>-->
     <button mat-raised-button
+            fxFlex="20"
+            style="margin-right: 70%"
             [color]="'primary'">
-      Export to PDF
-      <mat-icon>insert_drive_file</mat-icon>
+      Edit
+      <mat-icon>edit</mat-icon>
     </button>
+
+      <button mat-raised-button
+              fxFlex="20"
+              [color]="'primary'">
+        Export to PDF
+        <mat-icon>insert_drive_file</mat-icon>
+      </button>
+
   </div>
 
   <div>
@@ -62,7 +72,7 @@
       <input matInput
              aria-label="Number"
              appGooglePlace
-             (locationSelected)="eventForm.controls['locationFiled'].setValue($event)"
+             (locationSelected)="eventForm.controls['location'].setValue($event)"
              placeholder="location"/>
     </mat-form-field>
   </div>
@@ -183,7 +193,7 @@
   <br>
   <P><b>Alerts:</b> </P>
 
-  <div class="mt-1" fxLayoutAlign="center" >
+  <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center" >
     <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
   </div>
 
