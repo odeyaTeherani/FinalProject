@@ -11,7 +11,7 @@ import {ReportService} from '../shared/services/report-service';
   templateUrl: './report-page.component.html',
   styleUrls: ['./report-page.component.scss']
 })
-export class ReportPageComponent  {
+export class ReportPageComponent {
 
   images = [];
   slRef = SeverityLevel;
@@ -26,7 +26,7 @@ export class ReportPageComponent  {
   typeOptions: EventType [] = [{id: 1, name: 'Fire'}, {id: 2, name: 'Building collapse'}];
 
   constructor(private  activeRoute: ActivatedRoute,
-              private router:Router,
+              private router: Router,
               private reportService: ReportService,
               private fb: FormBuilder) {
 
@@ -43,9 +43,8 @@ export class ReportPageComponent  {
             this.initForm();
           });
 
-      }
-      // new Alert
-      else {
+        // new Alert
+      } else {
         this.initForm();
       }
 
@@ -55,7 +54,7 @@ export class ReportPageComponent  {
 
   submit() {
     const newReport = this.reportForm.value;
-    newReport["images"] = this.images;
+    newReport['images'] = this.images;
     this.reportService.add(newReport)
       .subscribe(
         (result) => {
@@ -71,6 +70,7 @@ export class ReportPageComponent  {
   private initForm() {
     const data: any = this.alert == null ? {} : this.alert;
     this.reportForm = this.fb.group({
+      locationFiled: [data.locationFiled || null, Validators.required],
       carNumber: [data.carNumber || null, Validators.required],
       severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
       numberOfEvacuatedInjured: [data.numberOfEvacuatedInjured || null, Validators.required],

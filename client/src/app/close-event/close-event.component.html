@@ -1,115 +1,190 @@
 <mat-card>
-  <div fxLayout="column" [fxFlex]="50" [fxFlex.xs]="100">
-        <div fxLayout.xs="column" fxLayout="row">
-            <p>Name in charge: </p>
-            <mat-form-field>
-              <input matInput type="text"/>
-            </mat-form-field>
-        </div>
 
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Start date: </P>
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+<!--  <div fxLayout="row" class="fxflexExample" fxLayoutGap="10px">-->
+<!--    <div fxFlex="30" class="a"></div>-->
+<!--    <div fxFlex="20" class="b"></div>-->
+<!--    <div fxFlex="50" class="c"></div>-->
+<!--  </div>-->
 
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>End date: </P>
-          <mat-form-field>
-            <input matInput [matDatepicker]="pickerTo">
-            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-            <mat-datepicker #pickerTo></mat-datepicker>
-          </mat-form-field>
-        </div>
+<!--  <div fxLayout="column" class="fxflexExample mt-5">-->
+<!--    <div fxFlex="30" class="a"></div>-->
+<!--    <div fxFlex="20" class="b"></div>-->
+<!--    <div fxFlex="50" class="c"></div>-->
+<!--  </div>-->
 
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Location: </P>
-          <mat-form-field >
-            <input matInput
-                   aria-label="Number"
-                   appGooglePlace
-                   (locationSelected)="filterOptions.controls['locationFiled'].setValue($event)"
-                   placeholder="Please enter location"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of injured: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of dead: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <P>The number of troops sent to the area: </P>
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of Ambulances: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of Police cars: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of Firefighters cars: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of Environment cars: </P>
-          <mat-form-field>
-            <input  matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Number of Zaka cars: </P>
-          <mat-form-field>
-            <input matInput type="number" min="0"/>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Severity Level:</P>
-          <app-severity-level
-                              (changed)="filterOptions.controls['severityLevel'].setValue($event)">
-          </app-severity-level>
-        </div>
-
-        <div fxLayout.xs="column" fxLayout="row">
-          <P>Event Type: </P>
-          <app-event-type
-                          (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
-          </app-event-type>
-        </div>
-
+  <div>
+    <span fxFlex></span>
+    <button mat-raised-button
+            [color]="'primary'">
+      Export to PDF
+      <mat-icon>insert_drive_file</mat-icon>
+    </button>
   </div>
 
-  <div [fxFlex]="50" [fxFlex.xs]="100" class="pl-1">
-    <div fxLayout="row" fxLayoutAlign="center">
-      <button mat-raised-button
-              [color]="'primary'" >
-        Export to PDF
-        <mat-icon>insert_drive_file</mat-icon>
-      </button>
-    </div>
+  <div>
+<!--    <P>Name in charge: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" >
+      <input matInput
+             type="text"
+             placeholder="Name in charge"
+             (input)="eventForm.controls['nameInCharge'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+  <!--<P>Start date: </P>-->
+  <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+    <input matInput
+           placeholder="Start date"
+           (dateInput)="eventForm.controls['startDate'].setValue($event)"
+           [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+  <div>
+    <!--<P>End date: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="End date"
+             (dateInput)="eventForm.controls['endDate'].setValue($event)"
+             [matDatepicker]="pickerTo">
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Location: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             aria-label="Number"
+             appGooglePlace
+             (locationSelected)="eventForm.controls['locationFiled'].setValue($event)"
+             placeholder="location"/>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of injured: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of injured"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfInjured'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of dead: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of dead"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfDead'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Severity Level:</P>-->
+    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
+                        (changed)="eventForm.controls['severityLevel'].setValue($event)">
+    </app-severity-level>
+  </div>
+
+  <div>
+    <!--<P>Event Type: </P>-->
+    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
+                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">
+    </app-event-type>
+  </div>
+
+  <br>
+  <P><b>The number of troops sent to the area:</b> </P>
+
+  <div>
+    <!--<P>Number of Ambulances: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of Ambulances"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfAmbulances'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of Police cars: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of Police cars"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfPolice'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of Firefighters cars: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of Firefighters cars"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfFirefighters'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of Environment cars: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input  matInput
+              placeholder="Number of Environment cars"
+              type="number"
+              min="0"
+              (input)="eventForm.controls['numOfEnvironment'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <!--<P>Number of Zaka cars: </P>-->
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+      <input matInput
+             placeholder="Number of Zaka cars"
+             type="number"
+             min="0"
+             (input)="eventForm.controls['numOfZakaCars'].setValue($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <br>
+  <P><b>Note:</b> </P>
+  <div>
+    <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
+      <textarea matInput
+             (input)="eventForm.controls['note'].setValue($event)"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <br>
+  <P><b>Pictures:</b> </P>
+  <br>
+  <P><b>Alerts:</b> </P>
+
+  <div class="mt-1" fxLayoutAlign="center" >
+    <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
   </div>
 
 </mat-card>

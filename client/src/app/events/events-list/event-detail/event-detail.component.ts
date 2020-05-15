@@ -17,9 +17,9 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   /*private activeRoute: RouterLinkActive*/
   constructor(private activeRoute: ActivatedRoute,
               private eventService: EventService) {
-    eventService.onEventsChange.subscribe((result)=> {
-      console.log(result);
-    });
+    // eventService.onEventsChange.subscribe((result)=> {
+    //   console.log(result);
+    // });
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     this.routeSubscription = this.activeRoute.params.subscribe(
       (params) => {
         this.id = Number(params.id);
-        this.eventService.getEvent(this.id);
+        // this.eventService.getEvent(this.id);
         console.log(this.id);
       }
     );
