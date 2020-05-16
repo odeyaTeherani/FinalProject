@@ -1,29 +1,30 @@
 import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {Report} from "../reporting-history/reporting-history.component";
-import {ReportService} from "../shared/services/report-service";
+import {Report} from '../reporting-history/reporting-history.component';
+import {ReportService} from '../shared/services/report-service';
+
 
 @Injectable()
-export class ReportsDataService implements OnInit {
+export class ReportsDataService {
 
-    reports: Report [];
-    onEventsChange: EventEmitter<Report []> = new EventEmitter<Report[]>();
+  reports: Report [];
+  onEventsChange: EventEmitter<Report []> = new EventEmitter<Report[]>();
 
-    constructor(private reportService: ReportService) {}
+  constructor(private reportService: ReportService) {
+    console.log('load report data service');
+    this.getData();
+  }
 
-    ngOnInit() {
-        this.getData();
-    }
 
-    public getData(){
-        this.reportService.get()
-            .subscribe((events:Report []) => {
-                this.reports = events;
-                console.log(this.reports);
-                this.getCurrentData();
-            });
-    }
+  public getData() {
+    this.reportService.get()
+      .subscribe((reports: Report []) => {
+        this.reports = reports;
+        console.log(this.reports);
+        this.getCurrentData();
+      });
+  }
 
-    public getCurrentData(){
-        this.onEventsChange.emit(this.reports);
-    }
+  public getCurrentData() {
+    this.onEventsChange.emit(this.reports);
+  }
 }

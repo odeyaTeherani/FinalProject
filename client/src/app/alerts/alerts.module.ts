@@ -1,5 +1,5 @@
 import {NgModule, OnChanges, OnDestroy, OnInit} from '@angular/core';
-import {AlertsComponent} from './alerts.component';
+import {AlertsComponent} from './alerts-list/alerts.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ReportRoutes} from './alerts-routing';
