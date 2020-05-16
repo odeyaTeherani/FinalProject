@@ -16,7 +16,6 @@ export class EventsComponent implements OnInit, OnDestroy {
 
   constructor(private eventService: EventService,
               private eventHttpService: EventHttpService) {
-
   }
 
   ngOnInit() {

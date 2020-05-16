@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Utils} from '../shared/Utils';
 import {SeverityLevel} from '../shared/modles/event';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,7 +16,6 @@ export class ReportPageComponent implements OnInit{
   images = [];
   locationCoordinates: { longitude:number, latitude:number };
   zoom = 15;
-
   slRef = SeverityLevel;
   viewMode: boolean;
   severityOption: string[] = Utils.getEnumValues(this.slRef);
@@ -29,7 +28,7 @@ export class ReportPageComponent implements OnInit{
   typeOptions: EventType [] = [{id: 1, name: 'Fire'}, {id: 2, name: 'Building collapse'}];
 
   constructor(private  activeRoute: ActivatedRoute,
-              private router:Router,
+              private router: Router,
               private reportService: ReportService,
               private fb: FormBuilder) {
 
@@ -43,14 +42,13 @@ export class ReportPageComponent implements OnInit{
           .subscribe((report:Report) => {
             this.alert = report;
             this.images = report.images;
-            console.log(report.location)
+            console.log(report.location);
             this.locationCoordinates = report.location;
             this.initForm();
           });
 
-      }
-      // new Alert
-      else {
+        // new Alert
+      } else {
         this.initForm();
       }
 
@@ -79,7 +77,6 @@ export class ReportPageComponent implements OnInit{
     const newReport = this.reportForm.value;
     newReport["images"] = this.images;
     newReport["location"] = this.locationCoordinates;
-    console.log(newReport)
     this.reportService.add(newReport)
       .subscribe(
         (result) => {

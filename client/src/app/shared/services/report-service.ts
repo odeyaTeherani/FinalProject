@@ -2,11 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Report} from '../../reporting-history/reporting-history.component';
-import {map} from 'rxjs/operators';
-import {Environment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/environment";
-import {environment} from "../../../environments/environment";
-import {ApiService} from "./api.service";
-
+import {environment} from '../../../environments/environment';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +15,7 @@ export class ReportService {
 
   get(): Observable<Report []> {
     return this.api
-      .get<Report []>(this.path)
+      .get<Report []>(this.path);
       // .pipe(map(
       //   (reports: Report []) => {
       //     reports.forEach(
