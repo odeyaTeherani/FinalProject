@@ -15,6 +15,7 @@ export class ReportPageComponent implements OnInit{
 
   images = [];
   locationCoordinates: { longitude:number, latitude:number };
+  zoom = 15;
 
   slRef = SeverityLevel;
   viewMode: boolean;
@@ -39,9 +40,11 @@ export class ReportPageComponent implements OnInit{
         const alertId = params.id;
 
         this.reportService.getById(alertId)
-          .subscribe(report => {
+          .subscribe((report:Report) => {
             this.alert = report;
             this.images = report.images;
+            console.log(report.location)
+            this.locationCoordinates = report.location;
             this.initForm();
           });
 
@@ -76,6 +79,7 @@ export class ReportPageComponent implements OnInit{
     const newReport = this.reportForm.value;
     newReport["images"] = this.images;
     newReport["location"] = this.locationCoordinates;
+    console.log(newReport)
     this.reportService.add(newReport)
       .subscribe(
         (result) => {
