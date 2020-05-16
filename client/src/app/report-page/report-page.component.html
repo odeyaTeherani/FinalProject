@@ -87,6 +87,16 @@
     </mat-form-field>
   </div>
 
+  <agm-map *ngIf="locationCoordinates != null"
+          [latitude]="locationCoordinates.latitude"
+          [longitude]="locationCoordinates.longitude"
+          [zoom]="zoom" >
+    <agm-marker
+            [latitude]="locationCoordinates.latitude"
+            [longitude]="locationCoordinates.longitude">
+    </agm-marker>
+  </agm-map>
+
   <div *ngIf="!viewMode" fxLayout="row" fxLayoutAlign="center" class="mt-1">
     <button [disabled]="!reportForm.valid" (click)="submit()" mat-raised-button color="primary">Submit</button>
   </div>

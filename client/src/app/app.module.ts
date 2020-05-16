@@ -7,6 +7,7 @@ import {HomeComponent} from './home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import {TokenInterceptor} from "./shared/Interceptors/token.interceptor";
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
@@ -20,6 +21,10 @@ import {TokenInterceptor} from "./shared/Interceptors/token.interceptor";
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDzQBEGZAlw7zzTBVceCjZfxKBEsuE_Zbg',
+      libraries: ['places']
+    })
     // environment.production ?
     //   [] : HttpClientInMemoryWebApiModule.forRoot(InMemHeroService)
   ],
