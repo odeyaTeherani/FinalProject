@@ -6,20 +6,23 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AgmCoreModule} from "@agm/core";
+import {AgmCoreModule} from '@agm/core';
+import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 
 @NgModule({
   declarations: [ReportPageComponent],
-    imports: [CommonModule,
-        RouterModule.forChild(ReportPageRoutes),
-        MatInputModule,
-        FlexLayoutModule,
-        FormsModule,
-        MatSelectModule,
-        ReactiveFormsModule, MatButtonModule, MatIconModule, AgmCoreModule]
+  imports: [CommonModule,
+    RouterModule.forChild(ReportPageRoutes),
+    MatInputModule,
+    FlexLayoutModule,
+    FormsModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    AgmCoreModule,
+    GooglePlacesModule]
 })
 
-export class ReportPageModule {
-
-}
+export class ReportPageModule {}
 
