@@ -1,6 +1,6 @@
 <mat-card>
   <button mat-stroked-button color="primary" (click)="closeEvent($event)"
-          [routerLinkActive]="'active'" [routerLink]="['/closeEvent']">close event</button>
+          [routerLinkActive]="'active'" [routerLink]="['close']">close event</button>
   <mat-list>
 
     <mat-list-item class="report-list-details">
@@ -9,20 +9,25 @@
       <div class = "text-center" [fxFlex]="100/3*3">Reporter's name</div>
     </mat-list-item>
 
-    <mat-list-item class="report-list-item" [routerLink]="['/alerts-page/',reports.id]"
-                   *ngFor="let reports of reports">
+    <mat-list-item class="report-list-item" [routerLink]="['/alert-page/',alert.id]"
+                   *ngFor="let alert of alerts">
       <div [fxFlex]="100/80">
-        <mat-checkbox class = "text-center" (click)="$event.stopPropagation();" [color]="'primary'"></mat-checkbox>
+        <mat-checkbox class = "text-center"
+                      [ngModel]="alert.selected"
+                      (click)="checked($event,alert)"
+                      [color]="'primary'">
+
+        </mat-checkbox>
       </div>
 
       <div class="text-center" [fxFlex]="100/3*1.2">
-          {{reports.date | date }}
+          {{alert.date | date }}
         </div>
       <div class="text-center" [fxFlex]="100/3*2">
-        {{reports.eventType}}
+        {{alert.eventType}}
       </div>
       <div class="text-center" [fxFlex]="100/3*3">
-        {{reports.name}}
+        {{alert.name}}
       </div>
     </mat-list-item>
   </mat-list>

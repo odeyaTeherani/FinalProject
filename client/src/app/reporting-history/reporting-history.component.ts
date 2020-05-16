@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SeverityLevel} from '../shared/modles/event';
-import {HttpClient} from '@angular/common/http';
 import {ReportService} from '../shared/services/report-service';
 import * as faker from 'faker';
 
@@ -15,7 +14,7 @@ export interface Report {
   numberOfEvacuated: number;
   note: string;
   images: string [];
-
+  selected: boolean;
 }
 
 export interface EventType {

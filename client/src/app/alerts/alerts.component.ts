@@ -1,41 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
 import {formatSize} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
+import {Subscribable, Subscription} from "rxjs";
+import {ReportsDataService} from "./reports-data.service";
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './alerts.component.html',
-  styleUrls: ['./alerts.component.scss']
+    selector: 'app-report',
+    templateUrl: './alerts.component.html',
+    styleUrls: ['./alerts.component.scss']
 })
 
-export class AlertsComponent implements OnInit {
-  mobileQuery: MediaQueryList;
-  reports: Report [];
+export class AlertsComponent implements OnInit, OnDestroy {
 
-/*  constructor() {
-    this.reports = [
-      {date: new Date(), id: 1, eventType: ['fire']},
-      {date: new Date(), id: 12, eventType: ['fire']},
-      {date: new Date(), id: 13, eventType: ['fire']},
-      {date: new Date(), id: 14, eventType: ['fire']}
-    ];
-  }*/
-  constructor(private reportService: ReportService) {
-    reportService.get()
-      .subscribe(
-        (reports) => {
-          this.reports = reports;
-          console.log('Back from server - ', reports);
-        },
-        (error) => {
-          console.log(error);
-        });
-  }
-  ngOnInit() {
-  }
+    alerts: Report [];
+    alertsSubscription: Subscription;
 
-  closeEvent(event: MouseEvent) {
-    alert('They Press On Me');
-  }
+    constructor(private reportsDataService: ReportsDataService) {}
+
+    ngOnInit() {
+        this.alertsSubscription = this.reportsDataService
+            .onEventsChange
+            .subscribe((alerts: Report []) => {
+                this.alerts = alerts;
+            })
+
+        this.reportsDataService.getData();
+    }
+
+    closeEvent(event: MouseEvent) {
+    }
+
+    ngOnDestroy() {
+        if (this.alertsSubscription) {
+            this.alertsSubscription.unsubscribe();
+        }
+    }
+
+    checked(event: MouseEvent, alert: Report) {
+        console.log(alert);
+        alert.selected = !alert.selected;
+        event.stopPropagation();
+    }
 }

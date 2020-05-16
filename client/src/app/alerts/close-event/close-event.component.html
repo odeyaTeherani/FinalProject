@@ -182,7 +182,9 @@
   <P><b>Pictures:</b> </P>
   <br>
   <P><b>Alerts:</b> </P>
-
+  <div *ngFor="let selectedAlert of selectedAlerts">
+    {{selectedAlert.name}}
+  </div>
   <div class="mt-1" fxLayoutAlign="center" >
     <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
   </div>
