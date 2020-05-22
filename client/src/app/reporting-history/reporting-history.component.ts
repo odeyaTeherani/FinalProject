@@ -12,6 +12,7 @@ export interface Report {
   numberOfEvacuated: number;
   note: string;
   images: string [];
+  selected: boolean;
   location?: { longitude:number, latitude:number };
 
 }
@@ -26,6 +27,7 @@ export interface EventType {
   templateUrl: './reporting-history.component.html',
   styleUrls: ['./reporting-history.component.scss']
 })
+
 export class ReportingHistoryComponent implements OnInit {
   reports: Report [];
 

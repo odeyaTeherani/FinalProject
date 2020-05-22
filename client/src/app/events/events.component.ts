@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Event} from '../shared/modles/event';
 import {EventService} from '../shared/services/event.service';
+import {EventHttpService} from '../shared/services/event-http-service';
 
 // Special Date import
 
@@ -13,7 +14,8 @@ export class EventsComponent implements OnInit, OnDestroy {
   events: Event [];
   // subscription: Subscription;
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private eventHttpService: EventHttpService) {
   }
 
   ngOnInit() {

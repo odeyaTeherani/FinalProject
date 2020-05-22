@@ -7,6 +7,7 @@ import {SessionsLayoutComponent} from './shared/components/sessions-layout/sessi
 import {AuthGuard} from './shared/services/auth.guard';
 
 const routes: Routes = [
+
   {
     path: '',
     component: AdminLayoutComponent,
@@ -18,11 +19,11 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
-        canActivateChild: [AuthGuard],
-        path: 'closeEvent',
-        loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
-      },
-      {
+      //   canActivateChild: [AuthGuard],
+      //   path: 'closeEvent',
+      //   loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
+      // },
+      // {
         path: 'mySettings',
         loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
       },
@@ -37,7 +38,7 @@ const routes: Routes = [
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },
       {
-        path: 'alerts-page',
+        path: 'alert-page',
         loadChildren:() => import('./report-page/report-page.module').then(mod => mod.ReportPageModule)
       },
       {

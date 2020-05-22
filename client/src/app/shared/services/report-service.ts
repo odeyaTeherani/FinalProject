@@ -17,11 +17,11 @@ export class ReportService {
     return this.api
       .get<Report []>(this.path);
       // .pipe(map(
-      //   (reports: Report []) => {
-      //     reports.forEach(
+      //   (alert: Report []) => {
+      //     alert.forEach(
       //       (report:any) => report.eventType = report.eventType.map(eventType => eventType.name).join()
       //     );
-      //     return reports;
+      //     return alert;
       //   }));
   }
 
