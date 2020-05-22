@@ -9,7 +9,6 @@ import {AuthService} from './auth.service';
 export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(private authService:AuthService) {}
-
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -21,15 +20,4 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isAdmin();
   }
-
-  // public canActivateAdmin(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   return this.authService.isAuthenticatedAdmin();
-  // }
-
-
-
-
-
 }

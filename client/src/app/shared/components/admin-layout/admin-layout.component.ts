@@ -2,8 +2,8 @@ import {Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material';
 import {UserService} from '../../services/user.service';
-
-
+import {AuthGuard} from '../../services/auth.guard';
+import {AuthService} from '../../services/auth.service';
 
 export interface MenuItem {
   icon: string;
@@ -20,7 +20,9 @@ export class AdminLayoutComponent implements OnDestroy {
   isOpened: boolean;
   mobileQuery: MediaQueryList;
   appName: string;
-  fillerNav: MenuItem [] = [
+  isAdmin: boolean;
+
+  fillerNavForAdmin: MenuItem [] = [
     {
       icon: 'event',
       name: 'Events',
@@ -47,13 +49,25 @@ export class AdminLayoutComponent implements OnDestroy {
       url: 'consult',
     }
   ];
+  fillerNavForUser: MenuItem [] = [
+    {
+      icon: 'create',
+      name: 'Report Page',
+      url: 'alerts-page',
+    },
+    {
+      icon: 'history',
+      name: 'Reporting History',
+      url: 'reportingHistory',
+    }
+  ];
 
   private readonly mobileQueryListener: () => void;
 
-  constructor(media: MediaMatcher,public userService:UserService) {
+  constructor(media: MediaMatcher,public userService:UserService, private authService: AuthService) {
     this.appName = 'system';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-
+    this.isAdmin = authService.isAdmin();
     this.mobileQueryListener = () => {
       this.isOpened = !this.mobileQuery.matches;
     };
