@@ -27,6 +27,7 @@ export interface EventType {
   templateUrl: './reporting-history.component.html',
   styleUrls: ['./reporting-history.component.scss']
 })
+
 export class ReportingHistoryComponent implements OnInit {
   reports: Report [];
 
