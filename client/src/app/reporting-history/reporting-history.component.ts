@@ -58,7 +58,6 @@ export class ReportingHistoryComponent implements OnInit {
 
   edit(report: Report) {
     const editedEntity = {...report};
-    editedEntity.name = faker.name.findName();
     this.reportService.edit(editedEntity)
       .subscribe(
         (res) => {
