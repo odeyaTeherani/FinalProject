@@ -24,15 +24,15 @@
           <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
         </mat-form-field>
 
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
-          <mat-label>Location</mat-label>
-          <input matInput
-                 aria-label="Number"
-                 appGooglePlace
-                 [formControlName]="'locationFiled'" [readonly]="viewMode"
-                 placeholder=""/>
-          <!--                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"-->
-        </mat-form-field>
+<!--        <mat-form-field [appearance]="'outline'" fxFlex="25">-->
+<!--          <mat-label>Location</mat-label>-->
+<!--          <input matInput-->
+<!--                 aria-label="Number"-->
+<!--                 appGooglePlace-->
+<!--                 [formControlName]="'locationFiled'" [readonly]="viewMode"-->
+<!--                 placeholder=""/>-->
+<!--          &lt;!&ndash;                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"&ndash;&gt;-->
+<!--        </mat-form-field>-->
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Severity Level</mat-label>
@@ -95,6 +95,16 @@
       </textarea>
     </mat-form-field>
   </div>
+
+  <agm-map *ngIf="locationCoordinates != null"
+          [latitude]="locationCoordinates.latitude"
+          [longitude]="locationCoordinates.longitude"
+          [zoom]="zoom" >
+    <agm-marker
+            [latitude]="locationCoordinates.latitude"
+            [longitude]="locationCoordinates.longitude">
+    </agm-marker>
+  </agm-map>
 
   <div *ngIf="!viewMode" fxLayout="row" fxLayoutAlign="center" class="mt-1">
     <button [disabled]="!reportForm.valid" (click)="submit()" mat-raised-button color="primary">Submit</button>

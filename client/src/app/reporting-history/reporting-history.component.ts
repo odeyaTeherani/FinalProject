@@ -1,20 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {SeverityLevel} from '../shared/modles/event';
-import {HttpClient} from '@angular/common/http';
 import {ReportService} from '../shared/services/report-service';
-import * as faker from 'faker';
-
 
 export interface Report {
+  user: {  firstName: string, lastName: string };
   id: number;
   date: Date;
   eventType: EventType[] | string;
   carNumber: number;
   severityLevel: SeverityLevel;
-  name: string;
   numberOfEvacuated: number;
   note: string;
   images: string [];
+  location?: { longitude:number, latitude:number };
 
 }
 
@@ -59,7 +57,6 @@ export class ReportingHistoryComponent implements OnInit {
 
   edit(report: Report) {
     const editedEntity = {...report};
-    editedEntity.name = faker.name.findName();
     this.reportService.edit(editedEntity)
       .subscribe(
         (res) => {

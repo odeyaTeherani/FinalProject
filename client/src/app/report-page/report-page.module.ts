@@ -3,9 +3,10 @@ import {CommonModule} from '@angular/common';
 import {ReportPageComponent} from './report-page.component';
 import {ReportPageRoutes} from './report-page-routing';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatDatepickerModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 
 @NgModule({
@@ -16,10 +17,12 @@ import {GooglePlacesModule} from '../shared/directives/google-places/google-plac
     FlexLayoutModule,
     FormsModule,
     MatSelectModule,
-    ReactiveFormsModule, MatButtonModule, MatIconModule, MatDatepickerModule, GooglePlacesModule]
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    AgmCoreModule,
+    GooglePlacesModule]
 })
 
-export class ReportPageModule {
-
-}
+export class ReportPageModule {}
 
