@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Report} from '../../reporting-history/reporting-history.component';
 import {environment} from '../../../environments/environment';
 import {ApiService} from './api.service';
@@ -14,7 +14,6 @@ export class ReportService {
   constructor(private http: HttpClient,private api:ApiService) {}
 
   get(): Observable<Report []> {
-
     return this.api
       .get<Report []>(this.path);
       // .pipe(map(

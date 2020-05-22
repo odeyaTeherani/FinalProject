@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {SeverityLevel} from '../shared/modles/event';
 import {ReportService} from '../shared/services/report-service';
-import * as faker from 'faker';
-
 
 export interface Report {
+  user: {  firstName: string, lastName: string };
   id: number;
   date: Date;
   eventType: EventType[] | string;
   carNumber: number;
   severityLevel: SeverityLevel;
-  name: string;
   numberOfEvacuated: number;
   note: string;
   images: string [];
   selected: boolean;
+  location?: { longitude:number, latitude:number };
+
 }
 
 export interface EventType {

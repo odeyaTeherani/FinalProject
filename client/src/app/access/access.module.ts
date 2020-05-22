@@ -13,6 +13,7 @@ import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
 import { ForgetPasswordValidationComponent } from './forget-password/forget-password-validation/forget-password-validation.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule(
@@ -25,6 +26,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
           MatButtonModule,
           FlexModule,
           MatCardModule,
+          MatSnackBarModule,
           MatCheckboxModule, FormsModule, ReactiveFormsModule],
     declarations:[LogInComponent,
       ForgetPasswordComponent,

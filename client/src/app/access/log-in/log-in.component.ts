@@ -19,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LogInComponent implements OnInit {
   hide = true;
-  constructor(private userService:UserService) { }
+  constructor(public userService:UserService) { }
   userLogin:User = {username:'',password:''};
 
   userNameFormControl = new FormControl('', [

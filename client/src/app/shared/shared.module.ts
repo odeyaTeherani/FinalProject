@@ -17,6 +17,7 @@ import {
 import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
 import { EventTypeComponent } from './components/event-type/event-type.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule(
   {
@@ -42,6 +43,7 @@ import {ReactiveFormsModule} from '@angular/forms';
       MatButtonModule,
       MatSelectModule,
       MatMenuModule,
+      MatSnackBarModule,
       ReactiveFormsModule,
       MatAutocompleteModule
     ],
