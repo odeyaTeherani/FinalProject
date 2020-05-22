@@ -9,7 +9,10 @@ export class AuthService {
 
     public isAuthenticated(): boolean {
         const token = this.getToken();
-
         return token != null;
+    }
+
+    public isAuthenticatedAdmin(): boolean {
+        return localStorage.getItem('role') === 'admin';
     }
 }

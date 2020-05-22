@@ -7,13 +7,13 @@ import {SessionsLayoutComponent} from './shared/components/sessions-layout/sessi
 import {AuthGuard} from './shared/services/auth.guard';
 
 const routes: Routes = [
-
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
+
     children: [
       {
+        canActivate: [AuthGuard],
         path: 'events',
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
