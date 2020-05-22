@@ -66,7 +66,7 @@ export class ReportPageComponent implements OnInit {
         this.locationCoordinates = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude
-        }
+        };
       });
     } else {
       this.locationCoordinates = null;
@@ -75,8 +75,8 @@ export class ReportPageComponent implements OnInit {
 
   submit() {
     const newReport = this.reportForm.value;
-    newReport["images"] = this.images;
-    newReport["location"] = this.locationCoordinates;
+    newReport['images'] = this.images;
+    newReport['location'] = this.locationCoordinates;
     this.reportService.add(newReport)
       .subscribe(
         (result) => {

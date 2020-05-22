@@ -26,16 +26,12 @@ export class AlertsComponent implements OnInit {
       .subscribe(
         (reports) => {
           this.reports = reports;
-          console.log('Back from server - ', reports);
+          // console.log('Back from server - ', reports);
         },
         (error) => {
           console.log(error);
         });
   }
   ngOnInit() {
-  }
-
-  closeEvent(event: MouseEvent) {
-    alert('They Press On Me');
   }
 }

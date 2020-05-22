@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../access/log-in/user';
-import {ApiService} from "./api.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {ApiService} from './api.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class UserService {
   login(userCredentials: User) {
     this.apiService.post<any>('/account/login',userCredentials)
         .subscribe(
-            (result:any)=>{
+            (result:any)=> {
               if (result != null) {
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('role', result.roles[0]);
@@ -30,7 +30,7 @@ export class UserService {
               }
             },(error) => {
                 console.log(error);
-                this.snackBar.open(error.error.title,"FAIL",{duration:4000})
+                this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});
             });
   }
 
