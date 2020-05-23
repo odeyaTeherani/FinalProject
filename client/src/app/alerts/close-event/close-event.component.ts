@@ -14,6 +14,7 @@ import {Subscription} from 'rxjs';
 export class CloseEventComponent implements OnInit, OnDestroy {
   images = [];
   eventForm: FormGroup;
+  viewMode: boolean;
   // edit mode section
   alert: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
@@ -27,7 +28,26 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private eventService: EventService,
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService) {
-    this.initForm();
+    // this.initForm();
+    activeRoute.params.subscribe((params) => {
+      // display event
+      if (params.id != null) {
+        this.viewMode = true;
+        const eventId = params.id;
+
+        this.eventService.getById(eventId)
+          .subscribe(event => {
+            // this.event = event;
+            this.images = event.images;
+            this.initForm();
+          });
+
+        // new event
+      } else {
+        this.initForm();
+      }
+
+    });
   }
 
   ngOnInit() {

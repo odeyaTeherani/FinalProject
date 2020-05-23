@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Report} from '../../reporting-history/reporting-history.component';
-import {Subscribable, Subscription} from "rxjs";
-import {ReportsDataService} from "../reports-data.service";
+import { Subscription} from 'rxjs';
+import {ReportsDataService} from '../reports-data.service';
 
 
 @Component({

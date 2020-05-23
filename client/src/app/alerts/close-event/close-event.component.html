@@ -72,10 +72,8 @@
       <input matInput
              aria-label="Number"
              appGooglePlace
-
-             (locationSelected)="eventForm.controls['location'].setValue($event)"
-             <!--(locationSelected)="eventForm.controls['locationFiled'].setValue($event)"-->
-             placeholder="location"/>
+             placeholder="Location"
+             (locationSelected)="eventForm.controls['locationFiled'].setValue($event)"/>
     </mat-form-field>
   </div>
 
@@ -197,7 +195,8 @@
 
   <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center" >
   <div *ngFor="let selectedAlert of selectedAlerts">
-    {{selectedAlert.name}}
+    {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
+  </div>
   </div>
   <div class="mt-1" fxLayoutAlign="center" >
     <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>

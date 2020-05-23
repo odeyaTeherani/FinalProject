@@ -35,12 +35,12 @@
           {{alert.date | date }}
         </p>
 
-        <p class="text-center" [fxFlex]="20">
+        <p class="text-center" [fxFlex]="25">
           {{alert.eventType}}
         </p>
 
         <p class="text-center" [fxFlex]="20">
-          {{alert.name}}
+          {{alert.user.firstName + alert.user.lastName}}
         </p>
 
         <span fxFlex></span>
