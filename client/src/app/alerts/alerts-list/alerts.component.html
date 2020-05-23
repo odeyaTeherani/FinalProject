@@ -1,0 +1,55 @@
+<mat-card>
+
+  <button mat-raised-button
+          color="primary"
+          (click)="closeEvent($event)"
+          [routerLinkActive]="'active'"
+          [routerLink]="['close']">
+    close event
+  </button>
+
+  <div fxLayout="row" class="report-list-details">
+    <span [fxFlex]="10"></span>
+    <p class="p-1 text-center" [fxFlex]="20">Date</p>
+    <p class="text-center" [fxFlex]="20">Event Type</p>
+    <p class="text-center" [fxFlex]="20">Reporter's name</p>
+  </div>
+
+
+  <mat-list>
+    <mat-list-item class="report-list-item" *ngFor="let alert of alerts">
+
+      <div fxLayout="row" class="full-width" (click)="check.toggle()" >
+
+
+        <div [fxFlex]="10" class="mt-1">
+          <mat-checkbox class="text-center"  #check
+                        [(ngModel)]="alert.selected"
+                        (click)="$event.stopPropagation()"
+                        [color]="'primary'">
+          </mat-checkbox>
+        </div>
+
+
+        <p class="text-center" [fxFlex]="20">
+          {{alert.date | date }}
+        </p>
+
+        <p class="text-center" [fxFlex]="25">
+          {{alert.eventType}}
+        </p>
+
+        <p class="text-center" [fxFlex]="20">
+          {{alert.user.firstName + alert.user.lastName}}
+        </p>
+
+        <span fxFlex></span>
+
+        <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
