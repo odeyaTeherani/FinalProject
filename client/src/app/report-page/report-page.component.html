@@ -6,7 +6,6 @@
 
       <div fxLayout="column">
         <!--'legacy' | 'standard' | 'fill' | 'outline'-->
-
         <mat-form-field fxFlex="20" [appearance]="'outline'">
           <mat-label>Event Type</mat-label>
           <mat-select [formControlName]="'eventType'">
@@ -34,6 +33,7 @@
 <!--          &lt;!&ndash;                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"&ndash;&gt;-->
 <!--        </mat-form-field>-->
 
+
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Severity Level</mat-label>
           <mat-select [formControlName]="'severityLevel'">
@@ -46,9 +46,10 @@
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Number of Evacuated injured</mat-label>
-          <input [formControlName]="'numberOfEvacuatedInjured'" [readonly]="viewMode" matInput type="number" min="0"/>
+          <input [formControlName]="'numberOfEvacuatedInjured'"
+                 [readonly]="viewMode"
+                 matInput type="number" min="0"/>
         </mat-form-field>
-
 
       </div>
 

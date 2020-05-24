@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../shared/services/event.service';
 import {ReportsDataService} from '../reports-data.service';
@@ -28,7 +28,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private eventService: EventService,
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService) {
-    // this.initForm();
+    this.initForm();
     activeRoute.params.subscribe((params) => {
       // display event
       if (params.id != null) {
@@ -65,26 +65,43 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     // const data: any = this.alert == null ? {} : this.alert;
 
     this.eventForm = this.fb.group({
-      eventType: new FormControl([null, Validators.required]),
-      locationFiled: new FormControl([null, Validators.required]),
-      severityLevel: new FormControl([null, Validators.required]),
-      numOfInjured: new FormControl([null, Validators.required]),
-      numOfDead: new FormControl([null, Validators.required]),
-      numOfPolice: new FormControl([null, Validators.required]),
-      numOfAmbulances: new FormControl([null, Validators.required]),
-      numOfFirefighters: new FormControl([null, Validators.required]),
-      numOfEnvironment: new FormControl([null, Validators.required]),
-      numOfZakaCars: new FormControl([null, Validators.required]),
-      endDate: new FormControl([null, Validators.required]),
-      startDate: new FormControl([null, Validators.required]),
-      nameInCharge: new FormControl([null, Validators.required]),
-      note: new FormControl([null]),
+      // eventType: new FormControl([null, Validators.required]),
+      // locationFiled: new FormControl([null, Validators.required]),
+      // severityLevel: new FormControl([null, Validators.required]),
+      // numOfInjured: new FormControl([null, Validators.required]),
+      // numOfDead: new FormControl([null, Validators.required]),
+      // numOfPolice: new FormControl([null, Validators.required]),
+      // numOfAmbulances: new FormControl([null, Validators.required]),
+      // numOfFirefighters: new FormControl([null, Validators.required]),
+      // numOfEnvironment: new FormControl([null, Validators.required]),
+      // numOfZakaCars: new FormControl([null, Validators.required]),
+      // endDate: new FormControl([null, Validators.required]),
+      // startDate: new FormControl([null, Validators.required]),
+      // nameInCharge: new FormControl([null, Validators.required]),
+      // note: new FormControl([null]),
+
+
+      // eventType: [null, Validators.required],
+      locationFiled:[null, Validators.required],
+      // severityLevel:[null, Validators.required],
+      numOfInjured: [null, Validators.required],
+      numOfDead: [null, Validators.required],
+      numOfPolice:[null, Validators.required],
+      numOfAmbulances:[null, Validators.required],
+      numOfFirefighters:[null, Validators.required],
+      numOfEnvironment: [null, Validators.required],
+      numOfZakaCars: [null, Validators.required],
+      endDate:[null, Validators.required],
+      startDate: [null, Validators.required],
+      nameInCharge: [null, Validators.required],
+      note: [null],
     });
   }
 
   submit() {
     const newEvent = this.eventForm.value;
     newEvent['images'] = this.images;
+    console.log(newEvent);
     this.eventService.add(newEvent)
       .subscribe(
         (result) => {
@@ -101,5 +118,26 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     if (this.alertsSubscription) {
       this.alertsSubscription.unsubscribe();
     }
+  }
+
+  edit() {
+    this.viewMode = false;
+    const updateEvent = this.eventForm.value;
+    updateEvent['images'] = this.images;
+    console.log(updateEvent);
+    this.eventService.put(updateEvent)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          this.router.navigate(['/events']);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  exportToPDF() {
+
   }
 }

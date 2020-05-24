@@ -1,3 +1,5 @@
+<form *ngIf="eventForm" [formGroup]="eventForm">
+
 <mat-card>
 
 <!--  <div fxLayout="row" class="fxflexExample" fxLayoutGap="10px">-->
@@ -12,19 +14,22 @@
 <!--    <div fxFlex="50" class="c"></div>-->
 <!--  </div>-->
 
-  <div fxLayout="row">
+  <div *ngIf = "viewMode" fxLayout="row">
 <!--      <span fxFlex></span>-->
     <button mat-raised-button
             fxFlex="20"
             style="margin-right: 70%"
-            [color]="'primary'">
+            [color]="'primary'"
+            (click)="edit()"
+    >
       Edit
       <mat-icon>edit</mat-icon>
     </button>
 
       <button mat-raised-button
               fxFlex="20"
-              [color]="'primary'">
+              [color]="'primary'"
+              (click)="exportToPDF()">
         Export to PDF
         <mat-icon>insert_drive_file</mat-icon>
       </button>
@@ -32,22 +37,22 @@
   </div>
 
   <div>
-<!--    <P>Name in charge: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" >
       <input matInput
              type="text"
              placeholder="Name in charge"
-             (input)="eventForm.controls['nameInCharge'].setValue($event)"
+             [formControlName]="'nameInCharge'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-  <!--<P>Start date: </P>-->
   <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
     <input matInput
            placeholder="Start date"
-           (dateInput)="eventForm.controls['startDate'].setValue($event)"
+           [formControlName]="'startDate'"
+           [readonly]="viewMode"
            [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -55,11 +60,11 @@
 </div>
 
   <div>
-    <!--<P>End date: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="End date"
-             (dateInput)="eventForm.controls['endDate'].setValue($event)"
+             [formControlName]="'endDate'"
+             [readonly]="viewMode"
              [matDatepicker]="pickerTo">
       <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
       <mat-datepicker #pickerTo></mat-datepicker>
@@ -67,113 +72,114 @@
   </div>
 
   <div>
-    <!--<P>Location: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              aria-label="Number"
              appGooglePlace
              placeholder="Location"
-             (locationSelected)="eventForm.controls['locationFiled'].setValue($event)"/>
+             [formControlName]="'locationFiled'"
+             [readonly]="viewMode"/>
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of injured: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of injured"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfInjured'].setValue($event)"
+             [formControlName]="'numOfInjured'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of dead: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of dead"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfDead'].setValue($event)"
+             [formControlName]="'numOfDead'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
-  <div>
-    <!--<P>Severity Level:</P>-->
-    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
-                        (changed)="eventForm.controls['severityLevel'].setValue($event)">
-    </app-severity-level>
-  </div>
+<!--  <div>-->
+<!--    &lt;!&ndash;<P>Severity Level:</P>&ndash;&gt;-->
+<!--    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"-->
+<!--                        [formControlName]="'severityLevel'">-->
+<!--                        (changed)="eventForm.controls['severityLevel'].setValue($event)">-->
+<!--    </app-severity-level>-->
+<!--  </div>-->
 
-  <div>
-    <!--<P>Event Type: </P>-->
-    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
-                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">
-    </app-event-type>
-  </div>
+<!--  <div>-->
+<!--    &lt;!&ndash;<P>Event Type: </P>&ndash;&gt;-->
+<!--    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"-->
+<!--                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">-->
+<!--    </app-event-type>-->
+<!--  </div>-->
 
   <br>
   <P><b>The number of troops sent to the area:</b> </P>
 
   <div>
-    <!--<P>Number of Ambulances: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of Ambulances"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfAmbulances'].setValue($event)"
+             [formControlName]="'numOfAmbulances'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of Police cars: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of Police cars"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfPolice'].setValue($event)"
+             [formControlName]="'numOfPolice'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of Firefighters cars: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of Firefighters cars"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfFirefighters'].setValue($event)"
+             [formControlName]="'numOfFirefighters'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of Environment cars: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input  matInput
               placeholder="Number of Environment cars"
               type="number"
               min="0"
-              (input)="eventForm.controls['numOfEnvironment'].setValue($event)"
+              [formControlName]="'numOfEnvironment'"
+              [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
 
   <div>
-    <!--<P>Number of Zaka cars: </P>-->
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
              placeholder="Number of Zaka cars"
              type="number"
              min="0"
-             (input)="eventForm.controls['numOfZakaCars'].setValue($event)"
+             [formControlName]="'numOfZakaCars'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -183,7 +189,8 @@
   <div>
     <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
       <textarea matInput
-             (input)="eventForm.controls['note'].setValue($event)"
+                [formControlName]="'note'"
+                [readonly]="viewMode"
       ></textarea>
     </mat-form-field>
   </div>
@@ -193,13 +200,13 @@
   <br>
   <P><b>Alerts:</b> </P>
 
+    <div *ngFor="let selectedAlert of selectedAlerts">
+      {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
+    </div>
+
   <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center" >
-  <div *ngFor="let selectedAlert of selectedAlerts">
-    {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
-  </div>
-  </div>
-  <div class="mt-1" fxLayoutAlign="center" >
     <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
   </div>
 
 </mat-card>
+</form>

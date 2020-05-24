@@ -14,10 +14,6 @@ export class ApiService {
     return this.http.get<T>(environment.url + path,{headers});
   }
 
-  getById<T>(path:string, id:number):Observable<T> {
-    return this.http.get<T>(environment.url + path + id);
-  }
-
   post<T>(path:string, body:any):Observable<T> {
     return this.http.post<T>(environment.url + path,body);
   }
