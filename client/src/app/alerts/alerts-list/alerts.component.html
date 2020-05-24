@@ -11,8 +11,8 @@
   <div fxLayout="row" class="report-list-details">
     <span [fxFlex]="10"></span>
     <p class="p-1 text-center" [fxFlex]="20">Date</p>
-    <p class="text-center" [fxFlex]="20">Event Type</p>
-    <p class="text-center" [fxFlex]="20">Reporter's name</p>
+    <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Event Type</p>
+    <p class="p-1 text-center" [fxFlex]="25">Reporter's name</p>
   </div>
 
 
@@ -31,15 +31,15 @@
         </div>
 
 
-        <p class="text-center" [fxFlex]="20">
-          {{alert.date | date }}
+        <p class="p-1 text-center" [fxFlex]="20">
+          {{alert.date | date:'dd/MM HH:mm' }}
         </p>
 
-        <p class="text-center" [fxFlex]="25">
+        <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
           {{alert.eventType}}
         </p>
 
-        <p class="text-center" [fxFlex]="20">
+        <p class="p-1 text-center" [fxFlex]="25">
           {{alert.user.firstName + " " + alert.user.lastName}}
         </p>
 

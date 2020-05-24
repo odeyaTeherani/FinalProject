@@ -2,7 +2,6 @@ import {Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material';
 import {UserService} from '../../services/user.service';
-import {AuthGuard} from '../../services/auth.guard';
 import {AuthService} from '../../services/auth.service';
 
 export interface MenuItem {
