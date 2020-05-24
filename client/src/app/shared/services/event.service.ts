@@ -20,8 +20,8 @@ export class EventService {
   }
 
   add(newEvent: any) {
-    return this.http
-      .post(environment.url +  this.path, newEvent);
+    return this.api
+      .post(this.path, newEvent);
   }
 
   getById(eventId: number) {

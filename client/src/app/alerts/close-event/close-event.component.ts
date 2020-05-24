@@ -29,25 +29,25 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService) {
     // this.initForm();
-    activeRoute.params.subscribe((params) => {
+    // activeRoute.params.subscribe((params) => {
       // display event
-      if (params.id != null) {
-        this.viewMode = true;
-        const eventId = params.id;
-
-        this.eventService.getById(eventId)
-          .subscribe(event => {
-            // this.event = event;
-            this.images = event.images;
+      // if (params.id != null) {
+      //   this.viewMode = true;
+      //   const eventId = params.id;
+      //
+      //   this.eventService.getById(eventId)
+      //     .subscribe(event => {
+      //       // this.event = event;
+      //       this.images = event.images;
             this.initForm();
-          });
-
-        // new event
-      } else {
-        this.initForm();
-      }
-
-    });
+    //       });
+    //
+    //     // new event
+    //   } else {
+    //     this.initForm();
+    //   }
+    //
+    // });
   }
 
   ngOnInit() {
@@ -65,26 +65,43 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     // const data: any = this.alert == null ? {} : this.alert;
 
     this.eventForm = this.fb.group({
-      eventType: new FormControl([null, Validators.required]),
-      locationFiled: new FormControl([null, Validators.required]),
-      severityLevel: new FormControl([null, Validators.required]),
-      numOfInjured: new FormControl([null, Validators.required]),
-      numOfDead: new FormControl([null, Validators.required]),
-      numOfPolice: new FormControl([null, Validators.required]),
-      numOfAmbulances: new FormControl([null, Validators.required]),
-      numOfFirefighters: new FormControl([null, Validators.required]),
-      numOfEnvironment: new FormControl([null, Validators.required]),
-      numOfZakaCars: new FormControl([null, Validators.required]),
-      endDate: new FormControl([null, Validators.required]),
-      startDate: new FormControl([null, Validators.required]),
-      nameInCharge: new FormControl([null, Validators.required]),
-      note: new FormControl([null]),
+      // eventType: new FormControl([null, Validators.required]),
+      // locationFiled: new FormControl([null, Validators.required]),
+      // severityLevel: new FormControl([null, Validators.required]),
+      // numOfInjured: new FormControl([null, Validators.required]),
+      // numOfDead: new FormControl([null, Validators.required]),
+      // numOfPolice: new FormControl([null, Validators.required]),
+      // numOfAmbulances: new FormControl([null, Validators.required]),
+      // numOfFirefighters: new FormControl([null, Validators.required]),
+      // numOfEnvironment: new FormControl([null, Validators.required]),
+      // numOfZakaCars: new FormControl([null, Validators.required]),
+      // endDate: new FormControl([null, Validators.required]),
+      // startDate: new FormControl([null, Validators.required]),
+      // nameInCharge: new FormControl([null, Validators.required]),
+      // note: new FormControl([null]),
+
+
+      // eventType: [null, Validators.required],
+      locationFiled:[null, Validators.required],
+      // severityLevel:[null, Validators.required],
+      numOfInjured: [null, Validators.required],
+      numOfDead: [null, Validators.required],
+      numOfPolice:[null, Validators.required],
+      numOfAmbulances:[null, Validators.required],
+      numOfFirefighters:[null, Validators.required],
+      numOfEnvironment: [null, Validators.required],
+      numOfZakaCars: [null, Validators.required],
+      endDate:[null, Validators.required],
+      startDate: [null, Validators.required],
+      nameInCharge: [null, Validators.required],
+      note: [null],
     });
   }
 
   submit() {
     const newEvent = this.eventForm.value;
     newEvent['images'] = this.images;
+    console.log(newEvent);
     this.eventService.add(newEvent)
       .subscribe(
         (result) => {

@@ -16,24 +16,23 @@ export class ReportService {
   get(): Observable<Report []> {
     return this.api
       .get<Report []>(this.path);
-      // .pipe(map(
-      //   (alert: Report []) => {
-      //     alert.forEach(
-      //       (report:any) => report.eventType = report.eventType.map(eventType => eventType.name).join()
-      //     );
-      //     return alert;
-      //   }));
+  }
+
+  getById(alertId: number) {
+    return this.api
+      .get<Report >(this.path + '/' + alertId);
+
+    // return this.http
+    //   .get<Report>(environment.url + this.path + '/' + alertId);
   }
 
   add(newReport: any) {
-    return this.http
-      .post(environment.url +  this.path, newReport);
+    return this.api
+      .post<Report []>(this.path, newReport);
+    // return this.http
+    //   .post(environment.url +  this.path, newReport);
   }
 
-  getById(alertId: any) {
-    return this.http
-      .get<Report>(environment.url + this.path + '/' + alertId);
-  }
 
   delete(alertId: number) {
     return this.http
