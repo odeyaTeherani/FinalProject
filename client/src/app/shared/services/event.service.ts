@@ -34,7 +34,7 @@ export class EventService {
       .delete(this.path + '/' + eventId);
   }
 
-  edit(editedEntity: any) {
+  put(editedEntity: any) {
     return this.http
       .put(this.path + '/' + editedEntity.id, editedEntity);
   }

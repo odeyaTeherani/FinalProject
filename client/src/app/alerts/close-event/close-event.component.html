@@ -14,19 +14,22 @@
 <!--    <div fxFlex="50" class="c"></div>-->
 <!--  </div>-->
 
-  <div fxLayout="row">
+  <div *ngIf = "viewMode" fxLayout="row">
 <!--      <span fxFlex></span>-->
     <button mat-raised-button
             fxFlex="20"
             style="margin-right: 70%"
-            [color]="'primary'">
+            [color]="'primary'"
+            (click)="edit()"
+    >
       Edit
       <mat-icon>edit</mat-icon>
     </button>
 
       <button mat-raised-button
               fxFlex="20"
-              [color]="'primary'">
+              [color]="'primary'"
+              (click)="exportToPDF()">
         Export to PDF
         <mat-icon>insert_drive_file</mat-icon>
       </button>
@@ -39,6 +42,7 @@
              type="text"
              placeholder="Name in charge"
              [formControlName]="'nameInCharge'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -48,6 +52,7 @@
     <input matInput
            placeholder="Start date"
            [formControlName]="'startDate'"
+           [readonly]="viewMode"
            [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -59,6 +64,7 @@
       <input matInput
              placeholder="End date"
              [formControlName]="'endDate'"
+             [readonly]="viewMode"
              [matDatepicker]="pickerTo">
       <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
       <mat-datepicker #pickerTo></mat-datepicker>
@@ -71,7 +77,8 @@
              aria-label="Number"
              appGooglePlace
              placeholder="Location"
-             [formControlName]="'locationFiled'"/>
+             [formControlName]="'locationFiled'"
+             [readonly]="viewMode"/>
     </mat-form-field>
   </div>
 
@@ -82,6 +89,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfInjured'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -93,6 +101,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfDead'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -122,6 +131,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfAmbulances'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -133,6 +143,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfPolice'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -144,6 +155,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfFirefighters'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -155,6 +167,7 @@
               type="number"
               min="0"
               [formControlName]="'numOfEnvironment'"
+              [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -166,6 +179,7 @@
              type="number"
              min="0"
              [formControlName]="'numOfZakaCars'"
+             [readonly]="viewMode"
       />
     </mat-form-field>
   </div>
@@ -176,6 +190,7 @@
     <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
       <textarea matInput
                 [formControlName]="'note'"
+                [readonly]="viewMode"
       ></textarea>
     </mat-form-field>
   </div>
@@ -185,12 +200,11 @@
   <br>
   <P><b>Alerts:</b> </P>
 
+    <div *ngFor="let selectedAlert of selectedAlerts">
+      {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
+    </div>
+
   <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center" >
-  <div *ngFor="let selectedAlert of selectedAlerts">
-    {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
-  </div>
-  </div>
-  <div class="mt-1" fxLayoutAlign="center" >
     <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
   </div>
 

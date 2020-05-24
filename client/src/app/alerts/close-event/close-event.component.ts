@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../shared/services/event.service';
 import {ReportsDataService} from '../reports-data.service';
@@ -28,26 +28,26 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private eventService: EventService,
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService) {
-    // this.initForm();
-    // activeRoute.params.subscribe((params) => {
+    this.initForm();
+    activeRoute.params.subscribe((params) => {
       // display event
-      // if (params.id != null) {
-      //   this.viewMode = true;
-      //   const eventId = params.id;
-      //
-      //   this.eventService.getById(eventId)
-      //     .subscribe(event => {
-      //       // this.event = event;
-      //       this.images = event.images;
+      if (params.id != null) {
+        this.viewMode = true;
+        const eventId = params.id;
+
+        this.eventService.getById(eventId)
+          .subscribe(event => {
+            // this.event = event;
+            this.images = event.images;
             this.initForm();
-    //       });
-    //
-    //     // new event
-    //   } else {
-    //     this.initForm();
-    //   }
-    //
-    // });
+          });
+
+        // new event
+      } else {
+        this.initForm();
+      }
+
+    });
   }
 
   ngOnInit() {
@@ -118,5 +118,26 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     if (this.alertsSubscription) {
       this.alertsSubscription.unsubscribe();
     }
+  }
+
+  edit() {
+    this.viewMode = false;
+    const updateEvent = this.eventForm.value;
+    updateEvent['images'] = this.images;
+    console.log(updateEvent);
+    this.eventService.put(updateEvent)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          this.router.navigate(['/events']);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  exportToPDF() {
+
   }
 }
