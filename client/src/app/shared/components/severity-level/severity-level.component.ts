@@ -10,7 +10,7 @@ import {SeverityLevel} from '../../modles/event';
 export class SeverityLevelComponent implements OnInit {
   slRef = SeverityLevel;
   severityOption: string[] = Utils.getEnumValues(this.slRef);
-  @Output() changed = new EventEmitter<string[]>();
+  @Output() changed = new EventEmitter<string>();
   @Input() size = 20;
   @Input() labelText = 'Severity Level';
 

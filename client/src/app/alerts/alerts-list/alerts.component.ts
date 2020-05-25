@@ -24,7 +24,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
         this.alerts = alerts;
       });
 
-    this.reportsDataService.getData();
+    this.reportsDataService.getReportsFromServer();
   }
 
   closeEvent(event: MouseEvent) {
