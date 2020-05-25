@@ -57,7 +57,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
       this.selectedAlerts = alerts.filter(alert => alert.selected);
     });
 
-    this.reportsDataService.getCurrentData();
+    this.reportsDataService.emitReportsState();
   }
 
   private initForm() {
@@ -65,25 +65,9 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     // const data: any = this.alert == null ? {} : this.alert;
 
     this.eventForm = this.fb.group({
-      // eventType: new FormControl([null, Validators.required]),
-      // locationFiled: new FormControl([null, Validators.required]),
-      // severityLevel: new FormControl([null, Validators.required]),
-      // numOfInjured: new FormControl([null, Validators.required]),
-      // numOfDead: new FormControl([null, Validators.required]),
-      // numOfPolice: new FormControl([null, Validators.required]),
-      // numOfAmbulances: new FormControl([null, Validators.required]),
-      // numOfFirefighters: new FormControl([null, Validators.required]),
-      // numOfEnvironment: new FormControl([null, Validators.required]),
-      // numOfZakaCars: new FormControl([null, Validators.required]),
-      // endDate: new FormControl([null, Validators.required]),
-      // startDate: new FormControl([null, Validators.required]),
-      // nameInCharge: new FormControl([null, Validators.required]),
-      // note: new FormControl([null]),
-
-
-      // eventType: [null, Validators.required],
+      eventType: [null, Validators.required],
       locationFiled:[null, Validators.required],
-      // severityLevel:[null, Validators.required],
+      severityLevel:[null, Validators.required],
       numOfInjured: [null, Validators.required],
       numOfDead: [null, Validators.required],
       numOfPolice:[null, Validators.required],
@@ -100,7 +84,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
 
   submit() {
     const newEvent = this.eventForm.value;
-    newEvent['images'] = this.images;
+    newEvent['reports'] = this.selectedAlerts;
     console.log(newEvent);
     this.eventService.add(newEvent)
       .subscribe(

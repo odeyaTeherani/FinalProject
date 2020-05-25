@@ -71,16 +71,14 @@
     </mat-form-field>
   </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             aria-label="Number"
-             appGooglePlace
-             placeholder="Location"
-             [formControlName]="'locationFiled'"
-             [readonly]="viewMode"/>
-    </mat-form-field>
-  </div>
+<!--    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">-->
+<!--      <input matInput-->
+<!--             aria-label="Number"-->
+<!--             appGooglePlace-->
+<!--             placeholder="Location"-->
+<!--             (locationSelected)="$event.formatted_address"-->
+<!--             [readonly]="viewMode"/>-->
+<!--    </mat-form-field>-->
 
   <div>
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
@@ -106,20 +104,19 @@
     </mat-form-field>
   </div>
 
-<!--  <div>-->
-<!--    &lt;!&ndash;<P>Severity Level:</P>&ndash;&gt;-->
-<!--    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"-->
-<!--                        [formControlName]="'severityLevel'">-->
-<!--                        (changed)="eventForm.controls['severityLevel'].setValue($event)">-->
-<!--    </app-severity-level>-->
-<!--  </div>-->
+  <div>
+    <!--<P>Severity Level:</P>-->
+    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
+                        (changed)="eventForm.controls['severityLevel'].setValue($event)">
+    </app-severity-level>
+  </div>
 
-<!--  <div>-->
-<!--    &lt;!&ndash;<P>Event Type: </P>&ndash;&gt;-->
-<!--    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"-->
-<!--                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">-->
-<!--    </app-event-type>-->
-<!--  </div>-->
+  <div>
+    <!--<P>Event Type: </P>-->
+    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
+                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">
+    </app-event-type>
+  </div>
 
   <br>
   <P><b>The number of troops sent to the area:</b> </P>

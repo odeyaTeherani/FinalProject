@@ -1,6 +1,6 @@
 <mat-form-field class="full-width">
   <mat-label>{{labelText}}</mat-label>
-  <mat-select (selectionChange)="changed.emit($event.value)" multiple>
+  <mat-select (selectionChange)="changed.emit($event.value)">
     <mat-option *ngFor="let level of severityOption"
                 [value]="level">
       {{level}}

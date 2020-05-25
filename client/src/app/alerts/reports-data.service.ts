@@ -11,20 +11,20 @@ export class ReportsDataService {
 
   constructor(private reportService: ReportService) {
     console.log('load report data service');
-    this.getData();
+    this.getReportsFromServer();
   }
 
 
-  public getData() {
+  public getReportsFromServer() {
     this.reportService.get()
       .subscribe((reports: Report []) => {
         this.reports = reports;
         console.log(this.reports);
-        this.getCurrentData();
+        this.emitReportsState();
       });
   }
 
-  public getCurrentData() {
+  public emitReportsState() {
     this.onEventsChange.emit(this.reports);
   }
 }
