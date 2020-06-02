@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {AdminLayoutComponent} from './components/admin-layout/admin-layout.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {
@@ -48,6 +48,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
           MatAutocompleteModule,
           FormsModule
       ],
+    providers: [
+      DatePipe
+    ],
   }
 )
 export class SharedModule {

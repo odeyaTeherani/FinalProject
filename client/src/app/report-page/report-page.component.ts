@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {SeverityLevel} from '../shared/modles/event';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
+import {Report} from '../shared/modles/report';
+import {SeverityLevel} from '../shared/modles/severity-level.enum';
+import {EventType} from '../shared/modles/event-type';
 
 @Component({
   selector: 'app-report-page',
@@ -18,7 +19,7 @@ export class ReportPageComponent implements OnInit {
   slRef = SeverityLevel;
   viewMode: boolean;
   reportForm: FormGroup;
-  eventType: {id:number, name:string};
+  eventType: EventType;
   alert: Report;
   severityLevel: any;
 

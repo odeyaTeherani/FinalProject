@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Utils} from '../../Utils';
-import {SeverityLevel} from '../../modles/event';
+import {SeverityLevel} from '../../modles/severity-level.enum';
 
 @Component({
   selector: 'app-severity-level',

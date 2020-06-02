@@ -1,10 +1,8 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {Event} from '../modles/event';
 import { Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ApiService} from './api.service';
-import {Report} from '../../reporting-history/reporting-history.component';
-import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn:'root'

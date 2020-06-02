@@ -3,17 +3,16 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../shared/services/event.service';
 import {ReportsDataService} from '../reports-data.service';
-import {Report} from '../../reporting-history/reporting-history.component';
 import {Subscription} from 'rxjs';
-import {SeverityLevel} from '../../shared/modles/event';
 import {Event} from '../../shared/modles/event';
-import {DatePipe} from '@angular/common';
+import {SeverityLevel} from '../../shared/modles/severity-level.enum';
+import {Report} from '../../shared/modles/report';
+import {DatePipeService} from '../../shared/services/date-pipe.service';
 
 @Component({
   selector: 'app-close-event',
   templateUrl: './close-event.component.html',
-  styleUrls: ['./close-event.component.scss'],
-  providers: [DatePipe]
+  styleUrls: ['./close-event.component.scss']
 })
 export class CloseEventComponent implements OnInit, OnDestroy {
   images = [];
@@ -21,8 +20,6 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   viewMode: boolean;
   slRef = SeverityLevel;
   eventId: number;
-
-  // edit mode section
   event: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
   alertsSubscription: Subscription;
@@ -38,7 +35,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private eventService: EventService,
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipeService) {
     activeRoute.params.subscribe((params) => {
       // display event
       if (params.id != null) {
@@ -95,8 +92,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     event['reports'] = this.selectedAlerts;
     event['eventType'] = this.eventType;
     event['severityLevel'] = this.severityLevel;
-    event['startDate'] = this.datePipe.transform(event['startDate'],'yyyy-MM-dd');
-    event['endDate'] = this.datePipe.transform(event['endDate'],'yyyy-MM-dd');
+    event['startDate'] =  this.datePipe.getTransform('startDate', event);
+    event['endDate'] = this.datePipe.getTransform('endDate', event);
     event['location'] = this.location;
     console.log(event);
     if (this.eventId == null) {
