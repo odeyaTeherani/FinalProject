@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   put<T>(path:string, body:any):Observable<T> {
-    return this.http.put<T>(environment.url + path,body);
+    return this.http.put<T>(environment.url + path, body);
   }
 
   delete<T>(path:string, id:number):Observable<T> {

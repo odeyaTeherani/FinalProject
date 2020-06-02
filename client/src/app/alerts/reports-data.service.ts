@@ -19,7 +19,7 @@ export class ReportsDataService {
     this.reportService.get()
       .subscribe((reports: Report []) => {
         this.reports = reports;
-        console.log(this.reports);
+        // console.log(this.reports);
         this.emitReportsState();
       });
   }

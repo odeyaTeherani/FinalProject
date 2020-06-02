@@ -9,20 +9,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [ReportPageComponent],
-  imports: [CommonModule,
-    RouterModule.forChild(ReportPageRoutes),
-    MatInputModule,
-    FlexLayoutModule,
-    FormsModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    AgmCoreModule,
-    GooglePlacesModule, SeverityLevelModule, MatGridListModule]
+    imports: [CommonModule,
+        RouterModule.forChild(ReportPageRoutes),
+        MatInputModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        AgmCoreModule,
+        GooglePlacesModule, SeverityLevelModule, MatGridListModule, SharedModule]
 })
 
 export class ReportPageModule {}

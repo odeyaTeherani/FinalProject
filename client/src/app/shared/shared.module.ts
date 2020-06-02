@@ -16,13 +16,13 @@ import {
 } from '@angular/material';
 import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
 import { EventTypeComponent } from './components/event-type/event-type.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule(
   {
     exports: [
-      EventTypeComponent
+      EventTypeComponent,
     ],
     declarations: [
       AdminLayoutComponent,
@@ -30,23 +30,24 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
       SessionsLayoutComponent,
       EventTypeComponent
     ],
-    imports: [
-      CommonModule,
-      FlexLayoutModule,
-      RouterModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatListModule,
-      MatIconModule,
-      MatInputModule,
-      MatFormFieldModule,
-      MatButtonModule,
-      MatSelectModule,
-      MatMenuModule,
-      MatSnackBarModule,
-      ReactiveFormsModule,
-      MatAutocompleteModule
-    ],
+      imports: [
+          CommonModule,
+          FlexLayoutModule,
+          RouterModule,
+          MatToolbarModule,
+          MatSidenavModule,
+          MatListModule,
+          MatIconModule,
+          MatInputModule,
+          MatFormFieldModule,
+          MatButtonModule,
+          MatSelectModule,
+          MatMenuModule,
+          MatSnackBarModule,
+          ReactiveFormsModule,
+          MatAutocompleteModule,
+          FormsModule
+      ],
   }
 )
 export class SharedModule {

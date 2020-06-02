@@ -6,10 +6,10 @@ import {EventService} from '../shared/services/event.service';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  templateUrl: './events-list-details.component.html',
+  styleUrls: ['./events-list-details.component.scss']
 })
-export class EventsComponent implements OnInit, OnDestroy {
+export class EventsListDetailsComponent implements OnInit, OnDestroy {
   events: Event [];
   // subscription: Subscription;
 
@@ -17,19 +17,10 @@ export class EventsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
-    // this.subscription = this.eventService.onEventsChange.subscribe(
-    //   (events: Event []) => {
-    //         this.events = events;
-    //         console.log(this.events);
-    // });
-
-    // this.eventService.getEvents();
-
     this.eventService.get()
       .subscribe((data:any) => {
-        console.log(data);
         this.events = data;
+        console.log('back from server: ' + this.events);
       });
   }
 

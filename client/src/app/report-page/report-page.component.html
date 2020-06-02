@@ -5,16 +5,39 @@
     <div [fxFlex]="50" [fxFlex.xs]="100">
 
       <div fxLayout="column">
-        <!--'legacy' | 'standard' | 'fill' | 'outline'-->
-        <mat-form-field fxFlex="20" [appearance]="'outline'">
-        <mat-label>Event Type</mat-label>
-        <mat-select [formControlName]="'eventType'">
-          <mat-option *ngFor="let type of typeOptions"
-                      [value]="type.id">
-            {{type.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+
+        <app-event-type
+          [appearance]="'outline'"
+          [defaultValue]="alert? this.eventType: null"
+          [disabled]="viewMode"
+          (typeChanged)="eventType = $event">
+        </app-event-type>
+
+<!--        &lt;!&ndash;'legacy' | 'standard' | 'fill' | 'outline'&ndash;&gt;-->
+<!--        <mat-form-field fxFlex="20" [appearance]="'outline'">-->
+<!--        <mat-label>Event Type</mat-label>-->
+<!--        <mat-select [formControlName]="'eventType'">-->
+<!--          <mat-option *ngFor="let type of typeOptions"-->
+<!--                      [value]="type.id">-->
+<!--            {{type.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+
+        <app-severity-level
+          [appearance]="'outline'"
+          [defaultValue]="alert? slRef[alert.severityLevel]: null"
+          [disabled]="viewMode"
+          (change)="severityLevel = $event">
+        </app-severity-level>
+
+                <mat-form-field [appearance]="'outline'" fxFlex="25">
+                  <mat-label>Location</mat-label>
+                  <input matInput
+                         aria-label="Number"
+                         appGooglePlace
+                         placeholder=""/>
+                </mat-form-field>
 
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
@@ -23,30 +46,10 @@
           <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
         </mat-form-field>
 
-<!--        <mat-form-field [appearance]="'outline'" fxFlex="25">-->
-<!--          <mat-label>Location</mat-label>-->
-<!--          <input matInput-->
-<!--                 aria-label="Number"-->
-<!--                 appGooglePlace-->
-<!--                 [formControlName]="'locationFiled'" [readonly]="viewMode"-->
-<!--                 placeholder=""/>-->
-<!--          &lt;!&ndash;                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"&ndash;&gt;-->
-<!--        </mat-form-field>-->
-
-
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
-          <mat-label>Severity Level</mat-label>
-          <mat-select [formControlName]="'severityLevel'">
-            <mat-option *ngFor="let level of severityOption"
-                        [value]="level">
-              {{level}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Number of Evacuated injured</mat-label>
-          <input [formControlName]="'numberOfEvacuatedInjured'"
+          <input
+            [formControlName]="'numberOfEvacuatedInjured'"
                  [readonly]="viewMode"
                  matInput type="number" min="0"/>
         </mat-form-field>

@@ -1,39 +1,45 @@
 <mat-expansion-panel class="full-width"
                      style="margin-top: 2px">
-  <!--from Angular materials-->
-  <!-- end of the component that we see without open it-->
-  <mat-expansion-panel-header style="background-color: cadetblue">
-    <mat-panel-title>
-      {{event.date| date:'dd/MM/yyyy hh:mm'}} <!--shows from the left side the date and the time-->
+
+  <mat-expansion-panel-header style="background-color: #f2f2f2">
+
+    <mat-panel-title class = "text-center" [fxFlex]="50">
+      {{event.startDate | date:'dd/MM/yyyy'}}
     </mat-panel-title>
-    <mat-panel-description style="color: darkslategrey">
-      <b>
-        {{event.eventType}} <!--shows the type of the event in the middle-->
-      </b>
-    </mat-panel-description>
+
+    <mat-panel-title class = "text-center" [fxFlex]="50">
+      {{event.eventType.name}}
+    </mat-panel-title>
+
   </mat-expansion-panel-header>
-  <!--body of the component starts down here-->
+
   <p>
     <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }"
-       style="color: darkslategrey;padding: 5px ">Severity lvl: {{slRef[event.severityLevel]}}</b>
+       style="color: darkslategrey;padding: 5px ">
+      Severity lvl: {{ slRef[event.severityLevel]}}</b>
     <!--style of the severity border and the severity-->
   </p>
+
   <p>
-    <b style="color: darkslategrey">Location: {{event.location}}</b><!--shows the location of the event-->
+    <b style="color: darkslategrey">
+      Location: {{event.location}}
+    </b>
   </p>
+
   <p>
-    <b style="color: darkslategrey">Conclusions: {{event.conclusions}}</b><!--shows the Conclusions of the event-->
+    <b style="color: darkslategrey">
+      Note: {{event.note}}
+    </b>
   </p>
 
   <div fxLayout="row">
     <span fxFlex></span>
     <button fxFlex.xs="100"
-            [routerLink]="['closeEvent',event.id]"
+            [routerLink]="['../reports/close/', event.id]"
       mat-stroked-button>
       More details
     </button>
   </div>
 
-
-</mat-expansion-panel><!--end of the component-->
+</mat-expansion-panel>
 

@@ -6,7 +6,7 @@ export interface Report {
   user: {  firstName: string, lastName: string };
   id: number;
   date: Date;
-  eventType: EventType[] | string;
+  eventType: EventType;
   carNumber: number;
   severityLevel: SeverityLevel;
   numberOfEvacuated: number;

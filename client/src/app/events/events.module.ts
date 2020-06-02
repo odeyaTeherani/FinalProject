@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {EventsComponent} from './events.component';
+import {EventsListDetailsComponent} from './events-list-details.component';
 import {EventsFilterComponent} from './events-filter/events-filter.component';
 import {EventsListComponent} from './events-list/events-list.component';
 import {CommonModule} from '@angular/common';
@@ -15,7 +15,6 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {EventsRouts} from './events-routing';
-import { EventDetailComponent } from './events-list/event-detail/event-detail.component';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
 import {SharedModule} from '../shared/shared.module';
@@ -23,11 +22,9 @@ import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations:[
-    EventsComponent,
+    EventsListDetailsComponent,
     EventsFilterComponent,
-    EventsListComponent,
-    EventDetailComponent
-  ],
+    EventsListComponent],
   imports: [
     CommonModule,
     MatExpansionModule,

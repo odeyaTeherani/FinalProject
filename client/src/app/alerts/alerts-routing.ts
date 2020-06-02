@@ -1,8 +1,6 @@
 import {Routes} from '@angular/router';
 import {AlertsComponent} from './alerts-list/alerts.component';
-import {CloseEventComponent} from "./close-event/close-event.component";
-import {EventDetailComponent} from "../events/events-list/event-detail/event-detail.component";
-import {EventsComponent} from "../events/events.component";
+import {CloseEventComponent} from './close-event/close-event.component';
 
 export const ReportRoutes: Routes = [
   {
@@ -12,6 +10,11 @@ export const ReportRoutes: Routes = [
         path: 'close',
         component: CloseEventComponent
       },
+      {
+        path: 'close/:id',
+        component: CloseEventComponent
+      },
+
       {
         path: '',
         component: AlertsComponent

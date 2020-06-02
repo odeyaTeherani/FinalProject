@@ -1,10 +1,8 @@
 export interface Event {
   id: number;
-  date: Date;
   location: string;
-  eventType: string [];
-  severityLevel: SeverityLevel;
-  conclusions: string;
+  eventType: {id:number; name:string};
+  severityLevel: any;
   images: string [];
 
   numOfInjured: number;

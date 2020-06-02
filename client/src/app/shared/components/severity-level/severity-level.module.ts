@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {SeverityLevelComponent} from './severity-level.component';
 import {MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -12,12 +12,13 @@ import {ReactiveFormsModule} from '@angular/forms';
   exports: [
     SeverityLevelComponent
   ],
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    FlexModule,
-    MatSelectModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        FlexModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class SeverityLevelModule { }

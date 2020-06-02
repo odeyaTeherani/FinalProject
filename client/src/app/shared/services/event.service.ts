@@ -25,8 +25,8 @@ export class EventService {
   }
 
   getById(eventId: number) {
-    return this.http
-      .get<Event>(environment.url + this.path + '/' + eventId);
+    return this.api
+      .get<Event>(this.path + '/' + eventId);
   }
 
   delete(eventId: number) {
@@ -35,7 +35,7 @@ export class EventService {
   }
 
   put(editedEntity: any) {
-    return this.http
+    return this.api
       .put(this.path + '/' + editedEntity.id, editedEntity);
   }
 

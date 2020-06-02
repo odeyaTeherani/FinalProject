@@ -16,25 +16,29 @@
 
   <div *ngIf = "viewMode" fxLayout="row">
 <!--      <span fxFlex></span>-->
-    <button mat-raised-button
-            fxFlex="20"
-            style="margin-right: 70%"
-            [color]="'primary'"
-            (click)="edit()"
-    >
-      Edit
-      <mat-icon>edit</mat-icon>
-    </button>
-
+    <div [fxFlex]="50"
+         [fxFlex.xs]="50" >
       <button mat-raised-button
-              fxFlex="20"
               [color]="'primary'"
-              (click)="exportToPDF()">
-        Export to PDF
-        <mat-icon>insert_drive_file</mat-icon>
+              (click)="edit()">
+        Edit
+        <mat-icon>edit</mat-icon>
       </button>
+    </div>
 
+<div [fxFlex]="50"
+     [fxFlex.xs]="50">
+  <button mat-raised-button
+          class = "btn-pdf-position"
+          [color]="'primary'"
+          (click)="exportToPDF()">
+    Export to PDF
+    <mat-icon>insert_drive_file</mat-icon>
+  </button>
+</div>
   </div>
+
+  <br>
 
   <div>
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" >
@@ -58,7 +62,6 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </div>
-
   <div>
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
       <input matInput
@@ -71,14 +74,22 @@
     </mat-form-field>
   </div>
 
-<!--    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">-->
-<!--      <input matInput-->
-<!--             aria-label="Number"-->
-<!--             appGooglePlace-->
-<!--             placeholder="Location"-->
-<!--             (locationSelected)="$event.formatted_address"-->
-<!--             [readonly]="viewMode"/>-->
-<!--    </mat-form-field>-->
+  <div>
+
+    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" *ngIf="!viewMode;else displayLocation">
+      <input matInput
+             aria-label="Number"
+             appGooglePlace
+             placeholder="Location"
+             (locationSelected)="location = $event"
+      />
+    </mat-form-field>
+
+    <ng-template #displayLocation>
+      <p>{{location}}</p>
+    </ng-template>
+
+  </div>
 
   <div>
     <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
@@ -105,16 +116,18 @@
   </div>
 
   <div>
-    <!--<P>Severity Level:</P>-->
     <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
-                        (changed)="eventForm.controls['severityLevel'].setValue($event)">
+                        [disabled]="viewMode"
+                        [defaultValue]="event? slRef[event.severityLevel] : null"
+                        (changed) = "severityLevel = $event">
     </app-severity-level>
   </div>
 
   <div>
-    <!--<P>Event Type: </P>-->
     <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
-                    (typeChanged) = "eventForm.controls['eventType'].setValue($event)">
+                    [disabled]="viewMode"
+                    [defaultValue]="event? this.eventType: null"
+                    (typeChanged) = "eventType = $event">
     </app-event-type>
   </div>
 
@@ -201,8 +214,15 @@
       {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
     </div>
 
-  <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center" >
-    <button (click)="submit()" mat-raised-button color="primary" style="width: 300px">Submit</button>
+  <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center"  >
+    <button [disabled] ="eventType == null || severityLevel == null || eventForm.invalid
+|| location == null"
+            (click)="submit()"
+            mat-raised-button
+            color="primary"
+            style="width: 300px">
+      Submit
+    </button>
   </div>
 
 </mat-card>

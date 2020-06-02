@@ -12,6 +12,9 @@ export class EventTypeComponent implements OnInit {
 
   @Output ()typeChanged = new EventEmitter<any>();
   @Input() size = 20;
+  @Input() disabled = false;
+  @Input() defaultValue?: {id: number, name: string};
+  @Input() appearance;
   constructor() { }
 
   ngOnInit() {

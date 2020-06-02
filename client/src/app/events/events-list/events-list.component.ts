@@ -9,9 +9,7 @@ import {Event, SeverityLevel} from '../../shared/modles/event';// import the eve
 export class EventsListComponent implements OnInit {
   @Input() event: Event;
   slRef = SeverityLevel;// referent from the event.ts instead the number its shows the severity
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
   }
