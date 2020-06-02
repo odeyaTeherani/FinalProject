@@ -1,229 +1,256 @@
 <form *ngIf="eventForm" [formGroup]="eventForm">
 
-<mat-card>
+  <mat-card>
 
-<!--  <div fxLayout="row" class="fxflexExample" fxLayoutGap="10px">-->
-<!--    <div fxFlex="30" class="a"></div>-->
-<!--    <div fxFlex="20" class="b"></div>-->
-<!--    <div fxFlex="50" class="c"></div>-->
-<!--  </div>-->
+    <!--  <div fxLayout="row" class="fxflexExample" fxLayoutGap="10px">-->
+    <!--    <div fxFlex="30" class="a"></div>-->
+    <!--    <div fxFlex="20" class="b"></div>-->
+    <!--    <div fxFlex="50" class="c"></div>-->
+    <!--  </div>-->
 
-<!--  <div fxLayout="column" class="fxflexExample mt-5">-->
-<!--    <div fxFlex="30" class="a"></div>-->
-<!--    <div fxFlex="20" class="b"></div>-->
-<!--    <div fxFlex="50" class="c"></div>-->
-<!--  </div>-->
+    <!--  <div fxLayout="column" class="fxflexExample mt-5">-->
+    <!--    <div fxFlex="30" class="a"></div>-->
+    <!--    <div fxFlex="20" class="b"></div>-->
+    <!--    <div fxFlex="50" class="c"></div>-->
+    <!--  </div>-->
 
-  <div *ngIf = "viewMode" fxLayout="row">
-<!--      <span fxFlex></span>-->
-    <div [fxFlex]="50"
-         [fxFlex.xs]="50" >
-      <button mat-raised-button
-              [color]="'primary'"
-              (click)="edit()">
-        Edit
-        <mat-icon>edit</mat-icon>
-      </button>
+    <div *ngIf="viewMode" fxLayout="row">
+      <!--      <span fxFlex></span>-->
+      <div [fxFlex]="50"
+           [fxFlex.xs]="50">
+        <button mat-raised-button
+                [color]="'primary'"
+                (click)="edit()">
+          Edit
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div [fxFlex]="50"
+           [fxFlex.xs]="50">
+        <button mat-raised-button
+                class="btn-pdf-position"
+                [color]="'primary'"
+                (click)="exportToPDF()">
+          Export to PDF
+          <mat-icon>insert_drive_file</mat-icon>
+        </button>
+      </div>
     </div>
 
-<div [fxFlex]="50"
-     [fxFlex.xs]="50">
-  <button mat-raised-button
-          class = "btn-pdf-position"
-          [color]="'primary'"
-          (click)="exportToPDF()">
-    Export to PDF
-    <mat-icon>insert_drive_file</mat-icon>
-  </button>
-</div>
-  </div>
+    <br>
 
-  <br>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               type="text"
+               placeholder="Name in charge"
+               [formControlName]="'nameInCharge'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" >
-      <input matInput
-             type="text"
-             placeholder="Name in charge"
-             [formControlName]="'nameInCharge'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Start date"
+               [formControlName]="'startDate'"
+               [readonly]="viewMode"
+               [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="End date"
+               [formControlName]="'endDate'"
+               [readonly]="viewMode"
+               [matDatepicker]="pickerTo">
+        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+        <mat-datepicker #pickerTo></mat-datepicker>
+      </mat-form-field>
+    </div>
 
-  <div>
-  <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-    <input matInput
-           placeholder="Start date"
-           [formControlName]="'startDate'"
-           [readonly]="viewMode"
-           [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="End date"
-             [formControlName]="'endDate'"
-             [readonly]="viewMode"
-             [matDatepicker]="pickerTo">
-      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-      <mat-datepicker #pickerTo></mat-datepicker>
-    </mat-form-field>
-  </div>
+    <div>
 
-  <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" *ngIf="!viewMode;else displayLocation">
+        <input matInput
+               aria-label="Number"
+               appGooglePlace
+               placeholder="Location"
+               (locationSelected)="location = $event"
+        />
+      </mat-form-field>
 
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" *ngIf="!viewMode;else displayLocation">
-      <input matInput
-             aria-label="Number"
-             appGooglePlace
-             placeholder="Location"
-             (locationSelected)="location = $event"
-      />
-    </mat-form-field>
+      <ng-template #displayLocation>
+        <p>{{location}}</p>
+      </ng-template>
 
-    <ng-template #displayLocation>
-      <p>{{location}}</p>
-    </ng-template>
+    </div>
 
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of injured"
+               type="number"
+               min="0"
+               [formControlName]="'numOfInjured'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of injured"
-             type="number"
-             min="0"
-             [formControlName]="'numOfInjured'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of dead"
+               type="number"
+               min="0"
+               [formControlName]="'numOfDead'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of dead"
-             type="number"
-             min="0"
-             [formControlName]="'numOfDead'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
+                          [disabled]="viewMode"
+                          [defaultValue]="event? slRef[event.severityLevel] : null"
+                          (changed)="severityLevel = $event">
+      </app-severity-level>
+    </div>
 
-  <div>
-    <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
-                        [disabled]="viewMode"
-                        [defaultValue]="event? slRef[event.severityLevel] : null"
-                        (changed) = "severityLevel = $event">
-    </app-severity-level>
-  </div>
+    <div>
+      <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
+                      [disabled]="viewMode"
+                      [defaultValue]="event? this.eventType: null"
+                      (typeChanged)="eventType = $event">
+      </app-event-type>
+    </div>
 
-  <div>
-    <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
-                    [disabled]="viewMode"
-                    [defaultValue]="event? this.eventType: null"
-                    (typeChanged) = "eventType = $event">
-    </app-event-type>
-  </div>
+    <br>
+    <P><b>The number of troops sent to the area:</b></P>
 
-  <br>
-  <P><b>The number of troops sent to the area:</b> </P>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Ambulances"
+               type="number"
+               min="0"
+               [formControlName]="'numOfAmbulances'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of Ambulances"
-             type="number"
-             min="0"
-             [formControlName]="'numOfAmbulances'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Police cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfPolice'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of Police cars"
-             type="number"
-             min="0"
-             [formControlName]="'numOfPolice'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Firefighters cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfFirefighters'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of Firefighters cars"
-             type="number"
-             min="0"
-             [formControlName]="'numOfFirefighters'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Environment cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfEnvironment'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input  matInput
-              placeholder="Number of Environment cars"
-              type="number"
-              min="0"
-              [formControlName]="'numOfEnvironment'"
-              [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Zaka cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfZakaCars'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-      <input matInput
-             placeholder="Number of Zaka cars"
-             type="number"
-             min="0"
-             [formControlName]="'numOfZakaCars'"
-             [readonly]="viewMode"
-      />
-    </mat-form-field>
-  </div>
-
-  <br>
-  <P><b>Note:</b> </P>
-  <div>
-    <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
+    <br>
+    <P><b>Note:</b></P>
+    <div>
+      <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
       <textarea matInput
                 [formControlName]="'note'"
                 [readonly]="viewMode"
       ></textarea>
-    </mat-form-field>
-  </div>
+      </mat-form-field>
+    </div>
 
-  <br>
-  <P><b>Pictures:</b> </P>
-  <br>
-  <P><b>Alerts:</b> </P>
+    <br>
+    <P><b>Pictures:</b></P>
+
+    <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="cameraInput.click()">
+        Upload image
+        <mat-icon>camera</mat-icon>
+      </button>
+    </div>
+
+    <input #cameraInput style="display: none" type="file"
+           capture="camera"
+           accept="image/*"
+           id="cameraInput"
+           name="cameraInput"
+           (change)="onFileSelected($event)">
+
+    <div fxLayout="row wrap" fxLayoutAlign="center">
+      <ng-container *ngFor="let image of images;">
+        <img class="uploaded-image-event"
+             [src]="image"
+             alt="image"
+             sizes="100px"/>
+        <mat-icon>zoom_in</mat-icon>
+      </ng-container>
+    </div>
+
+
+    <br>
+    <P><b>Alerts:</b></P>
 
     <div *ngFor="let selectedAlert of selectedAlerts">
       {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
     </div>
 
-  <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center"  >
-    <button [disabled] ="eventType == null || severityLevel == null || eventForm.invalid
-|| location == null"
-            (click)="submit()"
-            mat-raised-button
-            color="primary"
-            style="width: 300px">
-      Submit
-    </button>
-  </div>
+    <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center">
+      <button [disabled]="eventType == null || severityLevel == null || eventForm.invalid"
+              (click)="submit()"
+              mat-raised-button
+              color="primary"
+              style="width: 300px">
+        Submit
+      </button>
+    </div>
 
-</mat-card>
+  </mat-card>
 </form>

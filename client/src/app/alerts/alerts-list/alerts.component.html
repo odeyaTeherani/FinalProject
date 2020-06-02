@@ -34,7 +34,7 @@
         </p>
 
         <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
-          {{alert.eventType}}
+          {{alert.eventType.name}}
         </p>
 
         <p class="p-1 text-center" [fxFlex]="25">

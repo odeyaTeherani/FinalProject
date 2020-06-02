@@ -16,7 +16,7 @@ import {DatePipe} from '@angular/common';
   providers: [DatePipe]
 })
 export class CloseEventComponent implements OnInit, OnDestroy {
-  // images = [];
+  images = [];
   eventForm: FormGroup;
   viewMode: boolean;
   slRef = SeverityLevel;
@@ -149,5 +149,14 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   }
 
   exportToPDF() {
+  }
+
+  onFileSelected(event) {
+    const selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = (e: any) => {
+      this.images.push(e.target.result);
+    };
   }
 }

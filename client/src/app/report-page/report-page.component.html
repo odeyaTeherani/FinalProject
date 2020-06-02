@@ -78,12 +78,6 @@
              (change)="onFileSelected($event)">
 
       <div fxLayout="row wrap" fxLayoutAlign="center">
-<!--        <mat-grid-list cols="4" rowHeight="100px">-->
-<!--          <mat-grid-tile-->
-<!--            *ngFor="let image of images;">-->
-<!--              <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>-->
-<!--          </mat-grid-tile>-->
-<!--        </mat-grid-list>-->
         <ng-container *ngFor="let image of images;">
           <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>
         </ng-container>
