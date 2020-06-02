@@ -11,13 +11,14 @@
         {{ report.date | date:'dd/MM/yyyy HH:mm' }}
       </div>
       <div class = "text-center" [fxFlex]="100/2*2">
-        {{report.eventType}}
+        {{report.eventType.name}}
       </div>
 
 <!--      <button matTooltip="Delete Report" (click)="$event.stopPropagation();delete(report)" mat-icon-button
               [color]="'warn'">
         <mat-icon>delete</mat-icon>
       </button>
+
       <button matTooltip="Edit Report" (click)="$event.stopPropagation();edit(report)" mat-icon-button
               [color]="'primary'">
         <mat-icon>edit</mat-icon>
