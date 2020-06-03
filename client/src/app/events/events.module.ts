@@ -5,10 +5,10 @@ import {EventsListComponent} from './events-list/events-list.component';
 import {CommonModule} from '@angular/common';
 import {
   MatAutocompleteModule,
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatDatepickerModule,
   MatExpansionModule, MatFormFieldModule, MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatListModule, MatNativeDateModule,
   MatSelectModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -18,6 +18,7 @@ import {EventsRouts} from './events-routing';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
 import {SharedModule} from '../shared/shared.module';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -41,7 +42,10 @@ import {SharedModule} from '../shared/shared.module';
     MatNativeDateModule,
     RouterModule.forChild(EventsRouts),
     SeverityLevelModule,
-    SharedModule
+    SharedModule,
+    ScrollingModule,
+    MatCardModule,
+    MatListModule
   ],
   providers:[],
   entryComponents:[],

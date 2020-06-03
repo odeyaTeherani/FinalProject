@@ -1,9 +1,18 @@
-<app-events-filter (searchChanged)="searchChanged($event)"></app-events-filter>
+<mat-card>
 
+  <app-events-filter (searchChanged)="searchChanged($event)"></app-events-filter>
 
-<div class="mt-1">
-  <app-events-list
-    *ngFor="let event of events"
-    [event]="event">
-  </app-events-list>
-</div>
+  <div fxLayout="row" class="event-list-details">
+    <div class="p-1 text-center" [fxFlex]="50">Date</div>
+    <div class="pr-3 p-1 text-center" [fxFlex]="50">Event Type</div>
+  </div>
+
+  <mat-list>
+    <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
+      <app-events-list
+        *cdkVirtualFor="let event of events" [event]="event">
+      </app-events-list>
+    </cdk-virtual-scroll-viewport>
+  </mat-list>
+
+</mat-card>

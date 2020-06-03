@@ -1,26 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SeverityLevel} from '../shared/modles/event';
 import {ReportService} from '../shared/services/report-service';
+import {Report} from '../shared/modles/report';
 
-export interface Report {
-  user: {  firstName: string, lastName: string };
-  id: number;
-  date: Date;
-  eventType: EventType;
-  carNumber: number;
-  severityLevel: SeverityLevel;
-  numberOfEvacuated: number;
-  note: string;
-  images: string [];
-  selected: boolean;
-  location?: { longitude:number, latitude:number };
-
-}
-
-export interface EventType {
-  id: number;
-  name: string;
-}
 
 @Component({
   selector: 'app-user-reporting-history',

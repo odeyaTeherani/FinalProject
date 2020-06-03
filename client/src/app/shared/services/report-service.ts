@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Report} from '../../reporting-history/reporting-history.component';
-import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 import {ApiService} from './api.service';
+import {Report} from '../modles/report';
 
 @Injectable({
   providedIn: 'root'

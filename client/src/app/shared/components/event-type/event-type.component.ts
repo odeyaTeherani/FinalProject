@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {EventType} from '../../../reporting-history/reporting-history.component';
+import {EventType} from '../../modles/event-type';
 
 @Component({
   selector: 'app-event-type',
