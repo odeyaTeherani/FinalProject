@@ -20,7 +20,7 @@ export class EventsListDetailsComponent implements OnInit, OnDestroy {
     this.eventService.get()
       .subscribe((data:any) => {
         this.events = data;
-        console.log('back from server: ' + this.events);
+        console.log(this.events);
       });
   }
 

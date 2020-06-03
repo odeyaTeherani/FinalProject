@@ -206,7 +206,7 @@
     </div>
 
     <br>
-    <P><b>Pictures:</b></P>
+    <P *ngIf="thereIsImages"><b>Pictures:</b></P>
 
     <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
       <button mat-raised-button
@@ -236,7 +236,7 @@
 
 
     <br>
-    <P><b>Alerts:</b></P>
+    <P *ngIf="thereIsAlerts"><b>Alerts:</b></P>
 
     <div *ngFor="let selectedAlert of selectedAlerts">
       {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
