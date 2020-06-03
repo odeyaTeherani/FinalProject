@@ -16,6 +16,8 @@ import {DatePipeService} from '../../shared/services/date-pipe.service';
 })
 export class CloseEventComponent implements OnInit, OnDestroy {
   images = [];
+  thereIsImages = false;
+  thereIsAlerts = false;
   eventForm: FormGroup;
   viewMode: boolean;
   slRef = SeverityLevel;
@@ -45,11 +47,17 @@ export class CloseEventComponent implements OnInit, OnDestroy {
           .subscribe((event: Event) => {
             this.event = event;
             this.eventType = event.eventType;
+            this.images = event.images;
+            if(this.images[0] != null) {
+              this.thereIsImages = true;
+            }
+            if(this.selectedAlerts[0] != null) {
+              this.thereIsAlerts = true;
+            }
             this.severityLevel = event.severityLevel;
             this.location = event.location;
             this.initForm();
           });
-
         // new event
       } else {
         this.initForm();
@@ -95,6 +103,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     event['startDate'] =  this.datePipe.getTransform('startDate', event);
     event['endDate'] = this.datePipe.getTransform('endDate', event);
     event['location'] = this.location;
+    event['images'] = this.images;
     console.log(event);
     if (this.eventId == null) {
       this.addEvent(event);
@@ -106,11 +115,9 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   }
 
   addEvent(newEvent) {
-    // console.log(newEvent);
     this.eventService.add(newEvent)
       .subscribe(
         (result) => {
-          // console.log(result);
           this.router.navigate(['/events']);
         },
         err => {
@@ -120,7 +127,6 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   }
 
   editEvent(updateEvent) {
-    // updateEvent['images'] = this.images;
     updateEvent['reports'] = [];
     // console.log(updateEvent);
     this.eventService.put(updateEvent)
