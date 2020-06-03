@@ -22,6 +22,7 @@ import {SeverityLevelModule} from "../shared/components/severity-level/severity-
 import {SharedModule} from "../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatNativeDateModule} from "@angular/material/core";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule(
@@ -45,7 +46,7 @@ import {MatNativeDateModule} from "@angular/material/core";
       MatNativeDateModule,
       GooglePlacesModule,
       SharedModule,
-      SeverityLevelModule, FlexLayoutModule],
+      SeverityLevelModule, FlexLayoutModule, ScrollingModule],
     declarations: [
       AlertsComponent,
       CloseEventComponent

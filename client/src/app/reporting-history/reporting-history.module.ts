@@ -5,6 +5,7 @@ import {ReportingHistoryRoutes} from './reporting-history-routing';
 import {ReportingHistoryComponent} from './reporting-history.component';
 import {MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatListModule, MatTooltipModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations:[ReportingHistoryComponent],
@@ -14,7 +15,7 @@ import {FlexModule} from '@angular/flex-layout';
     FlexModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule, MatIconModule, MatTooltipModule],
+    MatCardModule, MatIconModule, MatTooltipModule, ScrollingModule],
 })
 
 export class ReportingHistoryModule {

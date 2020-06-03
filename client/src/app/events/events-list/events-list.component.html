@@ -1,45 +1,46 @@
-<mat-expansion-panel class="full-width"
-                     style="margin-top: 2px">
+<mat-list>
 
-  <mat-expansion-panel-header style="background-color: #f2f2f2">
+  <mat-expansion-panel class="full-width">
 
-    <mat-panel-title class = "text-center" [fxFlex]="50">
-      {{event.startDate | date:'dd/MM/yyyy'}}
-    </mat-panel-title>
+    <mat-expansion-panel-header style="background-color: aliceblue">
 
-    <mat-panel-title class = "text-center" [fxFlex]="50">
-      {{event.eventType.name}}
-    </mat-panel-title>
+      <p class="p-1 text-center" [fxFlex]="50">
+        {{event.startDate | date:'dd/MM/yyyy HH:mm' }}
+      </p>
 
-  </mat-expansion-panel-header>
+      <p class="p-1 text-center" [fxFlex]="50">
+        {{event.eventType.name}}
+      </p>
 
-  <p>
-    <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }"
-       style="color: darkslategrey;padding: 5px ">
-      Severity lvl: {{ slRef[event.severityLevel]}}</b>
-    <!--style of the severity border and the severity-->
-  </p>
+    </mat-expansion-panel-header>
 
-  <p>
-    <b style="color: darkslategrey">
-      Location: {{event.location}}
-    </b>
-  </p>
+    <p>
+      <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }"
+         style="color: darkslategrey;padding: 5px ">
+        Severity lvl: {{ slRef[event.severityLevel]}}</b>
+      <!--style of the severity border and the severity-->
+    </p>
 
-  <p>
-    <b style="color: darkslategrey">
-      Note: {{event.note}}
-    </b>
-  </p>
+    <p>
+      <b style="color: darkslategrey">
+        Location: {{event.location}}
+      </b>
+    </p>
 
-  <div fxLayout="row">
-    <span fxFlex></span>
-    <button fxFlex.xs="100"
-            [routerLink]="['../reports/close/', event.id]"
-      mat-stroked-button>
-      More details
-    </button>
-  </div>
+    <p>
+      <b style="color: darkslategrey">
+        Note: {{event.note}}
+      </b>
+    </p>
 
-</mat-expansion-panel>
+    <div fxLayout="row">
+      <span fxFlex></span>
+      <button fxFlex.xs="100"
+              [routerLink]="['../reports/close/', event.id]"
+              mat-stroked-button>
+        More details
+      </button>
+    </div>
 
+  </mat-expansion-panel>
+</mat-list>

@@ -15,9 +15,9 @@
     <p class="p-1 text-center" [fxFlex]="25">Reporter's name</p>
   </div>
 
-
   <mat-list>
-    <mat-list-item class="report-list-item" *ngFor="let alert of alerts">
+    <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
+    <mat-list-item class="report-list-item" *cdkVirtualFor="let alert of alerts">
 
       <div fxLayout="row" class="full-width" (click)="check.toggle()" >
 
@@ -49,5 +49,8 @@
 
       </div>
     </mat-list-item>
+    </cdk-virtual-scroll-viewport>
+
   </mat-list>
+
 </mat-card>
