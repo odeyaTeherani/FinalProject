@@ -7,7 +7,7 @@ import { MySettingsComponent } from './my-settings/my-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import {SettingRoutes} from './settings-routing';
 import {
-    MatButtonModule,
+    MatButtonModule, MatButtonToggleModule,
     MatCardModule,
     MatExpansionModule,
     MatFormFieldModule,
@@ -21,15 +21,15 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   {
       imports: [CommonModule,
           RouterModule.forChild(SettingRoutes),
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatListModule,
-        MatIconModule,
-        FlexLayoutModule,
-        MatTabsModule,
+          MatExpansionModule,
+          MatFormFieldModule,
+          MatInputModule,
+          MatCardModule,
+          MatButtonModule,
+          MatListModule,
+          MatIconModule,
+          FlexLayoutModule,
+          MatTabsModule, MatButtonToggleModule,
       ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,
