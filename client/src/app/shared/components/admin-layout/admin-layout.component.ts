@@ -46,6 +46,11 @@ export class AdminLayoutComponent implements OnDestroy {
       icon: 'assistant',
       name: 'Consult',
       url: 'consult',
+    },
+    {
+      icon: 'people_alt',
+      name: 'Users',
+      url: 'users',
     }
   ];
   fillerNavForUser: MenuItem [] = [

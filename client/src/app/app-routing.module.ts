@@ -38,6 +38,11 @@ const routes: Routes = [
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },
       {
+        canActivateChild: [AuthGuard],
+        path: 'users',
+        loadChildren:() => import('./users/users.module').then(mod => mod.UsersModule)
+      },
+      {
         path: 'alert-page',
         loadChildren:() => import('./report-page/report-page.module').then(mod => mod.ReportPageModule)
       },
