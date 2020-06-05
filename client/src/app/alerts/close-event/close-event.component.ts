@@ -1,4 +1,7 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+  Component, EventEmitter, OnDestroy,
+  OnInit, Output, ViewChild, ElementRef
+} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../shared/services/event.service';
@@ -8,6 +11,7 @@ import {Event} from '../../shared/modles/event';
 import {SeverityLevel} from '../../shared/modles/severity-level.enum';
 import {Report} from '../../shared/modles/report';
 import {DatePipeService} from '../../shared/services/date-pipe.service';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-close-event',
@@ -24,6 +28,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   eventId: number;
   event: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
+  @ViewChild('htmlData', {static: false}) htmlData:ElementRef;
+
   alertsSubscription: Subscription;
 
   // selected alert to close
@@ -31,6 +37,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   eventType: any;
   severityLevel: any;
   location: any;
+
 
   constructor(private  activeRoute: ActivatedRoute,
               private router: Router,
@@ -48,10 +55,10 @@ export class CloseEventComponent implements OnInit, OnDestroy {
             this.event = event;
             this.eventType = event.eventType;
             this.images = event.images;
-            if(this.images[0] != null) {
+            if (this.images[0] != null) {
               this.thereIsImages = true;
             }
-            if(this.selectedAlerts[0] != null) {
+            if (this.selectedAlerts[0] != null) {
               this.thereIsAlerts = true;
             }
             this.severityLevel = event.severityLevel;
@@ -70,7 +77,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     this.alertsSubscription = this.reportsDataService
       .onEventsChange
       .subscribe((alerts: Report []) => {
-        if(alerts != null) {
+        if (alerts != null) {
           this.selectedAlerts = alerts.filter(alert => alert.selected);
         }
       });
@@ -100,7 +107,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     event['reports'] = this.selectedAlerts;
     event['eventType'] = this.eventType;
     event['severityLevel'] = this.severityLevel;
-    event['startDate'] =  this.datePipe.getTransform('startDate', event);
+    event['startDate'] = this.datePipe.getTransform('startDate', event);
     event['endDate'] = this.datePipe.getTransform('endDate', event);
     event['location'] = this.location;
     event['images'] = this.images;
@@ -151,7 +158,13 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     this.viewMode = false;
   }
 
+
   exportToPDF() {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p','pt', 'a4');
+    doc.fromHTML(DATA.innerHTML,15,15);
+    doc.output('dataurlnewwindow');
+
   }
 
   onFileSelected(event) {

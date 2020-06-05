@@ -18,7 +18,7 @@ export class UserService {
   }
 
   login(userCredentials: User) {
-    this.apiService.post<any>('/account/login',userCredentials)
+    this.apiService.post<any>('/api/account/login',userCredentials)
         .subscribe(
             (result:any)=> {
               if (result != null) {

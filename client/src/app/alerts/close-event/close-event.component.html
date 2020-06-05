@@ -40,14 +40,14 @@
 
     <br>
 
+    <div id ="htmlData" #htmlData>
     <div>
       <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
         <input matInput
                type="text"
                placeholder="Name in charge"
                [formControlName]="'nameInCharge'"
-               [readonly]="viewMode"
-        />
+               [readonly]="viewMode"/>
       </mat-form-field>
     </div>
 
@@ -251,6 +251,6 @@
         Submit
       </button>
     </div>
-
+</div>
   </mat-card>
 </form>
