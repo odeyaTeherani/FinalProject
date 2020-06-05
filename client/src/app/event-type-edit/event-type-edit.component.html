@@ -1,0 +1,43 @@
+<mat-card>
+    <div fxLayout="row">
+      <button mat-raised-button
+              style="float: right"
+              color="primary">
+        <!--              (click)="add.click()">-->
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+    </div>
+
+    <input class="event-type-list-item" >
+    <button mat-icon-button
+            [matTooltip]="'Save'"
+            (click)="addNewEventType($event)">
+      <mat-icon>save</mat-icon>
+    </button>
+
+    <div>
+      <mat-list [fxFlex]="100">
+        <mat-list-item class="event-type-list-item" *ngFor="let eventType of eventsType">
+
+          <div fxLayout="row" class="full-width">
+            <p class="p-1">
+              {{eventType.name}}
+            </p>
+          </div>
+
+          <button mat-icon-button color="accent" [matTooltip]="'Edit'"
+                  (click)="EditEventType($event)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" [matTooltip]="'Delete'"
+                  (click)="deleteEventType($event)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+</mat-card>

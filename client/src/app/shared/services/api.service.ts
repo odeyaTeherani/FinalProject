@@ -22,7 +22,7 @@ export class ApiService {
     return this.http.put<T>(environment.url + path, body);
   }
 
-  delete<T>(path:string, id:number):Observable<T> {
-    return this.http.delete<T>(environment.url + path + id);
+  delete<T>(path:string):Observable<T> {
+    return this.http.delete<T>(environment.url + path);
   }
 }

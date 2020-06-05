@@ -4,13 +4,13 @@
        fxLayout.xs="column"
        fxLayoutGap="10px">
 
-    <mat-form-field fxFlex="20">
+    <mat-form-field fxFlex="22">
       <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControlName]="'date'">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field fxFlex="20">
+    <mat-form-field fxFlex="22">
       <input matInput
              aria-label="Number"
              appGooglePlace
@@ -18,18 +18,18 @@
              placeholder="Please enter location"/>
     </mat-form-field>
 
-    <app-event-type fxFlex="20"
+    <app-event-type fxFlex="22"
       (typeChanged) = "filterOptions.controls['eventType'].setValue($event)">
     </app-event-type>
 
-    <app-severity-level fxFlex="20"
+    <app-severity-level fxFlex="22"
       (changed)="filterOptions.controls['severityLevel'].setValue($event)">
     </app-severity-level>
 
     <span fxFlex></span>
 
     <div class="margin-333">
-      <button mat-raised-button
+      <button mat-raised-button style="width: 100px"
               [color]="'primary'"
               (click)="submit()">
         <mat-icon>search</mat-icon>

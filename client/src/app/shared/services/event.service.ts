@@ -10,7 +10,7 @@ import {ApiService} from './api.service';
 export class EventService {
   path = '/api/event';
 
-  constructor(private http: HttpClient,private api:ApiService) {}
+  constructor(private http: HttpClient, private api:ApiService) {}
 
   get(): Observable<Event []> {
     return this.api
@@ -28,7 +28,7 @@ export class EventService {
   }
 
   delete(eventId: number) {
-    return this.http
+    return this.api
       .delete(this.path + '/' + eventId);
   }
 

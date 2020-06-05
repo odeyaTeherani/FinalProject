@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EventType} from '../../modles/event-type';
+import {EventTypeService} from '../../services/event-type.service';
 
 @Component({
   selector: 'app-event-type',
@@ -7,17 +8,23 @@ import {EventType} from '../../modles/event-type';
   styleUrls: ['./event-type.component.scss']
 })
 export class EventTypeComponent implements OnInit {
-  // will be injected from default service contains location options list (From server)
-  typeOptions: EventType [] = [{id:1,name:'Fire'}, {id:2,name:'Building collapse'} , {id:3, name:'Other'}];
+
+  typeOptions: EventType [];
 
   @Output ()typeChanged = new EventEmitter<any>();
   @Input() size = 20;
   @Input() disabled = false;
   @Input() defaultValue?: {id: number, name: string};
   @Input() appearance;
-  constructor() { }
+  constructor(private eventTypeService: EventTypeService) {
+  }
 
   ngOnInit() {
+    this.eventTypeService.getAll()
+      .subscribe((eventType: any)=> {
+        this.typeOptions = eventType;
+    });
+
   }
 
   displayWith(event: {id: number,name: string}) {

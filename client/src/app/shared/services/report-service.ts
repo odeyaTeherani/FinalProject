@@ -34,7 +34,7 @@ export class ReportService {
 
 
   delete(alertId: number) {
-    return this.http
+    return this.api
       .delete(this.path + '/' + alertId);
   }
 
