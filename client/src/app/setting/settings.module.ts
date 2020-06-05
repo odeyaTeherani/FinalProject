@@ -16,7 +16,7 @@ import {
   MatListModule, MatNativeDateModule, MatTabsModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule(
   {
@@ -33,7 +33,7 @@ import {ReactiveFormsModule} from '@angular/forms';
       MatTabsModule,
       MatButtonToggleModule,
       MatDatepickerModule,
-      MatNativeDateModule, ReactiveFormsModule,
+      MatNativeDateModule, ReactiveFormsModule, FormsModule,
     ],
     declarations:[DetailsComponent,
       AboutTheAppComponent,

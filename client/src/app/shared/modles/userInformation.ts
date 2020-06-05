@@ -7,4 +7,6 @@ export interface UserInformation {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  carNumber: string;
+  birthDate: Date;
 }
