@@ -1,148 +1,74 @@
-<mat-card>
+<form *ngIf="userForm" [formGroup]="userForm">
 
-  <div class="my-profile-header">
-    <p class="p-1" [fxFlex]="50">My profile</p>
-  </div>
+  <mat-card>
 
-  <br>
+    <div class="my-profile-header">
+      <p class="p-1" [fxFlex]="50">My profile</p>
+    </div>
 
-  <p class="underline"><b>Validation</b></p>
-  <span class="material-icons">face</span>
+    <br>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>User Name</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <p class="underline"><b>Validation</b></p>
 
-  <p><b>picture place</b></p>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>User Name</mat-label>
+      <input [formControlName]="'userName'"
+             matInput placeholder="">
+    </mat-form-field>
 
-  <p class="underline"><b>Personal Information</b></p>
+    <p>picture place</p>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>User Name</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <p class="underline"><b>Personal Information</b></p>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>First Name</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput [formControlName]="'firstName'">
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Last Name</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput  [formControlName]="'lastName'">
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Email Address</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>Email Address</mat-label>
+      <input matInput [formControlName]="'email'">
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Last Name</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [formControlName]="'phoneNumber'">
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Phone Number</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>Car Number</mat-label>
+      <input matInput [formControlName]="'carNumber'">
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Car Number</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <p>Sex</p>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="Women">Women</mat-button-toggle>
+      <mat-button-toggle value="Men">Men</mat-button-toggle>
+    </mat-button-toggle-group>
 
-<p>Sex</p>
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value="Women">Women</mat-button-toggle>
-    <mat-button-toggle value="Men">Men</mat-button-toggle>
-    <mat-button-toggle value="underline">No definition</mat-button-toggle>
-  </mat-button-toggle-group>
+    <br><br>
+    <mat-form-field class="mat-form-field-full-width">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [matDatepicker]="picker"
+             [formControlName]="'birthDate'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field class="mat-form-field-full-width">
-    <mat-label>Birth Date</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
+      <button mat-raised-button style="width: 200px"
+              [color]="'primary'"
+              [disabled]="userForm.invalid"
+              (click)="save()">
+        <span class="material-icons">save </span>
+        Save
+      </button>
+    </div>
 
-<!--  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">-->
-<!--    <h4>-->
-<!--      <b>-->
-<!--        WELCOME-->
-<!--      </b>-->
-<!--    </h4>-->
-<!--  </div>-->
-<!--  <mat-card style="margin-top: 50px">-->
-<!--    <div fxLayout="column">-->
-<!--    <span class="material-icons">-->
-<!--        face-->
-<!--      </span>-->
-<!--      NAME :-->
-<!--      <label>-->
-<!--      <textarea matInput-->
-<!--                cdkTextareaAutosize-->
-<!--                #autosize="cdkTextareaAutosize"-->
-<!--                cdkAutosizeMinRows="1"-->
-<!--                cdkAutosizeMaxRows="5"></textarea>-->
-<!--      </label>-->
-<!--    </div>-->
-
-<!--  </mat-card>-->
-
-<!--  <mat-card style="margin-top: 3px">-->
-<!--    <div fxLayout="column">-->
-<!--    <span class="material-icons">-->
-<!--        phone-->
-<!--      </span>-->
-<!--      PHONE NUMBER :-->
-<!--      <label>-->
-<!--    <textarea matInput-->
-<!--              cdkTextareaAutosize-->
-<!--              #autosize="cdkTextareaAutosize"-->
-<!--              cdkAutosizeMinRows="1"-->
-<!--              cdkAutosizeMaxRows="5"></textarea>-->
-<!--      </label>-->
-<!--    </div>-->
-<!--  </mat-card>-->
-
-<!--  <mat-card style="margin-top: 3px">-->
-<!--    <div fxLayout="column">-->
-<!--    <span class="material-icons">-->
-<!--        mail-->
-<!--      </span>-->
-<!--      EMAIL :-->
-<!--      <label>-->
-<!--    <textarea matInput-->
-<!--              cdkTextareaAutosize-->
-<!--              #autosize="cdkTextareaAutosize"-->
-<!--              cdkAutosizeMinRows="1"-->
-<!--              cdkAutosizeMaxRows="5"></textarea>-->
-<!--      </label>-->
-<!--    </div>-->
-<!--  </mat-card>-->
-
-<!--  <mat-card style="margin-top: 3px">-->
-<!--    <div fxLayout="column">-->
-<!--    <span class="material-icons">-->
-<!--        directions_car-->
-<!--      </span>-->
-<!--      CAR NUMBER :-->
-<!--      <label>-->
-<!--    <textarea matInput-->
-<!--              cdkTextareaAutosize-->
-<!--              #autosize="cdkTextareaAutosize"-->
-<!--              cdkAutosizeMinRows="1"-->
-<!--              cdkAutosizeMaxRows="5"></textarea>-->
-<!--      </label>-->
-<!--    </div>-->
-<!--  </mat-card>-->
-
-  <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
-    <button mat-raised-button style="width: 200px"
-            [color]="'primary'">
-      <span class="material-icons">save </span>
-      Save
-    </button>
-  </div>
-
-</mat-card>
+  </mat-card>
+</form>

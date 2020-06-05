@@ -32,7 +32,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   severityLevel: any;
   location: any;
 
-  constructor(private  activeRoute: ActivatedRoute,
+  constructor(private activeRoute: ActivatedRoute,
               private router: Router,
               private eventService: EventService,
               private fb: FormBuilder,

@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from '../../access/log-in/user';
+import {LoginUser} from '../modles/loginUser';
 import {ApiService} from './api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {UserInformation} from '../modles/userInformation';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  usersDb: User[] = [{username: 'Odeya', password: '1111'}, {username: 'David', password: '2222'}];
+  path = '/api/account'
   user;
 
   constructor(private route: Router,private apiService:ApiService,private snackBar:MatSnackBar) {
@@ -17,8 +18,8 @@ export class UserService {
     };
   }
 
-  login(userCredentials: User) {
-    this.apiService.post<any>('/account/login',userCredentials)
+  login(userCredentials: LoginUser) {
+    this.apiService.post<any>(this.path +'/login' ,userCredentials)
         .subscribe(
             (result:any)=> {
               if (result != null) {
@@ -39,4 +40,8 @@ export class UserService {
     this.route.navigate(['/sessions/signIn']);
   }
 
+  updateUser(updateUser: UserInformation) {
+    return this.apiService
+      .put(this.path + '/updateUser' , updateUser);
+  }
 }
