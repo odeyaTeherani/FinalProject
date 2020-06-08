@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material';
-import {UserService} from '../../services/user.service';
+import {AccountService} from '../../services/account.service';
 import {AuthService} from '../../services/auth.service';
 
 export interface MenuItem {
@@ -68,7 +68,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private readonly mobileQueryListener: () => void;
 
-  constructor(media: MediaMatcher,public userService:UserService, private authService: AuthService) {
+  constructor(media: MediaMatcher, public userService:AccountService, private authService: AuthService) {
     this.appName = 'system';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.isAdmin = authService.isAdmin();
