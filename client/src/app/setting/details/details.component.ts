@@ -14,8 +14,6 @@ export class DetailsComponent implements OnInit {
   user: UserInformation;
 
   constructor(private fb: FormBuilder, private accountService: AccountService) {
-    // this.user = accountService.getCurrentUser();
-    // console.log(this.user);
   }
 
   // private initForm() {
@@ -32,10 +30,28 @@ export class DetailsComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.accountService.getCurrentUser()
+      .subscribe(
+        e=> {
+          this.user = e;
+          console.log(this.user);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   save() {
-    this.accountService.updateCurrentUser(this.user);
+    this.accountService.updateCurrentUser(this.user)
+      .subscribe(
+        e=> {
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
 }
