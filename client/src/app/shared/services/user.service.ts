@@ -8,6 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class UserService {
+  path = '/api/account'
   usersDb: User[] = [{username: 'Odeya', password: '1111'}, {username: 'David', password: '2222'}];
   user;
 
@@ -18,7 +19,7 @@ export class UserService {
   }
 
   login(userCredentials: User) {
-    this.apiService.post<any>('/api/account/login',userCredentials)
+    this.apiService.post<any>(this.path + '/login',userCredentials)
         .subscribe(
             (result:any)=> {
               if (result != null) {

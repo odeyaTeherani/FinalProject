@@ -10,22 +10,57 @@ import {EventTypeService} from '../shared/services/event-type.service';
 export class EventTypeEditComponent implements OnInit {
   eventsType: EventType[];
   newEventType: EventType;
+  editType: EventType;
+  editMode = false;
+  addMode = false;
+
   constructor(private eventTypeService: EventTypeService) {}
 
   ngOnInit() {
     this.eventTypeService.getAll()
-      .subscribe((e: any) => {
-        this.eventsType = e;
-      });
+      .subscribe(
+        (e: EventType[]) => {
+          this.eventsType = e;
+        });
   }
 
-  addNewEventType($event: MouseEvent) {
-    this.newEventType.name = 'MoreFire';
-    console.log(this.newEventType.name);
-    this.eventTypeService.edit(this.newEventType);
+  addNewEventType(obj: any) {
+    this.eventTypeService.add(this.newEventType).subscribe(
+      e => {
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-  EditEventType($event: MouseEvent) {}
+  editEventType(id: number) {
+    console.log(id);
+    this.editMode = false;
+    this.eventTypeService.getById(id)
+      .subscribe(
+        e => {
+          this.editType = e;
+          console.log(this.editType);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    console.log(this.editType);
+    // this.eventTypeService.edit(this.editType);
+  }
 
-  deleteEventType($event: MouseEvent) {}
+  deleteEventType(deleted: EventType) {
+    console.log(deleted);
+    this.eventTypeService.delete(deleted)
+      .subscribe(
+        e => {
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }
