@@ -1,47 +1,34 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {LoginUser} from '../modles/loginUser';
 import {ApiService} from './api.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserInformation} from '../modles/userInformation';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  path = '/api/account'
-  user;
+  path = '/api/user';
 
-  constructor(private route: Router,private apiService:ApiService,private snackBar:MatSnackBar) {
-    this.user = {
-      token: 'abc!@#123$$%^'
-    };
+  constructor(private apiService: ApiService) {
   }
 
-  login(userCredentials: LoginUser) {
-    this.apiService.post<any>(this.path +'/login' ,userCredentials)
-        .subscribe(
-            (result:any)=> {
-              if (result != null) {
-                localStorage.setItem('token', result.token);
-                localStorage.setItem('role', result.roles[0]);
-                this.route.navigate(['/home']);
-              } else {
-                console.log('bad user request');
-              }
-            },(error) => {
-                console.log(error);
-                this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});
-            });
-  }
-
-  logout() {
-    localStorage.clear();
-    this.route.navigate(['/sessions/signIn']);
-  }
-
-  updateUser(updateUser: UserInformation) {
+  getAll(): Observable<UserInformation []> {
     return this.apiService
-      .put(this.path + '/updateUser' , updateUser);
+      .get<UserInformation []>(this.path);
+  }
+
+  getById(id: string) {
+    return this.apiService
+      .get<UserInformation>(this.path + '/' + id);
+  }
+
+  updateUser(model: UserInformation) {
+    return this.apiService
+      .put(this.path + '/' + model.id, model);
+  }
+
+  deleteUser(id: string) {
+    return this.apiService
+      .delete(this.path + '/' + id);
   }
 }

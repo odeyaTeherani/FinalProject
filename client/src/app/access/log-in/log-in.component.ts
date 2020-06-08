@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../shared/services/user.service';
+import {AccountService} from '../../shared/services/account.service';
 import {LoginUser} from '../../shared/modles/loginUser';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -19,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LogInComponent implements OnInit {
   hide = true;
-  constructor(public userService:UserService) { }
+  constructor(public userService:AccountService) { }
   userLogin:LoginUser = {username:'',password:''};
 
   userNameFormControl = new FormControl('', [

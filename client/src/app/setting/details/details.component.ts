@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserInformation} from '../../shared/modles/userInformation';
-import {UserService} from '../../shared/services/user.service';
+import {AccountService} from '../../shared/services/account.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -12,8 +13,9 @@ export class DetailsComponent implements OnInit {
   userForm: FormGroup;
   user: UserInformation;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
-
+  constructor(private fb: FormBuilder, private accountService: AccountService) {
+    this.user = accountService.getCurrentUser();
+    console.log(this.user);
   }
 
   // private initForm() {
@@ -33,7 +35,7 @@ export class DetailsComponent implements OnInit {
   }
 
   save() {
-    // const user = this.userForm.value;
-    // this.userService.updateUser(user);
+    this.accountService.updateCurrentUser(this.user);
   }
+
 }
