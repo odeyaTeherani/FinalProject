@@ -14,8 +14,8 @@ export class DetailsComponent implements OnInit {
   user: UserInformation;
 
   constructor(private fb: FormBuilder, private accountService: AccountService) {
-    this.user = accountService.getCurrentUser();
-    console.log(this.user);
+    // this.user = accountService.getCurrentUser();
+    // console.log(this.user);
   }
 
   // private initForm() {
