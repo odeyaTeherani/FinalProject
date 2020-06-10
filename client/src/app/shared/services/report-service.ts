@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 import {ApiService} from './api.service';
 import {Report} from '../modles/report';
 
@@ -10,7 +9,7 @@ import {Report} from '../modles/report';
 export class ReportService {
   path = '/api/report';
 
-  constructor(private http: HttpClient,private api:ApiService) {}
+  constructor(private api:ApiService) {}
 
   get(): Observable<Report []> {
     return this.api
@@ -20,16 +19,11 @@ export class ReportService {
   getById(alertId: number) {
     return this.api
       .get<Report >(this.path + '/' + alertId);
-
-    // return this.http
-    //   .get<Report>(environment.url + this.path + '/' + alertId);
   }
 
   add(newReport: any) {
     return this.api
       .post<Report []>(this.path, newReport);
-    // return this.http
-    //   .post(environment.url +  this.path, newReport);
   }
 
 
@@ -39,7 +33,7 @@ export class ReportService {
   }
 
   edit(editedEntity: any) {
-    return this.http
+    return this.api
       .put(this.path + '/' + editedEntity.id, editedEntity);
   }
 }

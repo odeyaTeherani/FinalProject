@@ -19,6 +19,11 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
+      //   canActivateChild: [AuthGuard],
+      //   path: 'closeEvent',
+      //   loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
+      // },
+      // {
         path: 'mySettings',
         loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
       },
@@ -31,6 +36,11 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
+      },
+      {
+        canActivateChild: [AuthGuard],
+        path: 'users',
+        loadChildren:() => import('./users/users.module').then(mod => mod.UsersModule)
       },
       {
         canActivateChild: [AuthGuard],

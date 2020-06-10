@@ -13,5 +13,4 @@ export interface Report {
   images: string [];
   selected: boolean;
   location?: { longitude:number, latitude:number };
-
 }
