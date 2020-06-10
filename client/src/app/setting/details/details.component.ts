@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserInformation} from '../../shared/modles/userInformation';
 import {AccountService} from '../../shared/services/account.service';
@@ -11,7 +11,19 @@ import {Observable} from 'rxjs';
 })
 export class DetailsComponent implements OnInit {
   userForm: FormGroup;
-  user: UserInformation;
+  user: UserInformation = {
+    userName: '',
+    id: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    role: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    carNumber: '',
+    birthDate: null
+  };
 
   constructor(private fb: FormBuilder, private accountService: AccountService) {
   }
@@ -32,8 +44,9 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.accountService.getCurrentUser()
       .subscribe(
-        e=> {
+        e => {
           this.user = e;
+          console.log('CurrentUser: ');
           console.log(this.user);
         },
         error => {
@@ -43,9 +56,11 @@ export class DetailsComponent implements OnInit {
   }
 
   save() {
+    this.user.role = 'admin';
+    console.log(this.user);
     this.accountService.updateCurrentUser(this.user)
       .subscribe(
-        e=> {
+        e => {
           this.ngOnInit();
         },
         error => {
