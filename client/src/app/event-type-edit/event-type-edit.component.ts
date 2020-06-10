@@ -21,6 +21,9 @@ export class EventTypeEditComponent implements OnInit {
       .subscribe(
         (e: EventType[]) => {
           this.eventsType = e;
+        },
+        error => {
+          console.log(error);
         });
   }
 

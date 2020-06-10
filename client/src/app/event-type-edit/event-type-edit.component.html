@@ -28,20 +28,25 @@
     <mat-list [fxFlex]="100">
       <mat-list-item class="event-type-list-item" *ngFor="let eventType of eventsType">
 
-        <div *ngIf="!editMode" fxLayout="row" class="full-width">
-          <p class="p-1">
-            {{eventType.name}}
-          </p>
+        <div *ngIf="!editMode" class="full-width">
+          <input matInput [fxFlex]="100"
+                 class="input-area"
+                 [readonly]="!editMode"
+                 style="border: none"
+                 [(ngModel)]="eventType.name">
+<!--          <p class="p-1">-->
+<!--            {{eventType.name}}-->
+<!--          </p>-->
         </div>
 
         <button *ngIf="!editMode"
-                mat-icon-button color="accent" [matTooltip]="'Edit'"
+                mat-icon-button color="accent"
+                [matTooltip]="'Edit'"
                 (click)="editMode = true">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <input *ngIf="editMode" [fxFlex]="100" class="input-area"
-               name="{{eventType.name}}"
+        <input matInput *ngIf="editMode" [fxFlex]="100" class="input-area"
                [(ngModel)]="eventType.name">
 
         <button *ngIf="editMode" mat-icon-button

@@ -16,7 +16,11 @@
 }
 
 .input-area {
-  height: 90%;
+  height: 48px;
   border: none;
   background: aliceblue;
+  &:hover {
+    cursor: pointer;
+    background: gainsboro;
+  }
 }

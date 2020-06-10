@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  userForm: FormGroup;
+  // userForm: FormGroup;
   user: UserInformation = {
     userName: '',
     id: '',
