@@ -1,69 +1,47 @@
 import {Component, OnInit} from '@angular/core';
 import {EventType} from '../shared/modles/event-type';
 import {EventTypeService} from '../shared/services/event-type.service';
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-event-type-edit',
-  templateUrl: './event-type-edit.component.html',
-  styleUrls: ['./event-type-edit.component.scss']
+    selector: 'app-event-type-edit',
+    templateUrl: './event-type-edit.component.html',
+    styleUrls: ['./event-type-edit.component.scss']
 })
 export class EventTypeEditComponent implements OnInit {
-  eventsType: EventType[];
-  newEventType: EventType;
-  editType: EventType;
-  editMode = false;
-  addMode = false;
+    eventsType: EventType[];
+    addMode = false;
+    newEventTypeCtrl: FormControl;
 
-  constructor(private eventTypeService: EventTypeService) {}
+    constructor(private eventTypeService: EventTypeService) {
+        this.newEventTypeCtrl = new FormControl(null, Validators.required)
+    }
 
-  ngOnInit() {
-    this.eventTypeService.getAll()
-      .subscribe(
-        (e: EventType[]) => {
-          this.eventsType = e;
-        },
-        error => {
-          console.log(error);
-        });
-  }
+    ngOnInit() {
+        this.eventTypeService.getAll()
+            .subscribe(
+                (e: EventType[]) => {
+                    this.eventsType = e;
+                },
+                error => {
+                    console.log(error);
+                });
+    }
 
-  addNewEventType(obj: any) {
-    this.eventTypeService.add(this.newEventType).subscribe(
-      e => {
-        this.ngOnInit();
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+    addNewEventType() {
+        this.eventTypeService.add(this.newEventTypeCtrl.value).subscribe(
+            (newEventType: EventType) => {
+                console.log(newEventType);
+                this.addMode = false;
+                this.eventsType.unshift(newEventType)
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
 
-  editEventType(id: number) {
-    console.log(id);
-    this.editMode = false;
-    this.eventTypeService.getById(id)
-      .subscribe(
-        e => {
-          this.editType = e;
-          console.log(this.editType);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    console.log(this.editType);
-    // this.eventTypeService.edit(this.editType);
-  }
-
-  deleteEventType(deleted: EventType) {
-    console.log(deleted);
-    this.eventTypeService.delete(deleted)
-      .subscribe(
-        e => {
-          this.ngOnInit();
-        },
-        error => {
-          console.log(error);
-        });
-  }
+    onDeleteSucceed(id: number) {
+        this.eventsType.splice(this.eventsType.indexOf(this.eventsType.find(x => x.id == id)), 1);
+    }
 }
