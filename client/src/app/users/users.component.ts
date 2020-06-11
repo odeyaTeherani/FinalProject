@@ -9,6 +9,7 @@ import {UserService} from '../shared/services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+
   isNotMobile: boolean;
   mobileQuery: MediaQueryList;
   users: UserInformation [];

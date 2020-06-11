@@ -1,72 +1,91 @@
-<!--<form>-->
-  <mat-card>
+<mat-card>
 
-    <div class="my-profile-header">
-      <p class="p-1" [fxFlex]="50">My profile</p>
-    </div>
+  <div class="my-profile-header">
+    <p class="p-1" [fxFlex]="50">My profile</p>
+  </div>
 
-    <br>
+  <br>
 
-    <p class="underline"><b>Validation</b></p>
+  <p class="underline"><b>Validation</b></p>
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>User Name</mat-label>
-      <input [(ngModel)]="user.userName" required
-             matInput placeholder="">
-    </mat-form-field>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>User Name</mat-label>
+    <input [(ngModel)]="user.userName" required
+           matInput placeholder="">
+  </mat-form-field>
 
-    <p>picture place</p>
+  <!--<input #file type="file" accept='image/*' (change)="preview(file.files)" />-->
+  <div fxLayout="row">
+    <button mat-raised-button
+            [color]="'primary'"
+            (click)="cameraInput.click()">
+      Upload image
+      <mat-icon>camera</mat-icon>
+    </button>
+  </div>
 
-    <p class="underline"><b>Personal Information</b></p>
+  <input #cameraInput style="display: none" type="file"
+         capture="camera"
+         accept="image/*"
+         id="cameraInput"
+         name="cameraInput"
+         (change)="onFileSelected($event)">
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="user.firstName" required>
-    </mat-form-field>
+  <img *ngIf="image"
+    class="uploaded-image"
+       [src]="this.image"
+       alt="image"
+       sizes="100px"/>
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="user.lastName" required>
-    </mat-form-field>
+  <p class="underline"><b>Personal Information</b></p>
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>Email Address</mat-label>
-      <input matInput [(ngModel)]="user.email" required>
-    </mat-form-field>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="user.firstName" required>
+  </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>Phone Number</mat-label>
-      <input matInput [(ngModel)]="user.phoneNumber" required>
-    </mat-form-field>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="user.lastName" required>
+  </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>Car Number</mat-label>
-      <input matInput [(ngModel)]="user.carNumber">
-    </mat-form-field>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>Email Address</mat-label>
+    <input matInput [(ngModel)]="user.email" required>
+  </mat-form-field>
 
-    <p>Gender</p>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle value="Women">female</mat-button-toggle>
-      <mat-button-toggle value="Men">male</mat-button-toggle>
-    </mat-button-toggle-group>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>Phone Number</mat-label>
+    <input matInput [(ngModel)]="user.phoneNumber" required>
+  </mat-form-field>
 
-    <br><br>
-    <mat-form-field class="mat-form-field-full-width">
-      <mat-label>Birth Date</mat-label>
-      <input matInput [matDatepicker]="picker"
-             [(ngModel)]="user.birthDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>Car Number</mat-label>
+    <input matInput [(ngModel)]="user.carNumber">
+  </mat-form-field>
 
-    <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
-      <button mat-raised-button style="width: 200px"
-              [color]="'primary'"
-              (click)="save()">
-        <span class="material-icons">save </span>
-        Save
-      </button>
-    </div>
+  <p>Gender</p>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="Women">female</mat-button-toggle>
+    <mat-button-toggle value="Men">male</mat-button-toggle>
+  </mat-button-toggle-group>
 
-  </mat-card>
-<!--</form>-->
+  <br><br>
+  <mat-form-field class="mat-form-field-full-width">
+    <mat-label>Birth Date</mat-label>
+    <input matInput [matDatepicker]="picker"
+           [(ngModel)]="user.birthDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
+    <button mat-raised-button style="width: 200px"
+            [color]="'primary'"
+            (click)="save()">
+      <span class="material-icons">save </span>
+      Save
+    </button>
+  </div>
+
+</mat-card>

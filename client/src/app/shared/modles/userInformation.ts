@@ -3,6 +3,7 @@ export interface UserInformation {
   userName: string;
   email: string;
   password: string;
+  image: string;
   confirmPassword: string;
   role: string;
   firstName: string;

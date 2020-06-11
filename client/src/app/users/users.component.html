@@ -1,9 +1,9 @@
 <mat-card>
 
   <div fxLayout="row" class="report-list-details">
-    <p class="p-1 text-center" [fxFlex]="28">Name</p>
-    <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="28">Email</p>
-    <p class="p-1 text-center" [fxFlex]="28">Role</p>
+    <p class="p-1 text-center" [fxFlex]="25">Name</p>
+    <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Email</p>
+    <p class="p-1 text-center" [fxFlex]="25">Agencies and responders</p>
   </div>
 
   <mat-list>
@@ -12,21 +12,24 @@
 
         <div fxLayout="row" class="full-width">
 
-          <p class="p-1 text-center" [fxFlex]="28">
+          <p class="p-1 text-center" [fxFlex]="25">
             {{user.firstName + " " + user.lastName}}
           </p>
 
-          <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="28">
+          <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
             {{user.email}}
           </p>
 
-          <p class="p-1 text-center" [fxFlex]="28">
+          <p class="p-1 text-center" [fxFlex]="25">
             {{user.role}}
           </p>
 
           <span fxFlex></span>
 
-          <button mat-icon-button [matTooltip]="'Extra Details'">
+          <button mat-icon-button
+                  [matTooltip]="'Extra Details'"
+                  [routerLinkActive]="'active'"
+                  [routerLink]="['/mySettings/details/' + user.id]">
             <mat-icon>arrow_right</mat-icon>
           </button>
 
@@ -35,4 +38,5 @@
     </cdk-virtual-scroll-viewport>
 
   </mat-list>
+
 </mat-card>
