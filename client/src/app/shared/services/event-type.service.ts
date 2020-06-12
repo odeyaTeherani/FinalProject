@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {EventType} from '../modles/event-type';
+import {HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,10 @@ export class EventTypeService {
   }
 
   add(newEventType: any) {
+    var params = new HttpParams();
+    params = params.append('newEventType',newEventType)
     return this.api
-      .post(this.path, newEventType);
+      .post(this.path, {},params);
   }
 
   edit(editEventType: EventType) {
