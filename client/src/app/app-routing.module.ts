@@ -43,6 +43,11 @@ const routes: Routes = [
         loadChildren:() => import('./users/users.module').then(mod => mod.UsersModule)
       },
       {
+        canActivateChild: [AuthGuard],
+        path: 'eventTypeEdit',
+        loadChildren:() => import('./event-type-edit/event-type-edit.module').then(mod => mod.EventTypeEditModule)
+      },
+      {
         path: 'alert-page',
         loadChildren:() => import('./report-page/report-page.module').then(mod => mod.ReportPageModule)
       },

@@ -33,7 +33,18 @@ export class DetailsComponent implements OnInit {
               private accountService: AccountService,
               private userService: UserService) {
 
-  }
+  // private initForm() {
+  //   const data: any = this.user == null ? {} : this.user;
+  //   this.userForm = this.fb.group({
+  //     userName: [data.userName || null, Validators.required],
+  //     firstName: [data.firstName || null, Validators.required],
+  //     lastName: [data.lastName || null, Validators.required],
+  //     email: [data.email || null, Validators.required],
+  //     phoneNumber: [data.phoneNumber || null, Validators.required],
+  //     carNumber: [data.carNumber || null],
+  //     birthDate: [data.birthDate || null]
+  //   });
+  // }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
@@ -63,7 +74,7 @@ export class DetailsComponent implements OnInit {
                 console.log(error);
               });
         }
-      });
+      );
   }
 
   save() {
