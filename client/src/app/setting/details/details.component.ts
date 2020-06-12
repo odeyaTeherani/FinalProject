@@ -31,20 +31,7 @@ export class DetailsComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private activeRoute: ActivatedRoute,
               private accountService: AccountService,
-              private userService: UserService) {
-
-  // private initForm() {
-  //   const data: any = this.user == null ? {} : this.user;
-  //   this.userForm = this.fb.group({
-  //     userName: [data.userName || null, Validators.required],
-  //     firstName: [data.firstName || null, Validators.required],
-  //     lastName: [data.lastName || null, Validators.required],
-  //     email: [data.email || null, Validators.required],
-  //     phoneNumber: [data.phoneNumber || null, Validators.required],
-  //     carNumber: [data.carNumber || null],
-  //     birthDate: [data.birthDate || null]
-  //   });
-  // }
+              private userService: UserService) {}
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
@@ -74,29 +61,31 @@ export class DetailsComponent implements OnInit {
                 console.log(error);
               });
         }
-      );
+      }
+    );
   }
 
-  save() {
-    this.user.image = this.image;
-    this.user.role = 'admin';
-    console.log(this.user);
-    this.userService.updateUser(this.user)
-      .subscribe(
-        e => {
-          this.ngOnInit();
-        },
-        error => {
-          console.log(error);
-        });
-  }
 
-  onFileSelected(event) {
-    const selectedFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    reader.onload = (e: any) => {
-      this.image = e.target.result ;
-    };
+    onFileSelected(event) {
+      const selectedFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onload = (e: any) => {
+        this.image = e.target.result;
+      };
+    }
+
+    save() {
+      this.user.image = this.image;
+      this.user.role = 'admin';
+      console.log(this.user);
+      this.userService.updateUser(this.user)
+        .subscribe(
+          e => {
+            this.ngOnInit();
+          },
+          error => {
+            console.log(error);
+          });
+    }
   }
-}
