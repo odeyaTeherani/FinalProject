@@ -1,68 +1,55 @@
 <mat-card>
-  <div fxLayout="row">
-    <button mat-raised-button
-            style="float: right"
-            color="primary"
-            (click)="addMode = true">
-      <mat-icon>add</mat-icon>
-      Add
-    </button>
-  </div>
-
-  <div>
-
-    <mat-list-item *ngIf="addMode" [fxFlex]="100" class="event-type-list-item">
-
-      <input [fxFlex]="100" class="event-type-list-item">
-
-      <button mat-icon-button
-              [matTooltip]="'Save'"
-              (click)="addNewEventType($event)">
-        <mat-icon>save</mat-icon>
-      </button>
-    </mat-list-item>
-  </div>
-
-
-  <div>
-    <mat-list [fxFlex]="100">
-      <mat-list-item class="event-type-list-item" *ngFor="let eventType of eventsType">
-
-        <div *ngIf="!editMode" class="full-width">
-          <input matInput [fxFlex]="100"
-                 class="input-area"
-                 [readonly]="!editMode"
-                 style="border: none"
-                 [(ngModel)]="eventType.name">
-<!--          <p class="p-1">-->
-<!--            {{eventType.name}}-->
-<!--          </p>-->
-        </div>
-
-        <button *ngIf="!editMode"
-                mat-icon-button color="accent"
-                [matTooltip]="'Edit'"
-                (click)="editMode = true">
-          <mat-icon>edit</mat-icon>
+    <div fxLayout="row">
+        <button mat-raised-button
+                style="float: right"
+                color="primary"
+                (click)="addMode = true">
+            Add Event Type
         </button>
+    </div>
 
-        <input matInput *ngIf="editMode" [fxFlex]="100" class="input-area"
-               [(ngModel)]="eventType.name">
+    <div fxLayout="row">
+        <mat-form-field *ngIf="addMode">
+            <input aria-label="new event"
+                   matInput
+                   [formControl]="newEventTypeCtrl">
+            <span matSuffix>
+                         <button mat-icon-button
+                                 [disabled]="newEventTypeCtrl.invalid"
+                                 [matTooltip]="'Save'"
+                                 (click)="addNewEventType()">
+                             <mat-icon>add</mat-icon>
+                        </button>
+                    </span>
+        </mat-form-field>
 
-        <button *ngIf="editMode" mat-icon-button
-                [matTooltip]="'Save'"
-                (click)="editEventType(eventType.id)">
-          <mat-icon>save</mat-icon>
-        </button>
+    </div>
 
-        <button mat-icon-button color="warn" [matTooltip]="'Delete'"
-                (click)="deleteEventType(eventType)">
-          <mat-icon>delete</mat-icon>
-        </button>
-
-      </mat-list-item>
-
+    <mat-list>
+        <mat-list-item class="event-type-list-item" *ngFor="let eventType of eventsType">
+            <app-event-type-item
+                    fxFlex="100"
+                    [eventType]="eventType"
+                    (onDeleteSucceed)="onDeleteSucceed($event)"
+            ></app-event-type-item>
+        </mat-list-item>
     </mat-list>
-  </div>
 
 </mat-card>
+
+
+<!--   &lt;!&ndash;version one&ndash;&gt;-->
+<!--    <div fxLayout="row" class="full-width mt-5">-->
+<!--        <div class="a" fxFlex="30"></div>-->
+<!--        <div class="b" fxFlex="20"></div>-->
+<!--        <div class="c" fxFlex="50"></div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;version two&ndash;&gt;-->
+<!--    <div fxLayout="column" class="ffff mt-5">-->
+<!--        <p class="a m-0 p-0" fxFlex="30">fdsfsdsdfsd</p>-->
+<!--        <div class="b" fxFlex="20"></div>-->
+<!--        <div class="c" fxFlex="50"></div>-->
+<!--    </div>-->
+
+

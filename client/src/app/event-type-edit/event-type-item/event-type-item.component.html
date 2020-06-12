@@ -1,0 +1,34 @@
+<div fxLayout="row" class="full-width">
+
+    <mat-form-field [fxFlex]="100">
+        <input aria-label="name"
+               matInput
+               [ngStyle]="{'border': !editMode?'none':null}"
+               [readonly]="!editMode"
+               [(ngModel)]="eventType.name">
+    </mat-form-field>
+
+    <span fxFlex></span>
+
+    <button *ngIf="!editMode" class="list-button"
+            mat-icon-button color="accent"
+            [matTooltip]="'Edit'"
+            (click)="editMode = true">
+        <mat-icon>edit</mat-icon>
+    </button>
+
+    <button *ngIf="editMode" class="list-button"
+            mat-icon-button
+            [disabled]="!eventType.name"
+            [matTooltip]="'Save'"
+            (click)="editEventType()">
+        <mat-icon>save</mat-icon>
+    </button>
+
+    <button mat-icon-button class="list-button"
+            color="warn"
+            [matTooltip]="'Delete'"
+            (click)="deleteEventType(eventType)">
+        <mat-icon>delete</mat-icon>
+    </button>
+</div>

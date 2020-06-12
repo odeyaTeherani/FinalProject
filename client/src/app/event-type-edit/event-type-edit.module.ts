@@ -5,13 +5,15 @@ import {RouterModule} from '@angular/router';
 import {EventTypeEditRoutes} from './event-type-edit-routing';
 import {MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { EventTypeItemComponent } from './event-type-item/event-type-item.component';
 
 
 
 @NgModule({
   declarations: [
-    EventTypeEditComponent
+    EventTypeEditComponent,
+    EventTypeItemComponent
   ],
     imports: [
         CommonModule,
@@ -23,7 +25,8 @@ import {FormsModule} from '@angular/forms';
         MatTooltipModule,
         MatButtonModule,
         FormsModule,
-        MatInputModule
+        MatInputModule,
+        ReactiveFormsModule
     ]
 })
 export class EventTypeEditModule { }
