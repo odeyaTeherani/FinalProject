@@ -11,24 +11,32 @@ export class EventTypeComponent implements OnInit {
 
   typeOptions: EventType [];
 
-  @Output ()typeChanged = new EventEmitter<any>();
+  @Output() typeChanged = new EventEmitter<any>();
   @Input() size = 20;
   @Input() disabled = false;
-  @Input() defaultValue?: {id: number, name: string};
+  @Input() defaultValue?: { id: number, name: string };
   @Input() appearance;
+
   constructor(private eventTypeService: EventTypeService) {
   }
 
   ngOnInit() {
     this.eventTypeService.getAll()
-      .subscribe((eventType: any)=> {
-        this.typeOptions = eventType;
-    });
+      .subscribe(
+        (eventType: any) => {
+          this.typeOptions = eventType;
+        },
+        error => {
+          console.log(error);
+        }
+      );
 
   }
 
-  displayWith(event: {id: number,name: string}) {
-    if (event == null) {return;}
+  displayWith(event: { id: number, name: string }) {
+    if (event == null) {
+      return;
+    }
     return event.name;
   }
 }
