@@ -18,17 +18,20 @@ import { SessionsLayoutComponent } from './components/sessions-layout/sessions-l
 import { EventTypeComponent } from './components/event-type/event-type.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SubRoleFiledComponent } from './components/sub-role-filed/sub-role-filed.component';
 
 @NgModule(
   {
-    exports: [
-      EventTypeComponent,
-    ],
+      exports: [
+          EventTypeComponent,
+          SubRoleFiledComponent,
+      ],
     declarations: [
       AdminLayoutComponent,
       NotFoundComponent,
       SessionsLayoutComponent,
-      EventTypeComponent
+      EventTypeComponent,
+      SubRoleFiledComponent
     ],
       imports: [
           CommonModule,

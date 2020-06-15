@@ -1,0 +1,22 @@
+<mat-form-field class="full-width"
+                [appearance]="appearance">
+  <input type="text"
+         placeholder="force"
+         aria-label="Number"
+         matInput
+         [disabled]="disabled"
+         [required]="required"
+         [ngModel]="defaultValue"
+         style="text-underline: none"
+         [matAutocomplete]="auto">
+  <mat-autocomplete fxFlex="100"
+                    (optionSelected)="subChanged.emit($event.option.value)"
+                    [displayWith]="displayWith" #auto="matAutocomplete">
+
+    <mat-option *ngFor="let option of options"
+                [value]="option">
+      {{option.subRole}}
+    </mat-option>
+  </mat-autocomplete>
+
+</mat-form-field>

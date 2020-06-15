@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {EventType} from '../shared/modles/event-type';
 import {EventTypeService} from '../shared/services/event-type.service';
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-event-type-edit',
@@ -14,7 +14,7 @@ export class EventTypeEditComponent implements OnInit {
     newEventTypeCtrl: FormControl;
 
     constructor(private eventTypeService: EventTypeService) {
-        this.newEventTypeCtrl = new FormControl(null, Validators.required)
+        this.newEventTypeCtrl = new FormControl(null, Validators.required);
     }
 
     ngOnInit() {
@@ -29,11 +29,11 @@ export class EventTypeEditComponent implements OnInit {
     }
 
     addNewEventType() {
-        this.eventTypeService.add(this.newEventTypeCtrl.value).subscribe(
+      this.eventTypeService.add(this.newEventTypeCtrl.value).subscribe(
             (newEventType: EventType) => {
                 console.log(newEventType);
                 this.addMode = false;
-                this.eventsType.unshift(newEventType)
+                this.eventsType.unshift(newEventType);
             },
             error => {
                 console.log(error);
@@ -42,6 +42,7 @@ export class EventTypeEditComponent implements OnInit {
     }
 
     onDeleteSucceed(id: number) {
-        this.eventsType.splice(this.eventsType.indexOf(this.eventsType.find(x => x.id == id)), 1);
+      // tslint:disable-next-line:triple-equals
+        this.eventsType.splice(this.eventsType.indexOf(this.eventsType.find(x => x.id === id)), 1);
     }
 }
