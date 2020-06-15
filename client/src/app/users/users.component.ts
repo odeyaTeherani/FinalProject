@@ -35,11 +35,11 @@ export class UsersComponent implements OnInit {
         });
   }
 
-  closeEvent(event: MouseEvent) {
-  }
-
   // ngOnDestroy():void {
   //   this.mobileQuery.removeListener(this.mobileQueryListener);
   // }
 
+  deleteUsers() {
+    // this.userService.deleteUser()
+  }
 }

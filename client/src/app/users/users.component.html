@@ -1,8 +1,23 @@
 <mat-card>
+  <div fxLayout="row">
+    <button mat-raised-button
+            style="float: right"
+            [routerLinkActive]="'active'"
+            [routerLink]="'/mySettings/details/addUser'"
+            color="primary">
+      Add User
+    </button>
+    <button mat-raised-button
+            style="right: unset"
+            (click)="deleteUsers()"
+            color="warn">
+      Delete
+    </button>
+  </div>
 
   <div fxLayout="row" class="report-list-details">
     <p class="p-1 text-center" [fxFlex]="25">Name</p>
-    <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Email</p>
+    <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Email</p>
     <p class="p-1 text-center" [fxFlex]="25">Agencies and responders</p>
   </div>
 
@@ -10,18 +25,26 @@
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
       <mat-list-item class="report-list-item" *cdkVirtualFor="let user of users">
 
-        <div fxLayout="row" class="full-width">
 
+        <div fxLayout="row" class="full-width" (click)="check.toggle()">
+
+          <div [fxFlex]="10" class="mt-1">
+            <mat-checkbox class="text-center" #check
+                          [(ngModel)]="user.selected"
+                          (click)="$event.stopPropagation()"
+                          [color]="'primary'">
+            </mat-checkbox>
+          </div>
           <p class="p-1 text-center" [fxFlex]="25">
             {{user.firstName + " " + user.lastName}}
           </p>
 
-          <p *ngIf = "!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
+          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
             {{user.email}}
           </p>
 
           <p class="p-1 text-center" [fxFlex]="25">
-            {{user.role}}
+            {{user.subRole}}
           </p>
 
           <span fxFlex></span>
@@ -29,7 +52,7 @@
           <button mat-icon-button
                   [matTooltip]="'Extra Details'"
                   [routerLinkActive]="'active'"
-                  [routerLink]="['/mySettings/details/' + user.id]">
+                  [routerLink]="['/users/details/' + user.id]">
             <mat-icon>arrow_right</mat-icon>
           </button>
 

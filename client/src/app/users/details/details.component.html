@@ -1,7 +1,17 @@
 <mat-card>
-
   <div class="my-profile-header">
-    <p class="p-1" [fxFlex]="50">My profile</p>
+    <p *ngIf="!extraDetailsUser" class="p-1" [fxFlex]="70">My Profile</p>
+    <p *ngIf="extraDetailsUser" class="p-1" [fxFlex]="70">Profile</p>
+<!--    <p class="p-1" [fxFlex]="10" *ngIf="!addMode">force:</p>-->
+    <app-sub-role-filed [disabled]="!extraDetailsUser"
+                        *ngIf="!addMode"
+                        required>
+    </app-sub-role-filed>
+
+<!--    <mat-form-field>-->
+<!--      <input [(ngModel)]="user.subRole.subRole" required-->
+<!--             matInput placeholder="">-->
+<!--    </mat-form-field>-->
   </div>
 
   <br>
@@ -11,6 +21,20 @@
   <mat-form-field class="mat-form-field-full-width">
     <mat-label>User Name</mat-label>
     <input [(ngModel)]="user.userName" required
+           matInput placeholder="">
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-full-width"
+  *ngIf="addMode">
+    <mat-label>Password</mat-label>
+    <input [(ngModel)]="user.password" required
+           matInput placeholder="">
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-full-width"
+                  *ngIf="addMode">
+    <mat-label>Confirm Password</mat-label>
+    <input [(ngModel)]="user.confirmPassword" required
            matInput placeholder="">
   </mat-form-field>
 
@@ -49,6 +73,11 @@
     <input matInput [(ngModel)]="user.lastName" required>
   </mat-form-field>
 
+  <app-sub-role-filed [disabled]="!extraDetailsUser"
+                      *ngIf="addMode"
+                      [required]>
+  </app-sub-role-filed>
+
   <mat-form-field class="mat-form-field-full-width">
     <mat-label>Email Address</mat-label>
     <input matInput [(ngModel)]="user.email" required>
@@ -85,6 +114,13 @@
             (click)="save()">
       <span class="material-icons">save </span>
       Save
+    </button>
+
+    <button mat-raised-button style="width: 200px"
+            (click)="deleteUser()"
+    *ngIf="extraDetailsUser && !addMode && !isAdmin" >
+      <span class="material-icons">delete</span>
+      Delete User
     </button>
   </div>
 

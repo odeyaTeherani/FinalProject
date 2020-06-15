@@ -34,6 +34,11 @@ const routes: Routes = [
       },
       {
         canActivateChild: [AuthGuard],
+        path: 'forces',
+        loadChildren: () => import('./sub-role/sub-role.module').then(mod => mod.SubRoleModule)
+      },
+      {
+        canActivateChild: [AuthGuard],
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },

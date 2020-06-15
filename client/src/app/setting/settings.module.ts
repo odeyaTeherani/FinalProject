@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import { DetailsComponent } from './details/details.component';
 import { AboutTheAppComponent } from './about-the-app/about-the-app.component';
 import { MySettingsComponent } from './my-settings/my-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
@@ -17,6 +16,7 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule(
   {
@@ -33,9 +33,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       MatTabsModule,
       MatButtonToggleModule,
       MatDatepickerModule,
-      MatNativeDateModule, ReactiveFormsModule, FormsModule,
+      MatNativeDateModule, ReactiveFormsModule, FormsModule, SharedModule,
     ],
-    declarations:[DetailsComponent,
+    declarations:[
       AboutTheAppComponent,
       MySettingsComponent,
       NotificationsComponent]

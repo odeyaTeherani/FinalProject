@@ -20,6 +20,11 @@ export class AccountService {
     };
   }
 
+  register(user: UserInformation) {
+    this.apiService
+      .post(this.path +'/register' ,user);
+  }
+
   login(userCredentials: LoginUser) {
     this.apiService.post<any>(this.path +'/login' ,userCredentials)
         .subscribe(

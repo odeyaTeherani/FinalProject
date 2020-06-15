@@ -1,5 +1,8 @@
+import {SubRole} from './sub-role';
+
 export interface UserInformation {
   id: string;
+  subRole: SubRole;
   userName: string;
   email: string;
   password: string;
@@ -10,5 +13,6 @@ export interface UserInformation {
   lastName: string;
   phoneNumber: string;
   carNumber: string;
+  selected: boolean;
   birthDate: Date;
 }

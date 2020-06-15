@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {EventType} from "../../shared/modles/event-type";
-import {EventTypeService} from "../../shared/services/event-type.service";
+import {EventType} from '../../shared/modles/event-type';
+import {EventTypeService} from '../../shared/services/event-type.service';
 
 @Component({
     selector: 'app-event-type-item',
