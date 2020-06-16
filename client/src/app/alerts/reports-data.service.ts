@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {Report} from '../reporting-history/reporting-history.component';
 import {ReportService} from '../shared/services/report-service';
+import {Report} from '../shared/modles/report';
 
 
 @Injectable()
@@ -19,7 +19,7 @@ export class ReportsDataService {
     this.reportService.get()
       .subscribe((reports: Report []) => {
         this.reports = reports;
-        console.log(this.reports);
+        // console.log(this.reports);
         this.emitReportsState();
       });
   }

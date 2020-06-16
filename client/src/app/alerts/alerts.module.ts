@@ -12,7 +12,7 @@ import {
     MatOptionModule,
     MatSelectModule, MatSidenavModule, MatTooltipModule
 } from '@angular/material';
-import {FlexModule} from '@angular/flex-layout';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 import {CloseEventComponent} from "./close-event/close-event.component";
 import {ReportsDataService} from "./reports-data.service";
 import {MatInputModule} from "@angular/material/input";
@@ -22,38 +22,42 @@ import {SeverityLevelModule} from "../shared/components/severity-level/severity-
 import {SharedModule} from "../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatNativeDateModule} from "@angular/material/core";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule(
-    {
-        imports: [CommonModule,
-            RouterModule.forChild(ReportRoutes),
-            MatFormFieldModule,
-            MatOptionModule,
-            MatSelectModule,
-            MatCardModule,
-            MatListModule,
-            MatCheckboxModule,
-            MatButtonModule,
-            MatIconModule,
-            MatTooltipModule,
-            FlexModule,
-            FormsModule,
-            ReactiveFormsModule,
-            MatInputModule,
-            MatDatepickerModule,
-            MatNativeDateModule,
-            GooglePlacesModule,
-            SharedModule,
-            SeverityLevelModule],
-        declarations: [
-            AlertsComponent,
-            CloseEventComponent
-        ],
-        providers: [
-            ReportsDataService
-        ]
-    }
+  {
+    imports: [CommonModule,
+      RouterModule.forChild(ReportRoutes),
+      MatFormFieldModule,
+      MatOptionModule,
+      MatSelectModule,
+      MatCardModule,
+      MatListModule,
+      MatCheckboxModule,
+      MatButtonModule,
+      MatIconModule,
+      MatTooltipModule,
+      FlexModule,
+      FormsModule,
+      ReactiveFormsModule,
+      MatInputModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      GooglePlacesModule,
+      SharedModule,
+      SeverityLevelModule, FlexLayoutModule, ScrollingModule],
+    declarations: [
+      AlertsComponent,
+      CloseEventComponent
+    ],
+    exports: [
+      AlertsComponent
+    ],
+    providers: [
+      ReportsDataService
+    ]
+  }
 )
 export class AlertsModule{
     constructor() {

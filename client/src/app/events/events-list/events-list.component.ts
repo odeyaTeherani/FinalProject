@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Event, SeverityLevel} from '../../shared/modles/event';// import the event
+import {Event} from '../../shared/modles/event';
+import {SeverityLevel} from '../../shared/modles/severity-level.enum';
 
 @Component({
   selector: 'app-events-list',
@@ -9,9 +10,7 @@ import {Event, SeverityLevel} from '../../shared/modles/event';// import the eve
 export class EventsListComponent implements OnInit {
   @Input() event: Event;
   slRef = SeverityLevel;// referent from the event.ts instead the number its shows the severity
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
   }

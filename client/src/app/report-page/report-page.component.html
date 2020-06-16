@@ -5,16 +5,39 @@
     <div [fxFlex]="50" [fxFlex.xs]="100">
 
       <div fxLayout="column">
-        <!--'legacy' | 'standard' | 'fill' | 'outline'-->
-        <mat-form-field fxFlex="20" [appearance]="'outline'">
-        <mat-label>Event Type</mat-label>
-        <mat-select [formControlName]="'eventType'">
-          <mat-option *ngFor="let type of typeOptions"
-                      [value]="type.id">
-            {{type.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+
+        <app-event-type
+          [appearance]="'outline'"
+          [defaultValue]="alert? this.eventType: null"
+          [disabled]="viewMode"
+          (typeChanged)="eventType = $event">
+        </app-event-type>
+
+        <!--        &lt;!&ndash;'legacy' | 'standard' | 'fill' | 'outline'&ndash;&gt;-->
+        <!--        <mat-form-field fxFlex="20" [appearance]="'outline'">-->
+        <!--        <mat-label>Event Type</mat-label>-->
+        <!--        <mat-select [formControlName]="'eventType'">-->
+        <!--          <mat-option *ngFor="let type of typeOptions"-->
+        <!--                      [value]="type.id">-->
+        <!--            {{type.name}}-->
+        <!--          </mat-option>-->
+        <!--        </mat-select>-->
+        <!--      </mat-form-field>-->
+
+        <app-severity-level
+          [appearance]="'outline'"
+          [defaultValue]="alert? slRef[alert.severityLevel] : null"
+          [disabled]="viewMode"
+          (change)="severityLevel = $event">
+        </app-severity-level>
+
+        <mat-form-field [appearance]="'outline'" fxFlex="25">
+          <mat-label>Location</mat-label>
+          <input matInput
+                 aria-label="Number"
+                 appGooglePlace
+                 placeholder=""/>
+        </mat-form-field>
 
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
@@ -23,32 +46,12 @@
           <!--          <mat-error *ngIf="!reportForm.controls['carNumber'].valid">*car number required - contains only number</mat-error>-->
         </mat-form-field>
 
-<!--        <mat-form-field [appearance]="'outline'" fxFlex="25">-->
-<!--          <mat-label>Location</mat-label>-->
-<!--          <input matInput-->
-<!--                 aria-label="Number"-->
-<!--                 appGooglePlace-->
-<!--                 [formControlName]="'locationFiled'" [readonly]="viewMode"-->
-<!--                 placeholder=""/>-->
-<!--          &lt;!&ndash;                 (locationSelected)="reportForm.controls['locationFiled'].setValue($event)"&ndash;&gt;-->
-<!--        </mat-form-field>-->
-
-
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
-          <mat-label>Severity Level</mat-label>
-          <mat-select [formControlName]="'severityLevel'">
-            <mat-option *ngFor="let level of severityOption"
-                        [value]="level">
-              {{level}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Number of Evacuated injured</mat-label>
-          <input [formControlName]="'numberOfEvacuatedInjured'"
-                 [readonly]="viewMode"
-                 matInput type="number" min="0"/>
+          <input
+            [formControlName]="'numberOfEvacuatedInjured'"
+            [readonly]="viewMode"
+            matInput type="number" min="0"/>
         </mat-form-field>
 
       </div>
@@ -58,14 +61,14 @@
     <div [fxFlex]="50" [fxFlex.xs]="100" class="pl-1">
       <!--<input #file type="file" accept='image/*' (change)="preview(file.files)" />-->
 
-     <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
-      <button mat-raised-button
-              [color]="'primary'"
-              (click)="cameraInput.click()">
-        Upload image
-        <mat-icon>camera</mat-icon>
-      </button>
-     </div>
+      <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
+        <button mat-raised-button
+                [color]="'primary'"
+                (click)="cameraInput.click()">
+          Upload image
+          <mat-icon>camera</mat-icon>
+        </button>
+      </div>
 
       <input #cameraInput style="display: none" type="file"
              capture="camera"
@@ -75,17 +78,10 @@
              (change)="onFileSelected($event)">
 
       <div fxLayout="row wrap" fxLayoutAlign="center">
-<!--        <mat-grid-list cols="4" rowHeight="100px">-->
-<!--          <mat-grid-tile-->
-<!--            *ngFor="let image of images;">-->
-<!--              <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>-->
-<!--          </mat-grid-tile>-->
-<!--        </mat-grid-list>-->
         <ng-container *ngFor="let image of images;">
-          <img  class="uploaded-image"  [src]="image"  alt="image" sizes="100px"/>
+          <img class="uploaded-image" [src]="image" alt="image" sizes="100px"/>
         </ng-container>
       </div>
-      <!-- <img width="100%" src="https://www.telugu360.com/wp-content/uploads/2017/09/JLK-1.jpg">-->
     </div>
 
   </div>
@@ -94,7 +90,7 @@
     <mat-form-field [appearance]="'outline'" fxFlex="100">
       <mat-label>Note</mat-label>
       <textarea [readonly]="viewMode"
-        [formControlName]="'note'"
+                [formControlName]="'note'"
                 matInput
                 cdkTextareaAutosize
                 cdkAutosizeMinRows="1"
@@ -104,12 +100,12 @@
   </div>
 
   <agm-map *ngIf="locationCoordinates != null"
-          [latitude]="locationCoordinates.latitude"
-          [longitude]="locationCoordinates.longitude"
-          [zoom]="zoom" >
+           [latitude]="locationCoordinates.latitude"
+           [longitude]="locationCoordinates.longitude"
+           [zoom]="zoom">
     <agm-marker
-            [latitude]="locationCoordinates.latitude"
-            [longitude]="locationCoordinates.longitude">
+      [latitude]="locationCoordinates.latitude"
+      [longitude]="locationCoordinates.longitude">
     </agm-marker>
   </agm-map>
 

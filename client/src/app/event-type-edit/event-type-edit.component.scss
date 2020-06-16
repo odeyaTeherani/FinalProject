@@ -1,0 +1,36 @@
+
+
+.btn-add-position{
+  float: right !important;
+  width: 150px;
+}
+
+.event-type-list-item {
+  //z-index: 9999999;
+  border-radius: 5px;
+  margin-top: 6px;
+  &:hover {
+    cursor: pointer;
+    background: gainsboro;
+  }
+}
+
+.ffff{
+  height: 100px;
+}
+
+.a{
+  height: 20px;
+  background: #302b63;
+}
+
+
+.b{
+  height: 20px;
+  background: orangered;
+}
+
+.c{
+  height: 20px;
+  background: #432422;
+}

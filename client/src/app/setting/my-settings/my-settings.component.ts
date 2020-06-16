@@ -20,19 +20,19 @@ export class MySettingsComponent implements OnInit {
       icon: 'account_circle',
       name: 'My details',
       subName: 'Define you\'r details',
-      url: 'details',
+      url: '/users/details',
     },
     {
       icon: 'notification_important',
       name: 'Notifications',
       subName: 'What will interest you? Set the topics for alert',
-      url: 'notifications',
+      url: '/mySettings/notifications',
     },
     {
       icon: 'error_outline',
       name: 'Policies, Terms of Use',
       subName: 'Terms of Use',
-      url: 'aboutTheApp',
+      url: '/mySettings/aboutTheApp',
     }
   ];
 

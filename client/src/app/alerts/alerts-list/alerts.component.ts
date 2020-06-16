@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Report} from '../../reporting-history/reporting-history.component';
 import { Subscription} from 'rxjs';
 import {ReportsDataService} from '../reports-data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
+import {Report} from '../../shared/modles/report';
 
 
 @Component({

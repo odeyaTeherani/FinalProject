@@ -34,8 +34,23 @@ const routes: Routes = [
       },
       {
         canActivateChild: [AuthGuard],
+        path: 'forces',
+        loadChildren: () => import('./sub-role/sub-role.module').then(mod => mod.SubRoleModule)
+      },
+      {
+        canActivateChild: [AuthGuard],
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
+      },
+      {
+        canActivateChild: [AuthGuard],
+        path: 'users',
+        loadChildren:() => import('./users/users.module').then(mod => mod.UsersModule)
+      },
+      {
+        canActivateChild: [AuthGuard],
+        path: 'eventTypeEdit',
+        loadChildren:() => import('./event-type-edit/event-type-edit.module').then(mod => mod.EventTypeEditModule)
       },
       {
         path: 'alert-page',

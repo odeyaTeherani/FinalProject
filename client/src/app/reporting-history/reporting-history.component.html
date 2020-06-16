@@ -1,27 +1,32 @@
 <mat-card>
-  <mat-list>
-    <mat-list-item class="report-list-details">
-      <div class = "text-center" [fxFlex]="100/2">Date</div>
-      <div class = "text-center" [fxFlex]="100/2" >Event Type</div>
-    </mat-list-item>
 
-    <mat-list-item class="report-list-item" [routerLink]="['/alert-page/',report.id]"
-                   *ngFor="let report of reports">
-      <div class = "text-center" [fxFlex]="100/2">
-        {{ report.date | date:'dd/MM/yyyy HH:mm' }}
-      </div>
-      <div class = "text-center" [fxFlex]="100/2*2">
-        {{report.eventType}}
-      </div>
+    <div fxLayout="row"  class="report-list-details">
+      <div class="p-1 text-center" [fxFlex]="100/2">Date</div>
+      <div class="pr-1 p-1 text-center" [fxFlex]="100/2">Event Type</div>
+    </div>
 
-<!--      <button matTooltip="Delete Report" (click)="$event.stopPropagation();delete(report)" mat-icon-button
-              [color]="'warn'">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <button matTooltip="Edit Report" (click)="$event.stopPropagation();edit(report)" mat-icon-button
-              [color]="'primary'">
-        <mat-icon>edit</mat-icon>
-      </button>-->
-    </mat-list-item>
+    <mat-list>
+    <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
+      <mat-list-item class="report-list-item" [routerLink]="['/alert-page/',report.id]"
+                     *cdkVirtualFor="let report of reports">
+        <div class="text-center" [fxFlex]="100/2">
+          {{ report.date | date:'dd/MM/yyyy HH:mm' }}
+        </div>
+        <div class="text-center" [fxFlex]="100/2*2">
+          {{report.eventType.name}}
+        </div>
+
+        <!--      <button matTooltip="Delete Report" (click)="$event.stopPropagation();delete(report)" mat-icon-button
+                      [color]="'warn'">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+              <button matTooltip="Edit Report" (click)="$event.stopPropagation();edit(report)" mat-icon-button
+                      [color]="'primary'">
+                <mat-icon>edit</mat-icon>
+              </button>-->
+      </mat-list-item>
+    </cdk-virtual-scroll-viewport>
+
   </mat-list>
 </mat-card>
