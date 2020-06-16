@@ -5,7 +5,7 @@
                matInput
                [ngStyle]="{'border': !editMode?'none':null}"
                [readonly]="!editMode"
-               [(ngModel)]="eventType.name">
+               [(ngModel)]="element.name">
     </mat-form-field>
 
     <span fxFlex></span>
@@ -19,16 +19,16 @@
 
     <button *ngIf="editMode" class="list-button"
             mat-icon-button
-            [disabled]="!eventType.name"
+            [disabled]="!element.name"
             [matTooltip]="'Save'"
-            (click)="editEventType()">
+            (click)="edit()">
         <mat-icon>save</mat-icon>
     </button>
 
     <button mat-icon-button class="list-button"
             color="warn"
             [matTooltip]="'Delete'"
-            (click)="deleteEventType(eventType)">
+            (click)="delete()">
         <mat-icon>delete</mat-icon>
     </button>
 </div>

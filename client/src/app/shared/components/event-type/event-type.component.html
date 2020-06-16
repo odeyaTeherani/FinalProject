@@ -7,18 +7,12 @@
            [ngModel]="defaultValue"
            [matAutocomplete]="auto">
     <mat-autocomplete fxFlex="100"
-      (optionSelected)="typeChanged.emit($event.option.value)"
-      [displayWith]="displayWith" #auto="matAutocomplete">
-
-      <button mat-button style="width: 200px" [routerLinkActive]="'active'" [routerLink]="['/eventTypeEdit']">
-        Edit
-        <mat-icon>edit</mat-icon>
-      </button>
-
-      <mat-option *ngFor="let option of typeOptions"
-                  [value]="option">
-        {{option.name}}
-      </mat-option>
+                      (optionSelected)="typeChanged.emit($event.option.value)"
+                      [displayWith]="displayWith" #auto="matAutocomplete">
+        <mat-option *ngFor="let option of typeOptions"
+                    [value]="option">
+            {{option.name}}
+        </mat-option>
     </mat-autocomplete>
 
 </mat-form-field>

@@ -19,6 +19,11 @@ const routes: Routes = [
         loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
       },
       {
+        canActivateChild: [AuthGuard],
+        path: 'system-values',
+        loadChildren: () => import('./system-values/system-values.module').then(mod => mod.SystemValuesModule)
+      },
+      {
       //   canActivateChild: [AuthGuard],
       //   path: 'closeEvent',
       //   loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
@@ -34,11 +39,6 @@ const routes: Routes = [
       },
       {
         canActivateChild: [AuthGuard],
-        path: 'forces',
-        loadChildren: () => import('./sub-role/sub-role.module').then(mod => mod.SubRoleModule)
-      },
-      {
-        canActivateChild: [AuthGuard],
         path: 'reports',
         loadChildren:() => import('./alerts/alerts.module').then(mod => mod.AlertsModule)
       },
@@ -46,11 +46,6 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         path: 'users',
         loadChildren:() => import('./users/users.module').then(mod => mod.UsersModule)
-      },
-      {
-        canActivateChild: [AuthGuard],
-        path: 'eventTypeEdit',
-        loadChildren:() => import('./event-type-edit/event-type-edit.module').then(mod => mod.EventTypeEditModule)
       },
       {
         path: 'alert-page',

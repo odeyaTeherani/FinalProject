@@ -22,9 +22,6 @@ export class SubRoleService {
     params = params.append('newSubRole',newSubRole);
     return this.api
       .post(this.path, {}, params);
-
-    // return this.api
-    //   .post(this.path, newSubRole);
   }
 
   getById(subRoleId: number) {
@@ -37,7 +34,7 @@ export class SubRoleService {
       .delete(this.path + '/' + subRoleId);
   }
 
-  put(editedEntity: any) {
+  edit(editedEntity: any) {
     return this.api
       .put(this.path + '/' + editedEntity.id, editedEntity);
   }

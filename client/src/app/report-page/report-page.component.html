@@ -28,7 +28,7 @@
           [appearance]="'outline'"
           [defaultValue]="alert? slRef[alert.severityLevel] : null"
           [disabled]="viewMode"
-          (change)="severityLevel = $event">
+          (changed)="severityLevel = $event">
         </app-severity-level>
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">

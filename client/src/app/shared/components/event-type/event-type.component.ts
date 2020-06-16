@@ -21,7 +21,7 @@ export class EventTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventTypeService.getAll()
+    this.eventTypeService.get()
       .subscribe(
         (eventType: any) => {
           this.typeOptions = eventType;

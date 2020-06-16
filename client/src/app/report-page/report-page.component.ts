@@ -92,8 +92,6 @@ export class ReportPageComponent implements OnInit {
     const data: any = this.alert == null ? {} : this.alert;
     this.reportForm = this.fb.group({
       carNumber: [data.carNumber || null, Validators.required],
-      // severityLevel: [{value: this.slRef[data.severityLevel] || null, disabled: this.viewMode}, Validators.required],
-      // eventType: [data.eventType || null, Validators.required],
       numberOfEvacuatedInjured: [data.numberOfEvacuatedInjured || null, Validators.required],
       note: [data.note || null]
     });
