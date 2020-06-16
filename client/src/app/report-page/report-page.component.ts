@@ -76,7 +76,7 @@ export class ReportPageComponent implements OnInit {
     newReport['location'] = this.locationCoordinates;
     newReport['eventType'] = this.eventType;
     newReport['severityLevel'] = this.severityLevel;
-    console.log(newReport);
+    console.log(this.severityLevel);
     this.reportService.add(newReport)
       .subscribe(
         (result) => {

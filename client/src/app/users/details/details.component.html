@@ -2,16 +2,17 @@
   <div class="my-profile-header">
     <p *ngIf="!extraDetailsUser" class="p-1" [fxFlex]="70">My Profile</p>
     <p *ngIf="extraDetailsUser" class="p-1" [fxFlex]="70">Profile</p>
-<!--    <p class="p-1" [fxFlex]="10" *ngIf="!addMode">force:</p>-->
+    <!--    <p class="p-1" [fxFlex]="10" *ngIf="!addMode">force:</p>-->
     <app-sub-role-filed [disabled]="!extraDetailsUser"
                         *ngIf="!addMode"
+                        [defaultValue]="subRole"
                         required>
     </app-sub-role-filed>
 
-<!--    <mat-form-field>-->
-<!--      <input [(ngModel)]="user.subRole.subRole" required-->
-<!--             matInput placeholder="">-->
-<!--    </mat-form-field>-->
+    <!--    <mat-form-field>-->
+    <!--      <input [(ngModel)]="user.subRole.subRole" required-->
+    <!--             matInput placeholder="">-->
+    <!--    </mat-form-field>-->
   </div>
 
   <br>
@@ -25,7 +26,7 @@
   </mat-form-field>
 
   <mat-form-field class="mat-form-field-full-width"
-  *ngIf="addMode">
+                  *ngIf="addMode">
     <mat-label>Password</mat-label>
     <input [(ngModel)]="user.password" required
            matInput placeholder="">
@@ -56,7 +57,7 @@
          (change)="onFileSelected($event)">
 
   <img *ngIf="image"
-    class="uploaded-image"
+       class="uploaded-image"
        [src]="this.image"
        alt="image"
        sizes="100px"/>
@@ -73,8 +74,9 @@
     <input matInput [(ngModel)]="user.lastName" required>
   </mat-form-field>
 
-  <app-sub-role-filed [disabled]="!extraDetailsUser"
+  <app-sub-role-filed (subChanged)="subRole = $event"
                       *ngIf="addMode"
+                      [disabled]="!extraDetailsUser"
                       [required]>
   </app-sub-role-filed>
 
@@ -115,10 +117,11 @@
       <span class="material-icons">save </span>
       Save
     </button>
-
+    <span [fxFlex]="10"></span>
     <button mat-raised-button style="width: 200px"
             (click)="deleteUser()"
-    *ngIf="extraDetailsUser && !addMode && !isAdmin" >
+            *ngIf="extraDetailsUser && !addMode && !isAdmin"
+            color="warn">
       <span class="material-icons">delete</span>
       Delete User
     </button>

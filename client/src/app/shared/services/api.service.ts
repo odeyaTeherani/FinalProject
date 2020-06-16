@@ -12,7 +12,7 @@ export class ApiService {
     }
 
     get<T>(path: string, headers?: HttpHeaders): Observable<T> {
-        return this.http.get<T>(environment.url + path, {headers});
+      return this.http.get<T>(environment.url + path, {headers});
     }
 
     post<T>(path: string, body: any, httpParams: HttpParams = new HttpParams()): Observable<T> {

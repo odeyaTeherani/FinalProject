@@ -1,4 +1,4 @@
-.report-list-item {
+.user-list-item {
   border: #f2f2f2 solid;
   border-radius: 5px;
   margin-top: 6px;
@@ -9,7 +9,7 @@
     background: gainsboro;
   }
 }
-.report-list-details{
+.user-list-details{
   margin-top: 6px;
   text-align: center;
   background: gray;
@@ -21,6 +21,10 @@
   width: 100%;
   border: solid lightgray 2px;
   border-radius: 5px;
+}
+
+.delete-btn-position{
+  float: right;
 }
 
 

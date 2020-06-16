@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import {Event} from '../modles/event';
 import { Observable} from 'rxjs';
 import {ApiService} from './api.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn:'root'
@@ -11,9 +12,9 @@ export class EventService {
 
   constructor(private api:ApiService) {}
 
-  get(): Observable<Event []> {
+  get(headers?: HttpHeaders): Observable<Event []> {
     return this.api
-      .get<Event []>(this.path);
+      .get<Event []>(this.path, headers);
   }
 
   add(newEvent: any) {
