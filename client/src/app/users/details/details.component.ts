@@ -4,6 +4,7 @@ import {UserInformation} from '../../shared/modles/userInformation';
 import {AccountService} from '../../shared/services/account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../shared/services/user.service';
+import {SubRole} from '../../shared/modles/sub-role';
 
 @Component({
   selector: 'app-details',
@@ -32,6 +33,7 @@ export class DetailsComponent implements OnInit {
     birthDate: null
   };
   addMode = false;
+  subRole: SubRole;
 
   constructor(private fb: FormBuilder,
               private activeRoute: ActivatedRoute,
@@ -45,7 +47,6 @@ export class DetailsComponent implements OnInit {
       (params) => {
         this.paramId = params.id;
         if (this.paramId === 'addUser') {
-          console.log(this.paramId);
           this.addMode = true;
           this.extraDetailsUser = true;
         } else {
@@ -56,8 +57,9 @@ export class DetailsComponent implements OnInit {
               .subscribe(
                 (user: UserInformation) => {
                   this.user = user;
+                  this.subRole = user.subRole;
                   this.image = user.image;
-                  console.log(this.user);
+                  console.log(this.subRole);
                 },
                 error => {
                   console.log(error);
@@ -67,6 +69,7 @@ export class DetailsComponent implements OnInit {
               .subscribe(
                 (user: UserInformation) => {
                   this.user = user;
+                  this.subRole = user.subRole;
                   this.image = user.image;
                   console.log('CurrentUser: ');
                   console.log(this.user);
@@ -98,21 +101,21 @@ export class DetailsComponent implements OnInit {
   save() {
     this.user.image = this.image;
     this.user.role = 'user';
+    this.user.subRole = this.subRole;
     if (this.addMode === true) {
-      this.accountService.register(this.user);
-        // .subscribe(
-        //   e => {
-        //     this.loadPerson();
-        //   },
-        //   error => {
-        //     console.log(error);
-        //   }
-        //   );
+      // console.log(this.user.subRole);
+      this.accountService.register(this.user)
+        .subscribe(addUser => {
+            this.router.navigate(['/users']);
+          },
+          error => {
+            console.log(error);
+          });
     } else {
       this.userService.updateUser(this.user)
         .subscribe(
           e => {
-            this.loadPerson();
+            this.router.navigate(['/users']);
           },
           error => {
             console.log(error);
@@ -123,7 +126,7 @@ export class DetailsComponent implements OnInit {
   deleteUser() {
     this.userService.deleteUser(this.paramId)
       .subscribe(
-         userDeleted => {
+        userDeleted => {
           this.router.navigate(['/users']);
         },
         error => {

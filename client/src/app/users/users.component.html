@@ -1,21 +1,30 @@
 <mat-card>
   <div fxLayout="row">
-    <button mat-raised-button
-            style="float: right"
-            [routerLinkActive]="'active'"
-            [routerLink]="'/mySettings/details/addUser'"
-            color="primary">
-      Add User
-    </button>
-    <button mat-raised-button
-            style="right: unset"
-            (click)="deleteUsers()"
-            color="warn">
-      Delete
-    </button>
+
+    <div [fxFlex]="50"
+         [fxFlex.xs]="50">
+      <button mat-raised-button
+              [routerLinkActive]="'active'"
+              [routerLink]="'/users/details/addUser'"
+              color="primary">
+        Add User
+      </button>
+    </div>
+
+    <div [fxFlex]="50"
+         [fxFlex.xs]="50">
+      <button mat-raised-button
+              [disabled]="!this.checked"
+              class="delete-btn-position"
+              (click)="deleteUsers()"
+              color="warn">
+        Delete
+      </button>
+    </div>
   </div>
 
-  <div fxLayout="row" class="report-list-details">
+  <div fxLayout="row" class="user-list-details">
+    <span [fxFlex]="5"></span>
     <p class="p-1 text-center" [fxFlex]="25">Name</p>
     <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Email</p>
     <p class="p-1 text-center" [fxFlex]="25">Agencies and responders</p>
@@ -23,15 +32,15 @@
 
   <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
-      <mat-list-item class="report-list-item" *cdkVirtualFor="let user of users">
-
+      <mat-list-item class="user-list-item" *cdkVirtualFor="let user of users">
 
         <div fxLayout="row" class="full-width" (click)="check.toggle()">
 
-          <div [fxFlex]="10" class="mt-1">
+          <div [fxFlex]="5" class="mt-1">
             <mat-checkbox class="text-center" #check
                           [(ngModel)]="user.selected"
                           (click)="$event.stopPropagation()"
+                          (change)="checked = true"
                           [color]="'primary'">
             </mat-checkbox>
           </div>

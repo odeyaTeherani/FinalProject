@@ -57,6 +57,7 @@
                placeholder="Start date"
                [formControlName]="'startDate'"
                [readonly]="viewMode"
+               [disabled]="viewMode"
                [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -67,7 +68,7 @@
         <input matInput
                placeholder="End date"
                [formControlName]="'endDate'"
-               [readonly]="viewMode"
+               [disabled]="viewMode"
                [matDatepicker]="pickerTo">
         <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
         <mat-datepicker #pickerTo></mat-datepicker>
@@ -116,18 +117,20 @@
     </div>
 
     <div>
-      <app-severity-level [fxFlex]="75" [fxFlex.xs]="100"
-                          [disabled]="viewMode"
-                          [defaultValue]="event? slRef[event.severityLevel] : null"
-                          (changed)="severityLevel = $event">
+      <app-severity-level
+        [fxFlex]="75" [fxFlex.xs]="100"
+        [disabled]="viewMode"
+        [defaultValue]="event? slRef[event.severityLevel] : null"
+        (changed)="severityLevel = $event">
       </app-severity-level>
     </div>
 
     <div>
-      <app-event-type [fxFlex]="75" [fxFlex.xs]="100"
-                      [disabled]="viewMode"
-                      [defaultValue]="event? this.eventType: null"
-                      (typeChanged)="eventType = $event">
+      <app-event-type
+        [fxFlex]="75" [fxFlex.xs]="100"
+        [disabled]="viewMode"
+        [defaultValue]="event? this.eventType: null"
+        (typeChanged)="eventType = $event">
       </app-event-type>
     </div>
 

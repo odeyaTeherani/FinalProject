@@ -4,8 +4,6 @@ import {LoginUser} from '../modles/loginUser';
 import {ApiService} from './api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserInformation} from '../modles/userInformation';
-import {Observable} from 'rxjs';
-import {Report} from '../modles/report';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +12,16 @@ export class AccountService {
   path = '/api/account';
   user;
 
-  constructor(private route: Router,private apiService:ApiService, private snackBar:MatSnackBar) {
+  constructor(private route: Router,
+              private apiService:ApiService,
+              private snackBar:MatSnackBar) {
     this.user = {
       token: 'abc!@#123$$%^'
     };
   }
 
   register(user: UserInformation) {
-    this.apiService
+    return this.apiService
       .post(this.path +'/register' ,user);
   }
 

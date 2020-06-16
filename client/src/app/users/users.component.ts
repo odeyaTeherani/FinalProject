@@ -9,7 +9,7 @@ import {UserService} from '../shared/services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+  checked = false;
   isNotMobile: boolean;
   mobileQuery: MediaQueryList;
   users: UserInformation [];
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
     this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
-  ngOnInit() {
+  loadUsers() {
     this.userService.getAll()
       .subscribe(
         (users: UserInformation[]) => {
@@ -35,11 +35,29 @@ export class UsersComponent implements OnInit {
         });
   }
 
-  // ngOnDestroy():void {
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  // ngOnDestroy(): void {
   //   this.mobileQuery.removeListener(this.mobileQueryListener);
-  // }
+  // };
+
 
   deleteUsers() {
-    // this.userService.deleteUser()
+    this.users.forEach((value, index, array) => {
+      if (value.selected) {
+        this.userService.deleteUser(value.id)
+          .subscribe(
+            () => {
+            },
+            error => {
+              console.log(error);
+            }
+          );
+      }
+    });
+    this.checked = false;
+    this.loadUsers();
   }
 }

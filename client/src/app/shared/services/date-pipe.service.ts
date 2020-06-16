@@ -8,8 +8,8 @@ export class DatePipeService {
 
   constructor(private datePipe: DatePipe) { }
 
-  getTransform(name: string, obj: any) {
-    return this.datePipe.transform(obj[name],'yyyy-MM-dd');
+  format(date: string) {
+    return this.datePipe.transform(date,'yyyy-MM-dd');
   }
 
 }
