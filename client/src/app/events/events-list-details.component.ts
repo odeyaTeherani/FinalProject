@@ -9,27 +9,25 @@ import {EventService} from '../shared/services/event.service';
   templateUrl: './events-list-details.component.html',
   styleUrls: ['./events-list-details.component.scss']
 })
-export class EventsListDetailsComponent implements OnInit, OnDestroy {
+export class EventsListDetailsComponent implements OnInit {
   events: Event [];
   // subscription: Subscription;
 
-  constructor(private eventService: EventService) {
-  }
+  constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.eventService.get()
-      .subscribe((data:any) => {
-        this.events = data;
-        console.log(this.events);
-      });
+    this.GetEvents();
   }
 
-  searchChanged(event: any) {
-    // go to server and fetch the filterd events
-    console.log(event);
+  searchChanged(filter: any) {
+    this.GetEvents(filter);
   }
 
-  ngOnDestroy(): void {
-   // this.subscription.unsubscribe();
+  private GetEvents(filter = null) {
+    this.eventService.get(filter)
+        .subscribe((data: any) => {
+          this.events = data;
+          console.log(this.events);
+        });
   }
 }

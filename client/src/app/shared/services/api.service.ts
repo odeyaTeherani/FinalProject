@@ -11,12 +11,12 @@ export class ApiService {
     constructor(private http: HttpClient) {
     }
 
-    get<T>(path: string, headers?: HttpHeaders): Observable<T> {
-      return this.http.get<T>(environment.url + path, {headers});
+    get<T>(path: string, headers?: HttpHeaders, params: HttpParams = new HttpParams()): Observable<T> {
+        return this.http.get<T>(environment.url + path, {headers, params});
     }
 
-    post<T>(path: string, body: any, httpParams: HttpParams = new HttpParams()): Observable<T> {
-        return this.http.post<T>(environment.url + path, body, {params: httpParams});
+    post<T>(path: string, body: any, params: HttpParams = new HttpParams()): Observable<T> {
+        return this.http.post<T>(environment.url + path, body, {params});
     }
 
     put<T>(path: string, body: any): Observable<T> {

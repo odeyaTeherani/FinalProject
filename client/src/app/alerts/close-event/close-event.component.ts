@@ -100,8 +100,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     event['reports'] = this.selectedAlerts;
     event['eventType'] = this.eventType;
     event['severityLevel'] = this.severityLevel;
-    event['startDate'] =  this.datePipe.getTransform('startDate', event);
-    event['endDate'] = this.datePipe.getTransform('endDate', event);
+    event['startDate'] =  this.datePipe.format(event['startDate']);
+    event['endDate'] = this.datePipe.format(event['startDate']);
     event['location'] = this.location;
     event['images'] = this.images;
     console.log(event);
