@@ -14,7 +14,7 @@
     <div [fxFlex]="50"
          [fxFlex.xs]="50">
       <button mat-raised-button
-              [disabled]="!this.checked"
+              [disabled]="!hasSelectedUser()"
               class="delete-btn-position"
               (click)="deleteUsers()"
               color="warn">
@@ -40,7 +40,6 @@
             <mat-checkbox class="text-center" #check
                           [(ngModel)]="user.selected"
                           (click)="$event.stopPropagation()"
-                          (change)="checked = true"
                           [color]="'primary'">
             </mat-checkbox>
           </div>
