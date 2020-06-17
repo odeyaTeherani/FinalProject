@@ -1,5 +1,5 @@
+import {TokenService} from '../../system-values.module';
 import {Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
-import {TokenService} from "../../system-values.module";
 
 @Component({
     selector: 'app-element-item',
@@ -12,7 +12,7 @@ export class ElementItemComponent implements OnInit {
     @Input() element: any;
     @Input() serviceName: string;
     @Output() onDeleteSucceed: EventEmitter<number> = new EventEmitter<number>();
-    service
+    service;
 
     constructor(private injector: Injector, private tokenService: TokenService) {}
 

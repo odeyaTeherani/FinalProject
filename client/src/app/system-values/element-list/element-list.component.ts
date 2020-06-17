@@ -1,9 +1,6 @@
-import {Component, InjectionToken, Injector, Input, OnInit} from '@angular/core';
-import {EventType} from '../../shared/modles/event-type';
-import {EventTypeService} from '../../shared/services/event-type.service';
+import {Component, Injector, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {error} from "util";
-import {TokenService} from "../system-values.module";
+import {TokenService} from '../system-values.module';
 
 @Component({
     selector: 'app-element-list',
