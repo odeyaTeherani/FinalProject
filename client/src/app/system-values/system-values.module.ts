@@ -12,11 +12,11 @@ import {
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ElementItemComponent} from './element-list/element-item/element-item.component';
 import {SystemValuesComponent} from './system-values.component';
 import {SystemValuesRoutes} from './system-values-routing';
 import {EventTypeService} from '../shared/services/event-type.service';
 import {SubRoleService} from '../shared/services/sub-role.service';
+import {ElementItemComponent} from './element-list/element-item/element-item.component';
 
 @Injectable()
 export class TokenService {

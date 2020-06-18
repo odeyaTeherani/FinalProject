@@ -30,6 +30,10 @@
     <p class="p-1 text-center" [fxFlex]="25">Agencies and responders</p>
   </div>
 
+  <app-users-filter
+    (searchUsersChanged)="searchUsersChanged($event)">
+  </app-users-filter>
+
   <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
       <mat-list-item class="user-list-item" *cdkVirtualFor="let user of users">

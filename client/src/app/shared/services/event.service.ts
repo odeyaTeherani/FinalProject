@@ -15,12 +15,15 @@ export class EventService {
     get(filter = null): Observable<Event []> {
         let params = new HttpParams();
         if (filter) {
-            if(filter.date)
+            if(filter.date) {
                 params = params.append('date', filter.date || null);
-            if(filter.eventType)
+            }
+            if(filter.eventType) {
                 params = params.append('eventTypeId', filter.eventType.id.toString() || null);
-            if(filter.severityLevel)
+            }
+            if(filter.severityLevel) {
                  params = params.append('severityLevel', filter.severityLevel.toString() || null);
+            }
         }
         return this.api
             .get<Event []>(this.path, null, params);

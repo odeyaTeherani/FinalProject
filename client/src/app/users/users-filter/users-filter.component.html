@@ -1,0 +1,38 @@
+<form ngForm [formGroup]="filterOptions">
+  <div fxLayout="row"
+
+       fxLayoutGap="10px"
+       class="user-filter">
+
+    <span [fxFlex]="10"></span>
+
+    <mat-form-field fxFlex="22">
+      <input matInput
+             placeholder="name"
+             [formControlName]="'name'"/>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="22">
+      <input matInput
+             placeholder="email"
+             [formControlName]="'email'"/>
+    </mat-form-field>
+
+    <app-sub-role-filed
+      [fxFlex.xs]="25"
+      [fxFlex] ="22"
+      [required]="false"
+      (subChanged) = "filterOptions.controls['subRole'].setValue($event)">
+    </app-sub-role-filed>
+
+    <div class="m-1 color-btn">
+      <button mat-icon-button style="width: 30px"
+              (click)="submit()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+</form>
+

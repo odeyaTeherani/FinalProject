@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../shared/services/event.service';
-import {DatePipeService} from "../../shared/services/date-pipe.service";
+import {DatePipeService} from '../../shared/services/date-pipe.service';
 
 @Component({
     selector: 'app-events-filter',
@@ -29,8 +29,9 @@ export class EventsFilterComponent implements OnInit {
 
     submit() {
         const filter = this.filterOptions.value;
-        if (filter['date'])
-            filter['date'] = this.dateFormat.format(filter['date'])
+        if (filter['date']) {
+            filter['date'] = this.dateFormat.format(filter['date']);
+        }
         this.searchChanged.emit(this.filterOptions.value);
     }
 }

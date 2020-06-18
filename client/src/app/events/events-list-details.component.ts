@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Event} from '../shared/modles/event';
 import {EventService} from '../shared/services/event.service';
 
