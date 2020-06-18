@@ -14,14 +14,16 @@ import {
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DetailsComponent} from './details/details.component';
 import {SharedModule} from '../shared/shared.module';
+import {UsersFilterComponent} from './users-filter/users-filter.component';
 
 
 
 @NgModule({
   declarations: [UsersComponent,
+    UsersFilterComponent,
     DetailsComponent],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import {SharedModule} from '../shared/shared.module';
     MatButtonToggleModule,
     MatDatepickerModule,
     MatInputModule,
+    ReactiveFormsModule,
   ]
 })
 export class UsersModule { }

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
 import {UserInformation} from '../../shared/modles/userInformation';
-import {AccountService} from '../../shared/services/account.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../shared/services/user.service';
 import {SubRole} from '../../shared/modles/sub-role';
+import {FormBuilder} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AccountService} from '../../shared/services/account.service';
+import {UserService} from '../../shared/services/user.service';
+
 
 @Component({
   selector: 'app-details',
@@ -105,7 +106,7 @@ export class DetailsComponent implements OnInit {
     if (this.addMode === true) {
       // console.log(this.user.subRole);
       this.accountService.register(this.user)
-        .subscribe(addUser => {
+        .subscribe(() => {
             this.router.navigate(['/users']);
           },
           error => {
@@ -114,7 +115,7 @@ export class DetailsComponent implements OnInit {
     } else {
       this.userService.updateUser(this.user)
         .subscribe(
-          e => {
+          () => {
             this.router.navigate(['/users']);
           },
           error => {
@@ -126,7 +127,7 @@ export class DetailsComponent implements OnInit {
   deleteUser() {
     this.userService.deleteUser(this.paramId)
       .subscribe(
-        userDeleted => {
+        () => {
           this.router.navigate(['/users']);
         },
         error => {
