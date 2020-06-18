@@ -13,17 +13,6 @@
           (typeChanged)="eventType = $event">
         </app-event-type>
 
-        <!--        &lt;!&ndash;'legacy' | 'standard' | 'fill' | 'outline'&ndash;&gt;-->
-        <!--        <mat-form-field fxFlex="20" [appearance]="'outline'">-->
-        <!--        <mat-label>Event Type</mat-label>-->
-        <!--        <mat-select [formControlName]="'eventType'">-->
-        <!--          <mat-option *ngFor="let type of typeOptions"-->
-        <!--                      [value]="type.id">-->
-        <!--            {{type.name}}-->
-        <!--          </mat-option>-->
-        <!--        </mat-select>-->
-        <!--      </mat-form-field>-->
-
         <app-severity-level
           [appearance]="'outline'"
           [defaultValue]="alert? slRef[alert.severityLevel] : null"
@@ -38,7 +27,6 @@
                  appGooglePlace
                  placeholder=""/>
         </mat-form-field>
-
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Car Number</mat-label>
