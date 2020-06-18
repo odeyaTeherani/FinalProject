@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Report} from '../../shared/modles/report';
 
 @Component({
   selector: 'app-alert-item',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AlertItemComponent implements OnInit {
 
-  @Input() alert;
+  @Input() alert:Report;
   // @Input() id;
   // @Input() eventType;
   // @Input() date;
