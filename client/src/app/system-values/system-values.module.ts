@@ -1,14 +1,15 @@
-import {Injectable, InjectionToken, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ElementListComponent} from './element-list/element-list.component';
 import {RouterModule} from '@angular/router';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule, MatTabsModule,
-  MatTooltipModule
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatTabsModule,
+    MatTooltipModule
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,29 +18,13 @@ import {SystemValuesRoutes} from './system-values-routing';
 import {EventTypeService} from '../shared/services/event-type.service';
 import {SubRoleService} from '../shared/services/sub-role.service';
 import {ElementItemComponent} from './element-list/element-item/element-item.component';
-
-@Injectable()
-export class TokenService {
-
-    static MY_SUB_ROLE_TOKEN = new InjectionToken<SubRoleService>('role');
-    static MY_EVENT_TOKEN = new InjectionToken<EventTypeService>('event');
-
-    getToken(name: string): InjectionToken<any> {
-        if (name === 'role') {
-            return TokenService.MY_SUB_ROLE_TOKEN;
-        } else if (name === 'event') {
-            return TokenService.MY_EVENT_TOKEN;
-        } else {
-            throw new Error(`No token with name ${name} found`);
-        }
-    }
-}
+import {TokenService} from "./token_service";
 
 @NgModule({
     declarations: [
-        ElementListComponent,
-        ElementItemComponent,
-        SystemValuesComponent
+         ElementListComponent,
+         ElementItemComponent,
+         SystemValuesComponent
     ],
   imports: [
     CommonModule,
@@ -57,11 +42,11 @@ export class TokenService {
   ],
     providers: [
         TokenService,
-        { provide: TokenService.MY_EVENT_TOKEN, useClass: EventTypeService },
-        { provide: TokenService.MY_SUB_ROLE_TOKEN, useClass:  SubRoleService }
+        {provide: TokenService.MY_EVENT_TOKEN, useClass: EventTypeService},
+        {provide: TokenService.MY_SUB_ROLE_TOKEN, useClass: SubRoleService}
     ]
 })
-export class SystemValuesModule {
-}
+export class SystemValuesModule {}
+
 
 

@@ -1,0 +1,7 @@
+<mat-toolbar [color]="'primary'" class="full-width">Confirm Dialog</mat-toolbar>
+<p class="full-width">Are you sure you want to delete the {{data.text}}?</p>
+<div fxLayout="row">
+    <button mat-raised-button [color]="'primary'" (click)="dialogRef.close(true)">Confirm</button>
+    <span fxFlex></span>
+    <button mat-raised-button [color]="'warn'" (click)="dialogRef.close()">Close</button>
+</div>

@@ -1,0 +1,29 @@
+<div fxLayout="row" class="full-width" (click)="check.toggle()">
+
+    <mat-checkbox class="mt-1 ml-1" #check [ngStyle]="{'display': viewMode?'none':null}"
+                  [fxFlex]="10"
+                  [(ngModel)]="alert.selected"
+                  (click)="$event.stopPropagation()"
+                  [color]="'primary'">
+    </mat-checkbox>
+
+    <p class="p-1 text-center" [fxFlex]="20">
+        {{alert.date | date:'dd/MM HH:mm' }}
+    </p>
+
+    <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center"
+       [fxFlex]="25">
+        {{alert.eventType.name}}
+    </p>
+
+    <p class="p-1 text-center"
+       [fxFlex]="25">
+        {{alert.user.firstName + " " + alert.user.lastName}}
+    </p>
+
+    <span fxFlex></span>
+
+    <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">
+        <mat-icon>arrow_right</mat-icon>
+    </button>
+</div>
