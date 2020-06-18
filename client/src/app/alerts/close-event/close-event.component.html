@@ -240,9 +240,11 @@
     <br>
     <P *ngIf="thereIsAlerts"><b>Alerts:</b></P>
 
-    <div *ngFor="let selectedAlert of selectedAlerts">
-      {{selectedAlert.user.firstName + " " + selectedAlert.user.lastName }}
-    </div>
+    <mat-list-item *ngFor="let selectedAlert of selectedAlerts">
+      <app-alert-item
+        [alert]="selectedAlert">
+      </app-alert-item>
+    </mat-list-item>
 
     <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center">
       <button [disabled]="eventType == null || severityLevel == null || eventForm.invalid"

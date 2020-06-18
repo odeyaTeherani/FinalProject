@@ -29,23 +29,30 @@
             </mat-checkbox>
           </div>
 
-          <p class="p-1 text-center" [fxFlex]="20">
-            {{alert.date | date:'dd/MM HH:mm' }}
-          </p>
+            <app-alert-item [fxFlex]="100"
+                            [alert]="alert"
+                            [isNotMobile]="isNotMobile"
+                            [mobileQuery]="mobileQuery">
+            </app-alert-item>
 
-          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
-            {{alert.eventType.name}}
-          </p>
+<!--          <p class="p-1 text-center" [fxFlex]="33">-->
+<!--            {{alert.date | date:'dd/MM HH:mm' }}-->
+<!--          </p>-->
 
-          <p class="p-1 text-center" [fxFlex]="25">
-            {{alert.user.firstName + " " + alert.user.lastName}}
-          </p>
+<!--          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="33">-->
+<!--            {{alert.eventType.name}}-->
+<!--          </p>-->
 
-          <span fxFlex></span>
+<!--          <p class="p-1 text-center" [fxFlex]="33">-->
+<!--            {{alert.user.firstName + " " + alert.user.lastName}}-->
+<!--          </p>-->
 
-          <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">
-            <mat-icon>arrow_right</mat-icon>
-          </button>
+<!--          <span fxFlex></span>-->
+
+<!--          <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">-->
+<!--            <mat-icon>arrow_right</mat-icon>-->
+<!--          </button>-->
+
 
         </div>
       </mat-list-item>

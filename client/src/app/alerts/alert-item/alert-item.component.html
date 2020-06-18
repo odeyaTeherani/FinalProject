@@ -1,0 +1,21 @@
+<div fxLayout="row" class="full-width report-list-item">
+
+  <p class="p-1 text-center" >
+    {{alert.date | date:'dd/MM HH:mm' }}
+  </p>
+
+  <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center">
+    {{alert.eventType.name}}
+  </p>
+
+  <p class="p-1 text-center" >
+    {{alert.user.firstName + " " + alert.user.lastName}}
+  </p>
+
+  <span fxFlex="10"></span>
+
+  <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">
+    <mat-icon>arrow_right</mat-icon>
+  </button>
+
+</div>
