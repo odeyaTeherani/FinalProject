@@ -8,6 +8,7 @@ import {Event} from '../../shared/modles/event';
 import {SeverityLevel} from '../../shared/modles/severity-level.enum';
 import {Report} from '../../shared/modles/report';
 import {DatePipeService} from '../../shared/services/date-pipe.service';
+import {MediaMatcher} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-close-event',
@@ -16,6 +17,7 @@ import {DatePipeService} from '../../shared/services/date-pipe.service';
 })
 export class CloseEventComponent implements OnInit, OnDestroy {
   images = [];
+  isNotMobile: boolean;
   thereIsImages = false;
   thereIsAlerts = false;
   eventForm: FormGroup;
@@ -25,19 +27,28 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   event: Event;
   @Output() searchChanged = new EventEmitter<any>();  // event that however want can be listing
   alertsSubscription: Subscription;
-
+  private readonly mobileQueryListener: () => void;
   // selected alert to close
   selectedAlerts: Report[];
   eventType: any;
   severityLevel: any;
   location: any;
+  mobileQuery: MediaQueryList;
 
   constructor(private activeRoute: ActivatedRoute,
               private router: Router,
+              media: MediaMatcher,
               private eventService: EventService,
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService,
               private datePipe: DatePipeService) {
+
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQueryListener = () => {
+      this.isNotMobile = !this.mobileQuery.matches;
+    };
+    this.mobileQuery.addListener(this.mobileQueryListener);
+
     activeRoute.params.subscribe((params) => {
       // display event
       if (params.id != null) {
@@ -88,8 +99,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
       numOfFirefighters: [data.numOfFirefighters || null, Validators.required],
       numOfEnvironment: [data.numOfEnvironment || null, Validators.required],
       numOfZakaCars: [data.numOfZakaCars || null, Validators.required],
-      endDate: [data.endDate || null, Validators.required],
-      startDate: [data.startDate || null, Validators.required],
+      endDate: [{'value':data.endDate, 'disabled':this.viewMode} || null, Validators.required],
+      startDate: [{'value':data.startDate, 'disabled':this.viewMode} || null, Validators.required],
       nameInCharge: [data.nameInCharge || null, Validators.required],
       note: [data.note || null],
     });
@@ -145,6 +156,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     if (this.alertsSubscription) {
       this.alertsSubscription.unsubscribe();
     }
+    this.mobileQuery.removeListener(this.mobileQueryListener);
+
   }
 
   edit() {

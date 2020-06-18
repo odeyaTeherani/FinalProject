@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {SubRole} from '../modles/sub-role';
-import {Event} from '../modles/event';
 import {HttpParams} from '@angular/common/http';
 
 @Injectable({

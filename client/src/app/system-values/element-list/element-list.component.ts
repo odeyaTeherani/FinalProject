@@ -1,6 +1,6 @@
 import {Component, Injector, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {TokenService} from '../system-values.module';
+import {TokenService} from "../token_service";
 
 @Component({
     selector: 'app-element-list',
@@ -15,8 +15,7 @@ export class ElementListComponent implements OnInit {
     elementsCtrl: FormControl;
     service;
 
-    constructor(private injector: Injector, private tokenService: TokenService) {
-    }
+    constructor(private injector: Injector, private tokenService: TokenService) {}
 
     ngOnInit() {
         this.service = this.injector.get(this.tokenService.getToken(this.serviceName));

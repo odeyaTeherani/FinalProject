@@ -9,7 +9,6 @@ export class SystemValuesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

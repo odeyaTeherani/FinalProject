@@ -36,9 +36,6 @@ export class AlertsComponent implements OnInit, OnDestroy {
     this.reportsDataService.getReportsFromServer();
   }
 
-  closeEvent(event: MouseEvent) {
-  }
-
   ngOnDestroy() {
     if (this.alertsSubscription) {
       this.alertsSubscription.unsubscribe();

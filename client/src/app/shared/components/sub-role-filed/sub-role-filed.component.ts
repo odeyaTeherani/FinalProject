@@ -13,7 +13,7 @@ export class SubRoleFiledComponent  implements OnInit {
   @Output() subChanged = new EventEmitter<any>();
   @Input() size = 20;
   @Input() disabled = false;
-  @Input() defaultValue?: { id: number, subRole: string };
+  @Input() defaultValue?: { id: number, name: string };
   @Input() appearance;
   @Input() required = true;
 
@@ -31,11 +31,11 @@ export class SubRoleFiledComponent  implements OnInit {
       );
   }
 
-  displayWith(subRole: { id: number, subRole: string }) {
+  displayWith(subRole: { id: number, name: string }) {
     if (subRole == null) {
       return;
     }
-    return subRole.subRole;
+    return subRole.name;
   }
 }
 

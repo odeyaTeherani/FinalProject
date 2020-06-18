@@ -2,7 +2,6 @@
 
   <button mat-raised-button
           color="primary"
-          (click)="closeEvent($event)"
           [routerLinkActive]="'active'"
           [routerLink]="['close']">
     close event
@@ -18,31 +17,11 @@
   <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
       <mat-list-item class="report-list-item" *cdkVirtualFor="let alert of alerts">
-
         <app-alert-item class="full-width"
                         [alert]="alert"
                         [isNotMobile]="isNotMobile"
                         [mobileQuery]="mobileQuery">
         </app-alert-item>
-
-        <!--          <p class="p-1 text-center" [fxFlex]="33">-->
-        <!--            {{alert.date | date:'dd/MM HH:mm' }}-->
-        <!--          </p>-->
-
-        <!--          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="33">-->
-        <!--            {{alert.eventType.name}}-->
-        <!--          </p>-->
-
-        <!--          <p class="p-1 text-center" [fxFlex]="33">-->
-        <!--            {{alert.user.firstName + " " + alert.user.lastName}}-->
-        <!--          </p>-->
-
-        <!--          <span fxFlex></span>-->
-
-        <!--          <button mat-icon-button [matTooltip]="'Extra Details'" [routerLink]="['/alert-page/',alert.id]">-->
-        <!--            <mat-icon>arrow_right</mat-icon>-->
-        <!--          </button>-->
-
       </mat-list-item>
     </cdk-virtual-scroll-viewport>
 

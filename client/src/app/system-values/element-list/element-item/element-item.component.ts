@@ -1,5 +1,5 @@
-import {TokenService} from '../../system-values.module';
 import {Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
+import {TokenService} from "../../token_service";
 
 @Component({
     selector: 'app-element-item',
