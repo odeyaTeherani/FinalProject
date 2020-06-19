@@ -25,6 +25,7 @@
           <input matInput
                  aria-label="Number"
                  appGooglePlace
+                 (locationSelected)="locationSelected($event)"
                  placeholder=""/>
         </mat-form-field>
 
@@ -65,7 +66,7 @@
              name="cameraInput"
              (change)="onFileSelected($event)">
 
-      <div fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxLayout="row wrap" fxLayoutAlign="center" class="scrollable-container">
         <ng-container *ngFor="let image of images;">
           <img class="uploaded-image" [src]="image" alt="image" sizes="100px"/>
         </ng-container>
