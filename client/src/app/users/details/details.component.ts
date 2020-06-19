@@ -115,7 +115,8 @@ export class DetailsComponent implements OnInit {
                     error => {
                         console.log(error);
                     });
-        } else {
+        }
+        else {
             this.userService.updateUser(this.user)
                 .subscribe(
                     () => {
