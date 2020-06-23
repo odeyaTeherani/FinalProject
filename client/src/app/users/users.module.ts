@@ -15,17 +15,15 @@ import {
 import {FlexModule} from '@angular/flex-layout';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DetailsComponent} from './details/details.component';
 import {SharedModule} from '../shared/shared.module';
 import {UsersFilterComponent} from './users-filter/users-filter.component';
-import {ConfirmDailogModule} from "../shared/components/confirm-dialog/confirm-dailog.module";
-import {ConfirmDialogComponent} from "../shared/components/confirm-dialog/confirm-dialog.component";
+import {ConfirmDailogModule} from '../shared/components/confirm-dialog/confirm-dailog.module';
+import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
     declarations: [UsersComponent,
-        UsersFilterComponent,
-        DetailsComponent],
+        UsersFilterComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(UsersRoutes),

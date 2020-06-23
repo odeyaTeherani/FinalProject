@@ -8,7 +8,7 @@ import {Event} from '../../shared/modles/event';
 import {SeverityLevel} from '../../shared/modles/severity-level.enum';
 import {Report} from '../../shared/modles/report';
 import {DatePipeService} from '../../shared/services/date-pipe.service';
-import {MediaMatcher} from "@angular/cdk/layout";
+import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-close-event',
@@ -62,8 +62,10 @@ export class CloseEventComponent implements OnInit, OnDestroy {
                         if (this.images[0] != null) {
                             this.thereIsImages = true;
                         }
-                        if (this.selectedAlerts[0] != null) {
+                        if(this.selectedAlerts) {
+                          if (this.selectedAlerts[0] != null) {
                             this.thereIsAlerts = true;
+                          }
                         }
                         this.severityLevel = event.severityLevel;
                         this.location = event.location;
@@ -99,8 +101,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
             numOfFirefighters: [data.numOfFirefighters || null, Validators.required],
             numOfEnvironment: [data.numOfEnvironment || null, Validators.required],
             numOfZakaCars: [data.numOfZakaCars || null, Validators.required],
-            endDate: [{'value': data.endDate, 'disabled': this.viewMode} || null, Validators.required],
-            startDate: [{'value': data.startDate, 'disabled': this.viewMode} || null, Validators.required],
+            endDate: [{value: data.endDate, disabled: this.viewMode} || null, Validators.required],
+            startDate: [{value: data.startDate, disabled: this.viewMode} || null, Validators.required],
             nameInCharge: [data.nameInCharge || null, Validators.required],
             note: [data.note || null],
         });
@@ -128,7 +130,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     addEvent(newEvent) {
         this.eventService.add(newEvent)
             .subscribe(
-                (result) => {
+                () => {
                     this.router.navigate(['/events']);
                 },
                 err => {
@@ -142,7 +144,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
         // console.log(updateEvent);
         this.eventService.put(updateEvent)
             .subscribe(
-                (result) => {
+                () => {
                     // console.log(result);
                     this.router.navigate(['/events']);
                 },

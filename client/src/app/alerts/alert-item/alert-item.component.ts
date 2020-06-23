@@ -9,7 +9,7 @@ import {Report} from '../../shared/modles/report';
 export class AlertItemComponent implements OnInit {
 
   @Input() alert:Report;
-  @Input() viewMode:boolean = false;
+  @Input() viewMode = false;
   @Input() mobileQuery?;
   @Input() isNotMobile?;
   constructor() { }
