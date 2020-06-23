@@ -21,6 +21,24 @@ export class AdminLayoutComponent implements OnDestroy {
   appName: string;
   isAdmin: boolean;
 
+  filterNavMenu: MenuItem[] = [
+    {
+      icon: 'person',
+      name: 'My Profile',
+      url: 'details',
+    },
+    {
+      icon: 'vpn_key',
+      name: 'Change Password',
+      url: 'changePassword',
+    },
+    {
+      icon: 'settings',
+      name: 'Settings',
+      url: 'settings',
+    }
+  ];
+
   fillerNavForAdmin: MenuItem [] = [
     {
       icon: 'event',
@@ -73,7 +91,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private readonly mobileQueryListener: () => void;
 
-  constructor(media: MediaMatcher, public userService:AccountService, private authService: AuthService) {
+  constructor(media: MediaMatcher, public accountService:AccountService, private authService: AuthService) {
     this.appName = 'system';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.isAdmin = authService.isAdmin();

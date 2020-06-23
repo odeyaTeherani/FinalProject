@@ -24,13 +24,8 @@ const routes: Routes = [
         loadChildren: () => import('./system-values/system-values.module').then(mod => mod.SystemValuesModule)
       },
       {
-      //   canActivateChild: [AuthGuard],
-      //   path: 'closeEvent',
-      //   loadChildren: () => import('./close-event/close-event.module').then(mod => mod.CloseEventModule)
-      // },
-      // {
-        path: 'mySettings',
-        loadChildren: () => import('./setting/settings.module').then(mod => mod.SettingsModule)
+        path: 'user-information',
+        loadChildren: () => import('./user-information/user-information.module').then(mod => mod.UserInformationModule)
       },
       {
         canActivateChild: [AuthGuard],

@@ -1,233 +1,239 @@
 <mat-card>
-    <form *ngIf="eventForm" [formGroup]="eventForm">
+  <form *ngIf="eventForm" [formGroup]="eventForm">
 
-        <div *ngIf="viewMode" fxLayout="row">
-            <div [fxFlex]="50" [fxFlex.xs]="50">
-                <button mat-raised-button
-                        [color]="'primary'"
-                        (click)="edit()">
-                    Edit
-                    <mat-icon>edit</mat-icon>
-                </button>
-            </div>
+    <div *ngIf="viewMode" fxLayout="row">
+      <div [fxFlex]="50" [fxFlex.xs]="50">
+        <button mat-raised-button
+                [color]="'primary'"
+                (click)="edit()">
+          Edit
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
 
-            <div [fxFlex]="50"
-                 [fxFlex.xs]="50">
-                <button mat-raised-button
-                        class="btn-pdf-position"
-                        [color]="'primary'"
-                        (click)="exportToPDF()">
-                    Export to PDF
-                    <mat-icon>insert_drive_file</mat-icon>
-                </button>
-            </div>
-        </div>
+      <div [fxFlex]="50"
+           [fxFlex.xs]="50">
+        <button mat-raised-button
+                class="btn-pdf-position"
+                [color]="'primary'"
+                (click)="exportToPDF()">
+          Export to PDF
+          <mat-icon>insert_drive_file</mat-icon>
+        </button>
+      </div>
+    </div>
 
-        <br>
-        <div fxLayout="row warp">
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       aria-label="name in charge"
-                       type="text"
-                       placeholder="Name in charge"
-                       [formControlName]="'nameInCharge'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+    <br>
+    <div fxLayout="row warp">
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               aria-label="name in charge"
+               type="text"
+               placeholder="Name in charge"
+               [formControlName]="'nameInCharge'"
+               [readonly]="viewMode"/>
+      </mat-form-field>
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       aria-label="start date"
-                       placeholder="Start date"
-                       [formControlName]="'startDate'"
-                       [readonly]="viewMode"
-                       [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               aria-label="start date"
+               placeholder="Start date"
+               [formControlName]="'startDate'"
+               [readonly]="viewMode"
+               [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       aria-label="end date"
-                       placeholder="End date"
-                       [formControlName]="'endDate'"
-                       [matDatepicker]="pickerTo">
-                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-                <mat-datepicker #pickerTo></mat-datepicker>
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               aria-label="end date"
+               placeholder="End date"
+               [formControlName]="'endDate'"
+               [matDatepicker]="pickerTo">
+        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+        <mat-datepicker #pickerTo></mat-datepicker>
+      </mat-form-field>
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100" *ngIf="!viewMode;else displayLocation">
-                <input matInput
-                       aria-label="Number"
-                       appGooglePlace
-                       placeholder="Location"
-                       (locationSelected)="location.googlePlacesData = $event"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75"
+                      [fxFlex.xs]="100"
+                      *ngIf="!viewMode;else displayLocation">
+        <input matInput
+               aria-label="Number"
+               appGooglePlace
+               placeholder="Location"
+               (locationSelected)="location.googlePlacesData = $event"/>
+      </mat-form-field>
 
-            <ng-template #displayLocation>
-                <p>{{location}}</p>
-            </ng-template>
+<!--      <div #displayLocation class="full-width" [fxFlex]="75"-->
+<!--           fxLayout="row warp"-->
+<!--      [fxFlex.xs]="100">-->
+<!--        <p>Location</p>-->
+<!--        <p>{{location.googlePlacesData.formattedAddress}}</p>-->
+<!--      </div>-->
+        <ng-template class="mt-1"#displayLocation>
+          <p>location: {{location.googlePlacesData.formattedAddress}}</p>
+        </ng-template>
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       aria-label="Number of injured"
-                       placeholder="Number of injured"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfInjured'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               aria-label="Number of injured"
+               placeholder="Number of injured"
+               type="number"
+               min="0"
+               [formControlName]="'numOfInjured'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       placeholder="Number of dead"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfDead'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of dead"
+               type="number"
+               min="0"
+               [formControlName]="'numOfDead'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
-            <app-severity-level
-                    [fxFlex]="75" [fxFlex.xs]="100"
-                    [disabled]="viewMode"
-                    [defaultValue]="event? slRef[event.severityLevel] : null"
-                    (changed)="severityLevel = $event">
-            </app-severity-level>
+      <app-severity-level
+        [fxFlex]="75" [fxFlex.xs]="100"
+        [disabled]="viewMode"
+        [defaultValue]="event? slRef[event.severityLevel] : null"
+        (changed)="severityLevel = $event">
+      </app-severity-level>
 
-            <app-event-type
-                    [fxFlex]="75" [fxFlex.xs]="100"
-                    [disabled]="viewMode"
-                    [defaultValue]="event? this.eventType: null"
-                    (typeChanged)="eventType = $event">
-            </app-event-type>
-
-
-            <br>
-            <P [fxFlex]="100"><b>The number of troops sent to the area:</b></P>
-
-
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       placeholder="Number of Ambulances"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfAmbulances'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <app-event-type
+        [fxFlex]="75" [fxFlex.xs]="100"
+        [disabled]="viewMode"
+        [defaultValue]="event? this.eventType: null"
+        (typeChanged)="eventType = $event">
+      </app-event-type>
 
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       placeholder="Number of Police cars"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfPolice'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <br>
+      <P [fxFlex]="100"><b>The number of troops sent to the area:</b></P>
 
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       placeholder="Number of Firefighters cars"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfFirefighters'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Ambulances"
+               type="number"
+               min="0"
+               [formControlName]="'numOfAmbulances'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       placeholder="Number of Environment cars"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfEnvironment'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Police cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfPolice'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
 
-            <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
-                <input matInput
-                       aria-label="Number of Zaka cars"
-                       placeholder="Number of Zaka cars"
-                       type="number"
-                       min="0"
-                       [formControlName]="'numOfZakaCars'"
-                       [readonly]="viewMode"
-                />
-            </mat-form-field>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Firefighters cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfFirefighters'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
-            <br>
 
-            <P fxFlex="100"><b>Note:</b></P>
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               placeholder="Number of Environment cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfEnvironment'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
 
-            <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
+
+      <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
+        <input matInput
+               aria-label="Number of Zaka cars"
+               placeholder="Number of Zaka cars"
+               type="number"
+               min="0"
+               [formControlName]="'numOfZakaCars'"
+               [readonly]="viewMode"
+        />
+      </mat-form-field>
+
+      <br>
+
+      <P fxFlex="100"><b>Note:</b></P>
+
+      <mat-form-field [fxFlex]="100" [fxFlex.xs]="100">
               <textarea matInput
                         aria-label="note"
                         [formControlName]="'note'"
                         [readonly]="viewMode">
               </textarea>
-            </mat-form-field>
-        </div>
+      </mat-form-field>
+    </div>
 
-        <br>
+    <br>
 
-        <P *ngIf="thereIsImages" fxFlex="100"><b>Pictures:</b></P>
+    <P *ngIf="thereIsImages" fxFlex="100"><b>Pictures:</b></P>
 
-        <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
-            <button mat-raised-button
-                    [color]="'primary'"
-                    (click)="cameraInput.click()">
-                Upload image
-                <mat-icon>camera</mat-icon>
-            </button>
-        </div>
+    <div fxLayout="row" fxLayoutAlign="center" *ngIf="!viewMode">
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="cameraInput.click()">
+        Upload image
+        <mat-icon>camera</mat-icon>
+      </button>
+    </div>
 
-        <input #cameraInput style="display: none" type="file"
-               capture="camera"
-               accept="image/*"
-               id="cameraInput"
-               name="cameraInput"
-               (change)="onFileSelected($event)">
+    <input #cameraInput style="display: none" type="file"
+           capture="camera"
+           accept="image/*"
+           id="cameraInput"
+           name="cameraInput"
+           (change)="onFileSelected($event)">
 
-        <div fxLayout="row wrap" fxLayoutAlign="center">
-            <ng-container *ngFor="let image of images;">
-                <img class="uploaded-image-event"
-                     [src]="image"
-                     alt="image"
-                     sizes="100px"/>
-            </ng-container>
-        </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center">
+      <ng-container *ngFor="let image of images;">
+        <img class="uploaded-image-event"
+             [src]="image"
+             alt="image"
+             sizes="100px"/>
+      </ng-container>
+    </div>
 
 
-        <br>
-        <P *ngIf="thereIsAlerts"><b>Alerts:</b></P>
+    <br>
+    <P *ngIf="thereIsAlerts"><b>Alerts:</b></P>
 
-        <mat-list-item *ngFor="let selectedAlert of selectedAlerts">
-            <app-alert-item
-                    [mobileQuery]="mobileQuery"
-                    [isNotMobile]="isNotMobile"
-                    [viewMode]="true"
-                    [alert]="selectedAlert">
-            </app-alert-item>
-        </mat-list-item>
+    <mat-list-item *ngFor="let selectedAlert of selectedAlerts">
+      <app-alert-item
+        [mobileQuery]="mobileQuery"
+        [isNotMobile]="isNotMobile"
+        [viewMode]="true"
+        [alert]="selectedAlert">
+      </app-alert-item>
+    </mat-list-item>
 
-        <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center">
-            <button [disabled]="eventType == null || severityLevel == null || eventForm.invalid"
-                    (click)="submit()"
-                    mat-raised-button
-                    color="primary"
-                    style="width: 300px">
-                Submit
-            </button>
-        </div>
-    </form>
+    <div *ngIf="!viewMode" class="mt-1" fxLayoutAlign="center">
+      <button [disabled]="eventType == null || severityLevel == null || eventForm.invalid"
+              (click)="submit()"
+              mat-raised-button
+              color="primary"
+              style="width: 300px">
+        Submit
+      </button>
+    </div>
+  </form>
 </mat-card>
 

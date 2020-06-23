@@ -12,7 +12,7 @@
   <mat-autocomplete fxFlex="100"
                     (optionSelected)="subChanged.emit($event.option.value)"
                     [displayWith]="displayWith" #auto="matAutocomplete">
-
+    <mat-option>--</mat-option>
     <mat-option *ngFor="let option of options"
                 [value]="option">
       {{option.name}}

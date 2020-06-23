@@ -115,7 +115,7 @@
     <span [fxFlex]="10"></span>
     <button mat-raised-button style="width: 200px"
             (click)="deleteUser()"
-            *ngIf="extraDetailsUser && !addMode && !isAdmin"
+            *ngIf="extraDetailsUser && !addMode && isAdminEnter"
             color="warn">
       <span class="material-icons">delete</span>
       Delete User

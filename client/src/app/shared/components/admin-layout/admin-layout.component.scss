@@ -17,6 +17,20 @@
   margin-right: 5px;
 }
 
+
+.menu-item {
+  height: 60px;
+  list-style: none;
+  outline: none;
+
+  &:hover {
+    .menu-item-icon {
+      color: #2aa1ff;
+    }
+    cursor: pointer;
+  }
+}
+
 //.is-mobile .toolbar {
 //  position: fixed;
 //  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
@@ -46,15 +60,4 @@ h1.app-name {
   }
 }
 
-.menu-item {
-  height: 60px;
-  list-style: none;
-  outline: none;
 
-  &:hover {
-    .menu-item-icon {
-      color: #2aa1ff;
-    }
-    cursor: pointer;
-  }
-}

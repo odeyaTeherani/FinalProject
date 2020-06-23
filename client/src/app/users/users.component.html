@@ -5,7 +5,7 @@
          [fxFlex.xs]="50">
       <button mat-raised-button
               [routerLinkActive]="'active'"
-              [routerLink]="'/users/details/addUser'"
+              [routerLink]="'/user-information/details/addUser'"
               color="primary">
         Add User
       </button>
@@ -42,6 +42,7 @@
 
           <div [fxFlex]="5" class="mt-1">
             <mat-checkbox class="text-center" #check
+                          [fxFlex]="10"
                           [(ngModel)]="user.selected"
                           (click)="$event.stopPropagation()"
                           [color]="'primary'">
@@ -56,7 +57,7 @@
           </p>
 
           <p class="p-1 text-center" [fxFlex]="25">
-            {{user.subRole}}
+            {{user.subRole.name}}
           </p>
 
           <span fxFlex></span>
@@ -64,7 +65,7 @@
           <button mat-icon-button
                   [matTooltip]="'Extra Details'"
                   [routerLinkActive]="'active'"
-                  [routerLink]="['/users/details/' + user.id]">
+                  [routerLink]="['/user-information/details/' + user.id]">
             <mat-icon>arrow_right</mat-icon>
           </button>
 
