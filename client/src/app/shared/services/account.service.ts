@@ -4,6 +4,7 @@ import {LoginUser} from '../modles/loginUser';
 import {ApiService} from './api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserInformation} from '../modles/userInformation';
+import {ChangePassword} from '../modles/change-password';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,11 @@ export class AccountService {
   getCurrentUser() {
     return this.apiService
       .get<UserInformation>(this.path + '/getCurrentUser');
+  }
+
+  changePassword(change: ChangePassword) {
+    return this.apiService
+      .put(this.path + '/changePassword', change);
   }
 
   deleteCurrentUser() {
