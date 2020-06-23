@@ -8,6 +8,7 @@ import {UserService} from '../../shared/services/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import {AuthService} from '../../shared/services/auth.service';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class DetailsComponent implements OnInit {
               private activeRoute: ActivatedRoute,
               private router: Router,
               private auth: AuthService,
+              private snackBar:MatSnackBar,
               private accountService: AccountService,
               private userService: UserService) {
     if (auth.isAdmin()) {
@@ -125,16 +127,15 @@ export class DetailsComponent implements OnInit {
             this.router.navigate(['/users']);
           },
           error => {
-            console.log(error);
-          });
+            this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});          });
     } else {
       this.userService.updateUser(this.user)
         .subscribe(
           () => {
-            this.router.navigate(['/users']);
+            this.snackBar.open('Update User Successes','Success' ,{duration:4000});
           },
           error => {
-            console.log(error);
+            this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});
           });
     }
   }

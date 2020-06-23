@@ -18,7 +18,7 @@ import {
 import {FlexModule} from '@angular/flex-layout';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {SharedModule} from '../shared/shared.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -29,21 +29,22 @@ import {FormsModule} from '@angular/forms';
     AboutTheAppComponent,
     ChangePasswordComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(UserInformationRoutes),
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTabsModule,
-    FlexModule,
-    SharedModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonToggleModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(UserInformationRoutes),
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTabsModule,
+        FlexModule,
+        SharedModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule
+    ]
 })
 export class UserInformationModule { }
