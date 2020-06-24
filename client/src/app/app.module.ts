@@ -8,6 +8,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import {TokenInterceptor} from './shared/Interceptors/token.interceptor';
 import {AgmCoreModule} from '@agm/core';
+import {MatSlideToggleModule} from '@angular/material';
+import {FlexModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import {AgmCoreModule} from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDzQBEGZAlw7zzTBVceCjZfxKBEsuE_Zbg',
       libraries: ['places']
-    })
+    }),
+    MatSlideToggleModule,
+    FlexModule,
     // environment.production ?
     //   [] : HttpClientInMemoryWebApiModule.forRoot(InMemHeroService)
   ],

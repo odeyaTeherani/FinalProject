@@ -11,7 +11,7 @@ export class SubRoleFiledComponent  implements OnInit {
   options: SubRole [];
 
   @Output() subChanged = new EventEmitter<any>();
-  @Input() size = 20;
+  @Input() size = 50;
   @Input() disabled = false;
   @Input() defaultValue?: { id: number, name: string };
   @Input() appearance;

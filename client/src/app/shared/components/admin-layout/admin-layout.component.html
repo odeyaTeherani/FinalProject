@@ -37,11 +37,13 @@
         </li>
 
         <li class="menu-item">
-          <button mat-icon-button (click)="accountService.logout()">
+          <button mat-icon-button
+                  (click)="accountService.logout()">
             <mat-icon class="menu-item-icon">exit_to_app</mat-icon>
           </button>
           Logout
         </li>
+
       </mat-nav-list>
 
 <!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/user-information/details']">-->

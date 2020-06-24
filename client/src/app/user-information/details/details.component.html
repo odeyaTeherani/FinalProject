@@ -1,13 +1,15 @@
 <mat-card>
   <div class="my-profile-header">
     <p *ngIf="!extraDetailsUser" class="p-1" [fxFlex]="70">My Profile</p>
-    <p *ngIf="extraDetailsUser" class="p-1" [fxFlex]="70">Profile</p>
+    <p *ngIf="extraDetailsUser" class="p-1" [fxFlex]="70" [fxFlex.xs]="70">Profile</p>
     <!--    <p class="p-1" [fxFlex]="10" *ngIf="!addMode">force:</p>-->
-    <app-sub-role-filed [disabled]="!extraDetailsUser"
-                        *ngIf="!addMode"
-                        [defaultValue]="subRole"
-                        required>
-    </app-sub-role-filed>
+<!--    <app-sub-role-filed [disabled]="!extraDetailsUser"-->
+<!--                        *ngIf="!addMode"-->
+<!--                        [fxFlex]="40"-->
+<!--                        [fxFlex.xs]="100"-->
+<!--                        [defaultValue]="subRole"-->
+<!--                        required>-->
+<!--    </app-sub-role-filed>-->
   </div>
 
   <br>
@@ -70,9 +72,8 @@
   </mat-form-field>
 
   <app-sub-role-filed (subChanged)="subRole = $event"
-                      *ngIf="addMode"
-                      [disabled]="!extraDetailsUser"
-                      [required]>
+                      [defaultValue]="subRole"
+                      [disabled]="!extraDetailsUser">
   </app-sub-role-filed>
 
   <mat-form-field class="mat-form-field-full-width">
