@@ -1,116 +1,113 @@
 <div class="toolbar-container"
      [class.is-mobile]="mobileQuery.matches">
 
-  <mat-toolbar [color]="'primary'" class="toolbar">
+    <mat-toolbar [color]="'primary'" class="toolbar">
 
-    <!--    <img *ngIf="!mobileQuery.matches"-->
-    <!--         class="image-container"-->
-    <!--         width="50px"-->
-    <!--         height="50px"-->
-    <!--         src="../../../../assets/logo.jpeg" alt="{{appName}}"/>-->
+        <!--    <img *ngIf="!mobileQuery.matches"-->
+        <!--         class="image-container"-->
+        <!--         width="50px"-->
+        <!--         height="50px"-->
+        <!--         src="../../../../assets/logo.jpeg" alt="{{appName}}"/>-->
 
-    <button mat-icon-button
-            *ngIf="mobileQuery.matches"
-            (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+        <button mat-icon-button
+                *ngIf="mobileQuery.matches"
+                (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
 
-    <h1 class="example-app-name">{{appName}}</h1>
+        <h1 class="example-app-name">{{appName}}</h1>
 
-    <span fxFlex></span>
+        <span fxFlex></span>
 
-    <!-- Menu -->
-    <button mat-icon-button [matMenuTriggerFor]="userMenu">
-      <mat-icon>menu</mat-icon>
-    </button>
+        <!-- Menu -->
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
 
-    <mat-menu #userMenu="matMenu">
-      <mat-nav-list [style.width.px]="200">
-        <li class="menu-item"
-            *ngFor="let menuItem of filterNavMenu"
-            [routerLinkActive]="'active'"
-            [routerLink]="['/user-information/' + menuItem.url]">
-          <button mat-icon-button>
-            <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
-          </button>
-          {{menuItem.name}}
-        </li>
+        <mat-menu #userMenu="matMenu">
+            <ng-container class="menu-item"
+                          *ngFor="let menuItem of filterNavMenu">
+                <button [routerLinkActive]="'active'"
+                        mat-menu-item
+                        [routerLink]="['/user-information/' + menuItem.url]">
+                    <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+                    {{menuItem.name}}
+                </button>
+            </ng-container>
 
-        <li class="menu-item">
-          <button mat-icon-button
-                  (click)="accountService.logout()">
-            <mat-icon class="menu-item-icon">exit_to_app</mat-icon>
-          </button>
-          Logout
-        </li>
 
-      </mat-nav-list>
+            <button mat-menu-item
+                    (click)="accountService.logout()">
+                <mat-icon class="menu-item-icon">exit_to_app</mat-icon>
+                Logout
+            </button>
 
-<!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/user-information/details']">-->
-<!--        <mat-icon>person</mat-icon>-->
-<!--        My Profile-->
-<!--      </button>-->
 
-<!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/mySettings']">-->
-<!--        <mat-icon>vpn_key</mat-icon>-->
-<!--        Change Password-->
-<!--      </button>-->
+            <!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/user-information/details']">-->
+            <!--        <mat-icon>person</mat-icon>-->
+            <!--        My Profile-->
+            <!--      </button>-->
 
-<!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/mySettings']">-->
-<!--        <mat-icon>settings</mat-icon>-->
-<!--        Settings-->
-<!--      </button>-->
-    </mat-menu>
+            <!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/mySettings']">-->
+            <!--        <mat-icon>vpn_key</mat-icon>-->
+            <!--        Change Password-->
+            <!--      </button>-->
 
-  </mat-toolbar>
+            <!--      <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/mySettings']">-->
+            <!--        <mat-icon>settings</mat-icon>-->
+            <!--        Settings-->
+            <!--      </button>-->
+        </mat-menu>
 
-  <mat-sidenav-container class="sidenav-container"
-                         [hasBackdrop]="mobileQuery.matches">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [opened]="!mobileQuery.matches || isOpened"
-                 [fixedInViewport]="mobileQuery.matches"
-                 fixedTopGap="56">
+    </mat-toolbar>
 
-      <mat-nav-list [style.width.px]="250" *ngIf="isAdmin">
-        <li
-          (click)="closeOnMobile(snav)"
-          class="menu-item"
-          [routerLinkActive]="'active'"
-          [routerLink]="['/' + menuItem.url]"
-          *ngFor="let menuItem of fillerNavForAdmin">
-          <button mat-icon-button>
-            <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
-          </button>
-          {{
-          menuItem.name
-          }}
-        </li>
-      </mat-nav-list>
+    <mat-sidenav-container class="sidenav-container"
+                           [hasBackdrop]="mobileQuery.matches">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                     [opened]="!mobileQuery.matches || isOpened"
+                     [fixedInViewport]="mobileQuery.matches"
+                     fixedTopGap="56">
 
-      <mat-nav-list [style.width.px]="250" *ngIf="!isAdmin">
-        <li
-          (click)="closeOnMobile(snav)"
-          class="menu-item"
-          [routerLinkActive]="'active'"
-          [routerLink]="['/' + menuItem.url]"
-          *ngFor="let menuItem of fillerNavForUser">
-          <button mat-icon-button>
-            <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
-          </button>
-          {{
-          menuItem.name
-          }}
-        </li>
-      </mat-nav-list>
+            <mat-nav-list [style.width.px]="250" *ngIf="isAdmin">
+                <li
+                        (click)="closeOnMobile(snav)"
+                        class="menu-item"
+                        [routerLinkActive]="'active'"
+                        [routerLink]="['/' + menuItem.url]"
+                        *ngFor="let menuItem of fillerNavForAdmin">
+                    <button mat-icon-button>
+                        <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+                    </button>
+                    {{
+                    menuItem.name
+                    }}
+                </li>
+            </mat-nav-list>
 
-    </mat-sidenav>
+            <mat-nav-list [style.width.px]="250" *ngIf="!isAdmin">
+                <li
+                        (click)="closeOnMobile(snav)"
+                        class="menu-item"
+                        [routerLinkActive]="'active'"
+                        [routerLink]="['/' + menuItem.url]"
+                        *ngFor="let menuItem of fillerNavForUser">
+                    <button mat-icon-button>
+                        <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+                    </button>
+                    {{
+                    menuItem.name
+                    }}
+                </li>
+            </mat-nav-list>
 
-    <mat-sidenav-content>
-      <div class="content-container">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <div class="content-container">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 
 </div>
 

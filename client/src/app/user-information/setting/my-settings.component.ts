@@ -19,13 +19,13 @@ export class MySettingsComponent implements OnInit {
       icon: 'notification_important',
       name: 'Notifications',
       subName: 'What will interest you? Set the topics for alert',
-      url: 'user-information/settings/notifications',
+      url: '/user-information/settings/notifications',
     },
     {
       icon: 'error_outline',
       name: 'Policies, Terms of Use',
       subName: 'Terms of Use',
-      url: 'user-information/settings/aboutTheApp',
+      url: '/user-information/settings/aboutTheApp',
     }
   ];
 
