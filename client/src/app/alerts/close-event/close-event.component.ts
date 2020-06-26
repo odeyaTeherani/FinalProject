@@ -103,6 +103,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
             numOfZakaCars: [data.numOfZakaCars || null, Validators.required],
             endDate: [{value: data.endDate, disabled: this.viewMode} || null, Validators.required],
             startDate: [{value: data.startDate, disabled: this.viewMode} || null, Validators.required],
+            startTime: [{value: data.startTime, disabled: this.viewMode} || null, Validators.required],
+            endTime: [{value: data.endTime, disabled: this.viewMode} || null, Validators.required],
             nameInCharge: [data.nameInCharge || null, Validators.required],
             note: [data.note || null],
         });

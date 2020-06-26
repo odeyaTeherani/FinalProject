@@ -7,25 +7,25 @@
 
     <p class="underline"><b>Validation</b></p>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>User Name</mat-label>
-        <input [(ngModel)]="user.userName" required
-               matInput placeholder="">
-    </mat-form-field>
+    <div fxLayout="row warp">
+        <mat-form-field fxFlex="75">
+            <mat-label>User Name</mat-label>
+            <input [(ngModel)]="user.userName" required
+                   matInput placeholder="">
+        </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width"
-                    *ngIf="addMode">
-        <mat-label>Password</mat-label>
-        <input [(ngModel)]="user.password" required
-               matInput placeholder="">
-    </mat-form-field>
+        <mat-form-field fxFlex="75" *ngIf="addMode">
+            <mat-label>Password</mat-label>
+            <input [(ngModel)]="user.password" required
+                   matInput placeholder="">
+        </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width"
-                    *ngIf="addMode">
-        <mat-label>Confirm Password</mat-label>
-        <input [(ngModel)]="user.confirmPassword" required
-               matInput placeholder="">
-    </mat-form-field>
+        <mat-form-field fxFlex="75" *ngIf="addMode">
+            <mat-label>Confirm Password</mat-label>
+            <input [(ngModel)]="user.confirmPassword" required
+                   matInput placeholder="">
+        </mat-form-field>
+    </div>
 
     <!--<input #file type="file" accept='image/*' (change)="preview(file.files)" />-->
     <div fxLayout="row">
@@ -52,35 +52,39 @@
 
     <p class="underline"><b>Personal Information</b></p>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>First Name</mat-label>
-        <input matInput [(ngModel)]="user.firstName" required>
-    </mat-form-field>
+    <div fxLayout="row warp">
+        <mat-form-field fxFlex="75">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="user.firstName" required>
+        </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>Last Name</mat-label>
-        <input matInput [(ngModel)]="user.lastName" required>
-    </mat-form-field>
+        <mat-form-field fxFlex="75">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="user.lastName" required>
+        </mat-form-field>
 
-    <app-sub-role-filed (subChanged)="subRole = $event"
-                        [defaultValue]="subRole"
-                        [disabled]="!extraDetailsUser">
-    </app-sub-role-filed>
+        <app-sub-role-filed
+                fxFlex="75"
+                (subChanged)="subRole = $event"
+                [defaultValue]="subRole"
+                [disabled]="!extraDetailsUser">
+        </app-sub-role-filed>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>Email Address</mat-label>
-        <input matInput [(ngModel)]="user.email" required>
-    </mat-form-field>
+        <mat-form-field fxFlex="75">
+            <mat-label>Email Address</mat-label>
+            <input matInput [(ngModel)]="user.email" required>
+        </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>Phone Number</mat-label>
-        <input matInput [(ngModel)]="user.phoneNumber" required>
-    </mat-form-field>
+        <mat-form-field fxFlex="75">
+            <mat-label>Phone Number</mat-label>
+            <input matInput [(ngModel)]="user.phoneNumber" required>
+        </mat-form-field>
 
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>Car Number</mat-label>
-        <input matInput [(ngModel)]="user.carNumber">
-    </mat-form-field>
+        <mat-form-field fxFlex="75">
+            <mat-label>Car Number</mat-label>
+            <input matInput [(ngModel)]="user.carNumber">
+        </mat-form-field>
+    </div>
 
     <p>Gender</p>
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
@@ -89,13 +93,16 @@
     </mat-button-toggle-group>
 
     <br><br>
-    <mat-form-field class="mat-form-field-full-width">
-        <mat-label>Birth Date</mat-label>
-        <input matInput [matDatepicker]="picker"
-               [(ngModel)]="user.birthDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+
+    <div fxLayout="row">
+        <mat-form-field fxFlex="75">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="picker"
+                   [(ngModel)]="user.birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
 
     <div fxLayoutAlign="center center" fxLayout="row" class="margin-333">
         <button mat-raised-button style="width: 200px"
