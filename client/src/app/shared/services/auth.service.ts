@@ -18,4 +18,6 @@ export class AuthService {
     public isAdmin(): boolean {
         return this.getRole() === 'admin';
     }
+
+
 }

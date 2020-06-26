@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ChangePassword} from '../../shared/modles/change-password';
-import {MyErrorStateMatcher} from '../../access/log-in/log-in.component';
 import {AccountService} from '../../shared/services/account.service';
 import {MatSnackBar} from '@angular/material';
 

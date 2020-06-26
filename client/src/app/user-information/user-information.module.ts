@@ -12,7 +12,7 @@ import {
   MatCardModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatSlideToggleModule,
   MatTabsModule
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
@@ -29,22 +29,23 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AboutTheAppComponent,
     ChangePasswordComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(UserInformationRoutes),
-        MatCardModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTabsModule,
-        FlexModule,
-        SharedModule,
-        MatFormFieldModule,
-        FormsModule,
-        MatInputModule,
-        MatButtonToggleModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(UserInformationRoutes),
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTabsModule,
+    FlexModule,
+    SharedModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule
+  ]
 })
 export class UserInformationModule { }

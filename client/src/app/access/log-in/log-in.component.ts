@@ -3,6 +3,7 @@ import {AccountService} from '../../shared/services/account.service';
 import {LoginUser} from '../../shared/modles/loginUser';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+// import {CookieService} from 'angular2-cookie/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,10 +19,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  hide = true;
-  constructor(public accountService:AccountService) { }
-
+  public rememberMe = false;
   userLogin:LoginUser = {username:'',password:''};
+  hide = true;
+  constructor(public accountService:AccountService) {
+    // if(cookieService.get('remember')!==undefined) {
+    //   if(cookieService.get('remember')==='Yes') {
+    //     this.userLogin.username = this.cookieService.get('username');
+    //     this.userLogin.password = this.cookieService.get('password');
+    //     this.rememberMe=true;
+    //   }
+    //
+    // }
+
+  }
 
   userNameFormControl = new FormControl('', [
     Validators.required,

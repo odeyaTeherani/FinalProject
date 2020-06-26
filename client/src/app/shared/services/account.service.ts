@@ -5,6 +5,7 @@ import {ApiService} from './api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserInformation} from '../modles/userInformation';
 import {ChangePassword} from '../modles/change-password';
+import {ResetPassword} from '../modles/reset-password';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,7 @@ export class AccountService {
               if (result != null) {
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('role', result.roles[0]);
+
                 this.route.navigate(['/home']);
               } else {
                 console.log('bad user request');
@@ -61,6 +63,11 @@ export class AccountService {
   changePassword(change: ChangePassword) {
     return this.apiService
       .put(this.path + '/changePassword', change);
+  }
+
+  resetPassword(reset: ResetPassword) {
+    return this.apiService
+      .put(this.path + '/resetPassword', reset);
   }
 
   deleteCurrentUser() {
