@@ -11,10 +11,9 @@ import {MatButtonModule,
 import {RouterModule} from '@angular/router';
 import {AccessRoutes} from './access-routing';
 import {FlexModule} from '@angular/flex-layout';
-import { ForgetPasswordValidationComponent } from './forget-password/forget-password-validation/forget-password-validation.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ResetPasswordComponent } from './forget-password/forget-password-validation/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule(
@@ -31,7 +30,6 @@ import { ResetPasswordComponent } from './forget-password/forget-password-valida
           MatCheckboxModule, FormsModule, ReactiveFormsModule],
     declarations:[LogInComponent,
       ForgetPasswordComponent,
-      ForgetPasswordValidationComponent,
       ResetPasswordComponent]
   }
 )
