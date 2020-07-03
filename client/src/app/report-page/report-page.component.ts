@@ -5,6 +5,7 @@ import {ReportService} from '../shared/services/report-service';
 import {Report} from '../shared/modles/report';
 import {SeverityLevel} from '../shared/modles/severity-level.enum';
 import {EventType} from '../shared/modles/event-type';
+// import any = jasmine.any;
 
 @Component({
   selector: 'app-report-page',
@@ -30,7 +31,7 @@ export class ReportPageComponent implements OnInit {
               private router: Router,
               private reportService: ReportService,
               private fb: FormBuilder) {
-    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: {} }};
+    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: 'Location' }};
 
     activeRoute.params.subscribe((params) => {
       // display alert

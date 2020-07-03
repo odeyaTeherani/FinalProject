@@ -20,11 +20,6 @@
           (changed)="severityLevel = $event">
         </app-severity-level>
 
-
-<!--        <div [fxFlex]="75"-->
-<!--             [fxFlex.xs]="100">-->
-<!--          <label style="color: darkgray">Location:</label>-->
-<!--        </div>-->
         <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="!viewMode">
           <mat-label>Location</mat-label>
           <input matInput
@@ -34,14 +29,20 @@
                  (locationSelected)="location.googlePlacesData = $event"/>
         </mat-form-field>
 
-        <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="viewMode">
-          <mat-label>Location</mat-label>
-          <input matInput
-                 aria-label="formatted Address"
-                 readonly
-                 [defaultValue]="location.googlePlacesData.formattedAddress "
-          />
-        </mat-form-field>
+        <div class="border-location" fxFlex="25" *ngIf="viewMode" >
+          <h5 class="ml-1">Location</h5>
+          <p class="ml-1"> {{location.googlePlacesData.formattedAddress}}</p>
+        </div>
+
+<!--        <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="viewMode">-->
+<!--          <mat-label>Location</mat-label>-->
+<!--          <input matInput-->
+<!--                 aria-label="formatted Address"-->
+<!--                 readonly-->
+<!--                 appGooglePlace-->
+<!--                 [defaultValue]="location.googlePlacesData.formattedAddress"-->
+<!--                 (locationSelected)="location.googlePlacesData = $event"/>-->
+<!--        </mat-form-field>-->
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
           <mat-label>Car Number</mat-label>
