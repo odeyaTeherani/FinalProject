@@ -20,13 +20,27 @@
           (changed)="severityLevel = $event">
         </app-severity-level>
 
-        <mat-form-field [appearance]="'outline'" fxFlex="25">
+
+<!--        <div [fxFlex]="75"-->
+<!--             [fxFlex.xs]="100">-->
+<!--          <label style="color: darkgray">Location:</label>-->
+<!--        </div>-->
+        <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="!viewMode">
           <mat-label>Location</mat-label>
           <input matInput
-                 aria-label="Number"
+                 aria-label="formatted Address"
                  appGooglePlace
-                 (locationSelected)="locationSelected($event)"
-                 placeholder=""/>
+                 placeholder=""
+                 (locationSelected)="location.googlePlacesData = $event"/>
+        </mat-form-field>
+
+        <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="viewMode">
+          <mat-label>Location</mat-label>
+          <input matInput
+                 aria-label="formatted Address"
+                 readonly
+                 [defaultValue]="location.googlePlacesData.formattedAddress "
+          />
         </mat-form-field>
 
         <mat-form-field [appearance]="'outline'" fxFlex="25">
@@ -88,13 +102,13 @@
     </mat-form-field>
   </div>
 
-  <agm-map *ngIf="locationCoordinates != null"
-           [latitude]="locationCoordinates.latitude"
-           [longitude]="locationCoordinates.longitude"
+  <agm-map *ngIf="location.latitude && location.longitude != null"
+           [latitude]="location.latitude"
+           [longitude]="location.longitude"
            [zoom]="zoom">
     <agm-marker
-      [latitude]="locationCoordinates.latitude"
-      [longitude]="locationCoordinates.longitude">
+      [latitude]="location.latitude"
+      [longitude]="location.longitude">
     </agm-marker>
   </agm-map>
 

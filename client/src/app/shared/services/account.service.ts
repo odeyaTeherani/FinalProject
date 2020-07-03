@@ -6,6 +6,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserInformation} from '../modles/userInformation';
 import {ChangePassword} from '../modles/change-password';
 import {ResetPassword} from '../modles/reset-password';
+import {ForgotPassword} from '../modles/forgot-password';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class AccountService {
   }
 
   logout() {
-    console.log('clicked')
+    console.log('clicked');
     localStorage.clear();
     this.route.navigate(['/sessions/signIn']);
   }
@@ -69,6 +70,11 @@ export class AccountService {
   resetPassword(reset: ResetPassword) {
     return this.apiService
       .put(this.path + '/resetPassword', reset);
+  }
+
+  forgotPassword(model: ForgotPassword) {
+    return this.apiService
+      .post(this.path + '/forgotPassword', model);
   }
 
   deleteCurrentUser() {

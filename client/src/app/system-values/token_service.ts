@@ -1,6 +1,6 @@
-import {Injectable, InjectionToken} from "@angular/core";
-import {SubRoleService} from "../shared/services/sub-role.service";
-import {EventTypeService} from "../shared/services/event-type.service";
+import {Injectable, InjectionToken} from '@angular/core';
+import {SubRoleService} from '../shared/services/sub-role.service';
+import {EventTypeService} from '../shared/services/event-type.service';
 
 @Injectable()
 export class TokenService {

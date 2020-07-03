@@ -12,6 +12,6 @@ export interface Report {
   note: string;
   images: string [];
   selected: boolean;
-  location?: { longitude:number, latitude:number };
+  location: { longitude: number, latitude: number, googlePlacesData: any };
 
 }
