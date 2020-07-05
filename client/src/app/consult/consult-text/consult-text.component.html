@@ -1,1 +1,11 @@
-<p>consult-text works!</p>
+<mat-card *ngIf="text.number_of_zaka_cars" class="consult-list-item">
+  <mat-list-item>
+    <p><b>Based on past events, below is the amount of troops to send to the area:</b></p>
+    <p>Number of A Police cars: {{text.number_of_police_cars}}</p>
+    <p>Number of Ambulances: {{text.number_of_ambulances_car}}</p>
+    <p>Number of A Fire Fighter cars: {{text.number_of_fire_fighters_car}}</p>
+    <p>Number of Zaka cars: {{text.number_of_zaka_cars}}</p>
+    <p>Number of Environment cars: {{text.number_of_environment_car}}</p>
+  </mat-list-item>
+</mat-card>
+

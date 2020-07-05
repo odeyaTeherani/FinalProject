@@ -20,23 +20,24 @@ import {SharedModule} from '../shared/shared.module';
 import { ConsultTextComponent } from './consult-text/consult-text.component';
 import { ConsultComponent } from './consult.component';
 import { ConsultFilterComponent } from './consult-filter/consult-filter.component';
+import {MatListModule} from '@angular/material';
 
 
 @NgModule(
   {
-      imports: [CommonModule,
-          RouterModule.forChild(ConsultRoutes),
-        MatCardModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatButtonModule,
-        FlexModule, MatInputModule,
-        GooglePlacesModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        MatIconModule,
-        SeverityLevelModule,
-        SharedModule],
+    imports: [CommonModule,
+      RouterModule.forChild(ConsultRoutes),
+      MatCardModule,
+      MatFormFieldModule,
+      MatSelectModule,
+      MatButtonModule,
+      FlexModule, MatInputModule,
+      GooglePlacesModule,
+      ReactiveFormsModule,
+      MatAutocompleteModule,
+      MatIconModule,
+      SeverityLevelModule,
+      SharedModule, MatListModule],
     declarations:[ConsultFilterComponent, ConsultTextComponent, ConsultComponent]
   }
 )

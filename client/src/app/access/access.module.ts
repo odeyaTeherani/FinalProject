@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { LogInComponent } from './log-in/log-in.component';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -29,7 +29,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
           MatSnackBarModule,
           MatCheckboxModule, FormsModule, ReactiveFormsModule],
     declarations:[LogInComponent,
-      ForgetPasswordComponent,
+      ForgotPasswordComponent,
       ResetPasswordComponent]
   }
 )

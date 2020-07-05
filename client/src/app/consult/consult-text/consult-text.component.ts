@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Consult} from '../../shared/modles/consult';
 
 @Component({
   selector: 'app-consult-text',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultTextComponent implements OnInit {
 
+  @Input() text: Consult;
   constructor() { }
 
   ngOnInit() {

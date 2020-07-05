@@ -1,2 +1,7 @@
-<app-consult-filter (searchChanged)="searchChanged($event)"></app-consult-filter>
+<mat-card>
+  <app-consult-filter (searchChanged)="searchChanged($event)"></app-consult-filter>
+
+  <app-consult-text [text]="result"></app-consult-text>
+</mat-card>
+
 
