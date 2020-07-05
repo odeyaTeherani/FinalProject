@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {LogInComponent} from './log-in/log-in.component';
-import {ForgetPasswordComponent} from './forget-password/forget-password.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 export const AccessRoutes: Routes = [
@@ -12,8 +12,8 @@ export const AccessRoutes: Routes = [
         component: LogInComponent
       },
       {
-        path: 'forgetPassword',
-        component: ForgetPasswordComponent,
+        path: 'forgotPassword',
+        component: ForgotPasswordComponent,
       },
       {
         path: 'resetPassword',

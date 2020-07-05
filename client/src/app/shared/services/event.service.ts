@@ -5,54 +5,73 @@ import {ApiService} from './api.service';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class EventService {
-    path = '/api/event';
+  path = '/api/event';
 
-    constructor(private api: ApiService) {}
+  constructor(private api: ApiService) {
+  }
 
-    get(filter = null): Observable<Event []> {
-        let params = new HttpParams();
-        if (filter) {
-            if(filter.date) {
-                params = params.append('date', filter.date || null);
-            }
-            if(filter.eventType) {
-                params = params.append('eventTypeId', filter.eventType.id.toString() || null);
-            }
-            if(filter.severityLevel) {
-                 params = params.append('severityLevel', filter.severityLevel.toString() || null);
-            }
-        }
-        return this.api
-            .get<Event []>(this.path, null, params);
+  getConsult(consult = null) {
+    let params = new HttpParams();
+    if (consult) {
+      if (consult.hours) {
+        params = params.append('hours', consult.hours || null);
+      }
+      if (consult.eventType) {
+        params = params.append('eventTypeId', consult.eventType.id.toString() || null);
+      }
+      if (consult.severityLevel) {
+        params = params.append('severityLevel', consult.severityLevel.toString() || null);
+      }
     }
+    return this.api
+      .get(this.path + '/consult', null, params);
+  }
 
-    add(newEvent: any) {
-        return this.api
-            .post(this.path, newEvent);
+
+  get(filter = null): Observable<Event []> {
+    let params = new HttpParams();
+    if (filter) {
+      if (filter.date) {
+        params = params.append('date', filter.date || null);
+      }
+      if (filter.eventType) {
+        params = params.append('eventTypeId', filter.eventType.id.toString() || null);
+      }
+      if (filter.severityLevel) {
+        params = params.append('severityLevel', filter.severityLevel.toString() || null);
+      }
     }
+    return this.api
+      .get<Event []>(this.path, null, params);
+  }
 
-    getById(eventId: number) {
-        return this.api
-            .get<Event>(this.path + '/' + eventId);
-    }
+  add(newEvent: any) {
+    return this.api
+      .post(this.path, newEvent);
+  }
 
-    delete(eventId: number) {
-        return this.api
-            .delete(this.path + '/' + eventId);
-    }
+  getById(eventId: number) {
+    return this.api
+      .get<Event>(this.path + '/' + eventId);
+  }
 
-    put(editedEntity: any) {
-        return this.api
-            .put(this.path + '/' + editedEntity.id, editedEntity);
-    }
+  delete(eventId: number) {
+    return this.api
+      .delete(this.path + '/' + eventId);
+  }
 
-    // onEventsChange: EventEmitter<Event []> = new EventEmitter<Event []>();
-    // // onEventsChange: BehaviorSubject<Event []> = new BehaviorSubject<Event []>([]);
-    //
-    // getEvents() {
-    //   this.onEventsChange.emit(this.events);
-    // }
+  put(editedEntity: any) {
+    return this.api
+      .put(this.path + '/' + editedEntity.id, editedEntity);
+  }
+
+  // onEventsChange: EventEmitter<Event []> = new EventEmitter<Event []>();
+  // // onEventsChange: BehaviorSubject<Event []> = new BehaviorSubject<Event []>([]);
+  //
+  // getEvents() {
+  //   this.onEventsChange.emit(this.events);
+  // }
 }

@@ -47,7 +47,6 @@ export class AccountService {
   }
 
   logout() {
-    console.log('clicked');
     localStorage.clear();
     this.route.navigate(['/sessions/signIn']);
   }

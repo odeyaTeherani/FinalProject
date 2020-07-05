@@ -14,7 +14,7 @@ export class ConsultFilterComponent implements OnInit {
   constructor(fb: FormBuilder) {
     this.filterOptions = fb.group({
       eventType: null,
-      daysFiled: null,
+      hours: null,
       severityLevel: null,
     });
   }

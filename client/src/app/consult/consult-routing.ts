@@ -1,9 +1,9 @@
 import {Routes} from '@angular/router';
-import {ConsultFilterComponent} from './consult-filter/consult-filter.component';
+import {ConsultComponent} from './consult.component';
 
 export const ConsultRoutes: Routes = [
   {
     path: '',
-    component: ConsultFilterComponent
+    component: ConsultComponent
   }
 ];

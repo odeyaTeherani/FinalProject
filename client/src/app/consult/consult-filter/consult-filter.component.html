@@ -1,4 +1,4 @@
-<form ngForm class="toolbar-container" [formGroup]="filterOptions">
+<form ngForm [formGroup]="filterOptions">
   <div fxLayout="row"
        fxLayout.sm="column"
        fxLayout.xs="column"
@@ -8,8 +8,8 @@
       <input matInput
              type="number"
              aria-label="Num of Days"
-             [formControlName]="'daysFiled'"
-             placeholder="Number of Days"/>
+             [formControlName]="'hours'"
+             placeholder="Number of Hours"/>
     </mat-form-field>
 
     <app-event-type fxFlex="33"
