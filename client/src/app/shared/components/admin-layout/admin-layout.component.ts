@@ -92,7 +92,7 @@ export class AdminLayoutComponent implements OnDestroy {
   private readonly mobileQueryListener: () => void;
 
   constructor(media: MediaMatcher, public accountService:AccountService, private authService: AuthService) {
-    this.appName = 'system';
+    this.appName = 'UNIFY';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.isAdmin = authService.isAdmin();
     this.mobileQueryListener = () => {

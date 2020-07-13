@@ -30,7 +30,7 @@
     <p class="p-1 text-center" [fxFlex]="25">Agencies and responders</p>
   </div>
 
-  <app-users-filter
+  <app-users-filter [isNotMobile]="isNotMobile" [mobileQuery]="mobileQuery"
     (searchUsersChanged)="searchUsersChanged($event)">
   </app-users-filter>
 
