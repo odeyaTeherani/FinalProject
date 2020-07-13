@@ -5,3 +5,13 @@
 .btn-width{
   width: 350px;
 }
+
+@media screen and (max-width: 500px) {
+  .sessions-container{
+    width: 300px;
+    height: 100%;
+  }
+  .btn-width{
+    width: 250px;
+  }
+}

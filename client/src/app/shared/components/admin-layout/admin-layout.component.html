@@ -21,7 +21,8 @@
 
         <!-- Menu -->
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
-            <mat-icon>menu</mat-icon>
+            <mat-icon *ngIf="!mobileQuery.matches">menu</mat-icon>
+            <mat-icon *ngIf="mobileQuery.matches">more_vert</mat-icon>
         </button>
 
         <mat-menu #userMenu="matMenu">

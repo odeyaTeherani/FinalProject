@@ -41,7 +41,7 @@
         <div fxLayout="row" class="full-width" (click)="check.toggle()">
 
           <div [fxFlex]="5" class="mt-1">
-            <mat-checkbox class="text-center" #check
+            <mat-checkbox class="text-center mat-checkbox-user" #check
                           [fxFlex]="10"
                           [(ngModel)]="user.selected"
                           (click)="$event.stopPropagation()"

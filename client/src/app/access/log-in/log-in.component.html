@@ -2,19 +2,21 @@
 
   <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
     <h3 class="panel-title">Login</h3>
-
   </div>
-  <hr [width]="400">
-  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+
+  <hr class="field-width">
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-1">
+
     <p class="text-center p-0 m-0">
       <mat-form-field class="field-width" appearance="outline">
         <mat-label>User Name</mat-label>
 
-<!--        <input matInput [formControl]="userNameFormControl" [errorStateMatcher]="matcher">-->
-<!--        <mat-hint>Errors appear instantly!</mat-hint>-->
-<!--        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
-<!--          Please enter a valid email address-->
-<!--        </mat-error>-->
+        <!--        <input matInput [formControl]="userNameFormControl" [errorStateMatcher]="matcher">-->
+        <!--        <mat-hint>Errors appear instantly!</mat-hint>-->
+        <!--        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
+        <!--          Please enter a valid email address-->
+        <!--        </mat-error>-->
 
         <input [(ngModel)]="userLogin.username"
                [formControl]="userNameFormControl" [errorStateMatcher]="matcher"
@@ -25,9 +27,7 @@
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </p>
-  </div>
 
-  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
     <p class="text-center p-0 m-0">
       <mat-form-field class="field-width" appearance="outline">
         <mat-label>Password</mat-label>
@@ -45,15 +45,14 @@
         </button>
       </mat-form-field>
     </p>
-  </div>
 
-  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
     <p class="p-0 m-0">
       <mat-checkbox class="checkbox-rem">Remember Me</mat-checkbox>
     </p>
+
   </div>
 
-  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+  <div fxLayoutAlign="center center" class="mt-1">
     <button color="primary"
             class="btn-width"
             mat-raised-button
@@ -62,9 +61,10 @@
     </button>
   </div>
 
-  <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
+  <div fxLayoutAlign="center center" class="mt-1">
     <p class="text-center p-0 m-0">
       <a href="#" [routerLinkActive]="'active'" [routerLink]="['/sessions/forgotPassword']">Forgot password?</a>
     </p>
   </div>
+
 </mat-card>
