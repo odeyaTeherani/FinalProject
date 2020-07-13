@@ -33,7 +33,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   selectedAlerts: Report[];
   eventType: any;
   severityLevel: any;
-  location: { longitude: number, latitude: number, googlePlacesData: any };
+  location: { longitude: number, latitude: number, googlePlacesData: { formattedAddress:any } };
   mobileQuery: MediaQueryList;
 
   constructor(private activeRoute: ActivatedRoute,
@@ -43,7 +43,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
               private fb: FormBuilder,
               private reportsDataService: ReportsDataService,
               private datePipe: DatePipeService) {
-    this.location = {longitude: null, latitude: null, googlePlacesData: {}};
+    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress:null}};
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => {
       this.isNotMobile = !this.mobileQuery.matches;

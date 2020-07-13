@@ -45,13 +45,13 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="pl-1" [fxFlex]="15" [fxFlex.xs]="100">
-        <input matInput
-               type="time"
-               aria-label="start time"
-               placeholder="Start Time"
-               [formControlName]="'startTime'">
-      </mat-form-field>
+      <mat-form-field class="pl-1-not-in-mobile" [fxFlex]="15" [fxFlex.xs]="100">
+      <input matInput
+             type="time"
+             aria-label="start time"
+             placeholder="Start Time"
+             [formControlName]="'startTime'">
+    </mat-form-field>
 
       <mat-form-field [fxFlex]="60" [fxFlex.xs]="100">
         <input matInput
@@ -63,7 +63,7 @@
         <mat-datepicker #pickerTo></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="pl-1" [fxFlex]="15" [fxFlex.xs]="100">
+      <mat-form-field class="pl-1-not-in-mobile" [fxFlex]="15" [fxFlex.xs]="100">
         <input matInput
                type="time"
                aria-label="end time"
@@ -71,29 +71,36 @@
                [formControlName]="'endTime'">
       </mat-form-field>
 
-      <div [fxFlex]="75"
-           [fxFlex.xs]="100">
-        <label style="color: darkgray">Location:</label>
-      </div>
+<!--      <div [fxFlex]="75"-->
+<!--           [fxFlex.xs]="100">-->
+<!--        <label style="color: darkgray">Location:</label>-->
+<!--      </div>-->
+<!--      -->
+<!--      <mat-form-field [fxFlex]="75"-->
+<!--                      [fxFlex.xs]="100">-->
+<!--        <input matInput-->
+<!--               aria-label="formatted Address"-->
+<!--               appGooglePlace-->
+<!--               [readonly]="viewMode"-->
+<!--               placeholder="{{location.googlePlacesData.formattedAddress}}"-->
+<!--               (locationSelected)="location.googlePlacesData = $event"/>-->
+<!--      </mat-form-field>      -->
+
+
       <mat-form-field [fxFlex]="75"
                       [fxFlex.xs]="100">
+        <div>
+          <h5>Location</h5>
+        </div>
+
         <input matInput
-               aria-label="Number"
+               aria-label="formatted Address"
                appGooglePlace
                [readonly]="viewMode"
                placeholder="{{location.googlePlacesData.formattedAddress}}"
                (locationSelected)="location.googlePlacesData = $event"/>
       </mat-form-field>
 
-      <!--      <ng-template class="mt-1" #displayLocation>-->
-      <!--        <div [fxFlex]="75"-->
-      <!--             [fxFlex.xs]="100">-->
-      <!--          <label style="color: darkgray">Location:</label>-->
-      <!--          <p>-->
-      <!--            {{location.googlePlacesData.formattedAddress}}-->
-      <!--          </p>-->
-      <!--        </div>-->
-      <!--      </ng-template>-->
 
       <mat-form-field [fxFlex]="75" [fxFlex.xs]="100">
         <input matInput
