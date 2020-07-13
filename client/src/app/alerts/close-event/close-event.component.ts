@@ -86,6 +86,10 @@ export class CloseEventComponent implements OnInit, OnDestroy {
       .subscribe((alerts: Report []) => {
         if (alerts != null) {
           this.selectedAlerts = alerts.filter(alert => alert.selected);
+          console.log(this.selectedAlerts);
+          if(this.selectedAlerts[0] !=null) {
+            this.thereIsAlerts = true;
+          }
         }
       });
     this.reportsDataService.emitReportsState();
