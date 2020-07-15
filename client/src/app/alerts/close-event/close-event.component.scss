@@ -10,8 +10,8 @@
 .c{background-color: purple}
 
 .uploaded-image-event{
-  max-width: 40%;
-  max-height: 100px;
+  max-width: 33%;
+  max-height: 250px;
   margin: 2px;
   border: 1px black solid;
   border-radius: 5px;
@@ -19,4 +19,51 @@
 
 .btnraise{
   width:230px;
+}
+
+
+.border-location{
+  height:20px;
+  border: 1px lightgray solid;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  &hover{
+    border: 1px black solid;
+  }
+}
+
+h5{
+  font-weight: inherit;
+  margin-right: 1rem;
+  color: darkgray;
+  width:50px;
+  margin-top:-25px;
+  background:white;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 100%;
+}
+
+tr {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.panel-table{
+  background-color: lightgray;
+}
+
+@media screen and (min-width: 500px) {
+  .pl-1-not-in-mobile{
+    padding-left: 1rem !important;
+  }
+  table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 75%;
+  }
 }

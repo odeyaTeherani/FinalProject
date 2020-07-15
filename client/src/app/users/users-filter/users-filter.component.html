@@ -5,20 +5,20 @@
 
     <span [fxFlex]="10"></span>
 
-    <mat-form-field fxFlex="22">
+    <mat-form-field [fxFlex.xs]="35" fxFlex="22">
       <input matInput
              placeholder="name"
              [formControlName]="'name'"/>
     </mat-form-field>
 
-    <mat-form-field fxFlex="22">
+    <mat-form-field fxFlex="22" *ngIf="!mobileQuery.matches || isNotMobile">
       <input matInput
              placeholder="email"
              [formControlName]="'email'"/>
     </mat-form-field>
 
     <app-sub-role-filed
-      [fxFlex.xs]="25"
+      [fxFlex.xs]="35"
       [fxFlex] ="22"
       [required]="false"
       (subChanged) = "filterOptions.controls['subRole'].setValue($event)">

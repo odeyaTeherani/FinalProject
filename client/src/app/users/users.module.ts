@@ -17,7 +17,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {UsersFilterComponent} from './users-filter/users-filter.component';
-import {ConfirmDailogModule} from '../shared/components/confirm-dialog/confirm-dailog.module';
+import {ConfirmDialogModule} from '../shared/components/confirm-dialog/confirm-dialog.module';
 import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confirm-dialog.component';
 
 
@@ -43,7 +43,7 @@ import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confir
         MatDatepickerModule,
         MatInputModule,
         ReactiveFormsModule,
-        ConfirmDailogModule
+        ConfirmDialogModule
     ],
     entryComponents: [ConfirmDialogComponent]
 })

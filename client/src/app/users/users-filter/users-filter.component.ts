@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-users-filter',
@@ -9,6 +9,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class UsersFilterComponent implements OnInit {
   filterOptions: FormGroup;
   @Output() searchUsersChanged = new EventEmitter<any>();
+  @Input() mobileQuery: any;
+  @Input() isNotMobile: boolean;
 
   constructor(fb: FormBuilder) {
     this.filterOptions = fb.group({

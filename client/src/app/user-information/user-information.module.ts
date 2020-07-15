@@ -19,6 +19,8 @@ import {FlexModule} from '@angular/flex-layout';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogModule} from '../shared/components/confirm-dialog/confirm-dialog.module';
 
 
 
@@ -45,7 +47,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
-  ]
+    MatSlideToggleModule,
+    ConfirmDialogModule
+  ],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class UserInformationModule { }

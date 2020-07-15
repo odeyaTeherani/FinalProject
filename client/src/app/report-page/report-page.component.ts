@@ -5,6 +5,10 @@ import {ReportService} from '../shared/services/report-service';
 import {Report} from '../shared/modles/report';
 import {SeverityLevel} from '../shared/modles/severity-level.enum';
 import {EventType} from '../shared/modles/event-type';
+import {UserInformation} from '../shared/modles/userInformation';
+import {AccountService} from '../shared/services/account.service';
+import {log} from 'util';
+
 // import any = jasmine.any;
 
 @Component({
@@ -13,12 +17,8 @@ import {EventType} from '../shared/modles/event-type';
   styleUrls: ['./report-page.component.scss']
 })
 export class ReportPageComponent implements OnInit {
-
   images = [];
-  // location: { longitude: number, latitude: number, googlePlacesData: any };
-  // locationCoordinates: { longitude: number, latitude: number };
-  // googlePlacesData: { formattedAddress: any};
-  location: { longitude: number, latitude: number, googlePlacesData:{formattedAddress: any} };
+  location: { longitude: number, latitude: number, googlePlacesData: { formattedAddress: any } };
   zoom = 15;
   slRef = SeverityLevel;
   viewMode: boolean;
@@ -26,38 +26,33 @@ export class ReportPageComponent implements OnInit {
   eventType: EventType;
   alert: Report;
   severityLevel: any;
+  carNumberData: string;
 
   constructor(private  activeRoute: ActivatedRoute,
               private router: Router,
               private reportService: ReportService,
+              private accountService: AccountService,
               private fb: FormBuilder) {
-    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: 'Location' }};
+    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: 'Location'}};
 
     activeRoute.params.subscribe((params) => {
       // display alert
-      if (params.id != null) {
-        this.viewMode = true;
-        const alertId = params.id;
-        this.reportService.getById(alertId)
-          .subscribe((report: Report) => {
-            this.alert = report;
-            console.log(report);
-            this.images = report.images;
-            this.eventType = report.eventType;
-            this.severityLevel = report.severityLevel;
-            this.location = report.location;
-            // this.locationCoordinates = report.location;
-            // // this.googlePlacesData.formattedAddress = report.location.googlePlacesData.formattedAddress;
-            // this.googlePlacesData = report['location']['googlePlacesData'];
-            // console.log(this.googlePlacesData);
-
-            // this.googlePlacesData = ;
-            this.initForm();
-          });
+        if (params.id != null) {
+          this.viewMode = true;
+          const alertId = params.id;
+          this.reportService.getById(alertId)
+            .subscribe((report: Report) => {
+              this.alert = report;
+              this.images = report.images;
+              this.eventType = report.eventType;
+              this.severityLevel = report.severityLevel;
+              this.location = report.location;
+              this.initForm();
+            });
 
         // new Alert
       } else {
-        this.initForm();
+        this.getCarNumberAndInit();
       }
     });
 
@@ -103,6 +98,9 @@ export class ReportPageComponent implements OnInit {
 
   private initForm() {
     const data: any = this.alert == null ? {} : this.alert;
+    if(this.carNumberData) {
+      data.carNumber = this.carNumberData;
+    }
     this.reportForm = this.fb.group({
       carNumber: [data.carNumber || null, Validators.required],
       numberOfEvacuatedInjured: [data.numberOfEvacuatedInjured || null, Validators.required],
@@ -119,8 +117,17 @@ export class ReportPageComponent implements OnInit {
     };
   }
 
-  //
-  // locationSelected(event: any) {
-  //   this.googlePlacesData = event;
-  // }
+  getCarNumberAndInit() {
+    this.accountService.getCurrentUser()
+      .subscribe(
+        (user: UserInformation) => {
+          console.log(user.carNumber);
+          this.carNumberData = user.carNumber;
+          this.initForm();
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 }

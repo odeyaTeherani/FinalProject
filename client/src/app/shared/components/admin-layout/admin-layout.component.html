@@ -15,13 +15,14 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-        <h1 class="example-app-name">{{appName}}</h1>
+        <h1 class="app-name">{{appName}}</h1>
 
         <span fxFlex></span>
 
         <!-- Menu -->
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
-            <mat-icon>menu</mat-icon>
+            <mat-icon *ngIf="!mobileQuery.matches">menu</mat-icon>
+            <mat-icon *ngIf="mobileQuery.matches">more_vert</mat-icon>
         </button>
 
         <mat-menu #userMenu="matMenu">
@@ -68,7 +69,7 @@
                      [fixedInViewport]="mobileQuery.matches"
                      fixedTopGap="56">
 
-            <mat-nav-list [style.width.px]="250" *ngIf="isAdmin">
+            <mat-nav-list [style.width.px]="250" *ngIf="isAdminOrDeveloper">
                 <li
                         (click)="closeOnMobile(snav)"
                         class="menu-item"
@@ -84,7 +85,7 @@
                 </li>
             </mat-nav-list>
 
-            <mat-nav-list [style.width.px]="250" *ngIf="!isAdmin">
+            <mat-nav-list [style.width.px]="250" *ngIf="!isAdminOrDeveloper">
                 <li
                         (click)="closeOnMobile(snav)"
                         class="menu-item"

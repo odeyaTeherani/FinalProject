@@ -3,7 +3,7 @@ import {SeverityLevel} from './severity-level.enum';
 
 export interface Event {
     id: number;
-    location: { longitude: number, latitude: number, googlePlacesData: any };
+    location: { longitude: number, latitude: number, googlePlacesData:{formattedAddress:any} };
     eventType: EventType;
     severityLevel: SeverityLevel;
     images: string [];
