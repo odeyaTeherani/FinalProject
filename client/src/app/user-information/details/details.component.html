@@ -8,6 +8,14 @@
     <p class="underline"><b>Validation</b></p>
 
     <div fxLayout="row warp">
+
+      <mat-form-field fxFlex="75" *ngIf="auth.isDeveloper()">
+        <mat-label>Role</mat-label>
+        <input [(ngModel)]="user.role" required
+               [readonly]="!addMode"
+               matInput placeholder="">
+      </mat-form-field>
+
         <mat-form-field fxFlex="75">
             <mat-label>User Name</mat-label>
             <input [(ngModel)]="user.userName" required

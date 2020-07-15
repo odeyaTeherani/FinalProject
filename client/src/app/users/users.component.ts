@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserInformation} from '../shared/modles/userInformation';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {UserService} from '../shared/services/user.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {AccountService} from '../shared/services/account.service';
 import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confirm-dialog.component';
+import {AuthService} from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -21,7 +22,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(media: MediaMatcher, private userService: UserService,
               private dialog: MatDialog,
-              private account: AccountService) {
+              private account: AccountService,
+              private authService: AuthService,
+              private snackBar:MatSnackBar) {
     account.getCurrentUser()
       .subscribe(
         (user) => {
@@ -46,14 +49,15 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.userService.get(filter)
       .subscribe(
         (users: UserInformation[]) => {
-          console.log('Back from server - ', users);
-          this.users = users;
-          this.users = this.users.filter(x => x.id !== this.currentUserId );
+          this.users = users.filter(x => x.id !== this.currentUserId);
+          this.users = this.users.filter(x => x.role !== 'developer');
+          if( this.authService.isAdmin()) {
+            this.users = this.users.filter(x => x.role !== 'admin');
+          }
         },
-        (error) => {
-          console.log(error);
+        () => {
+          this.snackBar.open('Load users Fail', 'FAIL', {duration: 4000});
         });
-    // this.users = this.users.filter(x => x.id !== this.currentUserId );
   }
 
   ngOnInit() {
@@ -74,14 +78,12 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
   }
 
-
   deleteUsers() {
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '450px',
       autoFocus: false,
       hasBackdrop: false,
-      data: {text: 'user'}
+      data: {text: ''}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -94,11 +96,10 @@ export class UsersComponent implements OnInit, OnDestroy {
               () => {
                 if (index === idsToDelete.length - 1) {
                   this.loadUsers();
-
-                  console.log('load users');
                 }
               },
               error => {
+                this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
                 console.log(error);
               }
             );

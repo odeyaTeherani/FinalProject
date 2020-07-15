@@ -19,7 +19,7 @@ export class AdminLayoutComponent implements OnDestroy {
   isOpened: boolean;
   mobileQuery: MediaQueryList;
   appName: string;
-  isAdmin: boolean;
+  isAdminOrDeveloper: boolean;
 
   filterNavMenu: MenuItem[] = [
     {
@@ -94,7 +94,7 @@ export class AdminLayoutComponent implements OnDestroy {
   constructor(media: MediaMatcher, public accountService:AccountService, private authService: AuthService) {
     this.appName = 'UNIFY';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this.isAdmin = authService.isAdmin();
+    this.isAdminOrDeveloper = authService.isAdminOrDeveloper();
     this.mobileQueryListener = () => {
       this.isOpened = !this.mobileQuery.matches;
     };

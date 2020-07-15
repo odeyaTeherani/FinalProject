@@ -10,15 +10,14 @@ import {ConfirmDialogComponent} from '../../shared/components/confirm-dialog/con
 import {AuthService} from '../../shared/services/auth.service';
 import {MatSnackBar} from '@angular/material';
 
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
+
 export class DetailsComponent implements OnInit {
   extraDetailsUser = false;
-  isAdminUser = false;
   isAdminEnter = false;
   paramId: string = null;
   image = null;
@@ -40,21 +39,16 @@ export class DetailsComponent implements OnInit {
   };
   addMode = false;
   subRole: SubRole;
+  private role: string;
 
   constructor(private fb: FormBuilder,
-              public dialog: MatDialog,
+              private dialog: MatDialog,
               private activeRoute: ActivatedRoute,
               private router: Router,
               private auth: AuthService,
-              private snackBar:MatSnackBar,
+              private snackBar: MatSnackBar,
               private accountService: AccountService,
               private userService: UserService) {
-    if (auth.isAdmin()) {
-      this.isAdminUser = true;
-      this.user.role = 'admin';
-    } else {
-      this.user.role = 'user';
-    }
   }
 
   loadPerson() {
@@ -64,41 +58,13 @@ export class DetailsComponent implements OnInit {
         if (this.paramId === 'addUser') {
           this.addMode = true;
           this.extraDetailsUser = true;
-          this.user.role = 'user';
         } else {
           if (this.paramId != null) {
             this.isAdminEnter = true;
             this.extraDetailsUser = true;
-            this.userService.getById(this.paramId)
-              .subscribe(
-                (user: UserInformation) => {
-                  this.user = user;
-                  this.subRole = user.subRole;
-                  this.image = user.image;
-                  this.isAdminEnter = true;
-                  console.log(this.user.role);
-                },
-                error => {
-                  console.log(error);
-                });
+            this.getUserById();
           } else {
-            this.accountService.getCurrentUser()
-              .subscribe(
-                (user: UserInformation) => {
-                  this.user = user;
-                  this.subRole = user.subRole;
-                  this.image = user.image;
-                  if (this.auth.isAdmin()) {
-                    this.user.role = 'admin';
-                  } else {
-                    this.user.role = 'user';
-                  }
-                  console.log('CurrentUser: ');
-                  console.log(this.user);
-                },
-                error => {
-                  console.log(error);
-                });
+            this.getCurrentUser();
           }
         }
       });
@@ -122,33 +88,73 @@ export class DetailsComponent implements OnInit {
     console.log(this.user);
     this.user.subRole = this.subRole;
     if (this.addMode === true) {
-      this.accountService.register(this.user)
-        .subscribe(() => {
-            this.router.navigate(['/users']);
-          },
-          error => {
-            this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});          });
+      this.addUser();
     } else {
-      this.userService.updateUser(this.user)
-        .subscribe(
-          () => {
-            this.snackBar.open('Update User Successes','Success' ,{duration:4000});
-          },
-          error => {
-            this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});
-          });
+      this.updateUser();
     }
+  }
+
+  addUser() {
+    if (this.auth.isAdmin()) {
+      this.user.role = 'user';
+    }
+    this.accountService.register(this.user)
+      .subscribe(() => {
+          this.router.navigate(['/users']);
+        },
+        error => {
+          this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
+        });
+  }
+
+  updateUser() {
+    this.userService.updateUser(this.user)
+      .subscribe(
+        () => {
+          this.snackBar.open('Update User Successes', 'Success', {duration: 4000});
+        },
+        error => {
+          this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
+        });
+  }
+
+  getCurrentUser() {
+    this.accountService.getCurrentUser()
+      .subscribe(
+        (user: UserInformation) => {
+          this.user = user;
+          this.subRole = user.subRole;
+          this.image = user.image;
+          this.user.role = this.getRole();
+          console.log('CurrentUser: ');
+          console.log(this.user);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  getUserById() {
+    this.userService.getById(this.paramId)
+      .subscribe(
+        (user: UserInformation) => {
+          this.user = user;
+          this.subRole = user.subRole;
+          this.image = user.image;
+          this.isAdminEnter = true;
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   deleteUser() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '450px',
-      data: {f: 'fffff'}
+      data: {text: this.user.firstName + ' ' + this.user.lastName }
     });
 
-    dialogRef.afterClosed()
-      .subscribe(result => {
-        console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.userService.deleteUser(this.paramId)
             .subscribe(
@@ -156,10 +162,22 @@ export class DetailsComponent implements OnInit {
                 this.router.navigate(['/users']);
               },
               error => {
-                console.log(error);
+                this.snackBar.open('Delete user fail', 'FAIL', {duration: 4000});
               });
         }
       });
   }
+
+  getRole() {
+    if (this.auth.isAdmin()) {
+      this.role = 'admin';
+    } else if (this.auth.isDeveloper()) {
+      this.role = 'developer';
+    } else {
+      this.role = 'user';
+    }
+    return this.role;
+  }
+
 }
 

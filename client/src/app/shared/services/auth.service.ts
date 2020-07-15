@@ -19,5 +19,11 @@ export class AuthService {
         return this.getRole() === 'admin';
     }
 
+    public isAdminOrDeveloper(): boolean {
+        return (this.getRole() === 'admin' || this.getRole() === 'developer') ;
+    }
 
+    public isDeveloper(): boolean {
+        return (this.getRole() === 'developer') ;
+    }
 }

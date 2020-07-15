@@ -224,7 +224,7 @@
            name="cameraInput"
            (change)="onFileSelected($event)">
 
-    <div fxLayout="row wrap" fxLayoutAlign="center">
+    <div fxLayout="row wrap" fxLayoutAlign="center" class="scrollable-container">
       <ng-container *ngFor="let image of images;">
         <img class="uploaded-image-event"
              [src]="image"
@@ -238,7 +238,7 @@
     <P *ngIf="thereIsAlerts"><b>Alerts:</b></P>
 
     <table *ngIf="thereIsAlerts">
-      <tr>
+      <tr class="panel-table">
         <th class="p-1 text-center" [fxFlex]="20">Date</th>
         <th *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">Event Type</th>
         <th class="p-1 text-center" [fxFlex]="25">Reporter's name</th>

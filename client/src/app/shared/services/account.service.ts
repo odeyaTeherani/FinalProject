@@ -16,8 +16,8 @@ export class AccountService {
   user;
 
   constructor(private route: Router,
-              private apiService:ApiService,
-              private snackBar:MatSnackBar) {
+              private apiService: ApiService,
+              private snackBar: MatSnackBar) {
     this.user = {
       token: 'abc!@#123$$%^'
     };
@@ -25,25 +25,30 @@ export class AccountService {
 
   register(user: UserInformation) {
     return this.apiService
-      .post(this.path +'/register' ,user);
+      .post(this.path + '/register', user);
   }
 
   login(userCredentials: LoginUser) {
-    this.apiService.post<any>(this.path +'/login' ,userCredentials)
-        .subscribe(
-            (result:any)=> {
-              if (result != null) {
-                localStorage.setItem('token', result.token);
-                localStorage.setItem('role', result.roles[0]);
-
-                this.route.navigate(['/home']);
-              } else {
-                console.log('bad user request');
-              }
-            },(error) => {
-                console.log(error);
-                this.snackBar.open(error.error.title,'FAIL' ,{duration:4000});
-            });
+    this.apiService.post<any>(this.path + '/login', userCredentials)
+      .subscribe(
+        (result: any) => {
+          if (result != null) {
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('role', result.roles[0]);
+            console.log(result.roles[0]);
+            console.log(result.token);
+            if (result.roles[0] === 'user') {
+              this.route.navigate(['/alert-page']);
+            } else {
+              this.route.navigate(['/reports']);
+            }
+          } else {
+            console.log('bad user request');
+          }
+        }, (error) => {
+          console.log(error);
+          this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
+        });
   }
 
   logout() {
@@ -53,7 +58,7 @@ export class AccountService {
 
   updateCurrentUser(updateUser: UserInformation) {
     return this.apiService
-      .put(this.path + '/updateCurrentUser' , updateUser);
+      .put(this.path + '/updateCurrentUser', updateUser);
   }
 
   getCurrentUser() {

@@ -105,15 +105,18 @@
       </mat-form-field>
     </div>
 
-    <agm-map *ngIf="location.latitude && location.longitude != null"
-             [latitude]="location.latitude"
-             [longitude]="location.longitude"
-             [zoom]="zoom">
-      <agm-marker
-        [latitude]="location.latitude"
-        [longitude]="location.longitude">
-      </agm-marker>
-    </agm-map>
+    <div *ngIf="location.latitude && location.longitude != null">
+<!--      <mat-checkbox checked =!ignoreCurrLoc [color]="'primary'">Ignore current location</mat-checkbox>-->
+      <agm-map
+               [latitude]="location.latitude"
+               [longitude]="location.longitude"
+               [zoom]="zoom">
+        <agm-marker
+          [latitude]="location.latitude"
+          [longitude]="location.longitude">
+        </agm-marker>
+      </agm-map>
+    </div>
 
     <div *ngIf="!viewMode" fxLayout="row" fxLayoutAlign="center" class="mt-1">
       <button [disabled]="!reportForm.valid" (click)="submit()" mat-raised-button color="primary">Submit</button>
