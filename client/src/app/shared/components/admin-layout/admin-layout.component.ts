@@ -40,10 +40,11 @@ export class AdminLayoutComponent implements OnDestroy {
   ];
 
   themes: any [] = [
-      {name:'Dark',color:'#ffffff',scssClass:'dark'},
-      {name:'Light Blue',color:'#ffaaab',scssClass:'light-blue'},
-      {name:'Light Green',color:'#bbbaaa',scssClass:'light-green'}
-      ]
+      {name:'Dark Orange',color:'#DB7424',scssClass:'dark-orange'},
+      {name:'Light Blue',color:'#0A4DA4',scssClass:'light-blue'},
+      {name:'Light Green',color:'#8EBE7D',scssClass:'light-green'},
+      {name:'Dark Purple',color:'#543D96',scssClass:'dark-purple'}
+      ];
 
   fillerNavForAdmin: MenuItem [] = [
     {
@@ -119,9 +120,9 @@ export class AdminLayoutComponent implements OnDestroy {
   }
 
   changeTheme(theme: any) {
-    var possibleThemes = this.themes.map(theme => theme.scssClass);
-    const body = document.getElementsByTagName("body")[0];
-    const current = body.classList[0];
+    const possibleThemes = this.themes.map(e => e.scssClass);
+    const body = document.getElementsByTagName('body')[0];
+    // const current = body.classList[0];
     body.classList.remove(...possibleThemes);
     body.classList.add(theme.scssClass);
   }

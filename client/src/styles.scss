@@ -4,10 +4,10 @@
 @import "assets/styles/shortcuts";
 @import "assets/styles/sessions";
 
-
 @include mat-core();
 @import "assets/styles/theme/my-light-blue-theme";
 @import "assets/styles/theme/my-dark-theme";
+@import "assets/styles/theme/my-dark-purp-theme";
 @import "assets/styles/theme/my-light-green-theme";
 
 .light-blue{
@@ -18,11 +18,13 @@
   @include angular-material-theme($my-light-green-theme);
 }
 
-.dark{
-  @include angular-material-theme($my-dark-theme);
+.dark-purple{
+  @include angular-material-theme($my-dark-purple-theme);
 }
 
-
+.dark-orange{
+  @include angular-material-theme($my-dark-theme);
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
