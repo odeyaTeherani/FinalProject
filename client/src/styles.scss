@@ -1,8 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@angular/material/theming';
 @import "assets/styles/app";
 @import "assets/styles/shortcuts";
 @import "assets/styles/sessions";
+@import "assets/styles/theme/my-light-blue-theme";
+@import "assets/styles/theme/my-light-green-theme";
+@import "assets/styles/theme/my-dark-theme";
+// always include only once per project
+
+//@include mat-core();
+
+//// specify theme class eg: <body class="my-theme"> ... </body>
+//.my-theme {
+//  // use our theme with angular-material-theme mixin
+//  @include angular-material-theme($my-light-green-theme);
+//}
+
+
+//view rawsty
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
