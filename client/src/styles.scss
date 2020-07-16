@@ -3,21 +3,26 @@
 @import "assets/styles/app";
 @import "assets/styles/shortcuts";
 @import "assets/styles/sessions";
+
+
+@include mat-core();
 @import "assets/styles/theme/my-light-blue-theme";
-@import "assets/styles/theme/my-light-green-theme";
 @import "assets/styles/theme/my-dark-theme";
-// always include only once per project
+@import "assets/styles/theme/my-light-green-theme";
 
-//@include mat-core();
+.light-blue{
+  @include angular-material-theme($my-light-blue-theme);
+}
 
-//// specify theme class eg: <body class="my-theme"> ... </body>
-//.my-theme {
-//  // use our theme with angular-material-theme mixin
-//  @include angular-material-theme($my-light-green-theme);
-//}
+.light-green {
+  @include angular-material-theme($my-light-green-theme);
+}
+
+.dark{
+  @include angular-material-theme($my-dark-theme);
+}
 
 
-//view rawsty
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

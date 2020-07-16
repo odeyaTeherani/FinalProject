@@ -19,6 +19,22 @@
 
         <span fxFlex></span>
 
+
+        <!-- Themes picker -->
+        <button mat-icon-button [matMenuTriggerFor]="themesPicker">
+            <mat-icon>palette</mat-icon>
+        </button>
+
+        <mat-menu #themesPicker="matMenu">
+            <ng-container class="menu-item" *ngFor="let theme of themes">
+                <button [routerLinkActive]="'active'" mat-menu-item (click)="changeTheme(theme)">
+                    <span matPrefix [ngStyle]="{'color':theme.color}">COLOR</span>
+                    {{theme.name}}
+                </button>
+            </ng-container>
+        </mat-menu>
+
+
         <!-- Menu -->
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
             <mat-icon *ngIf="!mobileQuery.matches">menu</mat-icon>
@@ -59,6 +75,9 @@
             <!--        Settings-->
             <!--      </button>-->
         </mat-menu>
+
+
+
 
     </mat-toolbar>
 

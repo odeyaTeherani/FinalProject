@@ -39,6 +39,12 @@ export class AdminLayoutComponent implements OnDestroy {
     }
   ];
 
+  themes: any [] = [
+      {name:'Dark',color:'#ffffff',scssClass:'dark'},
+      {name:'Light Blue',color:'#ffaaab',scssClass:'light-blue'},
+      {name:'Light Green',color:'#bbbaaa',scssClass:'light-green'}
+      ]
+
   fillerNavForAdmin: MenuItem [] = [
     {
       icon: 'event',
@@ -110,6 +116,14 @@ export class AdminLayoutComponent implements OnDestroy {
     if(this.mobileQuery.matches) {
       sidenav.close();
     }
+  }
+
+  changeTheme(theme: any) {
+    var possibleThemes = this.themes.map(theme => theme.scssClass);
+    const body = document.getElementsByTagName("body")[0];
+    const current = body.classList[0];
+    body.classList.remove(...possibleThemes);
+    body.classList.add(theme.scssClass);
   }
 }
 
