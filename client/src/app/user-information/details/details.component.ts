@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
               private dialog: MatDialog,
               private activeRoute: ActivatedRoute,
               private router: Router,
-              private auth: AuthService,
+              public auth: AuthService,
               private snackBar: MatSnackBar,
               private accountService: AccountService,
               private userService: UserService) {
