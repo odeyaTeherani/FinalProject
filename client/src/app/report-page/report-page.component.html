@@ -1,4 +1,8 @@
 <mat-card>
+  <div *ngIf="spinner"
+    class="spinner-wrapper">
+    <mat-spinner [color]="'accent'"></mat-spinner>
+  </div>
 
   <form *ngIf="reportForm" [formGroup]="reportForm">
 
@@ -106,11 +110,11 @@
     </div>
 
     <div *ngIf="location.latitude && location.longitude != null">
-<!--      <mat-checkbox checked =!ignoreCurrLoc [color]="'primary'">Ignore current location</mat-checkbox>-->
+      <!--      <mat-checkbox checked =!ignoreCurrLoc [color]="'primary'">Ignore current location</mat-checkbox>-->
       <agm-map
-               [latitude]="location.latitude"
-               [longitude]="location.longitude"
-               [zoom]="zoom">
+        [latitude]="location.latitude"
+        [longitude]="location.longitude"
+        [zoom]="zoom">
         <agm-marker
           [latitude]="location.latitude"
           [longitude]="location.longitude">

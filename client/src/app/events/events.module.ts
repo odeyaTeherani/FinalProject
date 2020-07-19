@@ -4,12 +4,12 @@ import {EventsFilterComponent} from './events-filter/events-filter.component';
 import {EventsListComponent} from './events-list/events-list.component';
 import {CommonModule} from '@angular/common';
 import {
-  MatAutocompleteModule,
-  MatButtonModule, MatCardModule,
-  MatDatepickerModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule,
-  MatInputModule, MatListModule, MatNativeDateModule,
-  MatSelectModule
+    MatAutocompleteModule,
+    MatButtonModule, MatCardModule,
+    MatDatepickerModule,
+    MatExpansionModule, MatFormFieldModule, MatIconModule,
+    MatInputModule, MatListModule, MatNativeDateModule, MatProgressSpinnerModule,
+    MatSelectModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -26,27 +26,28 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     EventsListDetailsComponent,
     EventsFilterComponent,
     EventsListComponent],
-  imports: [
-    CommonModule,
-    MatExpansionModule,
-    MatButtonModule,
-    FlexLayoutModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatAutocompleteModule,
-    MatSelectModule,
-    MatIconModule,
-    MatFormFieldModule,
-    GooglePlacesModule,
-    MatNativeDateModule,
-    RouterModule.forChild(EventsRouts),
-    SeverityLevelModule,
-    SharedModule,
-    ScrollingModule,
-    MatCardModule,
-    MatListModule
-  ],
+    imports: [
+        CommonModule,
+        MatExpansionModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatAutocompleteModule,
+        MatSelectModule,
+        MatIconModule,
+        MatFormFieldModule,
+        GooglePlacesModule,
+        MatNativeDateModule,
+        RouterModule.forChild(EventsRouts),
+        SeverityLevelModule,
+        SharedModule,
+        ScrollingModule,
+        MatCardModule,
+        MatListModule,
+        MatProgressSpinnerModule
+    ],
   providers:[],
   entryComponents:[],
   exports:[]

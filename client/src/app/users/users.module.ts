@@ -9,7 +9,7 @@ import {
     MatCheckboxModule, MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule, MatInputModule,
-    MatListModule, MatNativeDateModule,
+    MatListModule, MatNativeDateModule, MatProgressSpinnerModule,
     MatTooltipModule
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
@@ -43,7 +43,8 @@ import {ConfirmDialogComponent} from '../shared/components/confirm-dialog/confir
         MatDatepickerModule,
         MatInputModule,
         ReactiveFormsModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        MatProgressSpinnerModule
     ],
     entryComponents: [ConfirmDialogComponent]
 })

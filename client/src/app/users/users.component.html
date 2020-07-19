@@ -1,4 +1,10 @@
 <mat-card>
+
+  <div *ngIf="spinner"
+       class="spinner-wrapper">
+    <mat-spinner [color]="'accent'"></mat-spinner>
+  </div>
+
   <div fxLayout="row">
 
     <div [fxFlex]="50"

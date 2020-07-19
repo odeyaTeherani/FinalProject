@@ -9,6 +9,8 @@ import {SeverityLevel} from '../../shared/modles/severity-level.enum';
 import {Report} from '../../shared/modles/report';
 import {DatePipeService} from '../../shared/services/date-pipe.service';
 import {MediaMatcher} from '@angular/cdk/layout';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {duration} from 'moment';
 
 @Component({
   selector: 'app-close-event',
@@ -33,17 +35,19 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   selectedAlerts: Report[];
   eventType: any;
   severityLevel: any;
-  location: { longitude: number, latitude: number, googlePlacesData: { formattedAddress:any } };
+  location: { longitude: number, latitude: number, googlePlacesData: { formattedAddress: any } };
   mobileQuery: MediaQueryList;
+  spinner = false;
 
   constructor(private activeRoute: ActivatedRoute,
               private router: Router,
               media: MediaMatcher,
               private eventService: EventService,
               private fb: FormBuilder,
+              private snackBar: MatSnackBar,
               private reportsDataService: ReportsDataService,
               private datePipe: DatePipeService) {
-    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress:null}};
+    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: null}};
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => {
       this.isNotMobile = !this.mobileQuery.matches;
@@ -53,25 +57,10 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     activeRoute.params.subscribe((params) => {
       // display event
       if (params.id != null) {
+        this.spinner = true;
         this.viewMode = true;
         this.eventId = params.id;
-        this.eventService.getById(this.eventId)
-          .subscribe((event: Event) => {
-            this.event = event;
-            this.eventType = event.eventType;
-            this.images = event.images;
-            if (this.images[0] != null) {
-              this.thereIsImages = true;
-            }
-            if (this.selectedAlerts) {
-              if (this.selectedAlerts[0] != null) {
-                this.thereIsAlerts = true;
-              }
-            }
-            this.severityLevel = event.severityLevel;
-            this.location = event.location;
-            this.initForm();
-          });
+        this.getEventById();
         // new event
       } else {
         this.initForm();
@@ -87,7 +76,7 @@ export class CloseEventComponent implements OnInit, OnDestroy {
         if (alerts != null) {
           this.selectedAlerts = alerts.filter(alert => alert.selected);
           console.log(this.selectedAlerts);
-          if(this.selectedAlerts[0] !=null) {
+          if (this.selectedAlerts[0] != null) {
             this.thereIsAlerts = true;
           }
         }
@@ -106,8 +95,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
       numOfFirefighters: [data.numOfFirefighters || 0, Validators.required],
       numOfEnvironment: [data.numOfEnvironment || 0, Validators.required],
       numOfZakaCars: [data.numOfZakaCars || 0, Validators.required],
-      endDate: [{value: data.endDate || null, disabled: this.viewMode} , Validators.required],
-      startDate: [{value: data.startDate  || null, disabled: this.viewMode}, Validators.required],
+      endDate: [{value: data.endDate || null, disabled: this.viewMode}, Validators.required],
+      startDate: [{value: data.startDate || null, disabled: this.viewMode}, Validators.required],
       startTime: [{value: data.startTime || null, disabled: this.viewMode}, Validators.required],
       endTime: [{value: data.endTime || null, disabled: this.viewMode}, Validators.required],
       nameInCharge: [data.nameInCharge || null, Validators.required],
@@ -116,12 +105,13 @@ export class CloseEventComponent implements OnInit, OnDestroy {
   }
 
   submit() {
+    this.spinner = true;
     const event = this.eventForm.value;
     event['reports'] = this.selectedAlerts;
     event['eventType'] = this.eventType;
     event['severityLevel'] = this.severityLevel;
     event['startDate'] = this.datePipe.format(event['startDate']);
-    event['endDate'] = this.datePipe.format(event['startDate']);
+    event['endDate'] = this.datePipe.format(event['endDate']);
     event['location'] = this.location;
     event['images'] = this.images;
     console.log(event);
@@ -138,25 +128,29 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     this.eventService.add(newEvent)
       .subscribe(
         () => {
+          this.spinner = false;
           this.router.navigate(['/events']);
         },
-        err => {
-          console.log(err);
+        () => {
+          this.spinner = false;
+          this.snackBar.open('Add New Event Fail', 'Fail', {duration: 4000});
         }
       );
   }
 
   editEvent(updateEvent) {
     updateEvent['reports'] = [];
-    // console.log(updateEvent);
+    console.log(updateEvent);
     this.eventService.put(updateEvent)
       .subscribe(
         () => {
           // console.log(result);
+          this.spinner = false;
           this.router.navigate(['/events']);
         },
-        err => {
-          console.log(err);
+        () => {
+          this.spinner = false;
+          this.snackBar.open('Edit Event Fail', 'Fail', {duration: 4000});
         }
       );
   }
@@ -175,8 +169,8 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     this.eventForm.controls['endDate'].enable({onlySelf: true});
     this.eventForm.controls['startTime'].enable({onlySelf: true});
     this.eventForm.controls['endTime'].enable({onlySelf: true});
-
   }
+
   // exportToPDF() {}
 
   onFileSelected(event) {
@@ -186,5 +180,32 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     reader.onload = (e: any) => {
       this.images.push(e.target.result);
     };
+  }
+
+  private getEventById() {
+    this.eventService.getById(this.eventId)
+      .subscribe(
+        (event: Event) => {
+          console.log(event);
+          this.spinner = false;
+          this.event = event;
+          this.eventType = event.eventType;
+          this.images = event.images;
+          if (this.images[0] != null) {
+            this.thereIsImages = true;
+          }
+          if (this.selectedAlerts) {
+            if (this.selectedAlerts[0] != null) {
+              this.thereIsAlerts = true;
+            }
+          }
+          this.severityLevel = event.severityLevel;
+          this.location = event.location;
+          this.initForm();
+        },
+        () => {
+          this.spinner = false;
+          this.snackBar.open('Fail to load The Event', 'Fail', {duration: 4000});
+        });
   }
 }

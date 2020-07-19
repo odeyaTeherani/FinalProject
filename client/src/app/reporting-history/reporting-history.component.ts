@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReportService} from '../shared/services/report-service';
 import {Report} from '../shared/modles/report';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -11,19 +12,24 @@ import {Report} from '../shared/modles/report';
 
 export class ReportingHistoryComponent implements OnInit {
   reports: Report [];
+  spinner = true;
 
-  constructor(private reportService: ReportService) {}
+  constructor(private reportService: ReportService,
+              private matSnackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
-      this.reportService.get()
-          .subscribe(
-              (reports) => {
-                  this.reports = reports;
-                  console.log('Back from server - ', reports);
-              },
-              (error) => {
-                  console.log(error);
-              });
+    this.reportService.get()
+      .subscribe(
+        (reports) => {
+          this.spinner = false;
+          this.reports = reports;
+          console.log('Back from server - ', reports);
+        },
+        () => {
+          this.spinner = false;
+          this.matSnackBar.open('Fail To Load Reports', 'Fail', {duration: 4000});
+        });
   }
 
   delete(report: Report) {
@@ -45,8 +51,8 @@ export class ReportingHistoryComponent implements OnInit {
         (res) => {
           this.reportService.get().subscribe(
             () => {
-                const  idx =  this.reports.indexOf(report);
-                this.reports[idx] = editedEntity;
+              const idx = this.reports.indexOf(report);
+              this.reports[idx] = editedEntity;
             });
         },
         (error) => {
