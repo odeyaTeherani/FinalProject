@@ -7,23 +7,31 @@
 @include mat-core();
 @import "assets/styles/theme/my-light-blue-theme";
 @import "assets/styles/theme/my-dark-theme";
-@import "assets/styles/theme/my-dark-purp-theme";
-@import "assets/styles/theme/my-light-green-theme";
+@import "assets/styles/theme/my-dark-red-theme";
+@import "assets/styles/theme/my-light-cyan-theme";
 
 .light-blue{
   @include angular-material-theme($my-light-blue-theme);
 }
 
-.light-green {
-  @include angular-material-theme($my-light-green-theme);
+.light-turquoise {
+  @include angular-material-theme($my-light-turquoise-theme);
 }
 
-.dark-purple{
-  @include angular-material-theme($my-dark-purple-theme);
+.dark-red{
+  @include angular-material-theme($my-dark-red-theme);
 }
 
 .dark-orange{
   @include angular-material-theme($my-dark-theme);
+}
+
+.text-black{
+  color: black;
+}
+
+.icon-color{
+  color: white;
 }
 
 html, body { height: 100%; }

@@ -7,12 +7,12 @@
 
     <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
-      <mat-list-item class="report-list-item" [routerLink]="['/alert-page/',report.id]"
+      <mat-list-item class="report-list-item background-list background-hover" [routerLink]="['/alert-page/',report.id]"
                      *cdkVirtualFor="let report of reports">
-        <div class="text-center" [fxFlex]="100/2">
+        <div class="text-center text-black" [fxFlex]="100/2">
           {{ report.date | date:'dd/MM/yyyy HH:mm' }}
         </div>
-        <div class="text-center" [fxFlex]="100/2*2">
+        <div class="text-center text-black" [fxFlex]="100/2*2">
           {{report.eventType.name}}
         </div>
 

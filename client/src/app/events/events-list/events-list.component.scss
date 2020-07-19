@@ -1,0 +1,9 @@
+.style-panel{
+  background: lightgray;
+  color: black;
+
+  &hover{
+    background: gainsboro;
+    color: black;
+  }
+}

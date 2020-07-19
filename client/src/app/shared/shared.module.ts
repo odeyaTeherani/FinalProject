@@ -5,14 +5,14 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {
-  MatAutocompleteModule,
-  MatButtonModule, MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule, MatMenuModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatToolbarModule
+    MatAutocompleteModule,
+    MatButtonModule, MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule, MatMenuModule, MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule
 } from '@angular/material';
 import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
 import { EventTypeComponent } from './components/event-type/event-type.component';
@@ -49,7 +49,8 @@ import { SubRoleFiledComponent } from './components/sub-role-filed/sub-role-file
           MatSnackBarModule,
           ReactiveFormsModule,
           MatAutocompleteModule,
-          FormsModule
+          FormsModule,
+          MatRadioModule
       ],
     providers: [
       DatePipe

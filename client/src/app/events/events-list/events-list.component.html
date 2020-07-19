@@ -2,7 +2,7 @@
 
   <mat-expansion-panel class="full-width">
 
-    <mat-expansion-panel-header style="background-color: aliceblue">
+    <mat-expansion-panel-header class="style-panel">
 
       <p class="p-1 text-center" [fxFlex]="50">
         {{event.startDate | date:'dd/MM/yyyy HH:mm' }}
@@ -13,28 +13,30 @@
       </p>
 
     </mat-expansion-panel-header>
+    <div>
+      <p>
+        <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }"
+           style="padding: 5px ">
+          Severity lvl: {{ slRef[event.severityLevel]}}</b>
+      </p>
 
-    <p>
-      <b [ngStyle]="{'border': '2px ' + getEventTypeColor(event.severityLevel) + ' solid' }"
-         style="color: darkslategrey;padding: 5px ">
-        Severity lvl: {{ slRef[event.severityLevel]}}</b>
-    </p>
+      <p>
+        <b >
+          Location: {{event.location.googlePlacesData.formattedAddress}}
+        </b>
+      </p>
 
-    <p>
-      <b style="color: darkslategrey">
-        Location: {{event.location.googlePlacesData.formattedAddress}}
-      </b>
-    </p>
-
-    <p>
-      <b style="color: darkslategrey">
-        Note: {{event.note}}
-      </b>
-    </p>
+      <p>
+        <b >
+          Note: {{event.note}}
+        </b>
+      </p>
+    </div>
 
     <div fxLayout="row">
       <span fxFlex></span>
       <button fxFlex.xs="100"
+              class="text-black"
               [routerLink]="['../reports/close/', event.id]"
               mat-stroked-button>
         More details

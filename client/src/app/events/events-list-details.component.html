@@ -9,7 +9,7 @@
 
   <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
-      <app-events-list
+      <app-events-list class="background-list background-hover"
         *cdkVirtualFor="let event of events" [event]="event">
       </app-events-list>
     </cdk-virtual-scroll-viewport>

@@ -12,23 +12,24 @@
         <button mat-icon-button
                 *ngIf="mobileQuery.matches"
                 (click)="snav.toggle()">
-            <mat-icon>menu</mat-icon>
+            <mat-icon class="icon-color" >menu</mat-icon>
         </button>
 
-        <h1 class="app-name" >{{appName}}</h1>
+        <h1 class="app-name icon-color" >{{appName}}</h1>
 
         <span fxFlex></span>
 
 
         <!-- Themes picker -->
         <button mat-icon-button [matMenuTriggerFor]="themesPicker">
-            <mat-icon>palette</mat-icon>
+            <mat-icon class="icon-color" >palette</mat-icon>
         </button>
 
         <mat-menu #themesPicker="matMenu">
             <ng-container class="menu-item" *ngFor="let theme of themes">
                 <button [routerLinkActive]="'active'" mat-menu-item (click)="changeTheme(theme)">
-                    <span matPrefix [ngStyle]="{'color':theme.color}">COLOR</span>
+                  <mat-icon [ngStyle] = "{'color':theme.color}">radio_button_unchecked</mat-icon>
+<!--                    <span matPrefix [ngStyle]="{'color':theme.color}">COLOR</span>-->
                     {{theme.name}}
                 </button>
             </ng-container>
@@ -37,8 +38,8 @@
 
         <!-- Menu -->
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
-            <mat-icon *ngIf="!mobileQuery.matches">menu</mat-icon>
-            <mat-icon *ngIf="mobileQuery.matches">more_vert</mat-icon>
+            <mat-icon *ngIf="!mobileQuery.matches" class="icon-color">menu</mat-icon>
+            <mat-icon *ngIf="mobileQuery.matches" class="icon-color">more_vert</mat-icon>
         </button>
 
         <mat-menu #userMenu="matMenu">
@@ -47,7 +48,7 @@
                 <button [routerLinkActive]="'active'"
                         mat-menu-item
                         [routerLink]="['/user-information/' + menuItem.url]">
-                    <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+                    <mat-icon class="menu-item-icon icon-color">{{menuItem.icon}}</mat-icon>
                     {{menuItem.name}}
                 </button>
             </ng-container>
@@ -111,8 +112,8 @@
                         [routerLinkActive]="'active'"
                         [routerLink]="['/' + menuItem.url]"
                         *ngFor="let menuItem of fillerNavForUser">
-                    <button mat-icon-button>
-                        <mat-icon class="menu-item-icon">{{menuItem.icon}}</mat-icon>
+                    <button mat-icon-button [ngStyle]= "{hover: {color: 'primary'} }">
+                        <mat-icon class="menu-item-icon" >{{menuItem.icon}}</mat-icon>
                     </button>
                     {{
                     menuItem.name
