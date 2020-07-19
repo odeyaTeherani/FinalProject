@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   users: UserInformation [];
   currentUserId: string;
   private readonly mobileQueryListener: () => void;
+  spinner = false;
 
   constructor(media: MediaMatcher, private userService: UserService,
               private dialog: MatDialog,
@@ -46,9 +47,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   loadUsers(filter = null) {
+    this.spinner = true;
     this.userService.get(filter)
       .subscribe(
         (users: UserInformation[]) => {
+          this.spinner = false;
           this.users = users.filter(x => x.id !== this.currentUserId);
           this.users = this.users.filter(x => x.role !== 'developer');
           if( this.authService.isAdmin()) {
@@ -56,6 +59,7 @@ export class UsersComponent implements OnInit, OnDestroy {
           }
         },
         () => {
+          this.spinner = false;
           this.snackBar.open('Load users Fail', 'FAIL', {duration: 4000});
         });
   }
@@ -88,19 +92,21 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.spinner = true;
         const idsToDelete = this.users.filter(x => x.selected).map(x => x.id);
         console.log(idsToDelete);
         idsToDelete.forEach((idToDelete, index) => {
           this.userService.deleteUser(idToDelete)
             .subscribe(
               () => {
+                this.spinner = false;
                 if (index === idsToDelete.length - 1) {
                   this.loadUsers();
                 }
               },
               error => {
+                this.spinner = false;
                 this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
-                console.log(error);
               }
             );
         });

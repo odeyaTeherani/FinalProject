@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventService} from '../shared/services/event.service';
 import {Consult} from '../shared/modles/consult';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-consult',
@@ -16,21 +17,28 @@ export class ConsultComponent implements OnInit {
     number_of_police_cars: null,
     number_of_zaka_cars: null,
   };
-  constructor(private eventService: EventService) { }
+  spinner = false;
+
+  constructor(private eventService: EventService,
+              private matSnackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
   }
 
   searchChanged(event: any) {
+    this.spinner = true;
     // console.log(event);
     // go to server and fetch the filterd events
     this.eventService.getConsult(event)
-      .subscribe((value:Consult) => {
-        this.result = value;
-        console.log(this.result);
+      .subscribe((value: Consult) => {
+          this.spinner = false;
+          this.result = value;
         },
-        error => {
-        console.log(error);
+        () => {
+          this.spinner = false;
+          this.matSnackBar.open('Get Consult Fail',
+            'Fail', {duration: 4000});
         }
       );
 

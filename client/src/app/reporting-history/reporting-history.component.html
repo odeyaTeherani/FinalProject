@@ -1,11 +1,14 @@
 <mat-card>
+  <div *ngIf="spinner"
+       class="spinner-wrapper">
+    <mat-spinner [color]="'accent'"></mat-spinner>
+  </div>
+  <div fxLayout="row" class="report-list-details">
+    <div class="p-1 text-center" [fxFlex]="100/2">Date</div>
+    <div class="pr-1 p-1 text-center" [fxFlex]="100/2">Event Type</div>
+  </div>
 
-    <div fxLayout="row"  class="report-list-details">
-      <div class="p-1 text-center" [fxFlex]="100/2">Date</div>
-      <div class="pr-1 p-1 text-center" [fxFlex]="100/2">Event Type</div>
-    </div>
-
-    <mat-list>
+  <mat-list>
     <cdk-virtual-scroll-viewport itemSize="6" class="viewport">
       <mat-list-item class="report-list-item background-list background-hover" [routerLink]="['/alert-page/',report.id]"
                      *cdkVirtualFor="let report of reports">

@@ -1,5 +1,10 @@
 <mat-card>
 
+  <div *ngIf="spinner"
+       class="spinner-wrapper">
+    <mat-spinner [color]="'accent'"></mat-spinner>
+  </div>
+
   <app-events-filter (searchChanged)="searchChanged($event)"></app-events-filter>
 
   <div fxLayout="row" class="event-list-details">

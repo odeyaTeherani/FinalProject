@@ -15,6 +15,7 @@ export class ChangePasswordComponent implements OnInit {
     newPassword: ''
   };
   hide = true;
+  spinner = false;
 
   constructor(private accountService: AccountService,
               private snackBar: MatSnackBar) {
@@ -24,15 +25,16 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   submit() {
+    this.spinner = true;
     this.accountService.changePassword(this.changePasswordDetails)
       .subscribe(
         () => {
+          this.spinner = false;
           this.snackBar.open('password change successfully', 'Success', {duration: 4000});
-          console.log('success');
         },
         error => {
+          this.spinner = false;
           this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
-          console.log(error);
         });
   }
 }

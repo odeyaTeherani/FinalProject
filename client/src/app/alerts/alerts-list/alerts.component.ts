@@ -17,6 +17,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
   alerts: Report [];
   alertsSubscription: Subscription;
   private readonly mobileQueryListener: () => void;
+  spinner = true;
 
   constructor(media: MediaMatcher, private reportsDataService: ReportsDataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -30,6 +31,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
     this.alertsSubscription = this.reportsDataService
       .onEventsChange
       .subscribe((alerts: Report []) => {
+        this.spinner = false;
         this.alerts = alerts;
       });
 

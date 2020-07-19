@@ -7,7 +7,7 @@ import {
     MatCardModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
+    MatListModule, MatProgressSpinnerModule,
     MatTabsModule,
     MatTooltipModule
 } from '@angular/material';
@@ -18,7 +18,7 @@ import {SystemValuesRoutes} from './system-values-routing';
 import {EventTypeService} from '../shared/services/event-type.service';
 import {SubRoleService} from '../shared/services/sub-role.service';
 import {ElementItemComponent} from './element-list/element-item/element-item.component';
-import {TokenService} from "./token_service";
+import {TokenService} from './token_service';
 
 @NgModule({
     declarations: [
@@ -26,20 +26,21 @@ import {TokenService} from "./token_service";
          ElementItemComponent,
          SystemValuesComponent
     ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(SystemValuesRoutes),
-    MatCardModule,
-    MatListModule,
-    FlexModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatButtonModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatTabsModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(SystemValuesRoutes),
+        MatCardModule,
+        MatListModule,
+        FlexModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatButtonModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatProgressSpinnerModule
+    ],
     providers: [
         TokenService,
         {provide: TokenService.MY_EVENT_TOKEN, useClass: EventTypeService},

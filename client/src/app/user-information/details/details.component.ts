@@ -40,6 +40,7 @@ export class DetailsComponent implements OnInit {
   addMode = false;
   subRole: SubRole;
   private role: string;
+  spinner = false;
 
   constructor(private fb: FormBuilder,
               private dialog: MatDialog,
@@ -60,6 +61,7 @@ export class DetailsComponent implements OnInit {
           this.extraDetailsUser = true;
         } else {
           if (this.paramId != null) {
+            this.spinner = true;
             this.isAdminEnter = true;
             this.extraDetailsUser = true;
             this.getUserById();
@@ -108,12 +110,15 @@ export class DetailsComponent implements OnInit {
   }
 
   updateUser() {
+    this.spinner = true;
     this.userService.updateUser(this.user)
       .subscribe(
         () => {
+          this.spinner = false;
           this.snackBar.open('Update User Successes', 'Success', {duration: 4000});
         },
         error => {
+          this.spinner = false;
           this.snackBar.open(error.error.title, 'FAIL', {duration: 4000});
         });
   }
@@ -122,6 +127,7 @@ export class DetailsComponent implements OnInit {
     this.accountService.getCurrentUser()
       .subscribe(
         (user: UserInformation) => {
+          this.spinner = false;
           this.user = user;
           this.subRole = user.subRole;
           this.image = user.image;
@@ -130,6 +136,7 @@ export class DetailsComponent implements OnInit {
           console.log(this.user);
         },
         error => {
+          this.spinner = false;
           console.log(error);
         });
   }
@@ -138,12 +145,14 @@ export class DetailsComponent implements OnInit {
     this.userService.getById(this.paramId)
       .subscribe(
         (user: UserInformation) => {
+          this.spinner = false;
           this.user = user;
           this.subRole = user.subRole;
           this.image = user.image;
           this.isAdminEnter = true;
         },
         error => {
+          this.spinner = false;
           console.log(error);
         });
   }
@@ -156,12 +165,15 @@ export class DetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
         if (result) {
+          this.spinner = true;
           this.userService.deleteUser(this.paramId)
             .subscribe(
               () => {
+                this.spinner = false;
                 this.router.navigate(['/users']);
               },
-              error => {
+              () => {
+                this.spinner = false;
                 this.snackBar.open('Delete user fail', 'FAIL', {duration: 4000});
               });
         }

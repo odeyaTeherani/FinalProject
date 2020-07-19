@@ -7,13 +7,13 @@ import {MySettingsComponent} from './setting/my-settings.component';
 import {NotificationsComponent} from './setting/notifications/notifications.component';
 import {AboutTheAppComponent} from './setting/about-the-app/about-the-app.component';
 import {
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule, MatDatepickerModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule, MatNativeDateModule, MatSlideToggleModule,
-  MatTabsModule
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule, MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule, MatNativeDateModule, MatProgressSpinnerModule, MatSlideToggleModule,
+    MatTabsModule
 } from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -31,25 +31,26 @@ import {ConfirmDialogModule} from '../shared/components/confirm-dialog/confirm-d
     AboutTheAppComponent,
     ChangePasswordComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(UserInformationRoutes),
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTabsModule,
-    FlexModule,
-    SharedModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonToggleModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatSlideToggleModule,
-    ConfirmDialogModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(UserInformationRoutes),
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTabsModule,
+        FlexModule,
+        SharedModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatSlideToggleModule,
+        ConfirmDialogModule,
+        MatProgressSpinnerModule
+    ],
   entryComponents: [ConfirmDialogComponent]
 })
 export class UserInformationModule { }
