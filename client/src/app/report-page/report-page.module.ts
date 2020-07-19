@@ -18,6 +18,7 @@ import {AgmCoreModule} from '@agm/core';
 import {GooglePlacesModule} from '../shared/directives/google-places/google-places.module';
 import {SeverityLevelModule} from '../shared/components/severity-level/severity-level.module';
 import {SharedModule} from '../shared/shared.module';
+import {Ng2ImgMaxModule} from "ng2-img-max";
 
 @NgModule({
   declarations: [ReportPageComponent],
@@ -31,7 +32,13 @@ import {SharedModule} from '../shared/shared.module';
         MatButtonModule,
         MatIconModule,
         AgmCoreModule,
-        GooglePlacesModule, SeverityLevelModule, MatGridListModule, SharedModule, MatCardModule, MatCheckboxModule]
+        GooglePlacesModule,
+        SeverityLevelModule,
+        MatGridListModule,
+        SharedModule,
+        MatCardModule,
+        MatCheckboxModule,
+        Ng2ImgMaxModule]
 })
 
 export class ReportPageModule {}
