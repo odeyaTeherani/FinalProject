@@ -1,10 +1,10 @@
 <div fxLayoutAlign="center center" fxLayout="row" class="mt-1">
-  <mat-tab-group  mat-stretch-tabs class="full-width">
-    <mat-tab  label="Force">
+  <mat-tab-group  mat-stretch-tabs [color]="'accent'" class="full-width">
+    <mat-tab label="Force">
       <app-element-list [serviceName]="'role'" [elementName]="'Sub Role'"></app-element-list>
     </mat-tab>
 
-    <mat-tab  label="Event Type">
+    <mat-tab label="Event Type">
       <app-element-list [serviceName]="'event'" [elementName]="'Event'"></app-element-list>
     </mat-tab>
   </mat-tab-group>

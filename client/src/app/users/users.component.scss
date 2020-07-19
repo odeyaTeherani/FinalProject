@@ -1,13 +1,19 @@
 .user-list-item {
-  border: #f2f2f2 solid;
+  border: #dddddd solid 1px;
   border-radius: 5px;
   margin-top: 6px;
-  background: aliceblue;
+  background: lightgray;
+  color: black;
 
   &:hover {
     cursor: pointer;
+    color: black;
     background: gainsboro;
   }
+}
+
+.text-black{
+  color: black;
 }
 
 .user-list-details{

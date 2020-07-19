@@ -41,28 +41,29 @@
         <div fxLayout="row" class="full-width" (click)="check.toggle()">
 
           <div [fxFlex]="5" class="mt-1">
-            <mat-checkbox class="text-center mat-checkbox-user" #check
+            <mat-checkbox class="text-black" #check
                           [fxFlex]="10"
                           [(ngModel)]="user.selected"
-                          (click)="$event.stopPropagation()"
-                          [color]="'primary'">
+                          [color]="'primary'"
+                          (click)="$event.stopPropagation()">
             </mat-checkbox>
           </div>
-          <p class="p-1 text-center" [fxFlex]="25">
+          <p class="p-1 text-center text-black" [fxFlex]="25">
             {{user.firstName + " " + user.lastName}}
           </p>
 
-          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center" [fxFlex]="25">
+          <p *ngIf="!mobileQuery.matches || isNotMobile" class="p-1 text-center text-black" [fxFlex]="25">
             {{user.email}}
           </p>
 
-          <p class="p-1 text-center" [fxFlex]="25">
+          <p class="p-1 text-center text-black" [fxFlex]="25">
             {{user.subRole.name}}
           </p>
 
           <span fxFlex></span>
 
           <button mat-icon-button
+                  class = "text-black"
                   [matTooltip]="'Extra Details'"
                   [routerLinkActive]="'active'"
                   [routerLink]="['/user-information/details/' + user.id]">

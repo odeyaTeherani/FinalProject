@@ -39,6 +39,13 @@ export class AdminLayoutComponent implements OnDestroy {
     }
   ];
 
+  themes: any [] = [
+    {name: 'Blue & Grey', color: '#0A4DA4', scssClass: 'light-blue'},
+    {name: 'Cyan & Pink', color: '#487984', scssClass: 'light-Turquoise'},
+    {name: 'Orange & Yellow', color: '#DB7424', scssClass: 'dark-orange'},
+    {name: 'Red & Cyan', color: '#D34949', scssClass: 'dark-red'}
+  ];
+
   fillerNavForAdmin: MenuItem [] = [
     {
       icon: 'event',
@@ -91,7 +98,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private readonly mobileQueryListener: () => void;
 
-  constructor(media: MediaMatcher, public accountService:AccountService, private authService: AuthService) {
+  constructor(media: MediaMatcher, public accountService: AccountService, private authService: AuthService) {
     this.appName = 'UNIFY';
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.isAdminOrDeveloper = authService.isAdminOrDeveloper();
@@ -106,10 +113,18 @@ export class AdminLayoutComponent implements OnDestroy {
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
-  closeOnMobile(sidenav:MatSidenav) {
-    if(this.mobileQuery.matches) {
+  closeOnMobile(sidenav: MatSidenav) {
+    if (this.mobileQuery.matches) {
       sidenav.close();
     }
+  }
+
+  changeTheme(theme: any) {
+    const possibleThemes = this.themes.map(e => e.scssClass);
+    const body = document.getElementsByTagName('body')[0];
+    // const current = body.classList[0];
+    body.classList.remove(...possibleThemes);
+    body.classList.add(theme.scssClass);
   }
 }
 

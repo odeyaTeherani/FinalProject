@@ -29,6 +29,7 @@
         <mat-list-item class="event-type-list-item" *ngFor="let element of elements">
             <app-element-item
                     fxFlex="100"
+                    class="text-black"
                     [serviceName]="serviceName"
                     [element]="element"
                     (onDeleteSucceed)="delete($event)"

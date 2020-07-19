@@ -7,6 +7,9 @@
     .menu-item-icon {
       color: #2aa1ff;
     }
+    &hover{
+      background-color: darkgrey;
+    }
     cursor: pointer;
   }
 }

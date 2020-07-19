@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+$my-app-primary: mat-palette($mat-cyan, 800);
+$my-app-accent: mat-palette($mat-pink, 300);
+$my-app-warn: mat-palette($mat-red);
+
+$my-light-turquoise-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-light-turquoise-theme);

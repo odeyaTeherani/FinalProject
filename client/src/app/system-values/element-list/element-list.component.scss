@@ -9,8 +9,12 @@
   //z-index: 9999999;
   border-radius: 5px;
   margin-top: 6px;
+  background: lightgray;
+  color: black;
+
   &:hover {
     cursor: pointer;
+    color: black;
     background: gainsboro;
   }
 }

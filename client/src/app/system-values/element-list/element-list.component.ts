@@ -1,6 +1,6 @@
 import {Component, Injector, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {TokenService} from "../token_service";
+import {TokenService} from '../token_service';
 
 @Component({
     selector: 'app-element-list',
