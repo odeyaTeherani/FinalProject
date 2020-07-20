@@ -1,6 +1,7 @@
 import {Component, Injector, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TokenService} from '../token_service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-element-list',
@@ -16,7 +17,9 @@ export class ElementListComponent implements OnInit {
   service;
   spinner = true;
 
-  constructor(private injector: Injector, private tokenService: TokenService) {
+  constructor(private injector: Injector,
+              private tokenService: TokenService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -25,11 +28,10 @@ export class ElementListComponent implements OnInit {
       (elements) => {
         this.spinner = false;
         this.elements = elements;
-        console.log(elements);
       },
-      (error) => {
+      () => {
         this.spinner = false;
-        console.log(error);
+        this.snackBar.open('Loading Fail', 'Fail', {duration: 4000});
       });
     this.elementsCtrl = new FormControl(null, Validators.required);
   }
@@ -44,7 +46,7 @@ export class ElementListComponent implements OnInit {
       },
       error => {
         this.spinner = false;
-        console.log(error);
+        this.snackBar.open('Add Fail', 'Fail', {duration: 4000});
       }
     );
   }
