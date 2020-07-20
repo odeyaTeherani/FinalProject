@@ -29,14 +29,14 @@ export class ReportPageComponent implements OnInit {
   carNumberData: string;
   spinner = false;
 
+
   constructor(private  activeRoute: ActivatedRoute,
               private router: Router,
               private reportService: ReportService,
               private accountService: AccountService,
               private fb: FormBuilder,
               private ng2ImgMax: Ng2ImgMaxService) {
-    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: 'Location'}};
-
+    this.location = {longitude: null, latitude: null, googlePlacesData: {formattedAddress: null}};
     activeRoute.params.subscribe((params) => {
       // display alert
       if (params.id != null) {
@@ -46,11 +46,12 @@ export class ReportPageComponent implements OnInit {
         this.reportService.getById(alertId)
           .subscribe((report: Report) => {
             this.spinner = false;
+            this.location = report.location;
             this.alert = report;
             this.images = report.images;
             this.eventType = report.eventType;
             this.severityLevel = report.severityLevel;
-            this.location = report.location;
+            console.log(this.location.googlePlacesData);
             this.initForm();
           });
 
@@ -69,16 +70,32 @@ export class ReportPageComponent implements OnInit {
   getLocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.location = {
-          googlePlacesData: null,
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        };
+        this.location.longitude = position.coords.longitude;
+        this.location.latitude = position.coords.latitude;
+        // this.location = {
+        //   googlePlacesData: null,
+        //   latitude: position.coords.latitude,
+        //   longitude: position.coords.longitude
+        // };
       });
     } else {
-      this.location = null;
-    }
+      this.location.longitude = null;
+      this.location.latitude = null;    }
   }
+
+  // getLocation(): void {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.location = {
+  //         googlePlacesData: null,
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude
+  //       };
+  //     });
+  //   } else {
+  //     this.location = null;
+  //   }
+  // }
 
   submit() {
     this.spinner = true;
