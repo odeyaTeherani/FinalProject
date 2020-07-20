@@ -117,7 +117,6 @@ export class CloseEventComponent implements OnInit, OnDestroy {
     console.log(event);
     if (this.eventId == null) {
       this.addEvent(event);
-
     } else {
       this.editEvent(event);
     }

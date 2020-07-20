@@ -1,6 +1,6 @@
 <mat-card>
   <div *ngIf="spinner"
-    class="spinner-wrapper">
+       class="spinner-wrapper">
     <mat-spinner [color]="'accent'"></mat-spinner>
   </div>
 
@@ -37,7 +37,7 @@
 
           <div class="border-location" fxFlex="25" *ngIf="viewMode">
             <h5 class="ml-1">Location</h5>
-            <p class="ml-1"> {{location.googlePlacesData.formattedAddress}}</p>
+            <p class="ml-1" *ngIf="location.googlePlacesData"> {{location.googlePlacesData.formattedAddress}}</p>
           </div>
 
           <!--        <mat-form-field [appearance]="'outline'" fxFlex="25" *ngIf="viewMode">-->
