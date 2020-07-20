@@ -5,14 +5,14 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {
-    MatAutocompleteModule,
-    MatButtonModule, MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule, MatMenuModule, MatRadioModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatToolbarModule
+  MatAutocompleteModule,
+  MatButtonModule, MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule, MatMenuModule, MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { SessionsLayoutComponent } from './components/sessions-layout/sessions-layout.component';
 import { EventTypeComponent } from './components/event-type/event-type.component';
@@ -33,25 +33,26 @@ import { SubRoleFiledComponent } from './components/sub-role-filed/sub-role-file
       EventTypeComponent,
       SubRoleFiledComponent
     ],
-      imports: [
-          CommonModule,
-          FlexLayoutModule,
-          RouterModule,
-          MatToolbarModule,
-          MatSidenavModule,
-          MatListModule,
-          MatIconModule,
-          MatInputModule,
-          MatFormFieldModule,
-          MatButtonModule,
-          MatSelectModule,
-          MatMenuModule,
-          MatSnackBarModule,
-          ReactiveFormsModule,
-          MatAutocompleteModule,
-          FormsModule,
-          MatRadioModule
-      ],
+    imports: [
+      CommonModule,
+      FlexLayoutModule,
+      RouterModule,
+      MatToolbarModule,
+      MatSidenavModule,
+      MatListModule,
+      MatIconModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatButtonModule,
+      MatSelectModule,
+      MatMenuModule,
+      MatSnackBarModule,
+      ReactiveFormsModule,
+      MatAutocompleteModule,
+      FormsModule,
+      MatRadioModule,
+      MatTooltipModule
+    ],
     providers: [
       DatePipe
     ],
