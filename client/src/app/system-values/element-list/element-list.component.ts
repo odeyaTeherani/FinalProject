@@ -44,7 +44,7 @@ export class ElementListComponent implements OnInit {
         this.addMode = false;
         this.elements.unshift(element);
       },
-      error => {
+      () => {
         this.spinner = false;
         this.snackBar.open('Add Fail', 'Fail', {duration: 4000});
       }
