@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {ReportsDataService} from '../reports-data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {Report} from '../../shared/modles/report';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class AlertsComponent implements OnInit, OnDestroy {
   private readonly mobileQueryListener: () => void;
   spinner = true;
 
-  constructor(media: MediaMatcher, private reportsDataService: ReportsDataService) {
+  constructor(media: MediaMatcher,
+              private reportsDataService: ReportsDataService,
+              private matSnackBar:MatSnackBar) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => {
       this.isNotMobile = !this.mobileQuery.matches;
@@ -30,10 +33,15 @@ export class AlertsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.alertsSubscription = this.reportsDataService
       .onEventsChange
-      .subscribe((alerts: Report []) => {
-        this.spinner = false;
-        this.alerts = alerts;
-      });
+      .subscribe(
+        (alerts: Report []) => {
+          this.spinner = false;
+          this.alerts = alerts;
+        },
+        ()=> {
+          this.spinner = false;
+          this.matSnackBar.open('Load Alerts Fail', 'Fail', {duration:4000});
+  });
 
     this.reportsDataService.getReportsFromServer();
   }
